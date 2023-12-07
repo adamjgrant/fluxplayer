@@ -16,15 +16,17 @@ cartridge = {
         {
           "method": "clarify",
           "target": "CLARIFICATION",
+          "if_the_user": "says things that need to be opened up or clarified"
         },
         {
           "method": "identify_thoughts",
           "target": "THOUGHT_IDENTIFICATION",
+          "if_the_user": "has given you enough information to bring their issue into focus"
         },
         {
           "method": "probe",
           "target": "PROBE",
-          "if_the_user": "speaks too little or to generally"
+          "if_the_user": "references things that seem to have more to them"
         }
       ]
     },
