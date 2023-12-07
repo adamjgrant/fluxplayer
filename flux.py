@@ -17,7 +17,8 @@ def import_cartridge(path):
 def format_event(event):
     return "\nIf the user %s, send the `%s` event."%(event["user_behavior"], event["method"])
 
-def format_prompt(state_definition):
+def format_prompt(state_definition, state):
+    flux_status = "(The current state is %s.)"%state
     prompt = state_definition["prompt"]
     events = state_definition["events"]
 
@@ -28,7 +29,7 @@ def format_prompt(state_definition):
     formatted_events_list = map(format_event, events)
     formatted_events = "".join(formatted_events_list)
 
-    return "%s\n%s"%(prompt, formatted_events)
+    return "%s\n\n%s\n%s"%(flux_status, prompt, formatted_events)
 
 def call_method_on_state(cartridge, state, method):
     if state not in cartridge:
@@ -36,13 +37,25 @@ def call_method_on_state(cartridge, state, method):
 
     state_definition = cartridge[state]
 
-    if method not in state_definition:
-        raise ValueError("The method %s does not exist in the state %s."%(method, state))
+    # Find the object in the events list that has the method name.
+    event = next((event for event in state_definition["events"] if event["method"] == method), None)
 
-    return format_prompt(state_definition[method])
+    # Throw an error if the event is not found
+    if event == None:
+        raise ValueError("The event %s does not exist in the state %s."%(method, state))
+
+    # Get the state definition for the target state.
+    target_state = event["target"]
+    target_state_definition = cartridge[target_state]
+
+    # Throw an error if the target state is not found
+    if target_state_definition == None:
+        raise ValueError("The target state %s does not exist in the cartridge."%target_state)
+
+    return format_prompt(target_state_definition, target_state)
 
 def start_cartridge(cartridge):
-    return format_prompt(cartridge["START"])
+    return format_prompt(cartridge["START"], "START")
 
 # Output the cartridge variable as JSON.
 def main():
