@@ -16,7 +16,7 @@ def import_cartridge(path):
     return cartridge.cartridge
 
 def format_event(event):
-    return "\nIf the user %s, send the `%s` event."%(event["user_behavior"], event["method"])
+    return "\nIf the user %s, send the `%s` event."%(event["if_the_user"], event["method"])
 
 def format_prompt(state_definition, state, first_run=False):
     flux_status = "(The current state is %s.)"%state

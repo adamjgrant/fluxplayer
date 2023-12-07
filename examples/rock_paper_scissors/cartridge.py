@@ -4,17 +4,17 @@ cartridge = {
     "events": [
       { 
         "method": "chooses_rock",
-        "user_behavior": "Chooses rock",
+        "if_the_user": "Chooses rock",
         "target": "SECOND_PLAYER_AGAINST_ROCK"
       },
       { 
         "method": "chooses_paper",
-        "user_behavior": "Chooses paper",
+        "if_the_user": "Chooses paper",
         "target": "SECOND_PLAYER_AGAINST_PAPER"
       },
       { 
         "method": "chooses_scissors",
-        "user_behavior": "Chooses scissors",
+        "if_the_user": "Chooses scissors",
         "target": "SECOND_PLAYER_AGAINST_SCISSORS"
       },
     ]
@@ -24,17 +24,17 @@ cartridge = {
     "events": [
       { 
         "method": "chooses_rock",
-        "user_behavior": "Chooses rock",
+        "if_the_user": "Chooses rock",
         "target": "FIRST_PLAYER_WINS"
       },
       { 
         "method": "chooses_paper",
-        "user_behavior": "Chooses paper",
+        "if_the_user": "Chooses paper",
         "target": "TIE"
       },
       { 
         "method": "chooses_scissors",
-        "user_behavior": "Chooses scissors",
+        "if_the_user": "Chooses scissors",
         "target": "SECOND_PLAYER_WINS"
       },
     ]
@@ -44,17 +44,17 @@ cartridge = {
     "events": [
       { 
         "method": "chooses_rock",
-        "user_behavior": "Chooses rock",
+        "if_the_user": "Chooses rock",
         "target": "TIE"
       },
       { 
         "method": "chooses_paper",
-        "user_behavior": "Chooses paper",
+        "if_the_user": "Chooses paper",
         "target": "SECOND_PLAYER_WINS"
       },
       { 
         "method": "chooses_scissors",
-        "user_behavior": "Chooses scissors",
+        "if_the_user": "Chooses scissors",
         "target": "FIRST_PLAYER_WINS"
       },
     ]
@@ -64,17 +64,17 @@ cartridge = {
     "events": [
       { 
         "method": "chooses_rock",
-        "user_behavior": "Chooses rock",
+        "if_the_user": "Chooses rock",
         "target": "SECOND_PLAYER_WINS"
       },
       { 
         "method": "chooses_paper",
-        "user_behavior": "Chooses paper",
+        "if_the_user": "Chooses paper",
         "target": "FIRST_PLAYER_WINS"
       },
       { 
         "method": "chooses_scissors",
-        "user_behavior": "Chooses scissors",
+        "if_the_user": "Chooses scissors",
         "target": "TIE"
       },
     ]
@@ -83,7 +83,7 @@ cartridge = {
     "prompt": "You are an AI game of Rock, Paper Scissors. The first player has won. Let them know they won.",
     "events": [{
       "method": "restart",
-      "user_behavior": "Chooses to play again",
+      "if_the_user": "Chooses to play again",
       "target": "START"
     }]
   },
@@ -91,7 +91,7 @@ cartridge = {
     "prompt": "You are an AI game of Rock, Paper Scissors. The second player has won. Let them know they won.",
     "events": [{
       "method": "restart",
-      "user_behavior": "Chooses to play again",
+      "if_the_user": "Chooses to play again",
       "target": "START"
     }]
   }
