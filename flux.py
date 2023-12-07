@@ -3,6 +3,7 @@
 import sys
 import importlib.util
 import os
+import datetime
 
 def import_cartridge(path):
       # Check if the file exists
@@ -17,7 +18,7 @@ def import_cartridge(path):
 def format_event(event):
     return "\nIf the user %s, send the `%s` event."%(event["user_behavior"], event["method"])
 
-def format_prompt(state_definition, state):
+def format_prompt(state_definition, state, first_run=False):
     flux_status = "(The current state is %s.)"%state
     prompt = state_definition["prompt"]
     events = state_definition["events"]
@@ -29,9 +30,13 @@ def format_prompt(state_definition, state):
     formatted_events_list = map(format_event, events)
     formatted_events = "".join(formatted_events_list)
 
-    return "%s\n\n%s\n%s"%(flux_status, prompt, formatted_events)
+    # Get the current year from the system
+    current_year = str(datetime.datetime.now().year)
+    first_run_text = "Powered by [Flux](https://www.adamgrant.info/flux-player) © %s\n\n"%current_year if first_run else ""
 
-def call_method_on_state(cartridge, state, method):
+    return "%s%s\n\n%s\n%s"%(first_run_text, flux_status, prompt, formatted_events)
+
+def call_method_on_state(cartridge, state, method, first_run=False):
     if state not in cartridge:
         raise ValueError("The state %s does not exist in the cartridge."%state)
 
@@ -52,10 +57,10 @@ def call_method_on_state(cartridge, state, method):
     if target_state_definition == None:
         raise ValueError("The target state %s does not exist in the cartridge."%target_state)
 
-    return format_prompt(target_state_definition, target_state)
+    return format_prompt(target_state_definition, target_state, first_run=first_run)
 
 def start_cartridge(cartridge):
-    return format_prompt(cartridge["START"], "START")
+    return format_prompt(cartridge["START"], "START", True)
 
 # Output the cartridge variable as JSON.
 def main():
