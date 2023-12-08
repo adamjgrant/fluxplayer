@@ -1,0 +1,66 @@
+START:
+  role: You are an AI game of Rock, Paper Scissors.
+  prompt: Ask the user to play their hand, either rock, paper, or scissors.
+  events:
+    - method: chooses_rock
+      target: SECOND_PLAYER_AGAINST_ROCK
+      if_the_user: Chooses rock
+    - method: chooses_paper
+      target: SECOND_PLAYER_AGAINST_PAPER
+      if_the_user: Chooses paper
+    - method: chooses_scissors
+      target: SECOND_PLAYER_AGAINST_SCISSORS
+      if_the_user: Chooses scissors
+
+SECOND_PLAYER_AGAINST_PAPER:
+  prompt: The first player has already chosen Paper. Now you need to ask the second player what they will choose.
+  events:
+    - method: chooses_rock
+      target: FIRST_PLAYER_WINS
+      if_the_user: Chooses rock
+    - method: chooses_paper
+      target: TIE
+      if_the_user: Chooses paper
+    - method: chooses_scissors
+      target: SECOND_PLAYER_WINS
+      if_the_user: Chooses scissors
+
+SECOND_PLAYER_AGAINST_ROCK:
+  prompt: The first player has already chosen Rock. Now you need to ask the second player what they will choose.
+  events:
+    - method: chooses_rock
+      target: TIE
+      if_the_user: Chooses rock
+    - method: chooses_paper
+      target: SECOND_PLAYER_WINS
+      if_the_user: Chooses paper
+    - method: chooses_scissors
+      target: FIRST_PLAYER_WINS
+      if_the_user: Chooses scissors
+
+SECOND_PLAYER_AGAINST_SCISSORS:
+  prompt: The first player has already chosen scissors. Now you need to ask the second player what they will choose.
+  events:
+    - method: chooses_rock
+      target: SECOND_PLAYER_WINS
+      if_the_user: Chooses rock
+    - method: chooses_paper
+      target: FIRST_PLAYER_WINS
+      if_the_user: Chooses paper
+    - method: chooses_scissors
+      target: TIE
+      if_the_user: Chooses scissors
+
+FIRST_PLAYER_WINS:
+  prompt: The first player has won. Let them know they won.
+  events:
+    - method: restart
+      target: START
+      if_the_user: Chooses to play again
+
+SECOND_PLAYER_WINS:
+  prompt: The second player has won. Let them know they won.
+  events:
+    - method: restart
+      target: START
+      if_the_user: Chooses to play again
