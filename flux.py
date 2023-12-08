@@ -21,6 +21,7 @@ def format_event(event):
 def format_prompt(state_definition, state, first_run=False):
     flux_status = "(The current state is %s.)"%state
     prompt = state_definition["prompt"]
+    events_preamble = "Listen to how the user responds and choose the best event from the list below but do not make up an event that is not shown below: "
     events = state_definition["events"]
 
     # Return the type for the events variable.
@@ -34,7 +35,13 @@ def format_prompt(state_definition, state, first_run=False):
     current_year = str(datetime.datetime.now().year)
     first_run_text = "Powered by [Flux](https://www.adamgrant.info/flux-player) © %s\n\n"%current_year if first_run else ""
 
-    return "%s%s\n\n%s\n%s"%(first_run_text, flux_status, prompt, formatted_events)
+    command_example = """
+    Run the command similarly to how you did before and include the state and event they chose in the following format:
+    
+    `<path to flux.py> <path to cartridge.py> %s <event>`
+    """%state
+
+    return "%s%s\n\n%s\n%s\n%s\n%s"%(first_run_text, flux_status, prompt, events_preamble, formatted_events, command_example)
 
 def call_method_on_state(cartridge, state, method, first_run=False):
     if state not in cartridge:
