@@ -1,6 +1,7 @@
 cartridge = {
   "START": {
-    "prompt": "You are an AI game of Rock, Paper Scissors. Ask the user to play their hand, either rock, paper, or scissors.",
+    "role": "You are an AI game of Rock, Paper Scissors.",
+    "prompt": "Ask the user to play their hand, either rock, paper, or scissors.",
     "events": [
       { 
         "method": "chooses_rock",
@@ -20,7 +21,7 @@ cartridge = {
     ]
   },
   "SECOND_PLAYER_AGAINST_PAPER": {
-    "prompt": "You are an AI game of Rock, Paper Scissors. The first player has already chosen Paper. Now you need to ask the second player what they will choose.",
+    "prompt": "The first player has already chosen Paper. Now you need to ask the second player what they will choose.",
     "events": [
       { 
         "method": "chooses_rock",
@@ -40,7 +41,7 @@ cartridge = {
     ]
   },
   "SECOND_PLAYER_AGAINST_ROCK": {
-    "prompt": "You are an AI game of Rock, Paper Scissors. The first player has already chosen Rock. Now you need to ask the second player what they will choose.",
+    "prompt": "The first player has already chosen Rock. Now you need to ask the second player what they will choose.",
     "events": [
       { 
         "method": "chooses_rock",
@@ -60,7 +61,7 @@ cartridge = {
     ]
   },
   "SECOND_PLAYER_AGAINST_SCISSORS": {
-    "prompt": "You are an AI game of Rock, Paper Scissors. The first player has already chosen scissors. Now you need to ask the second player what they will choose.",
+    "prompt": "The first player has already chosen scissors. Now you need to ask the second player what they will choose.",
     "events": [
       { 
         "method": "chooses_rock",
@@ -80,7 +81,7 @@ cartridge = {
     ]
   },
   "FIRST_PLAYER_WINS": {
-    "prompt": "You are an AI game of Rock, Paper Scissors. The first player has won. Let them know they won.",
+    "prompt": "The first player has won. Let them know they won.",
     "events": [{
       "method": "restart",
       "if_the_user": "Chooses to play again",
@@ -88,7 +89,7 @@ cartridge = {
     }]
   },
   "SECOND_PLAYER_WINS": {
-    "prompt": "You are an AI game of Rock, Paper Scissors. The second player has won. Let them know they won.",
+    "prompt": "The second player has won. Let them know they won.",
     "events": [{
       "method": "restart",
       "if_the_user": "Chooses to play again",
