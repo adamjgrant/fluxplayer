@@ -40,7 +40,7 @@ def format_prompt(state_definition, state, first_run=False):
     `<path to flux.py> <path to cartridge.py> %s <event>`
     """%state
 
-    return "%s\n\n%s\n%s\n%s\n%s"%(first_run_text, prompt, events_preamble, formatted_events, command_example)
+    return "%s\n\nYour new prompt is: %s\n%s\n%s\n%s"%(first_run_text, prompt, events_preamble, formatted_events, command_example)
 
 def call_method_on_state(cartridge, state, method, first_run=False):
     if state not in cartridge:
