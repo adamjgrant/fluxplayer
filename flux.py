@@ -3,7 +3,6 @@
 import sys
 import importlib.util
 import os
-import datetime
 
 def import_cartridge(path):
       # Check if the file exists
@@ -30,9 +29,7 @@ def format_prompt(state_definition, state, first_run=False):
     formatted_events_list = map(format_event, events)
     formatted_events = "".join(formatted_events_list)
 
-    # Get the current year from the system
-    current_year = str(datetime.datetime.now().year)
-    first_run_text = "Powered by [Flux](https://www.adamgrant.info/flux-player) © %s\n\n"%current_year if first_run else ""
+    first_run_text = "Powered by [Flux](https://www.adamgrant.info/flux-player)\n\n" if first_run else ""
 
     command_example = """
     Run the command similarly to how you did before and include the state and event they chose in the following format:
