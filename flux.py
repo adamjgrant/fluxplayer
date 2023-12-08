@@ -3,6 +3,7 @@
 import sys
 import importlib.util
 import os
+import yaml
 
 role = None
 
@@ -55,11 +56,11 @@ Only use one listed. Do not make up a new one:
 
 Run the command similarly to how you did before and include the state and event they chose in the following format:
 
-`<path to flux.py> <path to cartridge.py> %s <event>`
+`<path to flux.py> <path to cartridge.yaml> %s <event>`
 
 For example
 
-`/mnt/data/flux.py /mnt/data/cartridge.py %s %s` 
+`/mnt/data/flux.py /mnt/data/cartridge.yaml %s %s` 
     """%(role, first_run_text, prompt, formatted_events, state, state, events[0]["method"])
 
 def call_method_on_state(cartridge, state, method, first_run=False):
@@ -91,11 +92,12 @@ def start_cartridge(cartridge):
 # Output the cartridge variable as JSON.
 def main():
     if len(sys.argv) < 2:
-        print("Usage: python3 flux.py <path_to_cartridge.py> [current_state] [transition]")
+        print("Usage: python3 flux.py <path_to_cartridge.yaml> [current_state] [transition]")
         return
 
     try:
-        cartridge = import_cartridge(sys.argv[1])
+        with open(sys.argv[1], 'r') as file:
+          cartridge = yaml.safe_load(file)
         current_state = sys.argv[2] if len(sys.argv) > 2 else "START"
         transition = sys.argv[3] if len(sys.argv) > 3 else None
         global role

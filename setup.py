@@ -11,9 +11,10 @@ setup(
     author_email='hello@adamgrant.me',
     url='https://github.com/adamjgrant/fluxplayer',
     install_requires=[
-        # List your project's dependencies here, e.g.,
-        # 'numpy',
-        # 'requests',
+        'pyyaml',
+        'sys',
+        'os',
+        'importlib.util',
     ],
     classifiers=[
         # Choose classifiers from: https://pypi.org/classifiers/
