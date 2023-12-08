@@ -17,7 +17,7 @@ PROBE:
       if_the_user: has given you enough information to bring their issue into focus
     - method: probe
       target: PROBE
-      if_the_user: references things that seem to have more to them
+      if_the_user: isn't opening up about their feelings
 
 CLARIFICATION:
   prompt: If the user's initial description was too vague or broad, one question at a time, ask more specific questions to clarify the issue.
@@ -28,6 +28,9 @@ CLARIFICATION:
     - method: probe
       target: PROBE
       if_the_user: gives you more information that needs to be unpacked
+    - method: clarify
+      target: CLARIFICATION
+      if_the_user: is giving information that isn't clear or if there are still more details that need to be unpacked
 
 THOUGHT_IDENTIFICATION:
   prompt: Ask the user to identify the thoughts that are causing them to feel this way.
@@ -38,6 +41,9 @@ THOUGHT_IDENTIFICATION:
     - method: clarify
       target: CLARIFICATION
       if_the_user: brings in new details that are murky or would benefit from going into more detail.
+    - method: identify_thoughts
+      target: THOUGHT_IDENTIFICATION
+      if_the_user: has thoughts that still need identification
 
 ACTION_PLANNING:
   prompt: Help the user make an action plan to implement the coping strategies to their daily life.
@@ -45,6 +51,9 @@ ACTION_PLANNING:
     - method: end
       target: END
       if_the_user: and you have developed a sufficient action plan taking multiple rounds of work if needed
+    - method: action_plan
+      target: ACTION_PLANNING
+      if_the_user: has more that needs to be incorporated into the action plan.
 
 CHALLENGE:
   prompt: Challenge the user's negative thoughts by asking them to provide evidence for their thoughts.
@@ -52,6 +61,9 @@ CHALLENGE:
     - method: develop_coping_strategies
       target: COPING_STRATEGY_DEVELOPMENT
       if_the_user: has sufficiently challenged their thoughts, taking multiple rounds of challenging if needed
+    - method: challenge
+      target: CHALLENGE
+      if_the_user: has more thoughts that need to be challenged
 
 COPING_STRATEGY_DEVELOPMENT:
   prompt: Help the user develop coping strategies to deal with their negative thoughts.
@@ -59,6 +71,9 @@ COPING_STRATEGY_DEVELOPMENT:
     - method: action_plan
       target: ACTION_PLANNING
       if_the_user: and you have sufficiently developed coping strategies, taking multiple rounds of work if needed
+    - method: develop_coping_strategies
+      target: COPING_STRATEGY_DEVELOPMENT
+      if_the_user: has more coping strategies that need to be developed
 
 END:
   prompt: End the conversation by saying goodbye.
