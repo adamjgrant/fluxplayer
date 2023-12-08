@@ -13,27 +13,25 @@ See `prompt.md` and copy as is.
 
 ### Make a cartridge
 
-A cartridge is a python file named `cartridge.py` that contains the following structure:
+A cartridge is a python file named `cartridge.yaml` that contains the following structure:
 
-```python
-cartridge = {
-  "START": {
-    "prompt": "(The prompt)",
-    "events": []
-  },
-}
+```yaml
+START:
+  role: (The role of the AI)
+  prompt: (The prompt)
+  events: (A list of events. See the next section)
 ```
 
-It must have a variable called `cartridge` and a state called `START`. This defines the first prompt the LLM will act upon after the user makes contact.
+Note the `START` state is **required** and only the `START` state has the `role` property, which is maintained throughout the state transitions.
+
+`prompt` defines the prompt the LLM will act upon after the user enters the state.
 
 The `events` array is what determines what transitions are possible from the current state. Each event is an object with the following structure:
 
-```python
-{
-  "method": "(Name of transition)",
-  "target": "(Name of the state this transition will go to)",
-  "if_the_user": "(A description of what the user should say to trigger this transition assuming the sentence starts with 'if the user...')"
-}
+```yaml
+- method: (Name of transition)
+  target: (Name of the state this transition will go to)
+  if_the_user: (A description of what the user should say to trigger this transition assuming the sentence starts with 'if the user...')
 ```
 
 See the examples folder in this repo to get ideas.
