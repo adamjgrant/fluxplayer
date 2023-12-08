@@ -16,10 +16,9 @@ def import_cartridge(path):
     return cartridge.cartridge
 
 def format_event(event):
-    return "\nIf the user %s, send the `%s` event."%(event["if_the_user"], event["method"])
+    return "\n- If the user %s, send the `%s` event."%(event["if_the_user"], event["method"])
 
 def format_prompt(state_definition, state, first_run=False):
-    flux_status = "(The current state is %s.)"%state
     prompt = state_definition["prompt"]
     events_preamble = "Listen to how the user responds and choose the best event from the list below but do not make up an event that is not shown below: "
     events = state_definition["events"]
@@ -41,7 +40,7 @@ def format_prompt(state_definition, state, first_run=False):
     `<path to flux.py> <path to cartridge.py> %s <event>`
     """%state
 
-    return "%s%s\n\n%s\n%s\n%s\n%s"%(first_run_text, flux_status, prompt, events_preamble, formatted_events, command_example)
+    return "%s\n\n%s\n%s\n%s\n%s"%(first_run_text, prompt, events_preamble, formatted_events, command_example)
 
 def call_method_on_state(cartridge, state, method, first_run=False):
     if state not in cartridge:
