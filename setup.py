@@ -12,9 +12,6 @@ setup(
     url='https://github.com/adamjgrant/fluxplayer',
     install_requires=[
         'pyyaml',
-        'sys',
-        'os',
-        'importlib.util',
     ],
     classifiers=[
         # Choose classifiers from: https://pypi.org/classifiers/

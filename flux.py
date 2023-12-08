@@ -32,7 +32,7 @@ def format_prompt(state_definition, state, first_run=False):
     formatted_events_list = map(format_event, events)
     formatted_events = "\n".join(formatted_events_list)
 
-    first_run_text = "First, display this to the user: \"🚀 Powered by [Flux](https://www.adamgrant.info/flux-player)\". Then, " if first_run else ""
+    first_run_text = "First, display this to the user: \"🚀 Powered by [Flux](https://www.adamgrant.info/flux-player)\". Then on a new line, " if first_run else ""
 
     return """
 %s
