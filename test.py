@@ -95,3 +95,15 @@ class TestIngest(unittest.TestCase):
 
         os.remove(new_file_path_yaml)
         os.remove(new_file_path)
+
+    def test_reads_yaml_file_at_specific_path(self):
+      self.assertTrue(False)
+
+    def test_reads_python_file_at_specific_path(self):
+      self.assertTrue(False)
+
+    def test_assumes_python_file_at_specific_path(self):
+      # If no extension is provided, flux assumes it's .py
+      self.assertTrue(False)
+
+# class TestDataStore(unittest.TestCase):
