@@ -3,7 +3,7 @@
 import sys
 import importlib.util
 import os
-from ruamel import yaml
+from ruamel.yaml import YAML
 
 class Flux:
   role = None
@@ -90,15 +90,23 @@ class Flux:
   def start_cartridge(cartridge):
       return format_prompt(cartridge["START"], "START", True)
 
+  def read_yaml():
+      yaml = YAML()
+
+      # Load cartridge.yaml at the same directory as this file.
+      with open("cartridge.yaml", 'r') as file:
+          cartridge = yaml.load(file)
+
   # Output the cartridge variable as JSON.
   def main():
+      yaml = YAML()
       if len(sys.argv) < 2:
-          print("Usage: python3 flux.py <path_to_cartridge.yaml> [current_state] [transition]")
+          print("Usage: python3 flux.py [current_state] [transition]")
           return
 
       try:
           with open(sys.argv[1], 'r') as file:
-            cartridge = yaml.safe_load(file)
+            cartridge = yaml.load(file)
           current_state = sys.argv[2] if len(sys.argv) > 2 else "START"
           transition = sys.argv[3] if len(sys.argv) > 3 else None
           global role
