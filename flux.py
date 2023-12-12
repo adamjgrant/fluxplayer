@@ -94,25 +94,31 @@ class Flux:
       yaml = YAML()
 
       # Load cartridge.yaml at the same directory as this file.
-      with open(path, 'r') as file:
+      full_path = os.path.join(os.path.dirname(__file__), path)
+      with open(full_path, 'r') as file:
           cartridge = yaml.load(file)
 
       return cartridge
 
-  def read_python_cartridge(self):
+  def read_python_cartridge(self, path):
       # Load cartridge.py at the same directory as this file.
-      path = os.path.join(os.path.dirname(__file__), "cartridge.py")
-      if not os.path.exists(path):
+      full_path = os.path.join(os.path.dirname(__file__), path)
+      if not os.path.exists(full_path):
         return None
       else: 
+        sys.path.append(os.path.dirname(full_path))
         from cartridge import cartridge
         return cartridge
 
-  def find_cartridge(self):
+  def find_cartridge(self, path=None):
       cartridge = None
-      python_cartridge = self.read_python_cartridge()
-      if not python_cartridge:
-        yaml_cartridge = self.read_yaml_cartridge()
+      full_path = path if path else os.path.join(os.path.dirname(__file__), "cartridge.py") 
+      python_cartridge = self.read_python_cartridge(full_path)
+      # Determine if the value of path is a python file.
+      path_is_python = full_path.endswith(".py")
+      if not python_cartridge or not path_is_python:
+        full_path = path if path else os.path.join(os.path.dirname(__file__), "cartridge.yaml") 
+        yaml_cartridge = self.read_yaml_cartridge(full_path)
         cartridge = yaml_cartridge
       else:
         cartridge = python_cartridge
