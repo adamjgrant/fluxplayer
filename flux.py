@@ -5,6 +5,17 @@ import importlib.util
 import os
 from ruamel.yaml import YAML
 
+def get_absolute_path(relative_path):
+    # Check if the path is already absolute
+    if os.path.isabs(relative_path):
+        return relative_path
+
+    # Get the directory of the current script
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+
+    # Join the script directory with the relative path
+    return os.path.join(script_dir, relative_path)
+
 class Flux:
   role = None
 
@@ -90,29 +101,29 @@ class Flux:
   def start_cartridge(cartridge):
       return format_prompt(cartridge["START"], "START", True)
 
-  def read_yaml_cartridge(self, path="cartridge.yaml"):
+  def read_yaml_cartridge(self, path=None):
+      path = get_absolute_path(path) if path else os.path.join(os.path.dirname(__file__), "cartridge.yaml") 
       yaml = YAML()
 
       # Load cartridge.yaml at the same directory as this file.
-      full_path = os.path.join(os.path.dirname(__file__), path)
-      with open(full_path, 'r') as file:
+      with open(path, 'r') as file:
           cartridge = yaml.load(file)
 
       return cartridge
 
-  def read_python_cartridge(self, path):
+  def read_python_cartridge(self, path=None):
       # Load cartridge.py at the same directory as this file.
-      full_path = os.path.join(os.path.dirname(__file__), path)
-      if not os.path.exists(full_path):
+      path = get_absolute_path(path) if path else os.path.join(os.path.dirname(__file__), "cartridge.py")
+      if not os.path.exists(path):
         return None
       else: 
-        sys.path.append(os.path.dirname(full_path))
+        sys.path.append(os.path.dirname(path))
         from cartridge import cartridge
         return cartridge
 
   def find_cartridge(self, path=None):
       cartridge = None
-      full_path = path if path else os.path.join(os.path.dirname(__file__), "cartridge.py") 
+      full_path = get_absolute_path(path) if path else os.path.join(os.path.dirname(__file__), "cartridge.py") 
       python_cartridge = self.read_python_cartridge(full_path)
       # Determine if the value of path is a python file.
       path_is_python = full_path.endswith(".py")
