@@ -13,14 +13,37 @@ See `prompt.md` and copy as is.
 
 ### Make a cartridge
 
-A cartridge is a python file named `cartridge.yaml` that contains the following structure:
+A cartridge is a YAML or Python file describing the state transitions and data storage.
+
+### YAML
+
+The file should be named `cartridge.yaml` and contain the following structure:
 
 ```yaml
 START:
   role: (The role of the AI)
   prompt: (The prompt)
-  events: (A list of events. See the next section)
+  events: (A list of events)
+  data: (The session data. Optional. Will set it to the previous value by default)
 ```
+
+### Python
+
+In python, the syntax is different but the structure is the same. The key is to assign this to the variable `cartridge`
+
+```python
+cartridge = {
+  'START': {
+    'role': (The role of the AI),
+    'prompt': (The prompt),
+    'events': (A list of events. See the next section),
+    'data': (The session data. Optional. Will set it to the previous value by default),
+    'before': (A function to run before the state is entered. Optional),
+  }
+}
+```
+
+The advantage to using Python over YAML is the flexibility of the language. You can use variables and functions to make the cartridge more dynamic. This is also important when doing interesting manipulations with `data` between states in a way that can't be done in YAML. This is done using the `before` function.
 
 Note the `START` state is **required** and only the `START` state has the `role` property, which is maintained throughout the state transitions.
 
