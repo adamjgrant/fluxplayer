@@ -97,7 +97,24 @@ class TestIngest(unittest.TestCase):
         os.remove(new_file_path)
 
     def test_reads_yaml_file_at_specific_path(self):
-      self.assertTrue(False)
+        flux = Flux()
+        # Create a temporary yaml file called cartridge.yaml
+        with tempfile.NamedTemporaryFile(delete=False, suffix=".yaml") as temp_file:
+          weird_name = "blartridge.yaml"
+          yaml = YAML(typ="safe", pure=True)
+          yaml_data = {'a': [1, 2]}
+          yaml.dump(yaml_data, temp_file)
+
+          self.assertTrue(os.path.exists(temp_file.name))
+
+          # Move the temporary file to the current directory and rename to cartridge.yaml
+          new_file_path = os.path.join(os.path.dirname(__file__), weird_name)
+          os.rename(temp_file.name, new_file_path)
+
+          found_contents = flux.read_yaml_cartridge(weird_name)
+          self.assertEqual(found_contents, yaml_data)
+
+        os.remove(new_file_path)
 
     def test_reads_python_file_at_specific_path(self):
       self.assertTrue(False)
