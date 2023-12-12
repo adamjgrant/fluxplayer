@@ -178,10 +178,8 @@ class TestIngest(unittest.TestCase):
             new_file_path = os.path.join(os.path.dirname(__file__), "%s.py"%weird_name)
             os.rename(temp_file.name, new_file_path)
 
-
             found_cartridge = flux.find_cartridge(weird_name)
             self.assertEqual(found_cartridge, 'foo')
-
 
         finally:
           os.remove(new_file_path_yaml)

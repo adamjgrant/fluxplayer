@@ -1,7 +1,7 @@
 # Python script that takes a python file as input and imports the cartridge variable.
 
 import sys
-import importlib.util
+import importlib
 import os
 from ruamel.yaml import YAML
 import pathlib
@@ -119,7 +119,9 @@ class Flux:
         return None
       else: 
         sys.path.append(os.path.dirname(path))
-        from cartridge import cartridge
+        module_name = os.path.basename(path).replace(".py", "")
+        module = importlib.import_module(module_name)
+        cartridge = getattr(module, "cartridge")
         return cartridge
 
   def find_cartridge(self, path=None):
