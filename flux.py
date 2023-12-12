@@ -90,25 +90,30 @@ class Flux:
   def start_cartridge(cartridge):
       return format_prompt(cartridge["START"], "START", True)
 
-  def read_yaml():
+  def read_yaml_cartridge(self):
       yaml = YAML()
 
       # Load cartridge.yaml at the same directory as this file.
       with open("cartridge.yaml", 'r') as file:
           cartridge = yaml.load(file)
 
+      return cartridge
+
+  def find_cartridge(self):
+      cartridge = self.read_yaml_cartridge()
+      return cartridge
+
   # Output the cartridge variable as JSON.
-  def main():
+  def main(self):
       yaml = YAML()
-      if len(sys.argv) < 2:
+      if len(sys.argv) < 1:
           print("Usage: python3 flux.py [current_state] [transition]")
           return
 
       try:
-          with open(sys.argv[1], 'r') as file:
-            cartridge = yaml.load(file)
-          current_state = sys.argv[2] if len(sys.argv) > 2 else "START"
-          transition = sys.argv[3] if len(sys.argv) > 3 else None
+          cartridge = self.find_cartridge()
+          current_state = sys.argv[1] if len(sys.argv) > 1 else "START"
+          transition = sys.argv[2] if len(sys.argv) > 2 else None
           global role
           role = cartridge["START"]["role"] if "role" in cartridge["START"] else ""
 
