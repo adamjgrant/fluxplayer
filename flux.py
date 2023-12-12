@@ -90,11 +90,11 @@ class Flux:
   def start_cartridge(cartridge):
       return format_prompt(cartridge["START"], "START", True)
 
-  def read_yaml_cartridge(self):
+  def read_yaml_cartridge(self, path="cartridge.yaml"):
       yaml = YAML()
 
       # Load cartridge.yaml at the same directory as this file.
-      with open("cartridge.yaml", 'r') as file:
+      with open(path, 'r') as file:
           cartridge = yaml.load(file)
 
       return cartridge
