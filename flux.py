@@ -20,16 +20,6 @@ def get_absolute_path(relative_path):
 class Flux:
   role = None
 
-  def import_cartridge(path):
-        # Check if the file exists
-      if not os.path.exists(path):
-          raise FileNotFoundError(f"The file {path} does not exist.")
-
-      spec = importlib.util.spec_from_file_location("cartridge", path)
-      cartridge = importlib.util.module_from_spec(spec)
-      spec.loader.exec_module(cartridge)
-      return cartridge.cartridge
-
   def format_event(event):
       return "- If the user %s, send the `%s` event."%(event["if_the_user"], event["method"])
 
