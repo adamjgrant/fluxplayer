@@ -117,7 +117,25 @@ class TestIngest(unittest.TestCase):
         os.remove(new_file_path)
 
     def test_reads_python_file_at_specific_path(self):
-      self.assertTrue(False)
+        flux = Flux()
+        # Create a temporary yaml file called cartridge.yaml
+        with tempfile.NamedTemporaryFile(delete=False, suffix=".py") as temp_file:
+          # Add some contents to temp_file
+          weird_name = "blartridge.py"
+          file_contents = b"cartridge = 'foo'"
+          temp_file.write(file_contents)
+          temp_file.close()
+
+          self.assertTrue(os.path.exists(temp_file.name))
+
+          # Move the temporary file to the current directory and rename to cartridge.yaml
+          new_file_path = os.path.join(os.path.dirname(__file__), weird_name)
+          os.rename(temp_file.name, new_file_path)
+
+          found_cartridge = flux.find_cartridge(weird_name)
+          self.assertEqual(found_cartridge, 'foo')
+
+        os.remove(new_file_path)
 
     def test_assumes_python_file_at_specific_path(self):
       # If no extension is provided, flux assumes it's .py
