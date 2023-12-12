@@ -99,8 +99,23 @@ class Flux:
 
       return cartridge
 
+  def read_python_cartridge(self):
+      # Load cartridge.py at the same directory as this file.
+      path = os.path.join(os.path.dirname(__file__), "cartridge.py")
+      if not os.path.exists(path):
+        return None
+      else: 
+        from cartridge import cartridge
+        return cartridge
+
   def find_cartridge(self):
-      cartridge = self.read_yaml_cartridge()
+      cartridge = None
+      python_cartridge = self.read_python_cartridge()
+      if not python_cartridge:
+        yaml_cartridge = self.read_yaml_cartridge()
+        cartridge = yaml_cartridge
+      else:
+        cartridge = python_cartridge
       return cartridge
 
   # Output the cartridge variable as JSON.

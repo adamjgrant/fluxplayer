@@ -48,7 +48,7 @@ class TestIngest(unittest.TestCase):
         # Create a temporary yaml file called cartridge.yaml
         with tempfile.NamedTemporaryFile(delete=False, suffix=".py") as temp_file:
           # Add some contents to temp_file
-          file_contents = b"print('hello world')"
+          file_contents = b"cartridge = 'foo'"
           temp_file.write(file_contents)
           temp_file.close()
 
@@ -58,8 +58,8 @@ class TestIngest(unittest.TestCase):
           new_file_path = os.path.join(os.path.dirname(__file__), "cartridge.py")
           os.rename(temp_file.name, new_file_path)
 
-          found_contents = flux.find_cartridge()
-          self.assertEqual(found_contents, file_contents)
+          found_cartridge = flux.find_cartridge()
+          self.assertEqual(found_cartridge, 'foo')
 
         os.remove(new_file_path)
 
