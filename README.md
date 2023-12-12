@@ -58,3 +58,13 @@ The `events` array is what determines what transitions are possible from the cur
 ```
 
 See the examples folder in this repo to get ideas.
+
+# Running
+
+`prompt.md` is the prompt you'll want to use for the GPT. Note that cartridge.yaml or .python must be at the same directory as flux.py.
+
+# Testing
+
+```bash
+python -m unittest test.py
+```
