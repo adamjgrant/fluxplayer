@@ -4,6 +4,7 @@ import sys
 import importlib.util
 import os
 from ruamel.yaml import YAML
+import pathlib
 
 def get_absolute_path(relative_path):
     # Check if the path is already absolute
@@ -124,9 +125,14 @@ class Flux:
   def find_cartridge(self, path=None):
       cartridge = None
       full_path = get_absolute_path(path) if path else os.path.join(os.path.dirname(__file__), "cartridge.py") 
-      python_cartridge = self.read_python_cartridge(full_path)
+      # If path has no extension, make it .py
+      ext = pathlib.Path(full_path).suffix
+      full_path = full_path + ".py" if not ext else full_path
+
       # Determine if the value of path is a python file.
       path_is_python = full_path.endswith(".py")
+      python_cartridge = self.read_python_cartridge(full_path)
+
       if not python_cartridge or not path_is_python:
         full_path = path if path else os.path.join(os.path.dirname(__file__), "cartridge.yaml") 
         yaml_cartridge = self.read_yaml_cartridge(full_path)
