@@ -12,11 +12,12 @@ class Flux:
       parser.add_argument("-c", "--cartridge", help="Relative or absolute path to the cartridge file")
       parser.add_argument("-s", "--state", help="State in which to fire a transition")
       parser.add_argument("-t", "--transition", help="Transition to fire on state")
+      parser.add_argument("-d", "--data", help="Data to pass to the prompt function")
       args = parser.parse_args()
       flux = Flux()
-      return flux.main(args.cartridge, args.state, args.transition)
+      return flux.main(args.cartridge, args.state, args.transition, args.data)
 
-  def call_method_on_state(self, cartridge, state, method, first_run=False):
+  def call_method_on_state(self, cartridge, state, method, data, first_run=False):
       if state not in cartridge:
           raise ValueError("The state %s does not exist in the cartridge."%state)
 
@@ -37,13 +38,13 @@ class Flux:
       if target_state_definition == None:
           raise ValueError("The target state %s does not exist in the cartridge."%target_state)
 
-      return format_prompt(cartridge, target_state, first_run=first_run)
+      return format_prompt(cartridge, target_state, data, first_run=first_run)
 
   def start_cartridge(self, cartridge):
       return format_prompt(cartridge, "START", True)
 
   # Output the cartridge variable as JSON.
-  def main(self, path=None, state=None, transition=None):
+  def main(self, path=None, state=None, transition=None, data=None):
       if path is None and state is None and transition is None:
           print("Usage: flux [-c=cartridge_to_use] [-s=current_state] [-t=transition]")
           return
@@ -57,7 +58,8 @@ class Flux:
             return print(self.start_cartridge(cartridge))
 
           else:
-            return print(self.call_method_on_state(cartridge, current_state, transition))
+            # TODO I think we lost first run
+            return print(self.call_method_on_state(cartridge, current_state, transition, data))
       
       except FileNotFoundError as e:
           print(e)  # Print the error message if the file is not found

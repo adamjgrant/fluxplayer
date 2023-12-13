@@ -31,7 +31,7 @@ For example
 def format_event(event):
     return "- If the user %s, send the `%s` event."%(event["if_the_user"], event["method"])
 
-def format_prompt(cartridge, state, first_run=False):
+def format_prompt(cartridge, state, data, first_run=False):
     state_definition = cartridge[state]
 
     # if state_definition["prompt"] is a function, assign prompt to its return value
