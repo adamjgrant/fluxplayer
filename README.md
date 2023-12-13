@@ -63,6 +63,16 @@ See the examples folder in this repo to get ideas.
 
 `prompt.md` is the prompt you'll want to use for the GPT. Note that cartridge.yaml or .python must be at the same directory as flux.py.
 
+To execute directly, you can run `./flux` without any arguments. This will assume you have a yaml or python cartridge called "cartridge" in the same directory.
+
+You can also specify a custom cartridge path with `-c`
+
+```bash
+./flux -c /path/to/cartridge
+```
+
+Use `-s=<STATE>` and `-t=<transition>` to define the current state and transition respectively. This will otherwise default to the `START` state.
+
 # Testing
 
 ```bash
