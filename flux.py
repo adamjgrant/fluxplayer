@@ -99,7 +99,7 @@ class Flux:
           return
 
       try:
-          cartridge = self.find_cartridge(path)
+          cartridge = find_cartridge(path)
           current_state = sys.argv[1] if len(sys.argv) > 1 else "START"
           transition = sys.argv[2] if len(sys.argv) > 2 else None
           global role
