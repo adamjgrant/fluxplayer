@@ -17,7 +17,7 @@ class Flux:
       flux = Flux()
       return flux.main(args.cartridge, args.state, args.transition, args.data)
 
-  def call_method_on_state(self, cartridge, state, method, data, first_run=False):
+  def call_method_on_state(self, cartridge, state, method, data=None, first_run=False):
       if state not in cartridge:
           raise ValueError("The state %s does not exist in the cartridge."%state)
 

@@ -198,12 +198,11 @@ class TestAdvancedFunctions(unittest.TestCase):
       data["foo"] = "fizz"
       return data
 
-    data = {
+    cartridge = {
       'START': {
         'role': '',
         'prompt': '',
-        'events': [ { "if_the_user": "says 'foo'", "method": "next", "target": "DOTHING"} ],
-        'data': { "foo": "bar" }
+        'events': [ { "if_the_user": "says 'foo'", "method": "next", "target": "DOTHING"} ]
       },
       'DOTHING': {
         'prompt': lambda data: "The value of foo is %s"%change_data(data)["foo"],
@@ -214,9 +213,7 @@ class TestAdvancedFunctions(unittest.TestCase):
     state = "START"
     method = "next" 
 
-    new_prompt = flux.call_method_on_state(data, state, method)
-
-    print(new_prompt)
+    new_prompt = flux.call_method_on_state(cartridge, state, method, {"foo": "bar"})
 
     new_prompt = new_prompt[:50]
     self.assertEqual(new_prompt, "Your new prompt is:\n\n---\n\nThe value of foo is fizz")

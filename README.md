@@ -24,7 +24,6 @@ START:
   role: (The role of the AI)
   prompt: (The prompt)
   events: (A list of events)
-  data: (The session data. Optional. Will set it to the previous value by default)
 ```
 
 ### Python
@@ -36,8 +35,7 @@ cartridge = {
   'START': {
     'role': (The role of the AI),
     'prompt': (The prompt, either a string or a function that takes the data dict as an argument),
-    'events': (A list of events. See the next section),
-    'data': (The session data. Optional. Will set it to the previous value by default),
+    'events': (A list of events. See the next section)
   }
 }
 ```
