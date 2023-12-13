@@ -186,4 +186,39 @@ class TestIngest(unittest.TestCase):
           os.remove(new_file_path_yaml)
           os.remove(new_file_path)
 
-# class TestDataStore(unittest.TestCase):
+class TestDataStore(unittest.TestCase):
+  def test_can_read_initial_data(self):
+      self.assertTrue(True)
+
+class TestAdvancedFunctions(unittest.TestCase):
+  def test_data_is_manipulated_with_before_function(self):
+    flux = Flux()
+
+    def change_data(data):
+      data["foo"] = "fizz"
+      return data
+
+    data = {
+      'START': {
+        'role': '',
+        'prompt': '',
+        'events': [ 
+
+        ]
+        'data': { "foo": "bar" }
+      },
+      'DOTHING': {
+        'prompt': '',
+        'events': [],
+        'before': change_data
+      }
+    }
+
+    # TODO
+    cartridge = None
+    state = None
+    method = None
+
+    flux.call_method_on_state(cartridge, state, method)
+
+    self.assertTrue(False)
