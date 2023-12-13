@@ -206,9 +206,8 @@ class TestAdvancedFunctions(unittest.TestCase):
         'data': { "foo": "bar" }
       },
       'DOTHING': {
-        'prompt': '',
+        'prompt': lambda data: "The value of foo is %s"%data["foo"],
         'events': [ { "if_the_user": "says 'foo'", "method": "next", "target": "DOTHING"} ],
-        'before': change_data
       }
     }
 
