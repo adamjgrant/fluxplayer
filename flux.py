@@ -127,6 +127,8 @@ class Flux:
 
       if not python_cartridge or not path_is_python:
         full_path = path if path else os.path.join(os.path.dirname(__file__), "cartridge.yaml") 
+        if not os.path.exists(full_path):
+          raise FileNotFoundError("Could not find a cartridge.yaml or cartridge.py at %s."%os.path.dirname(full_path))
         yaml_cartridge = self.read_yaml_cartridge(full_path)
         cartridge = yaml_cartridge
       else:
@@ -137,7 +139,7 @@ class Flux:
   def main(self):
       yaml = YAML()
       if len(sys.argv) < 1:
-          print("Usage: python3 flux.py [current_state] [transition]")
+          print("Usage: flux [current_state] [transition]")
           return
 
       try:
@@ -157,5 +159,6 @@ class Flux:
       except FileNotFoundError as e:
           print(e)  # Print the error message if the file is not found
 
-  if __name__ == "__main__":
-      main()
+if __name__ == "__main__":
+    flux = Flux()
+    flux.main()

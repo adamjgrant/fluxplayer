@@ -59,7 +59,7 @@ class TestIngest(unittest.TestCase):
 
             self.assertTrue(os.path.exists(temp_file.name))
 
-            # Move the temporary file to the current directory and rename to cartridge.yaml
+            # Move the temporary file to the current directory and rename to cartridge.py
             new_file_path = os.path.join(os.path.dirname(__file__), "cartridge.py")
             os.rename(temp_file.name, new_file_path)
 

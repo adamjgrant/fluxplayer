@@ -68,3 +68,10 @@ See the examples folder in this repo to get ideas.
 ```bash
 python -m unittest test.py
 ```
+
+# Distribution
+
+```bash
+pip install -U pyinstaller
+pyinstaller --onefile flux.py --name flux --distpath dist
+```
