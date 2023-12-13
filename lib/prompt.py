@@ -24,7 +24,7 @@ Run the command similarly to how you did before and include the state and event 
 
 For example
 
-`/mnt/data/flux.py -c=/mnt/data/cartridge.yaml -s=%s -t=%s`
+`/mnt/data/flux.py -c=/mnt/data/cartridge.yaml -s=%s -t=%s`%s
 """
 
   
@@ -55,4 +55,6 @@ def format_prompt(cartridge, state, first_run=False):
 
     first_run_text = "First, display this to the user: \"🚀 Powered by [Flux](https://www.adamgrant.info/flux-player)\". Then on a new line,\n\n" if first_run else ""
 
-    return prompt_template%(role, first_run_text, prompt, formatted_events, state, state, events[0]["method"])
+    data_clause = f"\n\nDo not show this to the user, but also remember the value of the data variable is now {state_definition['data']}" if "data" in state_definition else ""
+
+    return prompt_template%(role, first_run_text, prompt, formatted_events, state, state, events[0]["method"], data_clause)
