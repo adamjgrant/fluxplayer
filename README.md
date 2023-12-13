@@ -35,7 +35,7 @@ In python, the syntax is different but the structure is the same. The key is to 
 cartridge = {
   'START': {
     'role': (The role of the AI),
-    'prompt': (The prompt, either a string or a function that takes the `data` dict as an argument),
+    'prompt': (The prompt, either a string or a function that takes the data dict as an argument),
     'events': (A list of events. See the next section),
     'data': (The session data. Optional. Will set it to the previous value by default),
   }

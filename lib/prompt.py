@@ -20,11 +20,11 @@ Only use one listed. Do not make up a new one:
 
 Run the command similarly to how you did before and include the state and event they chose in the following format:
 
-`<path to flux.py> -c=<optional path to cartridge file> -s=%s -t=<event>`
+`%s`
 
 For example
 
-`/mnt/data/flux.py -c=/mnt/data/cartridge.yaml -s=%s -t=%s`%s
+`%s`
 """
 
   
@@ -55,6 +55,8 @@ def format_prompt(cartridge, state, first_run=False):
 
     first_run_text = "First, display this to the user: \"🚀 Powered by [Flux](https://www.adamgrant.info/flux-player)\". Then on a new line,\n\n" if first_run else ""
 
-    data_clause = f"\n\nDo not show this to the user, but also remember the value of the data variable is now {state_definition['data']}" if "data" in state_definition else ""
+    data_clause = f" -d='{state_definition['data']}'" if callable(state_definition["prompt"]) else ""
+    command_template = "<path to flux.py> -c=<optional path to cartridge file> -s=%s -t=<event>%s"%(state, data_clause)
+    command_example = "/mnt/data/flux.py -c=/mnt/data/cartridge.yaml -s=%s -t=%s%s"%(state, events[0]["method"], data_clause)
 
-    return prompt_template%(role, first_run_text, prompt, formatted_events, state, state, events[0]["method"], data_clause)
+    return prompt_template%(role, first_run_text, prompt, formatted_events, command_template, command_example)

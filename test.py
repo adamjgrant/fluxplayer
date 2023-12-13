@@ -216,5 +216,7 @@ class TestAdvancedFunctions(unittest.TestCase):
 
     new_prompt = flux.call_method_on_state(data, state, method)
 
+    print(new_prompt)
+
     new_prompt = new_prompt[:50]
     self.assertEqual(new_prompt, "Your new prompt is:\n\n---\n\nThe value of foo is fizz")
