@@ -4,64 +4,19 @@ import sys
 import os
 import argparse
 from lib.path_reader import find_cartridge
+from lib.prompt import format_prompt
 
 class Flux:
-  role = None
-  
   def parse_for_path(self):
       parser = argparse.ArgumentParser(description="Flux player")
       parser.add_argument("-c", "--cartridge", help="Relative or absolute path to the cartridge file")
+      parser.add_argument("-s", "--state", help="State in which to fire a transition")
+      parser.add_argument("-t", "--transition", help="Transition to fire on state")
       args = parser.parse_args()
       flux = Flux()
-      return flux.main(args.cartridge)
+      return flux.main(args.cartridge, args.state, args.transition)
 
-  def format_event(event):
-      return "- If the user %s, send the `%s` event."%(event["if_the_user"], event["method"])
-
-  def format_prompt(state_definition, state, first_run=False):
-      prompt = state_definition["prompt"]
-      events = state_definition["events"]
-      global role
-
-      # Return the type for the events variable.
-      if type(events) != list:
-          raise TypeError("The events variable must be a list.")
-
-      formatted_events_list = map(format_event, events)
-      formatted_events = "\n".join(formatted_events_list)
-
-      first_run_text = "First, display this to the user: \"🚀 Powered by [Flux](https://www.adamgrant.info/flux-player)\". Then on a new line, " if first_run else ""
-
-      return """
-  %s
-
-  Your new prompt is:
-
-  --- 
-
-  %s%s
-
-  ---
-
-  # Responding to the user
-
-  Listen to how the user responds and choose the best event from the list below.
-  Only use one listed. Do not make up a new one:
-
-  %s
-
-  # Running the command
-
-  Run the command similarly to how you did before and include the state and event they chose in the following format:
-
-  `<path to flux.py> <path to cartridge.yaml> %s <event>`
-
-  For example
-
-  `/mnt/data/flux.py /mnt/data/cartridge.yaml %s %s` 
-      """%(role, first_run_text, prompt, formatted_events, state, state, events[0]["method"])
-
-  def call_method_on_state(cartridge, state, method, first_run=False):
+  def call_method_on_state(self, cartridge, state, method, first_run=False):
       if state not in cartridge:
           raise ValueError("The state %s does not exist in the cartridge."%state)
 
@@ -82,32 +37,28 @@ class Flux:
       if target_state_definition == None:
           raise ValueError("The target state %s does not exist in the cartridge."%target_state)
 
-      return format_prompt(target_state_definition, target_state, first_run=first_run)
+      return format_prompt(cartridge, target_state, first_run=first_run)
 
-  def start_cartridge(cartridge):
-      return format_prompt(cartridge["START"], "START", True)
+  def start_cartridge(self, cartridge):
+      return format_prompt(cartridge, "START", True)
 
   # Output the cartridge variable as JSON.
-  def main(self, path=None):
-      yaml = YAML()
-      if len(sys.argv) < 1:
-          print("Usage: flux [-c=cartridge_to_use] [current_state] [transition]")
+  def main(self, path=None, state=None, transition=None):
+      if path is None and state is None and transition is None:
+          print("Usage: flux [-c=cartridge_to_use] [-s=current_state] [-t=transition]")
           return
 
       try:
           cartridge = find_cartridge(path)
-          current_state = sys.argv[1] if len(sys.argv) > 1 else "START"
-          transition = sys.argv[2] if len(sys.argv) > 2 else None
-          global role
-          role = cartridge["START"]["role"] if "role" in cartridge["START"] else ""
+          current_state = state if state else "START"
+          transition = transition if transition else None
 
           if (current_state == "START" and transition == None): 
-            return print(start_cartridge(cartridge))
+            return print(self.start_cartridge(cartridge))
 
           else:
-            return print(call_method_on_state(cartridge, current_state, transition))
-
-          print(start_cartridge(cartridge))
+            return print(self.call_method_on_state(cartridge, current_state, transition))
+      
       except FileNotFoundError as e:
           print(e)  # Print the error message if the file is not found
 
