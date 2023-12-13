@@ -2,6 +2,7 @@ import unittest
 import tempfile
 from ruamel.yaml import YAML
 from flux import Flux
+from lib.path_reader import find_cartridge, read_yaml_cartridge, read_python_cartridge
 import os
 
 class TestIngest(unittest.TestCase):
@@ -20,7 +21,7 @@ class TestIngest(unittest.TestCase):
             new_file_path = os.path.join(os.path.dirname(__file__), "cartridge.yaml")
             os.rename(temp_file.name, new_file_path)
 
-            found_contents = flux.read_yaml_cartridge(new_file_path)
+            found_contents = read_yaml_cartridge(new_file_path)
             self.assertEqual(found_contents, yaml_data)
 
         finally:
@@ -41,7 +42,7 @@ class TestIngest(unittest.TestCase):
             new_file_path = os.path.join(os.path.dirname(__file__), "cartridge.yaml")
             os.rename(temp_file.name, new_file_path)
 
-            found_contents = flux.find_cartridge()
+            found_contents = find_cartridge()
             self.assertEqual(found_contents, yaml_data)
 
         finally:
@@ -63,7 +64,7 @@ class TestIngest(unittest.TestCase):
             new_file_path = os.path.join(os.path.dirname(__file__), "cartridge.py")
             os.rename(temp_file.name, new_file_path)
 
-            found_cartridge = flux.find_cartridge()
+            found_cartridge = find_cartridge()
             self.assertEqual(found_cartridge, 'foo')
 
         finally:
@@ -96,7 +97,7 @@ class TestIngest(unittest.TestCase):
             new_file_path = os.path.join(os.path.dirname(__file__), "cartridge.py")
             os.rename(temp_file.name, new_file_path)
 
-            found_cartridge = flux.find_cartridge()
+            found_cartridge = find_cartridge()
             self.assertEqual(found_cartridge, yaml_data)
 
 
@@ -120,7 +121,7 @@ class TestIngest(unittest.TestCase):
             new_file_path = os.path.join(os.path.dirname(__file__), weird_name)
             os.rename(temp_file.name, new_file_path)
 
-            found_contents = flux.read_yaml_cartridge(weird_name)
+            found_contents = read_yaml_cartridge(weird_name)
             self.assertEqual(found_contents, yaml_data)
 
         finally:
@@ -143,7 +144,7 @@ class TestIngest(unittest.TestCase):
             new_file_path = os.path.join(os.path.dirname(__file__), weird_name)
             os.rename(temp_file.name, new_file_path)
 
-            found_cartridge = flux.find_cartridge(weird_name)
+            found_cartridge = find_cartridge(weird_name)
             self.assertEqual(found_cartridge, 'foo')
 
         finally:
@@ -178,7 +179,7 @@ class TestIngest(unittest.TestCase):
             new_file_path = os.path.join(os.path.dirname(__file__), "%s.py"%weird_name)
             os.rename(temp_file.name, new_file_path)
 
-            found_cartridge = flux.find_cartridge(weird_name)
+            found_cartridge = find_cartridge(weird_name)
             self.assertEqual(found_cartridge, yaml_data)
 
         finally:

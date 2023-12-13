@@ -6,17 +6,8 @@ import os
 from ruamel.yaml import YAML
 import pathlib
 import argparse
-
-def get_absolute_path(relative_path):
-    # Check if the path is already absolute
-    if os.path.isabs(relative_path):
-        return relative_path
-
-    # Get the directory of the current script
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-
-    # Join the script directory with the relative path
-    return os.path.join(script_dir, relative_path)
+from lib.path_reader import find_cartridge
+from pathlib import Path
 
 class Flux:
   role = None
@@ -99,62 +90,6 @@ class Flux:
 
   def start_cartridge(cartridge):
       return format_prompt(cartridge["START"], "START", True)
-
-  def read_yaml_cartridge(self, path=None):
-      yaml = YAML()
-
-      # Load cartridge.yaml at the same directory as this file.
-      with open(path, 'r') as file:
-          cartridge = yaml.load(file)
-
-      return cartridge
-
-  def read_python_cartridge(self, path=None):
-      # Load cartridge.py at the same directory as this file.
-      sys.path.append(os.path.dirname(path))
-      module_name = os.path.basename(path).replace(".py", "")
-      module = importlib.import_module(module_name)
-      cartridge = getattr(module, "cartridge")
-      return cartridge
-
-  def detect_full_catridge_path(self, path=None):
-      # If path is None, check if a cartridge.yaml or cartridge.py exists in the same directory as this file.
-      if path is None:
-        # Check for a cartridge.yaml or cartridge.py in the same directory as this file.
-        yaml_path = os.path.join(os.path.dirname(__file__), "cartridge.yaml")
-        found_yaml = os.path.exists(yaml_path)
-        python_path = os.path.join(os.path.dirname(__file__), "cartridge.py")
-        found_python = os.path.exists(python_path)
-        if not found_yaml and not found_python:
-          raise FileNotFoundError("Could not find a cartridge.yaml or cartridge.py at %s."%os.path.dirname(__file__))
-        path = yaml_path if found_yaml else python_path
-
-      # Regardless of this file existing, let's normalize to an absolute path.
-      full_path = get_absolute_path(path)
-
-      # If path doesn't have an extension, check for a .py file first, then a .yaml file.
-      ext = pathlib.Path(full_path).suffix
-      if not ext:
-        if os.path.exists(full_path + ".yaml"):
-          full_path = full_path + ".yaml"
-        elif os.path.exists(full_path + ".py"):
-          full_path = full_path + ".py"
-        else:
-          raise FileNotFoundError("Could not find a .yaml or .py at %s."%os.path.dirname(full_path))
-
-      return full_path
-
-  def find_cartridge(self, path=None):
-      cartridge = None
-      full_path = self.detect_full_catridge_path(path)
-      is_python = pathlib.Path(full_path).suffix == ".py"
-
-      if is_python:
-        cartridge = self.read_python_cartridge(full_path)
-      else:
-        cartridge = self.read_yaml_cartridge(full_path)
-      
-      return cartridge
 
   # Output the cartridge variable as JSON.
   def main(self, path=None):
