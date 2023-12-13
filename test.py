@@ -202,23 +202,19 @@ class TestAdvancedFunctions(unittest.TestCase):
       'START': {
         'role': '',
         'prompt': '',
-        'events': [ 
-
-        ]
+        'events': [ { "if_the_user": "says 'foo'", "method": "next", "target": "DOTHING"} ],
         'data': { "foo": "bar" }
       },
       'DOTHING': {
         'prompt': '',
-        'events': [],
+        'events': [ { "if_the_user": "says 'foo'", "method": "next", "target": "DOTHING"} ],
         'before': change_data
       }
     }
 
-    # TODO
-    cartridge = None
-    state = None
-    method = None
+    state = "START"
+    method = "next" 
 
-    flux.call_method_on_state(cartridge, state, method)
+    flux.call_method_on_state(data, state, method)
 
     self.assertTrue(False)
