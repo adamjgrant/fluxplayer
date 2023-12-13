@@ -1,13 +1,9 @@
 # Python script that takes a python file as input and imports the cartridge variable.
 
 import sys
-import importlib
 import os
-from ruamel.yaml import YAML
-import pathlib
 import argparse
 from lib.path_reader import find_cartridge
-from pathlib import Path
 
 class Flux:
   role = None
