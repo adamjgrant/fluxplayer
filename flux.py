@@ -5,6 +5,7 @@ import importlib
 import os
 from ruamel.yaml import YAML
 import pathlib
+import argparse
 
 def get_absolute_path(relative_path):
     # Check if the path is already absolute
@@ -93,7 +94,6 @@ class Flux:
       return format_prompt(cartridge["START"], "START", True)
 
   def read_yaml_cartridge(self, path=None):
-      path = get_absolute_path(path) if path else os.path.join(os.path.dirname(__file__), "cartridge.yaml") 
       yaml = YAML()
 
       # Load cartridge.yaml at the same directory as this file.
@@ -104,42 +104,59 @@ class Flux:
 
   def read_python_cartridge(self, path=None):
       # Load cartridge.py at the same directory as this file.
-      path = get_absolute_path(path) if path else os.path.join(os.path.dirname(__file__), "cartridge.py")
-      if not os.path.exists(path):
-        return None
-      else: 
-        sys.path.append(os.path.dirname(path))
-        module_name = os.path.basename(path).replace(".py", "")
-        module = importlib.import_module(module_name)
-        cartridge = getattr(module, "cartridge")
-        return cartridge
+      sys.path.append(os.path.dirname(path))
+      module_name = os.path.basename(path).replace(".py", "")
+      module = importlib.import_module(module_name)
+      cartridge = getattr(module, "cartridge")
+      return cartridge
+
+  def detect_full_catridge_path(self, path=None):
+      # If path is None, check if a cartridge.yaml or cartridge.py exists in the same directory as this file.
+      if path is None:
+        yaml_path = os.path.join(os.path.dirname(__file__), "cartridge.yaml")
+        found_yaml = os.path.exists(yaml_path)
+        python_path = os.path.join(os.path.dirname(__file__), "cartridge.py")
+        found_python = os.path.exists(python_path)
+        if not found_yaml and not found_python:
+          raise FileNotFoundError("Could not find a cartridge.yaml or cartridge.py at %s."%os.path.dirname(__file__))
+        path = yaml_path if found_yaml else python_path
+
+      # Regardless of this file existing, let's normalize to an absolute path.
+      full_path = get_absolute_path(path)
+
+      # If path doesn't have an extension, check for a .py file first, then a .yaml file.
+      ext = pathlib.Path(full_path).suffix
+      if not ext:
+        if os.path.exists(full_path + ".yaml"):
+          full_path = full_path + ".yaml"
+        elif os.path.exists(full_path + ".py"):
+          full_path = full_path + ".py"
+        else:
+          raise FileNotFoundError("Could not find a .yaml or .py at %s."%os.path.dirname(full_path))
+
+      return full_path
 
   def find_cartridge(self, path=None):
+      # parser = argparse.ArgumentParser(description="Flux player")
+      # parser.add_argument("-c", "--cartridge", help="Relative or absolute path to the cartridge file")
+      # args = parser.parse_args()
+      # path = args.cartridge if args.cartridge else path
       cartridge = None
-      full_path = get_absolute_path(path) if path else os.path.join(os.path.dirname(__file__), "cartridge.py") 
-      # If path has no extension, make it .py
-      ext = pathlib.Path(full_path).suffix
-      full_path = full_path + ".py" if not ext else full_path
+      full_path = self.detect_full_catridge_path(path)
+      is_python = pathlib.Path(full_path).suffix == ".py"
 
-      # Determine if the value of path is a python file.
-      path_is_python = full_path.endswith(".py")
-      python_cartridge = self.read_python_cartridge(full_path)
-
-      if not python_cartridge or not path_is_python:
-        full_path = path if path else os.path.join(os.path.dirname(__file__), "cartridge.yaml") 
-        if not os.path.exists(full_path):
-          raise FileNotFoundError("Could not find a cartridge.yaml or cartridge.py at %s."%os.path.dirname(full_path))
-        yaml_cartridge = self.read_yaml_cartridge(full_path)
-        cartridge = yaml_cartridge
+      if is_python:
+        cartridge = self.read_python_cartridge(full_path)
       else:
-        cartridge = python_cartridge
+        cartridge = self.read_yaml_cartridge(full_path)
+      
       return cartridge
 
   # Output the cartridge variable as JSON.
   def main(self):
       yaml = YAML()
       if len(sys.argv) < 1:
-          print("Usage: flux [current_state] [transition]")
+          print("Usage: flux [-c=cartridge_to_use] [current_state] [transition]")
           return
 
       try:
