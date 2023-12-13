@@ -69,7 +69,7 @@ class TestIngest(unittest.TestCase):
         finally:
           os.remove(new_file_path)
 
-    def test_prefers_python_file_over_yaml_file(self):
+    def test_prefers_yaml_file_over_python_file_if_both_exist(self):
         try:
           flux = Flux()
           # Create a temporary yaml file called cartridge.yaml
@@ -97,7 +97,7 @@ class TestIngest(unittest.TestCase):
             os.rename(temp_file.name, new_file_path)
 
             found_cartridge = flux.find_cartridge()
-            self.assertEqual(found_cartridge, 'foo')
+            self.assertEqual(found_cartridge, yaml_data)
 
 
         finally:
