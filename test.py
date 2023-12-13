@@ -149,7 +149,7 @@ class TestIngest(unittest.TestCase):
         finally:
           os.remove(new_file_path)
 
-    def test_assumes_python_file_at_specific_path(self):
+    def test_assumes_yaml_file_at_specific_path(self):
         # If no extension is provided, flux assumes it's .py
         try:
           flux = Flux()
@@ -179,7 +179,7 @@ class TestIngest(unittest.TestCase):
             os.rename(temp_file.name, new_file_path)
 
             found_cartridge = flux.find_cartridge(weird_name)
-            self.assertEqual(found_cartridge, 'foo')
+            self.assertEqual(found_cartridge, yaml_data)
 
         finally:
           os.remove(new_file_path_yaml)
