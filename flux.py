@@ -20,6 +20,13 @@ def get_absolute_path(relative_path):
 
 class Flux:
   role = None
+  
+  def parse_for_path(self):
+      parser = argparse.ArgumentParser(description="Flux player")
+      parser.add_argument("-c", "--cartridge", help="Relative or absolute path to the cartridge file")
+      args = parser.parse_args()
+      flux = Flux()
+      return flux.main(args.cartridge)
 
   def format_event(event):
       return "- If the user %s, send the `%s` event."%(event["if_the_user"], event["method"])
@@ -113,6 +120,7 @@ class Flux:
   def detect_full_catridge_path(self, path=None):
       # If path is None, check if a cartridge.yaml or cartridge.py exists in the same directory as this file.
       if path is None:
+        # Check for a cartridge.yaml or cartridge.py in the same directory as this file.
         yaml_path = os.path.join(os.path.dirname(__file__), "cartridge.yaml")
         found_yaml = os.path.exists(yaml_path)
         python_path = os.path.join(os.path.dirname(__file__), "cartridge.py")
@@ -137,10 +145,6 @@ class Flux:
       return full_path
 
   def find_cartridge(self, path=None):
-      # parser = argparse.ArgumentParser(description="Flux player")
-      # parser.add_argument("-c", "--cartridge", help="Relative or absolute path to the cartridge file")
-      # args = parser.parse_args()
-      # path = args.cartridge if args.cartridge else path
       cartridge = None
       full_path = self.detect_full_catridge_path(path)
       is_python = pathlib.Path(full_path).suffix == ".py"
@@ -153,14 +157,14 @@ class Flux:
       return cartridge
 
   # Output the cartridge variable as JSON.
-  def main(self):
+  def main(self, path=None):
       yaml = YAML()
       if len(sys.argv) < 1:
           print("Usage: flux [-c=cartridge_to_use] [current_state] [transition]")
           return
 
       try:
-          cartridge = self.find_cartridge()
+          cartridge = self.find_cartridge(path)
           current_state = sys.argv[1] if len(sys.argv) > 1 else "START"
           transition = sys.argv[2] if len(sys.argv) > 2 else None
           global role
@@ -178,4 +182,4 @@ class Flux:
 
 if __name__ == "__main__":
     flux = Flux()
-    flux.main()
+    flux.parse_for_path()
