@@ -206,7 +206,7 @@ class TestAdvancedFunctions(unittest.TestCase):
         'data': { "foo": "bar" }
       },
       'DOTHING': {
-        'prompt': lambda data: "The value of foo is %s"%data["foo"],
+        'prompt': lambda data: "The value of foo is %s"%change_data(data)["foo"],
         'events': [ { "if_the_user": "says 'foo'", "method": "next", "target": "DOTHING"} ],
       }
     }
@@ -214,6 +214,7 @@ class TestAdvancedFunctions(unittest.TestCase):
     state = "START"
     method = "next" 
 
-    flux.call_method_on_state(data, state, method)
+    new_prompt = flux.call_method_on_state(data, state, method)
 
-    self.assertTrue(False)
+    print(new_prompt)
+    self.assertEqual(new_prompt, "The value of foo is fizz")
