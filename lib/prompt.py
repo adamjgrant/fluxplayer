@@ -1,3 +1,5 @@
+#!/usr/local/bin/python
+# -*- coding: utf-8 -*-
 role = None
 prompt_template = """%s
 Your new prompt is:

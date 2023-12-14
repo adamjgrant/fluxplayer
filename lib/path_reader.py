@@ -1,3 +1,5 @@
+#!/usr/local/bin/python
+# -*- coding: utf-8 -*-
 # Python script that takes a python file as input and imports the cartridge variable.
 
 import sys
@@ -7,7 +9,16 @@ from ruamel.yaml import YAML
 from pathlib import Path
 import argparse
 
-root_dir = Path(__file__).resolve().parent.parent
+if getattr(sys, 'frozen', False):
+    # If the application is run as a bundle, the PyInstaller bootloader
+    # extends the sys module by a flag frozen=True and sets the app 
+    # path into variable _MEIPASS'.
+    exe_path = os.path.dirname(sys.executable)
+    print("exe_path: %s"%exe_path)
+    root_dir = Path(exe_path).resolve().parent
+    print("root_dir: %s"%root_dir)
+else:
+    root_dir = Path(__file__).resolve().parent.parent
 
 def get_absolute_path(relative_path):
     # Check if the path is already absolute

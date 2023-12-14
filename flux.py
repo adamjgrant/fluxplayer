@@ -1,3 +1,5 @@
+#!/usr/local/bin/python
+# -*- coding: utf-8 -*-
 # Python script that takes a python file as input and imports the cartridge variable.
 
 import sys
@@ -15,6 +17,7 @@ class Flux:
       parser.add_argument("-d", "--data", help="Data to pass to the prompt function")
       args = parser.parse_args()
       flux = Flux()
+      cartridge = find_cartridge(args.cartridge)
       return flux.main(args.cartridge, args.state, args.transition, args.data)
 
   def call_method_on_state(self, cartridge, state, method, data=None, first_run=False):
