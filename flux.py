@@ -48,7 +48,6 @@ class Flux:
   # Output the cartridge variable as JSON.
   def main(self, path=None, state=None, transition=None, data=None):
       try:
-          print("Find cartridge")
           cartridge = find_cartridge(path)
           current_state = state if state else "START"
           transition = transition if transition else None

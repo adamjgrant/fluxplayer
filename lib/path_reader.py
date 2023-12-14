@@ -12,7 +12,7 @@ import argparse
 if getattr(sys, 'frozen', False):
     # If this is the binary
     exe_path = os.path.dirname(sys.executable)
-    root_dir = Path(exe_path).resolve().parent
+    root_dir = Path(exe_path).resolve()
 else:
     root_dir = Path(__file__).resolve().parent.parent
 
