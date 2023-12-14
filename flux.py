@@ -17,7 +17,6 @@ class Flux:
       parser.add_argument("-d", "--data", help="Data to pass to the prompt function")
       args = parser.parse_args()
       flux = Flux()
-      cartridge = find_cartridge(args.cartridge)
       return flux.main(args.cartridge, args.state, args.transition, args.data)
 
   def call_method_on_state(self, cartridge, state, method, data=None, first_run=False):
@@ -48,11 +47,8 @@ class Flux:
 
   # Output the cartridge variable as JSON.
   def main(self, path=None, state=None, transition=None, data=None):
-      if path is None and state is None and transition is None:
-          print("Usage: flux [-c=cartridge_to_use] [-s=current_state] [-t=transition]")
-          return
-
       try:
+          print("Find cartridge")
           cartridge = find_cartridge(path)
           current_state = state if state else "START"
           transition = transition if transition else None

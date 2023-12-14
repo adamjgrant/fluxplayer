@@ -10,13 +10,9 @@ from pathlib import Path
 import argparse
 
 if getattr(sys, 'frozen', False):
-    # If the application is run as a bundle, the PyInstaller bootloader
-    # extends the sys module by a flag frozen=True and sets the app 
-    # path into variable _MEIPASS'.
+    # If this is the binary
     exe_path = os.path.dirname(sys.executable)
-    print("exe_path: %s"%exe_path)
     root_dir = Path(exe_path).resolve().parent
-    print("root_dir: %s"%root_dir)
 else:
     root_dir = Path(__file__).resolve().parent.parent
 
