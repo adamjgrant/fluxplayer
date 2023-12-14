@@ -48,9 +48,9 @@ THOUGHT_IDENTIFICATION:
 ACTION_PLANNING:
   prompt: Help the user make an action plan to implement the coping strategies to their daily life.
   events:
-    - method: end
-      target: END
-      if_the_user: and you have developed a sufficient action plan taking multiple rounds of work if needed
+    - method: get_more
+      target: PROBE
+      if_the_user: and you have developed a sufficient action plan taking multiple rounds of work if needed.
     - method: action_plan
       target: ACTION_PLANNING
       if_the_user: has more that needs to be incorporated into the action plan.
@@ -74,10 +74,3 @@ COPING_STRATEGY_DEVELOPMENT:
     - method: develop_coping_strategies
       target: COPING_STRATEGY_DEVELOPMENT
       if_the_user: has more coping strategies that need to be developed
-
-END:
-  prompt: End the conversation by saying goodbye.
-  events:
-    - method: restart
-      target: START
-      if_the_user: wishes to continue
