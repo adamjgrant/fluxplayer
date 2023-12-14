@@ -211,7 +211,7 @@ class TestAdvancedFunctions(unittest.TestCase):
     }
 
     state = "START"
-    method = "next" 
+    method = "DOTHING" 
 
     new_prompt = flux.call_method_on_state(cartridge, state, method, {"foo": "bar"})
 

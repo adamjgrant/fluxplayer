@@ -12,28 +12,29 @@ class Flux:
   def parse_for_path(self):
       parser = argparse.ArgumentParser(description="Flux player")
       parser.add_argument("-c", "--cartridge", help="Relative or absolute path to the cartridge file")
-      parser.add_argument("-s", "--state", help="State in which to fire a transition")
-      parser.add_argument("-t", "--transition", help="Transition to fire on state")
+      parser.add_argument("-s", "--state", help="State transitioning from")
+      parser.add_argument("-t", "--transition", help="State to transition to")
       parser.add_argument("-d", "--data", help="Data to pass to the prompt function")
       args = parser.parse_args()
       flux = Flux()
       return flux.main(args.cartridge, args.state, args.transition, args.data)
 
-  def call_method_on_state(self, cartridge, state, method, data=None, first_run=False):
+  def call_method_on_state(self, cartridge, state, target_state, data=None, first_run=False):
       if state not in cartridge:
           raise ValueError("The state %s does not exist in the cartridge."%state)
 
       state_definition = cartridge[state]
 
+      print(target_state)
+
       # Find the object in the events list that has the method name.
-      event = next((event for event in state_definition["events"] if event["method"] == method), None)
+      event = next((event for event in state_definition["events"] if event["target"] == target_state), None)
 
       # Throw an error if the event is not found
       if event == None:
-          raise ValueError("The event %s does not exist in the state %s."%(method, state))
+          raise ValueError("The state %s is not a valid transition from the state %s."%(target_state, state))
 
       # Get the state definition for the target state.
-      target_state = event["target"]
       target_state_definition = cartridge[target_state]
 
       # Throw an error if the target state is not found

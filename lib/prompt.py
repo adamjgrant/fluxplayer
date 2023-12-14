@@ -32,7 +32,7 @@ For example
 
   
 def format_event(event):
-    return "- If the user %s, send the `%s` event."%(event["if_the_user"], event["method"])
+    return "- If the user %s, send the `%s` event."%(event["if_the_user"], event["target"])
 
 def format_prompt(cartridge, state, data=None, first_run=False):
     state_definition = cartridge[state]
@@ -59,6 +59,6 @@ def format_prompt(cartridge, state, data=None, first_run=False):
 
     data_clause = f" -d='{data}'" if data and callable(state_definition["prompt"]) else ""
     command_template = "<path to flux> -c=<optional path to cartridge file> -s=%s -t=<event>%s"%(state, data_clause)
-    command_example = "/mnt/data/flux -c=/mnt/data/cartridge.yaml -s=%s -t=%s%s"%(state, events[0]["method"], data_clause)
+    command_example = "/mnt/data/flux -c=/mnt/data/cartridge.yaml -s=%s -t=%s%s"%(state, events[0]["target"], data_clause)
 
     return prompt_template%(role, first_run_text, prompt, formatted_events, command_template, command_example)
