@@ -78,9 +78,14 @@ python -m unittest test.py
 
 # Distribution
 
-TODO: Change this to create a unifed python file instead.
+TODO: Target Linux: https://stackoverflow.com/a/66186892
+
+Maybe like this?
+
+--target-architecture ARCH, --target-arch ARCH
+Target architecture (macOS only; valid values: x86_64, arm64, universal2). Enables switching between universal2 and single-arch version of frozen application (provided python installation supports the target architecture). If not target architecture is not specified, the current running architecture is targeted.
 
 ```bash
 pip install -U pyinstaller
-pyinstaller --onefile flux.py --distpath dist --paths=./
+pyinstaller --onefile flux.py --distpath dist --paths=./ --target-architecture universal2
 ```
