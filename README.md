@@ -78,12 +78,12 @@ python -m unittest test.py
 
 # Distribution
 
-TODO: Target Linux: https://stackoverflow.com/a/66186892
-
-Maybe like this?
+For running on OpenAI's Custom GPTs:
 
 First, make sure you have docker installed. Then run:
 
 ```bash
 ./build.sh
 ```
+
+The file you'll need will be in dist/linux/flux
