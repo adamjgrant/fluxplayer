@@ -78,7 +78,7 @@ python -m unittest test.py
 
 # Distribution
 
-TODO: Change this to create a unifed python file instead.
+TODO: Target Linux: https://stackoverflow.com/a/66186892
 
 ```bash
 pip install -U pyinstaller
