@@ -49,8 +49,7 @@ Note the `START` state is **required** and only the `START` state has the `role`
 The `events` array is what determines what transitions are possible from the current state. Each event is an object with the following structure:
 
 ```yaml
-- method: (Name of transition)
-  target: (Name of the state this transition will go to)
+- target: (Name of the state this transition will go to)
   if_the_user: (A description of what the user should say to trigger this transition assuming the sentence starts with 'if the user...')
 ```
 
