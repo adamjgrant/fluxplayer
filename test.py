@@ -202,11 +202,11 @@ class TestAdvancedFunctions(unittest.TestCase):
       'START': {
         'role': '',
         'prompt': '',
-        'events': [ { "if_the_user": "says 'foo'", "method": "next", "target": "DOTHING"} ]
+        'events': [ { "if_the_user": "says 'foo'", "target": "DOTHING"} ]
       },
       'DOTHING': {
         'prompt': lambda data: "The value of foo is %s"%change_data(data)["foo"],
-        'events': [ { "if_the_user": "says 'foo'", "method": "next", "target": "DOTHING"} ],
+        'events': [ { "if_the_user": "says 'foo'", "target": "DOTHING"} ],
       }
     }
 
