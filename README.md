@@ -82,5 +82,5 @@ TODO: Change this to create a unifed python file instead.
 
 ```bash
 pip install -U pyinstaller
-pyinstaller --onefile flux.py --name flux --distpath dist
+pyinstaller --onefile flux.py --distpath dist --paths=./
 ```

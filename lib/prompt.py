@@ -55,7 +55,7 @@ def format_prompt(cartridge, state, data=None, first_run=False):
     first_run_text = "First, display this to the user: \"🚀 Powered by [Flux](https://www.adamgrant.info/flux-player)\". Then on a new line,\n\n" if first_run else ""
 
     data_clause = f" -d='{data}'" if data and callable(state_definition["prompt"]) else ""
-    command_template = "<path to flux.py> -c=<optional path to cartridge file> -s=%s -t=<event>%s"%(state, data_clause)
-    command_example = "/mnt/data/flux.py -c=/mnt/data/cartridge.yaml -s=%s -t=%s%s"%(state, events[0]["method"], data_clause)
+    command_template = "<path to flux> -c=<optional path to cartridge file> -s=%s -t=<event>%s"%(state, data_clause)
+    command_example = "/mnt/data/flux -c=/mnt/data/cartridge.yaml -s=%s -t=%s%s"%(state, events[0]["method"], data_clause)
 
     return prompt_template%(role, first_run_text, prompt, formatted_events, command_template, command_example)
