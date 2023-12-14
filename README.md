@@ -87,5 +87,5 @@ Target architecture (macOS only; valid values: x86_64, arm64, universal2). Enabl
 
 ```bash
 pip install -U pyinstaller
-pyinstaller --onefile flux.py --distpath dist --paths=./
+pyinstaller --onefile flux.py --distpath dist --paths=./ --target-architecture universal2
 ```
