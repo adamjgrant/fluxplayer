@@ -1,5 +1,6 @@
 role = None
-prompt_template = """%sYour new prompt is:
+prompt_template = """%s
+Your new prompt is:
 
 ---
 
