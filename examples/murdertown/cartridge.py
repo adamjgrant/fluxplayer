@@ -32,11 +32,18 @@ cartridge = {
         If you have any information on...please contact the...authorities at...
 
         Ready to meet your fellow investigator and learn more about this case?'
+
+        If the user wants to know more, you can let them know that all of that can be discussed with
+        the investigator and ask them again if they're ready.
       """,
       "events": [
         {
           "target": "MEET_MIKE",
           "if_the_user": "says yes or otherwise agrees to meet their fellow investigator"
+        },
+        {
+          "target": "START",
+          "if_the_user": "Indicates they are not ready to proceed."
         }
       ]
   },
