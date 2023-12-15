@@ -1,3 +1,18 @@
+class BackForwardState():
+  def __init__(self, previous_state):
+
+class CherryPicker(BackForwardState):
+  def __init__(self, previous_state, states_to_pick=[]):
+    super().__init__(previous_state)
+
+class Map(CherryPicker):
+  def __init__(self, previous_state, states_to_pick=[]):
+    super().__init__(previous_state, states_to_pick)
+
+class EvidenceLocker(CherryPicker):
+  def __init__(self, previous_state, states_to_pick=[]):
+    super().__init__(previous_state, states_to_pick)
+
 class Conversation():
     def __init__(self, namespace):
         self.namespace = namespace
