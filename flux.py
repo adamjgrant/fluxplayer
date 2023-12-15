@@ -21,7 +21,7 @@ class Flux:
 
   def call_method_on_state(self, cartridge, state, target_state, data=None, first_run=False):
       if state not in cartridge:
-          raise ValueError("The state %s does not exist in the cartridge."%state)
+          raise ValueError("The state %s does not exist in the cartridge. Try creating the command again."%state)
 
       state_definition = cartridge[state]
 
@@ -32,7 +32,8 @@ class Flux:
 
       # Throw an error if the event is not found
       if event == None:
-          raise ValueError("The state %s is not a valid transition from the state %s."%(target_state, state))
+          helpful_message = format_prompt(cartridge, state, data, first_run, True)
+          raise ValueError("The state %s is not a valid transition from the state %s.\n\n%s"%(target_state, state, helpful_message))
 
       # Get the state definition for the target state.
       target_state_definition = cartridge[target_state]
