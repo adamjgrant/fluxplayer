@@ -60,10 +60,14 @@ cartridge = {
         No matter what the user says, show this message: 'The information contained in
         this story is completely true and this remains an open investigation.
 
-        You will act as one of two investigators travelling the town, examining evidence
+        You will act as one of two investigators on a new case of a missing woman last seen waiting for roadside assistance
+        after hitting a guardrail on a one lane road.
+
+        With your partner, you will gather evidence by looking at the crime scene
         and talking to the real life people (witnesses, accused, family) involved in these events.
 
-        If you have any information on...please contact the...authorities at...
+        If you have any information on Maura Murray or the events surrounding her disappearance, 
+        please contact Sgt Matthew Koehler at the New Hampshire State Police at 603-223-3648.
 
         Ready to meet your fellow investigator and learn more about this case?'
 
