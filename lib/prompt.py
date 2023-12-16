@@ -63,6 +63,13 @@ def format_prompt(cartridge, state, data=None, first_run=False, correction=False
     last_part = prompt_template%(formatted_events, command_template, command_example, prompt)
 
     if correction:
-      return last_part
+      combined_prompt = last_part
     else:
-      return "%s%s"%(first_part, last_part)
+      combined_prompt = "%s%s"%(first_part, last_part)
+
+    # If the combined_prompt is longer than 2000 characters, add the command execution
+    # instructions a second time at the end of the prompt.
+    if len(combined_prompt) > 2000:
+      combined_prompt = "%s\n\n%s"%(combined_prompt, last_part)
+
+    return combined_prompt

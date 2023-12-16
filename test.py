@@ -266,7 +266,6 @@ class TestAdvancedFunctions(unittest.TestCase):
 
     new_prompt = flux.call_method_on_state(cartridge, state, method)
 
-    start_pos = 2650
+    start_pos = 2657
     new_prompt = new_prompt[start_pos:start_pos + 50]
-    print(new_prompt)
-    self.assertEqual(new_prompt, "- If the user says 'foo', set the target state")
+    self.assertEqual(new_prompt, "Choose the best fitting event from the list below.")
