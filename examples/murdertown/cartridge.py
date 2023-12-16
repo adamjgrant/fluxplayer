@@ -50,8 +50,9 @@ This is the information that {self.name} has and will provide only if asked a qu
 
 PEOPLE = {
   "ANONYMOUS_PROF": Person("Anonymous professor at U Mass", "Received messages from Maura Murray", """
-The professor received an email from Maura Murray's account that said she would be gone for a week due to a death in the family.
-He later learned that there was no death in the family and that Maura Murray was missing.
+The professor received an email from Maura Murray's account that said she would be gone for a week due to a death in the family the
+day before a class was to be held over zoom. The professor also learned that Maura had handed in her homework a day early.
+The professor later learned that there was no death in the family and that Maura Murray was missing.
 Other than this information this professor only says that Maura Murray was a good student and would be surprised if she ran away.
   """),
   "BUTCH_ATWOOD": Person("Butch Atwood", "Bus driver who saw Maura Murray", """
@@ -154,11 +155,12 @@ The names of the people involved have not been changed. The events are based on 
 
 It is our hope that by presenting this information in a new way, we can help bring new attention to this case and help find Maura Murray.
 
-You will act as one of two investigators on the case starting on the day after Maura's disappearance. Time will then progress gradually
+You will act as one of two investigators on the case starting on February 10, 2004, the day after Maura's disappearance. Time will then progress gradually
 and later in larger increments.
 
 With your partner, you will be able to move around freely in this universe. You can talk to the real life people involved in these events 
-visit or revisit repeatedly key locations to gather evidence.
+visit or revisit repeatedly key locations to gather evidence. Your partner will also help you to ask the right questions and move through
+unexplored areas.
 
 Anyone with information about Maura Murray is asked to call the New Hampshire Cold Case Unit at (603) 223-3648 
 or email them at Coldcaseunit@dos.nh.gov.
@@ -231,7 +233,7 @@ UMASS_1_DEFINITION = UMASS_DEFINITION.set_events(
 ).dict()
 
 CRIME_SCENE_1_DEFINITION = CRIME_SCENE_DEFINITION.set_events(
-  [{ "target": "INTRO_TO_MAP", "if_the_user": "agrees or asks to continue" }]
+  [{ "target": "INTRO_TO_MAP", "if_the_user": "agrees with Mike's suggestion to continue to the map" }]
 ).dict()
 
 CRIME_SCENE_2_DEFINITION = CRIME_SCENE_DEFINITION.set_events(
@@ -239,14 +241,14 @@ CRIME_SCENE_2_DEFINITION = CRIME_SCENE_DEFINITION.set_events(
 ).dict()
 
 UMASS_2_DEFINITION = UMASS_DEFINITION.set_events(
-  [{ "target": "INTRO_TO_MAP", "if_the_user": "agrees or asks to continue" }]
+  [{ "target": "INTRO_TO_MAP", "if_the_user": "agrees with Mike's suggestion to continue to the map" }]
 ).dict()
 
 INTRO_TO_MAP_DEFINITION = TranscriptState(
   """
 Mike will show this image to the user:
 
-![map](https://www.adamgrant.info/flux-player/examples/murdertown/map.png)
+![map](https://cdn.everything.io/chatgpt/maura/map_map1_umass_accident.png)
 
 And let them know from now on they can always ask to review the map to visit another location
 to review evidence or talk to someone. All they have to do is ask.
@@ -255,9 +257,12 @@ as they visit new places, they will start appearing on the map in case the user 
 and gather more information. 
 
 The user's choice now is to go to one of the places on the map or to visit the data lab where
-they collected some information from Maura's personal computer.
+they have pieced together some events leading up to her disappearance.
   """,
-  [],
+  [
+    { "target": "DATA_LAB", "if_the_user": "decides to go to the data lab'" }
+
+  ],
   []
 ).dict()
 
@@ -267,5 +272,6 @@ cartridge = {
   "CRIME_SCENE_1": CRIME_SCENE_1_DEFINITION,
   "CRIME_SCENE_2": CRIME_SCENE_2_DEFINITION,
   "UMASS_2": UMASS_2_DEFINITION,
-  "INTRO_TO_MAP": INTRO_TO_MAP_DEFINITION
+  "INTRO_TO_MAP": INTRO_TO_MAP_DEFINITION,
+  "DATA_LAB": {}
 }
