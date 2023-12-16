@@ -70,7 +70,10 @@ class TranscriptState:
         self.people = people
 
     def set_events(self, events):
-        self.events = events
+        self.events = events + [{
+          "target": ".SELF",
+          "if_the_user": "does not say they are out of questions or asks to go somewhere else."
+        }]
         return self
 
     def dict(self):
@@ -82,10 +85,14 @@ appears before everything spoken, and there is no outside narration.
 
 e.g. '**Mike Crenshaw**: If there's anyone who knows about that it would be...'
 
+It's important the people involved should only greet the user, addressing them as an investigator and say very little at first.
+
 {self.prompt}
 
 Let the user know the following people are available for questioning:
 {"".join(overviews)}
+
+Remember this information is only revealed by each person and only if the user asks the right questions.
             """,
             "events": self.events
         }
@@ -108,8 +115,8 @@ cartridge = {
 
         Ready to meet your fellow investigator and learn more about this case?'
 
-        If the user wants to know more, you can let them know that all of that can be discussed with
-        the investigator and ask them again if they're ready.
+        If the user doesn't agree to meet the investigator you can let them know that their questions will be answered later.
+        then ask them again if they're ready.
       """,
       "events": [
         {
@@ -130,7 +137,7 @@ cartridge = {
           E.g. '**Mike Crenshaw**: If there's anyone who knows about that it would be...'
 
           As Mike, introduce yourself to the user and let them know their job will be to extract information by asking questions. 
-          Let the user know that as Mike, your job will be to help them on how to move through the town, where you can go, 
+          Let the user know that as Mike, your job will be to help them on how to move through relevant areas, where you can go, 
           and whom you can talk to. Lastly, ask them if they want to go to the University of Massachusettes to discuss
           unusual communication with someone believed to be missing or to New Hampshire where an abandoned vehicle was found.
 
