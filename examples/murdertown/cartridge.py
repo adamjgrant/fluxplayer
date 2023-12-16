@@ -300,6 +300,14 @@ A data lab in the FBI New Hampshire office. Briefing room with computer equipmen
   [PEOPLE["ANONYMOUS_POLICE_DATA_ANALYST"]]
 ).dict()
 
+UMASS_START_DEFINITION = UMASS_DEFINITION.set_events(
+  []
+).dict()
+
+CRIME_SCENE_START_DEFINITION = CRIME_SCENE_DEFINITION.set_events(
+  []
+).dict()
+
 cartridge = {
   **cartridge,
   "UMASS_1": UMASS_1_DEFINITION,
@@ -308,8 +316,8 @@ cartridge = {
   "UMASS_2": UMASS_2_DEFINITION,
   "INTRO_TO_MAP": INTRO_TO_MAP_DEFINITION,
   "DATA_LAB": DATA_LAB_DEFINITION,
-  "CRIME_SCENE_START": {},
-  "UMASS_START": {},
+  "CRIME_SCENE_START": CRIME_SCENE_START_DEFINITION,
+  "UMASS_START": UMASS_START_DEFINITION,
   **Map("DATA_LAB", "map_map2_fbi_data_lab").key_dict(),
   **Map("CRIME_SCENE_START", "map_map2_fbi_data_lab").key_dict(),
   **Map("UMASS_START", "map_map2_fbi_data_lab").key_dict(),
