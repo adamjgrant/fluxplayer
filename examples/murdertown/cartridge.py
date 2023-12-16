@@ -52,6 +52,21 @@ Background: {self.bio}.
 This is the information that {self.name} has and will provide only if asked a question that would reveal it:
 {self.information}\n\n
         """
+        
+class Evidence:
+  def __init__(self, presentation=""):
+    self.presentation = presentation
+  
+class ImageEvidence(Evidence):
+  def __init__(self, url, description)
+    self.presentation = f"""
+      ![]({url})
+      _{description}_
+    """
+
+EVIDENCE = {
+  BUTCH_INTERVIEWED: ImageEvidence("https://i.redd.it/93a45ibm68tz.png", "Butch Atwood being interviewed by a local TV station")
+} 
 
 PEOPLE = {
   "ANONYMOUS_PROF": Person("Anonymous professor at U Mass", "Received messages from Maura Murray", """
