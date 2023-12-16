@@ -1,3 +1,9 @@
+def merge_states(states=[]):
+  merged_state_object = {}
+  for obj in states:
+      merged_state_object.update(obj)
+  return merged_state_object
+
 class BackForwardState():
   def __init__(self, previous_state):
 
