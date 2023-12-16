@@ -28,7 +28,7 @@ class CherryPicker(BackForwardState):
 
 class Map(CherryPicker):
     def __init__(self, previous_state, map_key, go_back_if_the_user="", prompt="", events_to_pick=[]):
-      super().__init__("MAP", previous_state, "asks to go back to the map", prompt, events_to_pick)
+      super().__init__("MAP", previous_state, "asks to go back", prompt, events_to_pick)
       self.prompt = f"""
 {prompt}
 
@@ -247,7 +247,7 @@ The car is pointed west on the eastbound side of the road. The windshield is cra
   """,
   "", 
   [],
-  [PEOPLE["BUTCH_ATWOOD"], PEOPLE["FAITH_WESTMAN"]]
+  [PEOPLE["BUTCH_ATWOOD"], PEOPLE["FAITH_WESTMAN"], PEOPLE["CECIL_SMITH"], PEOPLE["JOHN_MONAGHAN"], PEOPLE["JEFF_WILLIAMS"]]
 )
 
 UMASS_1_DEFINITION = UMASS_DEFINITION.set_events(
