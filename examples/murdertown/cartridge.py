@@ -45,7 +45,6 @@ class Person():
 Name: {self.name}
 Background: {self.bio}.
 This is the information that {self.name} has and will provide only if asked a question that would reveal it:
-
 {self.information}\n\n
         """
 
@@ -61,15 +60,46 @@ He pulled over and asked her if she needed help. She said no and that she alread
 He knew that was a lie because there was no cell service in that area. He offered to call the police for her but she said no.
 He went home and called the police anyway. Butch claims she didn't look intoxicated nor injured.
   """),
-  "FAITH WESTMAN": Person("Faith Westman", "Neighbor who saw Maura Murray", """
+  "FAITH_WESTMAN": Person("Faith Westman", "Neighbor who saw Maura Murray", """
 Faith Westman was at home when she saw Maura Murray's car crashed into a snowbank. She left the office that night around 10 past 7.
 When she passed by the Saturn on the side of the road, it was facing the opposite direction and there was a police SUV with
 the number '001' on the side of it. It was parked
-nose-to-nose with the Saturn. She didn't see any people at all. Her cell phone wasn't working and it didn't look like an accident to her
+nose-to-nose with the Saturn. She didn't see any people at all. Her cell phone didn't have reception in the area and it didn't look like an accident to her
 so she carried on. When she later reached Beaver pond, she made a personal call which Mike can corroborate with phone records.
 Mike can also use this information to show that her arrival was several minutes before the police arrived. Faith doesn't totally trust
-the police.
-  """)
+the police. She also got a call from the police department later and says it was weird that they were asking specifically if she
+was sure that it was 001 that she saw on the police car, not asking anything about Maura Murray
+  """),
+  "CECIL_SMITH": Person("Cecil Smith", "Police officer who responded to the scene", """
+Official reports say Cecil Smith was the first officer to arrive on the scene of Maura's car. He was driving a 4x4 explorer and 
+was dispatched to the report of a car accident.
+When he arrived, he observed a black Saturn facing the wrong direction but no one was in or around the car. He saw there was
+something red splashed on the window and the seat of the vehicle. It looked like wine. He approached Butch Atwood about what he saw
+and he said Maura didn't appear hurt or intoxicated and that Maura told Butch he didn't need to call 911 and that she claimed she
+already called AAA. He said he actually didn't talk to Butch for very long. He claims he talked to Maura's dad Fred. In that communication
+Fred allegedly told Officer Smith flippantly that Maura might have just gotten depressed and 'done the old squaw', and that sometimes when you're depressed you just
+go off into the woods, you step off, and you die. This response shocked the officer. In another conversation with Maura's sister Kathleen,
+the sister told the officer that Maura probably got in a big fight with her boyfriend Fred, went off into the woods, took a bunch of sleeping
+pills and died.
+  """),
+  "JOHN_MONAGHAN": Person("John Monaghan", "Police officer who responded to the scene", """
+On the night of the disappearance, he got a call that Butch was reporting a car accident. He confined his search area to the area
+where there were stores and people and searched while driving around, staying in his car. He put together a general service report
+to note that he was assisting another department with the search. Later, he pulled the surveillance tapes from three locations that
+had surveillance to see if Maura Murray was on them. He didn't find anything.
+  """),
+  "JEFF_WILLIAMS": Person("Jeff Williams", "Police Chief of Haverhill, New Hampshire.", """
+It has been claimed that he was the driver of the 001 police SUV, which he denies, corroborating with
+Cecil Smith that he is the driver. He also maintains that he was never at the scene.
+"""),
+  "KATHLEEN_MURRAY": Person("Kathleen Murray", "Maura Murray's sister", """
+"""),
+  "FRED_MURRAY": Person("Fred Murray", "Maura Murray's father", """
+Fred will agree with Cecil's account that Maura might have gone on a 'squaw walk' but says he just didn't know how to express himself and he
+was very upset about Maura going missing.
+On a separate occasion when Maura wrecked his car, he claims he was upset but told her 'It's gonna be alright, it's not the worst thing in the world'
+He 'knows' she wouldn't have committed suicide.
+"""),
 }
 
 class TranscriptState:
@@ -100,7 +130,7 @@ If this is the first time the user is speaking to these individuals, they should
 
 {self.prompt}
 
-Let the user know the following people are available for questioning:
+{ "Let the user know the following people are available for questioning:" if len(self.people) > 0 else ""}
 {"".join(overviews)}
 
 Remember this information is only revealed by each person and only if the user asks the right questions.
@@ -197,10 +227,29 @@ CRIME_SCENE_2_DEFINITION = CRIME_SCENE_DEFINITION.set_events(
 
 UMASS_2_DEFINITION = UMASS_DEFINITION.set_events([]).dict()
 
+INTRO_TO_MAP_DEFINITION = TranscriptState(
+  """
+Mike will show this image to the user:
+
+![map](https://www.adamgrant.info/flux-player/examples/murdertown/map.png)
+
+And let them know from now on they can always ask to review the map to visit another location
+to review evidence or talk to someone. All they have to do is ask.
+Mike will mention that there are still more places to visit that are not yet on the map and that
+as they visit new places, they will start appearing on the map in case the user wants to return
+and gather more information. 
+
+The user's choice now is to go to one of the places on the map or to visit the data lab where
+they collected some information from Maura's personal computer.
+  """,
+  [ ]
+).dict()
+
 cartridge = {
   **cartridge,
   "UMASS_1": UMASS_1_DEFINITION,
   "CRIME_SCENE_1": CRIME_SCENE_1_DEFINITION,
   "CRIME_SCENE_2": CRIME_SCENE_2_DEFINITION,
-  "UMASS_2": UMASS_2_DEFINITION
+  "UMASS_2": UMASS_2_DEFINITION,
+  "INTRO_TO_MAP": INTRO_TO_MAP_DEFINITION,
 }
