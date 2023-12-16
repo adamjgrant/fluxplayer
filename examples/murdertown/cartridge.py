@@ -32,26 +32,40 @@ class EvidenceLocker(CherryPicker):
     def __init__(self, previous_state, go_back_if_the_user="", prompt="", events_to_pick=[]):
       super().__init__("EVIDENCE_LOCKER", previous_state, go_back_if_the_user, prompt, events_to_pick)
 
-class Conversation():
-    def __init__(self, namespace):
-        self.namespace = namespace
+class Person():
+    def __init__(self, name, bio, information):
+        self.name = name
+        self.description = description
+        self.information = information
+
+    def overview(self):
+        return f"""
+          Name: {self.name}
+          Background: {self.description}.
+          Here's what you need to know about {self.name}:
+
+          {self.information}
+        """
+
+PEOPLE = [
+]
+
+class RegularState():
+    def init(self, prompt):
+        self.prompt = prompt
 
     def dict(self):
         return {
-            f"{self.namespace}_QUESTION1": {
-                "prompt": """
-                  Make sure every message you send is written in the style of a transcript where a person's name
-                  appears before everything spoken, and there is no outside narration.
-                """,
-                "events": [
-                    {
-                        "target": "QUESTION2",
-                        "if_the_user": ""
-                    }
-                ]
-            }
-        }
+            "prompt": f"""
+              All messages you send back to the user must be written in the style of a transcript where a person's name
+              appears before everything spoken, and there is no outside narration. 
 
+              e.g. '**Mike Crenshaw**: If there's anyone who knows about that it would be...'
+
+              {self.prompt}
+            """,
+            "events": []
+        }
 
 cartridge = {
   "START": {
@@ -66,8 +80,8 @@ cartridge = {
         With your partner, you will gather evidence by looking at the crime scene
         and talking to the real life people (witnesses, accused, family) involved in these events.
 
-        If you have any information on Maura Murray or the events surrounding her disappearance, 
-        please contact Sgt Matthew Koehler at the New Hampshire State Police at 603-223-3648.
+        Anyone with information about Maura Murray is asked to call the New Hampshire Cold Case Unit at (603) 223-3648 
+        or email them at Coldcaseunit@dos.nh.gov.
 
         Ready to meet your fellow investigator and learn more about this case?'
 
@@ -127,4 +141,4 @@ cartridge = {
   }
 }
 
-cartridge = {**cartridge, **(Conversation("foo").dict())}
+cartridge = {**cartridge}

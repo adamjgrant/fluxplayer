@@ -1,6 +1,6 @@
 import unittest
 import sys
-from examples.murdertown.cartridge import merge_states, BackForwardState, CherryPicker, Map, EvidenceLocker, Conversation
+from examples.murdertown.cartridge import merge_states, BackForwardState, CherryPicker, Map, EvidenceLocker
 
 class TestMerge(unittest.TestCase):
     def test_merges_states(self):
