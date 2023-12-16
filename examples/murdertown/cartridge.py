@@ -5,28 +5,32 @@ def merge_states(states=[]):
   return merged_state_object
 
 class BackForwardState():
-    def __init__(self, previous_state="", go_back_if_the_user="asks to go back", prompt=""):
+    def __init__(self, name="", previous_state="", go_back_if_the_user="asks to go back", prompt=""):
       self.events = [ { "target": previous_state, "if_the_user": go_back_if_the_user } ]
       self.prompt = prompt
+      self.name = name
+      self.previous_state = previous_state
 
     def dict(self):
       return {
-        "prompt": self.prompt,
-        "events": self.events
+        f"{self.name}_{self.previous_state}": {
+          "prompt": self.prompt,
+          "events": self.events
+        }
       }
 
 class CherryPicker(BackForwardState):
-    def __init__(self, previous_state, go_back_if_the_user="", prompt="", events_to_pick=[]):
-      super().__init__(previous_state, go_back_if_the_user, prompt)
+    def __init__(self, name, previous_state, go_back_if_the_user="", prompt="", events_to_pick=[]):
+      super().__init__(name, previous_state, go_back_if_the_user, prompt)
       self.events = self.events + events_to_pick
 
 class Map(CherryPicker):
     def __init__(self, previous_state, go_back_if_the_user="", prompt="", events_to_pick=[]):
-      super().__init__(previous_state, go_back_if_the_user, prompt, events_to_pick)
+      super().__init__("MAP", previous_state, go_back_if_the_user, prompt, events_to_pick)
 
 class EvidenceLocker(CherryPicker):
     def __init__(self, previous_state, go_back_if_the_user="", prompt="", events_to_pick=[]):
-      super().__init__(previous_state, go_back_if_the_user, prompt, events_to_pick)
+      super().__init__("EVIDENCE_LOCKER", previous_state, go_back_if_the_user, prompt, events_to_pick)
 
 class Conversation():
     def __init__(self, namespace):
