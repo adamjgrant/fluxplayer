@@ -55,7 +55,7 @@ This is the information that {self.name} has and will provide only if asked a qu
         
 class Evidence:
   def __init__(self, presentation=""):
-    self.presentation = presentation
+    self.presentation = f"{presentation}\n"
   
 class ImageEvidence(Evidence):
   def __init__(self, url, description)
@@ -65,8 +65,10 @@ class ImageEvidence(Evidence):
     """
 
 EVIDENCE = {
-  BUTCH_INTERVIEWED: ImageEvidence("https://i.redd.it/93a45ibm68tz.png", "Butch Atwood being interviewed by a local TV station")
-} 
+  BUTCH_INTERVIEWED: ImageEvidence("https://i.redd.it/93a45ibm68tz.png", "Butch Atwood being interviewed by a local TV station").presentation,
+  MAURA_MISSING_POSTER: ImageEvidence("https://allthatsinteresting.com/wordpress/wp-content/uploads/2018/05/maura-murray-missing-poster.png", "Missing Poster for Maura Murray").presentation,
+  MAURA_AT_ATM: ImageEvidence("https://allthatsinteresting.com/wordpress/wp-content/uploads/2018/05/maura-murray-last-sighting.jpg", "February 9, 2004: Maura Murray at ATM seemingly alone withdrawing $280 before visiting liquor store").presentation
+}
 
 PEOPLE = {
   "ANONYMOUS_PROF": Person("Anonymous professor at U Mass", "Received messages from Maura Murray", """
@@ -186,8 +188,9 @@ Remember this information is only revealed by each person and only if the user a
 cartridge = {
   "START": {
       "role": "",
-      "prompt": """
-No matter what the user says, show this message unless you already have: 'The information we present to you is based on real events.
+      "prompt": f"""
+No matter what the user says, show this message unless you already have: '{EVIDENCE["MAURA_MISSING_POSTER"]}
+The information we present to you is based on real events.
 The names of the people involved have not been changed. The events are based on the real life disappearance of Maura Murray in 2004.
 
 It is our hope that by presenting this information in a new way, we can help bring new attention to this case and help find Maura Murray.
