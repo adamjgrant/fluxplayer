@@ -177,6 +177,8 @@ If you haven't already, briefly narrate the setting with some creative flair on 
 {self.prompt}
 
 { "Let the user know the following people are available for questioning:" if len(self.people) > 0 else ""}
+{", ".join(name)}
+
 {"".join(overviews)}
 
 Remember this information is only revealed by each person and only if the user asks the right questions.
