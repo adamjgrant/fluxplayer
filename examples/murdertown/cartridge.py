@@ -103,10 +103,11 @@ He 'knows' she wouldn't have committed suicide.
 }
 
 class TranscriptState:
-    def __init__(self, prompt, events=[], people=[]):
+    def __init__(self, setting, prompt, events=[], people=[]):
         self.prompt = prompt
         self.events = events
         self.people = people
+        self.setting = setting
 
     def set_events(self, events):
         self.events = events + [{
@@ -120,13 +121,18 @@ class TranscriptState:
         return {
             "prompt": f"""
 All messages you send back to the user must be written in the style of a transcript where a person's name
-appears before everything spoken, and there is no outside narration. 
+appears before everything spoken.
 
 e.g. '**Mike Crenshaw**: If there's anyone who knows about that it would be...'
 
 If this is the first time the user is speaking to these individuals, they should just greet the user and Mike like this:
 
 **<person's name>**: Hello, I'm <person's name>.
+
+After people have spoken, Mike will either ask a question himself or if several questions have already been asked, he will remind the user they can either 
+ask more questions or proceed to somewhere else.
+
+If you haven't already, briefly narrate the setting with some creative flair on how you describe it: {self.setting}
 
 {self.prompt}
 
@@ -135,8 +141,6 @@ If this is the first time the user is speaking to these individuals, they should
 
 Remember this information is only revealed by each person and only if the user asks the right questions.
 
-After people have spoken, Mike will either ask a question himself or if several questions have already been asked, he will offer to
-go to the next state.
             """,
             "events": self.events
         }
@@ -145,14 +149,16 @@ cartridge = {
   "START": {
       "role": "",
       "prompt": """
-No matter what the user says, show this message unless you already have: 'The information contained in
-this story is completely true and this remains an open investigation.
+No matter what the user says, show this message unless you already have: 'The information we present to you is based on real events.
+The names of the people involved have not been changed. The events are based on the real life disappearance of Maura Murray in 2004.
 
-You will act as one of two investigators on a new case of a missing woman last seen waiting for roadside assistance
-after hitting a guardrail on a one lane road.
+It is our hope that by presenting this information in a new way, we can help bring new attention to this case and help find Maura Murray.
 
-With your partner, you will gather evidence by looking at the crime scene
-and talking to the real life people (witnesses, accused, family) involved in these events.
+You will act as one of two investigators on the case starting on the day after Maura's disappearance. Time will then progress gradually
+and later in larger increments.
+
+With your partner, you will be able to move around freely in this universe. You can talk to the real life people involved in these events 
+visit or revisit repeatedly key locations to gather evidence.
 
 Anyone with information about Maura Murray is asked to call the New Hampshire Cold Case Unit at (603) 223-3648 
 or email them at Coldcaseunit@dos.nh.gov.
@@ -204,12 +210,17 @@ then ask them again if they're ready.
 
 # A/B B/A Criss-cross
 UMASS_DEFINITION = TranscriptState(
+  "The office of a professor at the University of Massachusettes who prefers to remain anonymous",
   "", 
   [],
   [PEOPLE["ANONYMOUS_PROF"]]
 )
 
 CRIME_SCENE_DEFINITION = TranscriptState(
+  """
+Haverhill, New Hampshire. Morning at the scene of a black 1996 Saturn sedan up against the snowbank along Route 112, also known as Wild Ammonoosuc Road. 
+The car is pointed west on the eastbound side of the road. The windshield is cracked and the car appears to have been involved in a collision
+  """,
   "", 
   [],
   [PEOPLE["BUTCH_ATWOOD"], PEOPLE["FAITH_WESTMAN"]]
