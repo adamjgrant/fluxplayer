@@ -60,6 +60,15 @@ Butch Atwood was driving a school bus when he saw Maura Murray's car crashed int
 He pulled over and asked her if she needed help. She said no and that she already called AAA for roadside assistance.
 He knew that was a lie because there was no cell service in that area. He offered to call the police for her but she said no.
 He went home and called the police anyway. Butch claims she didn't look intoxicated nor injured.
+  """),
+  "FAITH WESTMAN": Person("Faith Westman", "Neighbor who saw Maura Murray", """
+Faith Westman was at home when she saw Maura Murray's car crashed into a snowbank. She left the office that night around 10 past 7.
+When she passed by the Saturn on the side of the road, it was facing the opposite direction and there was a police SUV with
+the number '001' on the side of it. It was parked
+nose-to-nose with the Saturn. She didn't see any people at all. Her cell phone wasn't working and it didn't look like an accident to her
+so she carried on. When she later reached Beaver pond, she made a personal call which Mike can corroborate with phone records.
+Mike can also use this information to show that her arrival was several minutes before the police arrived. Faith doesn't totally trust
+the police.
   """)
 }
 
@@ -173,7 +182,7 @@ UMASS_DEFINITION = TranscriptState(
 CRIME_SCENE_DEFINITION = TranscriptState(
   "", 
   [],
-  [PEOPLE["BUTCH_ATWOOD"]]
+  [PEOPLE["BUTCH_ATWOOD"], PEOPLE["FAITH_WESTMAN"]]
 )
 
 UMASS_1_DEFINITION = UMASS_DEFINITION.set_events(
