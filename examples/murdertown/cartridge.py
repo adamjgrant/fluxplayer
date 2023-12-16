@@ -42,11 +42,11 @@ class Person():
 
     def overview(self):
         return f"""
-          Name: {self.name}
-          Background: {self.description}.
-          This is the information that {self.name} has and will provide only if asked a question that would reveal it:
+Name: {self.name}
+Background: {self.bio}.
+This is the information that {self.name} has and will provide only if asked a question that would reveal it:
 
-          {self.information}\n\n
+{self.information}\n\n
         """
 
 PEOPLE = {
@@ -66,17 +66,18 @@ class TranscriptState:
         return self
 
     def dict(self):
+        overviews = list(map(lambda person: person.overview(), self.people)) 
         return {
             "prompt": f"""
-              All messages you send back to the user must be written in the style of a transcript where a person's name
-              appears before everything spoken, and there is no outside narration. 
+All messages you send back to the user must be written in the style of a transcript where a person's name
+appears before everything spoken, and there is no outside narration. 
 
-              e.g. '**Mike Crenshaw**: If there's anyone who knows about that it would be...'
+e.g. '**Mike Crenshaw**: If there's anyone who knows about that it would be...'
 
-              {self.prompt}
+{self.prompt}
 
-              Let the user know the following people are available for questioning:
-              {map(lambda person: person.overview(), self.people)}
+Let the user know the following people are available for questioning:
+{"".join(overviews)}
             """,
             "events": self.events
         }
@@ -131,11 +132,11 @@ cartridge = {
     """,
     "events": [
       {
-        "target": "UMASS",
+        "target": "UMASS_1",
         "if_the_user": "chooses to go to University of Massachusettes to discuss the communication"
       },
       {
-        "target": "CRIME_SCENE",
+        "target": "CRIME_SCENE_2",
         "if_the_user": "chooses to go to New Hampshire to see the abandoned vehicle"
       }
     ]
