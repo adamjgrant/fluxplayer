@@ -50,9 +50,17 @@ This is the information that {self.name} has and will provide only if asked a qu
         """
 
 PEOPLE = {
-  "ANONYMOUS_PROF": Person("Anonymous professor at U Mass", "Received messages from Maura Murray", ""),
-  "BUTCH_ATWOOD": Person("Butch Atwood", "Bus driver who saw Maura Murray", ""),
-  "LINDA_SALAMON": Person("Linda Salamon", "Neighbor of Maura Murray", "")
+  "ANONYMOUS_PROF": Person("Anonymous professor at U Mass", "Received messages from Maura Murray", """
+The professor received an email from Maura Murray's account that said she would be gone for a week due to a death in the family.
+He later learned that there was no death in the family and that Maura Murray was missing.
+Other than this information this professor only says that Maura Murray was a good student and would be surprised if she ran away.
+  """),
+  "BUTCH_ATWOOD": Person("Butch Atwood", "Bus driver who saw Maura Murray", """
+Butch Atwood was driving a school bus when he saw Maura Murray's car crashed into a snowbank.
+He pulled over and asked her if she needed help. She said no and that she already called AAA for roadside assistance.
+He knew that was a lie because there was no cell service in that area. He offered to call the police for her but she said no.
+He went home and called the police anyway.
+  """)
 }
 
 class TranscriptState:
@@ -150,15 +158,15 @@ UMASS_DEFINITION = TranscriptState(
   [PEOPLE["ANONYMOUS_PROF"]]
 )
 
-UMASS_1_DEFINITION = UMASS_DEFINITION.set_events(
-  [{ "target": "CRIME_SCENE_1", "if_the_user": "agrees to go to New Hampshire to see the crime scene" }]
-).dict()
-
 CRIME_SCENE_DEFINITION = TranscriptState(
   "", 
   [],
-  [PEOPLE["BUTCH_ATWOOD"], PEOPLE["LINDA_SALAMON"]]
+  [PEOPLE["BUTCH_ATWOOD"]]
 )
+
+UMASS_1_DEFINITION = UMASS_DEFINITION.set_events(
+  [{ "target": "CRIME_SCENE_1", "if_the_user": "agrees to go to New Hampshire to see the crime scene" }]
+).dict()
 
 CRIME_SCENE_2_DEFINITION = CRIME_SCENE_DEFINITION.set_events(
   [{ "target": "UMASS_2", "if_the_user": "agrees to go to U Mass to talk to about communications" }]
