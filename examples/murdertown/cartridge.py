@@ -5,8 +5,14 @@ def merge_states(states=[]):
   return merged_state_object
 
 class BackForwardState():
-    def __init__(self, previous_state):
-      return
+    def __init__(self, previous_state="", go_back_if_the_user="asks to go back" prompt=""):
+      self.events = [ { "target": previous_state, "if_the_user": go_back_if_the_user } ]
+
+    def dict(self):
+      return {
+        "prompt": self.prompt,
+        "events": self.events
+      }
 
 class CherryPicker(BackForwardState):
     def __init__(self, previous_state, states_to_pick=[]):
