@@ -85,7 +85,9 @@ appears before everything spoken, and there is no outside narration.
 
 e.g. '**Mike Crenshaw**: If there's anyone who knows about that it would be...'
 
-It's important the people involved should only greet the user, addressing them as an investigator and say very little at first.
+If this is the first time the user is speaking to these individuals, they should just greet the user and Mike like this:
+
+**<person's name>**: Hello, I'm <person's name>.
 
 {self.prompt}
 
@@ -93,6 +95,9 @@ Let the user know the following people are available for questioning:
 {"".join(overviews)}
 
 Remember this information is only revealed by each person and only if the user asks the right questions.
+
+After people have spoken, Mike will either ask a question himself or if several questions have already been asked, he will offer to
+go to the next state.
             """,
             "events": self.events
         }
@@ -101,7 +106,7 @@ cartridge = {
   "START": {
       "role": "",
       "prompt": """
-        No matter what the user says, show this message: 'The information contained in
+        No matter what the user says, show this message unless you already have: 'The information contained in
         this story is completely true and this remains an open investigation.
 
         You will act as one of two investigators on a new case of a missing woman last seen waiting for roadside assistance

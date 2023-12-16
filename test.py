@@ -217,3 +217,29 @@ class TestAdvancedFunctions(unittest.TestCase):
 
     new_prompt = new_prompt[:51]
     self.assertEqual(new_prompt, "\nYour new prompt is:\n\n---\n\nThe value of foo is fizz")
+
+  def test_dot_self(self):
+    flux = Flux()
+
+    cartridge = {
+      'START': {
+        'role': '',
+        'prompt': 'Starting prompt',
+        'events': [ 
+          { "if_the_user": "says 'foo'", "target": "DOTHING" },
+          { "if_the_user": "says 'bar'", "target": ".SELF" }
+        ]
+      },
+      'DOTHING': {
+        'prompt': "Dothing prompt",
+        'events': [ { "if_the_user": "says 'foo'", "target": "DOTHING"} ],
+      }
+    }
+
+    state = "START"
+    method = ".SELF" 
+
+    new_prompt = flux.call_method_on_state(cartridge, state, method)
+
+    new_prompt = new_prompt[:51]
+    self.assertEqual(new_prompt, "\nYour new prompt is:\n\n---\n\nStarting prompt")
