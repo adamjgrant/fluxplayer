@@ -28,7 +28,7 @@ class CherryPicker(BackForwardState):
 
 class Map(CherryPicker):
     def __init__(self, previous_state, map_key, go_back_if_the_user="", prompt="", events_to_pick=[]):
-      super().__init__("MAP", previous_state, go_back_if_the_user, prompt, events_to_pick)
+      super().__init__("MAP", previous_state, "asks to go back to the map", prompt, events_to_pick)
       self.prompt = f"""
 {prompt}
 
@@ -296,7 +296,7 @@ A data lab in the FBI New Hampshire office. Briefing room with computer equipmen
   """,
   """
   """,
-  [],
+  [{ "target": "MAP_DATA_LAB", "if_the_user": "agrees to go to the map" }],
   [PEOPLE["ANONYMOUS_POLICE_DATA_ANALYST"]]
 ).dict()
 
