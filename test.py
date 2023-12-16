@@ -241,5 +241,5 @@ class TestAdvancedFunctions(unittest.TestCase):
 
     new_prompt = flux.call_method_on_state(cartridge, state, method)
 
-    new_prompt = new_prompt[:42]
-    self.assertEqual(new_prompt, "\nYour new prompt is:\n\n---\n\nStarting prompt")
+    new_prompt = new_prompt[685:722]
+    self.assertEqual(new_prompt, "# Your new prompt is\n\nStarting prompt")

@@ -2,18 +2,10 @@
 # -*- coding: utf-8 -*-
 role = None
 prompt_introduction = """%s
-Your new prompt is:
-
----
-
-%s%s
-
----
-
 # Responding to the user
 
 No matter what the user says, **do not respond**. You **must first run a command** to get your new prompt based on the user's response.
-
+%s
 """
 prompt_template = """Choose the best fitting event from the list below.
 Only use one listed. Do not make up a new one:
@@ -29,6 +21,11 @@ Run the command similarly to how you did before and include the state and event 
 For example
 
 `%s`
+
+# Your new prompt is
+
+%s
+
 """
 
   
@@ -62,8 +59,8 @@ def format_prompt(cartridge, state, data=None, first_run=False, correction=False
     command_template = "<path to flux> -c=<optional path to cartridge file> -s=%s -t=<target_state>%s"%(state, data_clause)
     command_example = "/mnt/data/flux -c=/mnt/data/cartridge.yaml -s=%s -t=%s%s"%(state, events[0]["target"], data_clause)
 
-    first_part = prompt_introduction%(role, first_run_text, prompt)
-    last_part = prompt_template%(formatted_events, command_template, command_example)
+    first_part = prompt_introduction%(role, first_run_text)
+    last_part = prompt_template%(formatted_events, command_template, command_example, prompt)
 
     if correction:
       return last_part
