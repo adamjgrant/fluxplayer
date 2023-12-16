@@ -27,8 +27,13 @@ class CherryPicker(BackForwardState):
       self.events = self.events + events_to_pick
 
 class Map(CherryPicker):
-    def __init__(self, previous_state, go_back_if_the_user="", prompt="", events_to_pick=[]):
+    def __init__(self, previous_state, map_key, go_back_if_the_user="", prompt="", events_to_pick=[]):
       super().__init__("MAP", previous_state, go_back_if_the_user, prompt, events_to_pick)
+      self.prompt = f"""
+{prompt}
+
+Remember to show the user this map ![map](https://cdn.everything.io/chatgpt/maura/{map_key}.png)
+      """
 
 class EvidenceLocker(CherryPicker):
     def __init__(self, previous_state, go_back_if_the_user="", prompt="", events_to_pick=[]):
@@ -101,6 +106,23 @@ was very upset about Maura going missing.
 On a separate occasion when Maura wrecked his car, he claims he was upset but told her 'It's gonna be alright, it's not the worst thing in the world'
 He 'knows' she wouldn't have committed suicide.
 """),
+  "ANONYMOUS_POLICE_DATA_ANALYST": Person("Anonymous Police Data Analyst", "Data analyst working for the FBI", """
+The analyst has gathered evidence from security camera footage and Maura's personal computer.
+The first reported contact Murray had with anyone on February 9, the day of her disappearance, was at 1:00 pm, when she emailed her boyfriend: "I love you more stud. I got your messages, 
+but honestly, I didn't feel like talking too much of anyone, I promise to call today though. Love you, Maura" She also made a phone call inquiring about 
+renting a condominium at the same Bartlett, New Hampshire, condo association with which her family had vacationed in the past. Telephone records indicate 
+the call lasted three minutes. At 1:13 pm, Murray called a fellow nursing student for reasons unknown.
+On the afternoon of Monday, February 9, at 1:24 pm, Murray emailed a work supervisor of the nursing school faculty that she would be out of town for a week due to a death in her family.
+She sent a similar email to her professor at the University of Massachusettes at the same time and after sending in her homework early.
+Murray used her personal computer to search MapQuest for directions to the Berkshires and Burlington, Vermont.
+At 2:05 pm, Murray called a number which provides recorded information about booking hotels in Stowe, Vermont. The call lasted approximately five minutes. 
+At 2:18 pm, she telephoned her boyfriend and left a voice message promising him they would talk later. This call ended after one minute.
+At 3:15 PM, there is security camera footage of Maura visiting a local ATM withdrawing $280 which is nearly all of the money she has in the account.
+The footage shows she's alone when she arrives and leaves.
+Shortly after, there is footage at a nearby liquor store where she purchases $40 of alcohol including Baileys Irish Cream, Kahlúa, vodka, and a box of Franzia wine. She also appears alone.
+She called to check her voicemail at 4:37 pm, the last recorded use of her cell phone.
+  """
+  ),
 }
 
 class TranscriptState:
@@ -245,10 +267,11 @@ UMASS_2_DEFINITION = UMASS_DEFINITION.set_events(
 ).dict()
 
 INTRO_TO_MAP_DEFINITION = TranscriptState(
+  "At the same scene, with Mike's map folded out showing key locations",
   """
 Mike will show this image to the user:
 
-![map](https://cdn.everything.io/chatgpt/maura/map_map1_umass_accident.png)
+![map](https://cdn.everything.io/chatgpt/maura/map_map2_fbi_data_lab.png)
 
 And let them know from now on they can always ask to review the map to visit another location
 to review evidence or talk to someone. All they have to do is ask.
@@ -260,10 +283,21 @@ The user's choice now is to go to one of the places on the map or to visit the d
 they have pieced together some events leading up to her disappearance.
   """,
   [
-    { "target": "DATA_LAB", "if_the_user": "decides to go to the data lab'" }
-
+    { "target": "DATA_LAB", "if_the_user": "decides to go to the data lab'" },
+    { "target": "CRIME_SCENE_START", "if_the_user": "decides to go back to the scene of the wrecked saturn'" },
+    { "target": "UMASS_START", "if_the_user": "decides to go back to U Mass'" }
   ],
   []
+).dict()
+
+DATA_LAB_DEFINITION = TranscriptState(
+  """
+A data lab in the FBI New Hampshire office. Briefing room with computer equipment and a large television screen.
+  """,
+  """
+  """,
+  [],
+  [PEOPLE["ANONYMOUS_POLICE_DATA_ANALYST"]]
 ).dict()
 
 cartridge = {
@@ -273,5 +307,10 @@ cartridge = {
   "CRIME_SCENE_2": CRIME_SCENE_2_DEFINITION,
   "UMASS_2": UMASS_2_DEFINITION,
   "INTRO_TO_MAP": INTRO_TO_MAP_DEFINITION,
-  "DATA_LAB": {}
+  "DATA_LAB": DATA_LAB_DEFINITION,
+  "CRIME_SCENE_START": {},
+  "UMASS_START": {},
+  **Map("DATA_LAB", "map_map2_fbi_data_lab").key_dict(),
+  **Map("CRIME_SCENE_START", "map_map2_fbi_data_lab").key_dict(),
+  **Map("UMASS_START", "map_map2_fbi_data_lab").key_dict(),
 }
