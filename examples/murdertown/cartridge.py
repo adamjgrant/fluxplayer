@@ -180,14 +180,18 @@ UMASS_1_DEFINITION = UMASS_DEFINITION.set_events(
   [{ "target": "CRIME_SCENE_1", "if_the_user": "agrees to go to New Hampshire to see the crime scene" }]
 ).dict()
 
+CRIME_SCENE_1_DEFINITION = CRIME_SCENE_DEFINITION.set_events([]).dict()
+
 CRIME_SCENE_2_DEFINITION = CRIME_SCENE_DEFINITION.set_events(
   [{ "target": "UMASS_2", "if_the_user": "agrees to go to U Mass to talk to about communications" }]
 ).dict()
 
+UMASS_2_DEFINITION = UMASS_DEFINITION.set_events([]).dict()
+
 cartridge = {
   **cartridge,
   "UMASS_1": UMASS_1_DEFINITION,
-  "CRIME_SCENE_1": {},
+  "CRIME_SCENE_1": CRIME_SCENE_1_DEFINITION,
   "CRIME_SCENE_2": CRIME_SCENE_2_DEFINITION,
-  "UMASS_2": {},
+  "UMASS_2": UMASS_2_DEFINITION
 }
