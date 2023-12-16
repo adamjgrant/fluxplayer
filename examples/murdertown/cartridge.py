@@ -59,7 +59,7 @@ Other than this information this professor only says that Maura Murray was a goo
 Butch Atwood was driving a school bus when he saw Maura Murray's car crashed into a snowbank.
 He pulled over and asked her if she needed help. She said no and that she already called AAA for roadside assistance.
 He knew that was a lie because there was no cell service in that area. He offered to call the police for her but she said no.
-He went home and called the police anyway.
+He went home and called the police anyway. Butch claims she didn't look intoxicated nor injured.
   """)
 }
 
@@ -129,7 +129,7 @@ cartridge = {
           "if_the_user": "says yes or otherwise agrees to meet their fellow investigator"
         },
         {
-          "target": "START",
+          "target": ".SELF",
           "if_the_user": "Indicates they are not ready to proceed."
         }
       ]
