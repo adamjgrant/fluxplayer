@@ -243,3 +243,29 @@ class TestAdvancedFunctions(unittest.TestCase):
 
     new_prompt = new_prompt[685:722]
     self.assertEqual(new_prompt, "# Your new prompt is\n\nStarting prompt")
+
+  def test_long_prompt_reminds(self):
+    flux = Flux()
+
+    VERY_LONG_TEXT = "A" * 2001
+
+    cartridge = {
+      'START': {
+        'role': '',
+        'prompt': VERY_LONG_TEXT,
+        'events': [ { "if_the_user": "says 'foo'", "target": "DOTHING"} ]
+      },
+      'DOTHING': {
+        'prompt': VERY_LONG_TEXT,
+        'events': [ { "if_the_user": "says 'foo'", "target": "DOTHING"} ],
+      }
+    }
+
+    state = "START"
+    method = "DOTHING" 
+
+    new_prompt = flux.call_method_on_state(cartridge, state, method)
+
+    new_prompt = new_prompt[672:718]
+    print(new_prompt)
+    self.assertEqual(new_prompt, "- If the user says 'foo', set the target state")
