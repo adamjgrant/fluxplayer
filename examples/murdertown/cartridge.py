@@ -1,3 +1,5 @@
+import copy
+
 def merge_states(states=[]):
   merged_state_object = {}
   for obj in states:
@@ -35,24 +37,33 @@ class EvidenceLocker(CherryPicker):
 class Person():
     def __init__(self, name, bio, information):
         self.name = name
-        self.description = description
+        self.bio = bio 
         self.information = information
 
     def overview(self):
         return f"""
           Name: {self.name}
           Background: {self.description}.
-          Here's what you need to know about {self.name}:
+          This is the information that {self.name} has and will provide only if asked a question that would reveal it:
 
-          {self.information}
+          {self.information}\n\n
         """
 
-PEOPLE = [
-]
+PEOPLE = {
+  "ANONYMOUS_PROF": Person("Anonymous professor at U Mass", "Received messages from Maura Murray", ""),
+  "BUTCH_ATWOOD": Person("Butch Atwood", "Bus driver who saw Maura Murray", ""),
+  "LINDA_SALAMON": Person("Linda Salamon", "Neighbor of Maura Murray", "")
+}
 
-class RegularState():
-    def init(self, prompt):
+class TranscriptState:
+    def __init__(self, prompt, events=[], people=[]):
         self.prompt = prompt
+        self.events = events
+        self.people = people
+
+    def set_events(self, events):
+        self.events = events
+        return self
 
     def dict(self):
         return {
@@ -63,8 +74,11 @@ class RegularState():
               e.g. '**Mike Crenshaw**: If there's anyone who knows about that it would be...'
 
               {self.prompt}
+
+              Let the user know the following people are available for questioning:
+              {map(lambda person: person.overview(), self.people)}
             """,
-            "events": []
+            "events": self.events
         }
 
 cartridge = {
@@ -108,37 +122,51 @@ cartridge = {
 
           As Mike, introduce yourself to the user and let them know their job will be to extract information by asking questions. 
           Let the user know that as Mike, your job will be to help them on how to move through the town, where you can go, 
-          and whom you can talk to. Lastly, ask them if they're ready to go to the map room where you'll discuss the details
-          of this case and decide on where to finally go out into the town to investigate.
+          and whom you can talk to. Lastly, ask them if they want to go to the University of Massachusettes to discuss
+          unusual communication with someone believed to be missing or to New Hampshire where an abandoned vehicle was found.
+
+          Write this in a creative style the way an investigator would talk to a new partner but do not add any information
+          that is not present here. If the user asks you for more information, tell them you are just starting to learn this too
+          and don't have any more information to give them yet.
     """,
     "events": [
       {
-        "target": "GO_TO_MAP_ROOM",
-        "if_the_user": "agrees to go to map room or says they're ready"
+        "target": "UMASS",
+        "if_the_user": "chooses to go to University of Massachusettes to discuss the communication"
+      },
+      {
+        "target": "CRIME_SCENE",
+        "if_the_user": "chooses to go to New Hampshire to see the abandoned vehicle"
       }
-    ]
-  },
-  "MAP": {
-    "prompt": "",
-    "events": [
-        {
-            "target": "NORTH_SIDE",
-            "if_the_user": ""
-        },
-        {
-            "target": "EAST_SIDE",
-            "if_the_user": ""
-        },
-        {
-            "target": "WEST_SIDE",
-            "if_the_user": ""
-        },
-        {
-            "target": "SOUTH_SIDE",
-            "if_the_user": ""
-        }
     ]
   }
 }
 
-cartridge = {**cartridge}
+# A/B B/A Criss-cross
+UMASS_DEFINITION = TranscriptState(
+  "", 
+  [],
+  [PEOPLE["ANONYMOUS_PROF"]]
+)
+
+UMASS_1_DEFINITION = UMASS_DEFINITION.set_events(
+  [{ "target": "CRIME_SCENE_1", "if_the_user": "agrees to go to New Hampshire to see the crime scene" }]
+).dict()
+
+CRIME_SCENE_DEFINITION = TranscriptState(
+  "", 
+  [],
+  [PEOPLE["BUTCH_ATWOOD"], PEOPLE["LINDA_SALAMON"]]
+)
+
+CRIME_SCENE_2_DEFINITION = CRIME_SCENE_DEFINITION.set_events(
+  [{ "target": "UMASS_2", "if_the_user": "agrees to go to U Mass to talk to about communications" }]
+).dict()
+
+cartridge = {
+  **cartridge,
+  "UMASS_1": UMASS_1_DEFINITION,
+  "CRIME_SCENE_1": {},
+  "CRIME_SCENE_2": CRIME_SCENE_2_DEFINITION,
+  "UMASS_2": {},
+}
