@@ -5,19 +5,20 @@ def merge_states(states=[]):
   return merged_state_object
 
 class BackForwardState():
-  def __init__(self, previous_state):
+    def __init__(self, previous_state):
+      return
 
 class CherryPicker(BackForwardState):
-  def __init__(self, previous_state, states_to_pick=[]):
-    super().__init__(previous_state)
+    def __init__(self, previous_state, states_to_pick=[]):
+      super().__init__(previous_state)
 
 class Map(CherryPicker):
-  def __init__(self, previous_state, states_to_pick=[]):
-    super().__init__(previous_state, states_to_pick)
+    def __init__(self, previous_state, states_to_pick=[]):
+      super().__init__(previous_state, states_to_pick)
 
 class EvidenceLocker(CherryPicker):
-  def __init__(self, previous_state, states_to_pick=[]):
-    super().__init__(previous_state, states_to_pick)
+    def __init__(self, previous_state, states_to_pick=[]):
+      super().__init__(previous_state, states_to_pick)
 
 class Conversation():
     def __init__(self, namespace):
@@ -111,5 +112,3 @@ cartridge = {
 }
 
 cartridge = {**cartridge, **(Conversation("foo").dict())}
-
-print(cartridge)
