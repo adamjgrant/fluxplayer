@@ -13,7 +13,7 @@ class BackForwardState():
       self.name = name
       self.previous_state = previous_state
 
-    def dict(self):
+    def key_dict(self):
       return {
         f"{self.name}_{self.previous_state}": {
           "prompt": self.prompt,
@@ -145,22 +145,22 @@ cartridge = {
   "START": {
       "role": "",
       "prompt": """
-        No matter what the user says, show this message unless you already have: 'The information contained in
-        this story is completely true and this remains an open investigation.
+No matter what the user says, show this message unless you already have: 'The information contained in
+this story is completely true and this remains an open investigation.
 
-        You will act as one of two investigators on a new case of a missing woman last seen waiting for roadside assistance
-        after hitting a guardrail on a one lane road.
+You will act as one of two investigators on a new case of a missing woman last seen waiting for roadside assistance
+after hitting a guardrail on a one lane road.
 
-        With your partner, you will gather evidence by looking at the crime scene
-        and talking to the real life people (witnesses, accused, family) involved in these events.
+With your partner, you will gather evidence by looking at the crime scene
+and talking to the real life people (witnesses, accused, family) involved in these events.
 
-        Anyone with information about Maura Murray is asked to call the New Hampshire Cold Case Unit at (603) 223-3648 
-        or email them at Coldcaseunit@dos.nh.gov.
+Anyone with information about Maura Murray is asked to call the New Hampshire Cold Case Unit at (603) 223-3648 
+or email them at Coldcaseunit@dos.nh.gov.
 
-        Ready to meet your fellow investigator and learn more about this case?'
+Ready to meet your fellow investigator and learn more about this case?'
 
-        If the user doesn't agree to meet the investigator you can let them know that their questions will be answered later.
-        then ask them again if they're ready.
+If the user doesn't agree to meet the investigator you can let them know that their questions will be answered later.
+then ask them again if they're ready.
       """,
       "events": [
         {
@@ -219,13 +219,17 @@ UMASS_1_DEFINITION = UMASS_DEFINITION.set_events(
   [{ "target": "CRIME_SCENE_1", "if_the_user": "agrees to go to New Hampshire to see the crime scene" }]
 ).dict()
 
-CRIME_SCENE_1_DEFINITION = CRIME_SCENE_DEFINITION.set_events([]).dict()
+CRIME_SCENE_1_DEFINITION = CRIME_SCENE_DEFINITION.set_events(
+  [{ "target": "INTRO_TO_MAP", "if_the_user": "agrees or asks to continue" }]
+).dict()
 
 CRIME_SCENE_2_DEFINITION = CRIME_SCENE_DEFINITION.set_events(
   [{ "target": "UMASS_2", "if_the_user": "agrees to go to U Mass to talk to about communications" }]
 ).dict()
 
-UMASS_2_DEFINITION = UMASS_DEFINITION.set_events([]).dict()
+UMASS_2_DEFINITION = UMASS_DEFINITION.set_events(
+  [{ "target": "INTRO_TO_MAP", "if_the_user": "agrees or asks to continue" }]
+).dict()
 
 INTRO_TO_MAP_DEFINITION = TranscriptState(
   """
@@ -242,7 +246,8 @@ and gather more information.
 The user's choice now is to go to one of the places on the map or to visit the data lab where
 they collected some information from Maura's personal computer.
   """,
-  [ ]
+  [],
+  []
 ).dict()
 
 cartridge = {
@@ -251,5 +256,5 @@ cartridge = {
   "CRIME_SCENE_1": CRIME_SCENE_1_DEFINITION,
   "CRIME_SCENE_2": CRIME_SCENE_2_DEFINITION,
   "UMASS_2": UMASS_2_DEFINITION,
-  "INTRO_TO_MAP": INTRO_TO_MAP_DEFINITION,
+  "INTRO_TO_MAP": INTRO_TO_MAP_DEFINITION
 }

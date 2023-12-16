@@ -17,7 +17,7 @@ class TestMerge(unittest.TestCase):
             {"target": "b", "if_the_user": "says b"}
         ])
 
-        state_definition = cherrypicker.dict()
+        state_definition = cherrypicker.key_dict()
         # Check that state_definition has the key mycherrypicker_previous_state
         self.assertTrue("mycherrypicker_previous_state" in state_definition)
         rest_of_definition = state_definition["mycherrypicker_previous_state"]
