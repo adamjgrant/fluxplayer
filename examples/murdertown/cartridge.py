@@ -58,16 +58,16 @@ class Evidence:
     self.presentation = f"{presentation}\n"
   
 class ImageEvidence(Evidence):
-  def __init__(self, url, description)
+  def __init__(self, url, description):
     self.presentation = f"""
       ![]({url})
       _{description}_
     """
 
 EVIDENCE = {
-  BUTCH_INTERVIEWED: ImageEvidence("https://i.redd.it/93a45ibm68tz.png", "Butch Atwood being interviewed by a local TV station").presentation,
-  MAURA_MISSING_POSTER: ImageEvidence("https://allthatsinteresting.com/wordpress/wp-content/uploads/2018/05/maura-murray-missing-poster.png", "Missing Poster for Maura Murray").presentation,
-  MAURA_AT_ATM: ImageEvidence("https://allthatsinteresting.com/wordpress/wp-content/uploads/2018/05/maura-murray-last-sighting.jpg", "February 9, 2004: Maura Murray at ATM seemingly alone withdrawing $280 before visiting liquor store").presentation
+  "BUTCH_INTERVIEWED": ImageEvidence("https://i.redd.it/93a45ibm68tz.png", "Butch Atwood being interviewed by a local TV station").presentation,
+  "MAURA_MISSING_POSTER": ImageEvidence("https://allthatsinteresting.com/wordpress/wp-content/uploads/2018/05/maura-murray-missing-poster.png", "Missing Poster for Maura Murray").presentation,
+  "MAURA_AT_ATM": ImageEvidence("https://allthatsinteresting.com/wordpress/wp-content/uploads/2018/05/maura-murray-last-sighting.jpg", "February 9, 2004: Maura Murray at ATM seemingly alone withdrawing $280 before visiting liquor store").presentation
 }
 
 PEOPLE = {
@@ -158,6 +158,7 @@ class TranscriptState:
 
     def dict(self):
         overviews = list(map(lambda person: person.overview(), self.people)) 
+        names = list(map(lambda person: person.name, self.people))
         return {
             "prompt": f"""
 All messages you send back to the user must be written in the style of a transcript where a person's name
@@ -177,7 +178,7 @@ If you haven't already, briefly narrate the setting with some creative flair on 
 {self.prompt}
 
 { "Let the user know the following people are available for questioning:" if len(self.people) > 0 else ""}
-{", ".join(name)}
+{", ".join(names)}
 
 {"".join(overviews)}
 
