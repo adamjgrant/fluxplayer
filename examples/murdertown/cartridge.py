@@ -64,7 +64,7 @@ Other than this information this professor only says that Maura Murray was a goo
 Butch Atwood was driving a school bus when he saw Maura Murray's car crashed into a snowbank.
 He pulled over and asked her if she needed help. She said no and that she already called AAA for roadside assistance.
 He knew that was a lie because there was no cell service in that area. He offered to call the police for her but she said no.
-He went home and called the police anyway. Butch claims she didn't look intoxicated nor injured.
+He went home and called the police anyway. while he didn't have eyes on Maura or tue car while he called, he did notice several cars pass by. Butch claims she didn't look intoxicated nor injured but was cold and shivering. You can share [this link](https://youtu.be/OfrIJQ5xgJE) to an interview with Atwood
   """),
   "FAITH_WESTMAN": Person("Faith Westman", "Neighbor who saw Maura Murray", """
 Faith Westman was at home when she saw Maura Murray's car crashed into a snowbank. She left the office that night around 10 past 7.
