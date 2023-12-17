@@ -73,3 +73,55 @@ def format_prompt(cartridge, state, data=None, first_run=False, correction=False
       combined_prompt = "%s\n\n%s"%(combined_prompt, last_part)
 
     return combined_prompt
+
+class Prompt:
+    def __init__(self, cartridge, state, data=None, first_run=False):
+      self.cartridge = cartridge
+      self.state = state
+      self.data = data
+      self.first_run = first_run
+
+      # Prompt Anatomy
+      #
+      #
+      # # Rules
+      # [1. Warning that the machine should not respond but run a command with command examples.]
+      # 
+      # # New prompt
+      #
+      # ---
+      #
+      # **Role**: [2. Optional role]
+      # [3. The new prompt it should follow starting with showing the flux intro if this is the first run]
+      #
+      # ---
+      #
+      # [# Reminder of Rules (Show this heading again if the prompt is very long)]
+      #
+      # [4. Second Warning that the machine should not respond but run a command with command examples if the prompt is very long.]
+
+    def is_long_prompt(self):
+      return False
+      # TODO
+
+    def script_components(self):
+      # TODO
+      TAB = " " * 4
+      return [
+        "# Rules",
+        "",
+        "# New prompt",
+        "---",
+        f"{TAB}**Role**: %s",
+        f"{TAB}",
+        "---"
+        "# Reminder of Rules",
+        "",
+      ]
+
+    def output(self):
+      components = self.script_components()
+      components = list(filter(None, components))
+      components = "\n\n".join(components)
+      return components
+
