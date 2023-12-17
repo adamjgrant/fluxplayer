@@ -393,7 +393,7 @@ elb1_presentations = ""
 for evidence in BOX_1_INITIAL_STATE.evidence:
       elb1_presentations = f"{elb1_presentations}## {evidence.description}\n\n{evidence.presentation}\n\n"
 
-INTRO_TO_EVIDENCE_LOCKER_ELB1 = BackForwardState(
+ELB1_INTRO_TO_EVIDENCE_LOCKER = BackForwardState(
   name="ELB1",
   previous_state="INTRO_TO_EVIDENCE_LOCKER",
   prompt=f"""
@@ -407,7 +407,7 @@ INTRO_TO_EVIDENCE_LOCKER_ELB1 = BackForwardState(
     { elb1_presentations }
   """
 )
-INTRO_TO_EVIDENCE_LOCKER_ELB1.add_events([
+ELB1_INTRO_TO_EVIDENCE_LOCKER.add_events([
   { 
     "target": Map("INTRO_TO_EVIDENCE_LOCKER", "map_map2_fbi_data_lab").state_name, 
     "if_the_user": "asks_to_see_the_map" 
@@ -448,7 +448,7 @@ cartridge = {
   # Similar to the dummy non-reversible intro to map, this will also be a dummy
   # but those going forwards won't be.
   "INTRO_TO_EVIDENCE_LOCKER": INTRO_TO_EVIDENCE_LOCKER_DEFINITION,
-    **INTRO_TO_EVIDENCE_LOCKER_ELB1.key_dict(),
+    **ELB1_INTRO_TO_EVIDENCE_LOCKER.key_dict(),
     **Map("INTRO_TO_EVIDENCE_LOCKER", "map_map2_fbi_data_lab").key_dict(),
 
   # From this state, they can go to the next part of the narrative backbone
@@ -477,3 +477,7 @@ cartridge = {
 
   # Then, the A-frame. The final state where they can actually move freely to all nodes.
 }
+
+# Print out each key in the object
+# for key in cartridge:
+#  print(key)
