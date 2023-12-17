@@ -416,6 +416,79 @@ ELB1_INTRO_TO_EVIDENCE_LOCKER.add_events([
   }
 ])
 
+VISIT_FRED_DEFINITION = TranscriptState(
+  setting = "",
+  prompt = """
+  """,
+  events = [],
+  people = []
+).dict()
+
+SEARCH_FOR_MAURA_DEFINITION = TranscriptState(
+  setting = "",
+  prompt = """
+  """,
+  events = [],
+  people = []
+).dict()
+
+POLICE_PRECINCT_DEFINITION = TranscriptState(
+  setting = "",
+  prompt = """
+  """,
+  events = [],
+  people = []
+).dict()
+
+WORK_FRIEND_DEFINITION = TranscriptState(
+  setting = "",
+  prompt = """
+  """,
+  events = [],
+  people = []
+).dict()
+
+JULIE_MURRAY_DEFINITION = TranscriptState(
+  setting = "",
+  prompt = """
+  """,
+  events = [],
+  people = []
+).dict()
+
+
+MAURA_APARTMENT_DEFINITION = TranscriptState(
+  setting = "",
+  prompt = """
+  """,
+  events = [],
+  people = []
+).dict()
+
+RED_TRUCK_WITNESS_DEFINITION = TranscriptState(
+  setting = "",
+  prompt = """
+  """,
+  events = [],
+  people = []
+).dict()
+
+FRED_MURRAY_WITH_KNIFE_DEFINITION = TranscriptState(
+  setting = "",
+  prompt = """
+  """,
+  events = [],
+  people = []
+).dict()
+
+A_FRAME_DEFINITION = TranscriptState(
+  setting = "",
+  prompt = """
+  """,
+  events = [],
+  people = []
+).dict()
+
 cartridge = {
   # Introduction to story
   **cartridge,
@@ -455,38 +528,38 @@ cartridge = {
 
   # From this state, they can go to the next part of the narrative backbone
   # which is to advance the day to February 10th and visit Fred. 
-  "VISIT_FRED": {},
+  "VISIT_FRED": VISIT_FRED_DEFINITION,
 
   # Then, dawn the next day where a ground and air search begins. A dog search leads
   # Maura's scent 100 yards east until it stops. Here we also reveal the unaccounted hour of driving time.
-  # "SEARCH_FOR_MAURA": {},
+  "SEARCH_FOR_MAURA": SEARCH_FOR_MAURA_DEFINITION,
 
   # Then, a talk with a police officer who was involved in an arrest of Maura two
   # a few months earlier for Credit Card fraud.
-  # "POLICE_PRECINCT": {},
+  "POLICE_PRECINCT": POLICE_PRECINCT_DEFINITION,
 
   # Then, we'll talk to a work friend of hers visiting Fred's place who can both tell the story both of her going
   # car shopping, then borrowing dad's car, then going to the party and having to
   # get back in an inexplicable hurry. This can also cover the call from the sister since it happened
   # at work and this is a work friend.
-  # "WORK_FRIEND": {},
+  "WORK_FRIEND": WORK_FRIEND_DEFINITION,
 
   # Then, we go to Julie's place where we can cover the boyfriend Billy.
   # This can also bring up the strange voicemail Billy got
-  # "JULIE_MURRAY": {},
+  "JULIE_MURRAY": JULIE_MURRAY_DEFINITION,
 
   # Then, we go to Maura's apartment where there is the directions to Burlington VT and a book about
   # Hiking accidents
-  # "MAURA_APARTMENT": {},
+  "MAURA_APARTMENT": MAURA_APARTMENT_DEFINITION,
 
   # Then, the witness who saw the red truck at the general store.
-  # "RED_TRUCK_WITNESS": {},
+  "RED_TRUCK_WITNESS": RED_TRUCK_WITNESS_DEFINITION,
 
   # Then, we go back to Fred's where he has received the rusted stained knife.
-  # "FRED_MURRAY_WITH_KNIFE": {},
+  "FRED_MURRAY_WITH_KNIFE": FRED_MURRAY_WITH_KNIFE_DEFINITION,
 
   # Then, the A-frame. The final state where they can actually move freely to all nodes.
-  # "A_FRAME": {},
+  "A_FRAME": A_FRAME_DEFINITION
 }
 
 # Print out each key in the object
