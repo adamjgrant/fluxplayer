@@ -78,13 +78,23 @@ The professor later learned that there was no death in the family and that Maura
 Other than this information this professor only says that Maura Murray was a good student and would be surprised if she ran away.
   """),
   "BUTCH_ATWOOD": Person("Butch Atwood", "Bus driver who saw Maura Murray", """
-Butch Atwood was driving a school bus when he saw Maura Murray's car crashed into a snowbank.
+Butch Atwood was driving a school bus when he saw Maura Murray's car crashed into a snowbank. He lives just 100 yards away from the scene.
 He pulled over and asked her if she needed help. She said no and that she already called AAA for roadside assistance.
 He knew that was a lie because there was no cell service in that area. He offered to call the police for her but she said no.
 He went home and called the police anyway. while he didn't have eyes on Maura or tue car while he called, he did notice several cars pass by. Butch claims she didn't look intoxicated nor injured but was cold and shivering. You can share [this link](https://youtu.be/OfrIJQ5xgJE) to an interview with Atwood
   """),
+  "JOHN MAROTTE": Person("John Marotte", "Neighbor who saw activity around Maura's car", """
+With his wife Virginia, John saw someone walking around Maura's car and spending some time near the trunk. Other than that, they didn't
+witness anything else.
+  """),
   "FAITH_WESTMAN": Person("Faith Westman", "Neighbor who saw Maura Murray", """
-Faith Westman was at home when she saw Maura Murray's car crashed into a snowbank. She left the office that night around 10 past 7.
+Faith Westman was at home when Maura Murray's car crashed into a snowbank. Her house was the closest to the accident. She heard a loud 
+thud and saw a single-car accident.
+From her point of view, it looked like a car had gone over the curb on a hairpin turn and crashed into a snowbank.
+She told police she saw a man in the vehicle smoking a cigarette.
+  """),
+  "KAREN MCNAMARA": Person("Karen McNamara", "Neighbor who saw a car parked in front of Maura's", """
+She left the office that night around 10 past 7 and arrived at the scene around 7:37 pm.
 When she passed by the Saturn on the side of the road, it was facing the opposite direction and there was a police SUV with
 the number '001' on the side of it. It was parked
 nose-to-nose with the Saturn. She didn't see any people at all. Her cell phone didn't have reception in the area and it didn't look like an accident to her
@@ -104,6 +114,9 @@ Fred allegedly told Officer Smith flippantly that Maura might have just gotten d
 go off into the woods, you step off, and you die. This response shocked the officer. In another conversation with Maura's sister Kathleen,
 the sister told the officer that Maura probably got in a big fight with her boyfriend Fred, went off into the woods, took a bunch of sleeping
 pills and died.
+Later when EMS arrived, he joined Butch Atwood to search the area west around the accident. They don't find Maura or even foot prints.
+Inside the car, he finds an open coke bottle with red liquid in it. The liquid had a strong alcoholic odor. Some of Maura's personal belongings
+were scattered inside, but her cell phone, credit cards, and backpack are all gone.
   """),
   "JOHN_MONAGHAN": Person("John Monaghan", "Police officer who responded to the scene", """
 On the night of the disappearance, he got a call that Butch was reporting a car accident. He confined his search area to the area
@@ -266,7 +279,9 @@ CRIME_SCENE_DEFINITION = TranscriptState(
 Haverhill, New Hampshire. Morning at the scene of a black 1996 Saturn sedan up against the snowbank along Route 112, also known as Wild Ammonoosuc Road. 
 The car is pointed west on the eastbound side of the road. The windshield is cracked and the car appears to have been involved in a collision
   """,
-  "", 
+  """
+  """,
+  [],
   [],
   [PEOPLE["BUTCH_ATWOOD"], PEOPLE["FAITH_WESTMAN"], PEOPLE["CECIL_SMITH"], PEOPLE["JOHN_MONAGHAN"], PEOPLE["JEFF_WILLIAMS"]]
 )
@@ -365,9 +380,28 @@ cartridge = {
   # but those going forwards won't be.
 
   # From this state, they can go to the next part of the narrative backbone
-  # which is to... # TODO
+  # which is to advance the day to February 10th and visit Fred. 
 
-  # ...
+  # Then, dawn the next day where a ground and air search begins. A dog search leads
+  # Maura's scent 100 yards east until it stops. Here we also reveal the unaccounted hour of driving time.
 
-  # TODO The final state where they can actually move freely to all nodes.
+  # Then, a talk with a police officer who was involved in an arrest of Maura two
+  # a few months earlier for Credit Card fraud.
+
+  # Then, we'll talk to a work friend of hers visiting Fred's place who can both tell the story both of her going
+  # car shopping, then borrowing dad's car, then going to the party and having to
+  # get back in an inexplicable hurry. This can also cover the call from the sister since it happened
+  # at work and this is a work friend.
+
+  # Then, we go to Julie's place where we can cover the boyfriend Billy.
+  # This can also bring up the strange voicemail Billy got
+
+  # Then, we go to Maura's apartment where there is the directions to Burlington VT and a book about
+  # Hiking accidents
+
+  # Then, the witness who saw the red truck at the general store.
+
+  # Then, we go back to Fred's where he has received the rusted stained knife.
+
+  # Then, the A-frame. The final state where they can actually move freely to all nodes.
 }
