@@ -21,7 +21,8 @@ class BackForwardState():
 
     def key_dict(self):
       obj = {}
-      obj[self.state_name()] = {
+      state_name = self.state_name()
+      obj[state_name] = {
           "prompt": self.prompt,
           "events": self.events
         }
@@ -210,7 +211,7 @@ cartridge = {
       "prompt": f"""
 Show this message unless you already have: 
 
-'{EVIDENCE["MAURA_MISSING_POSTER"].presentation} The information we present to you is based on real events.
+"{EVIDENCE["MAURA_MISSING_POSTER"].presentation} The information we present to you is based on real events.
 The names of the people involved have not been changed. The events are based on the real life disappearance of Maura Murray in 2004.
 
 It is our hope that by presenting this information in a new way, we can help bring new attention to this case and help find Maura Murray.
@@ -225,7 +226,7 @@ unexplored areas.
 Anyone with information about Maura Murray is asked to call the New Hampshire Cold Case Unit at (603) 223-3648 
 or email them at Coldcaseunit@dos.nh.gov.
 
-Ready to meet your fellow investigator and learn more about this case?'
+Ready to meet your fellow investigator and learn more about this case?"
 
 If the user doesn't agree to meet the investigator you can let them know that their questions will be answered later.
 then ask them again if they're ready.
@@ -410,7 +411,7 @@ ELB1_INTRO_TO_EVIDENCE_LOCKER = BackForwardState(
 )
 ELB1_INTRO_TO_EVIDENCE_LOCKER.add_events([
   { 
-    "target": Map("INTRO_TO_EVIDENCE_LOCKER", "map_map2_fbi_data_lab").state_name, 
+    "target": Map("INTRO_TO_EVIDENCE_LOCKER", "map_map2_fbi_data_lab").state_name(), 
     "if_the_user": "asks_to_see_the_map" 
   }
 ])
@@ -450,7 +451,7 @@ cartridge = {
   # but those going forwards won't be.
   "INTRO_TO_EVIDENCE_LOCKER": INTRO_TO_EVIDENCE_LOCKER_DEFINITION,
     **ELB1_INTRO_TO_EVIDENCE_LOCKER.key_dict(),
-    **Map("INTRO_TO_EVIDENCE_LOCKER", "map_map2_fbi_data_lab").key_dict(),
+    **Map(previous_state="INTRO_TO_EVIDENCE_LOCKER", map_key="map_map2_fbi_data_lab", events_to_pick=[]).key_dict(),
 
   # From this state, they can go to the next part of the narrative backbone
   # which is to advance the day to February 10th and visit Fred. 
@@ -480,5 +481,10 @@ cartridge = {
 }
 
 # Print out each key in the object
-# for key in cartridge:
-#  print(key)
+debug = True
+if debug:
+  for key in cartridge:
+    print(key)
+    for event in cartridge[key]["events"]:
+      print(f"    {event['target']}")
+    print("\n")

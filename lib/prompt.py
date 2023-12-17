@@ -1,32 +1,5 @@
 #!/usr/local/bin/python
 # -*- coding: utf-8 -*-
-role = None
-prompt_introduction = """%s
-# Responding to the user
-
-No matter what the user says, **do not respond**. You **must first run a command** to get your new prompt based on the user's response.
-%s
-"""
-prompt_template = """Choose the best fitting event from the list below.
-Only use one listed. Do not make up a new one:
-
-%s
-
-# Running the command
-
-Run the command similarly to how you did before and include the state and event they chose in the following format:
-
-`%s`
-
-For example
-
-`%s`
-
-# Your new prompt is
-
-%s
-
-"""
 
 class Prompt:
     def __init__(self, cartridge, state, data=None, first_run=False, connection=False):
