@@ -208,8 +208,9 @@ cartridge = {
   "START": {
       "role": "",
       "prompt": f"""
-No matter what the user says, show this message unless you already have: '{EVIDENCE["MAURA_MISSING_POSTER"]}
-The information we present to you is based on real events.
+Show this message unless you already have: 
+
+'{EVIDENCE["MAURA_MISSING_POSTER"].presentation} The information we present to you is based on real events.
 The names of the people involved have not been changed. The events are based on the real life disappearance of Maura Murray in 2004.
 
 It is our hope that by presenting this information in a new way, we can help bring new attention to this case and help find Maura Murray.
