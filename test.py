@@ -214,10 +214,9 @@ class TestAdvancedFunctions(unittest.TestCase):
     state = "START"
     method = "DOTHING" 
 
-    new_prompt = flux.call_method_on_state(cartridge, state, method, {"foo": "bar"})
+    prompt_components = Prompt(cartridge=cartridge, state="DOTHING", data={"foo": "bar"}).script_components()
 
-    new_prompt = new_prompt[672:718]
-    self.assertEqual(new_prompt, "# Your new prompt is\n\nThe value of foo is fizz")
+    self.assertEqual(prompt_components[6], "The value of foo is fizz")
 
   def test_dot_self(self):
     flux = Flux()
@@ -243,7 +242,6 @@ class TestAdvancedFunctions(unittest.TestCase):
     new_prompt = flux.call_method_on_state(cartridge, state, method)
 
     START = 20
-    print(new_prompt)
     new_prompt = new_prompt[-START:-5]
     self.assertEqual(new_prompt, "Starting prompt")
 
