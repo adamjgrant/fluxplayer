@@ -13,16 +13,22 @@ class BackForwardState():
       self.name = name
       self.previous_state = previous_state
 
+    def add_events(self, events=[]):
+      self.events = self.events + events
+
+    def state_name(self):
+      return f"{self.name}_{self.previous_state}"
+
     def key_dict(self):
       return {
-        f"{self.name}_{self.previous_state}": {
+        self.state_name: {
           "prompt": self.prompt,
           "events": self.events
         }
       }
 
 class CherryPicker(BackForwardState):
-    def __init__(self, name, previous_state, go_back_if_the_user="", prompt="", events_to_pick=[]):
+    def __init__(self, name, previous_state="_", go_back_if_the_user="", prompt="", events_to_pick=[]):
       super().__init__(name, previous_state, go_back_if_the_user, prompt)
       self.events = self.events + events_to_pick
 
@@ -34,10 +40,6 @@ class Map(CherryPicker):
 
 Remember to show the user this map ![map](https://cdn.everything.io/chatgpt/maura/{map_key}.png)
       """
-
-class EvidenceLocker(CherryPicker):
-    def __init__(self, previous_state, go_back_if_the_user="", prompt="", events_to_pick=[]):
-      super().__init__("EVIDENCE_LOCKER", previous_state, go_back_if_the_user, prompt, events_to_pick)
 
 class Person():
     def __init__(self, name, bio, information):
@@ -52,23 +54,6 @@ Background: {self.bio}.
 This is the information that {self.name} has and will provide only if asked a question that would reveal it:
 {self.information}\n\n
         """
-        
-class Evidence:
-  def __init__(self, presentation=""):
-    self.presentation = f"{presentation}\n"
-  
-class ImageEvidence(Evidence):
-  def __init__(self, url, description):
-    self.presentation = f"""
-      ![]({url})
-      _{description}_
-    """
-
-EVIDENCE = {
-  "BUTCH_INTERVIEWED": ImageEvidence("https://i.redd.it/93a45ibm68tz.png", "Butch Atwood being interviewed by a local TV station").presentation,
-  "MAURA_MISSING_POSTER": ImageEvidence("https://allthatsinteresting.com/wordpress/wp-content/uploads/2018/05/maura-murray-missing-poster.png", "Missing Poster for Maura Murray").presentation,
-  "MAURA_AT_ATM": ImageEvidence("https://allthatsinteresting.com/wordpress/wp-content/uploads/2018/05/maura-murray-last-sighting.jpg", "February 9, 2004: Maura Murray at ATM seemingly alone withdrawing $280 before visiting liquor store").presentation
-}
 
 PEOPLE = {
   "ANONYMOUS_PROF": Person("Anonymous professor at U Mass", "Received messages from Maura Murray", """
@@ -201,6 +186,24 @@ Remember this information is only revealed by each person and only if the user a
             "events": self.events
         }
 
+class Evidence:
+  def __init__(self, presentation=""):
+    self.presentation = f"{presentation}\n"
+  
+class ImageEvidence(Evidence):
+  def __init__(self, url, description):
+    self.description = description
+    self.presentation = f"""
+      ![]({url})
+      _{description}_
+    """
+
+EVIDENCE = {
+  "BUTCH_INTERVIEWED": ImageEvidence("https://i.redd.it/93a45ibm68tz.png", "Butch Atwood being interviewed by a local TV station"),
+  "MAURA_MISSING_POSTER": ImageEvidence("https://allthatsinteresting.com/wordpress/wp-content/uploads/2018/05/maura-murray-missing-poster.png", "Missing Poster for Maura Murray"),
+  "MAURA_AT_ATM": ImageEvidence("https://allthatsinteresting.com/wordpress/wp-content/uploads/2018/05/maura-murray-last-sighting.jpg", "February 9, 2004: Maura Murray at ATM seemingly alone withdrawing $280 before visiting liquor store")
+}
+
 cartridge = {
   "START": {
       "role": "",
@@ -275,15 +278,14 @@ UMASS_DEFINITION = TranscriptState(
 )
 
 CRIME_SCENE_DEFINITION = TranscriptState(
-  """
+  setting = """
 Haverhill, New Hampshire. Morning at the scene of a black 1996 Saturn sedan up against the snowbank along Route 112, also known as Wild Ammonoosuc Road. 
 The car is pointed west on the eastbound side of the road. The windshield is cracked and the car appears to have been involved in a collision
   """,
-  """
+  prompt = """
   """,
-  [],
-  [],
-  [PEOPLE["BUTCH_ATWOOD"], PEOPLE["FAITH_WESTMAN"], PEOPLE["CECIL_SMITH"], PEOPLE["JOHN_MONAGHAN"], PEOPLE["JEFF_WILLIAMS"]]
+  events=[],
+  people=[PEOPLE["BUTCH_ATWOOD"], PEOPLE["FAITH_WESTMAN"], PEOPLE["CECIL_SMITH"], PEOPLE["JOHN_MONAGHAN"], PEOPLE["JEFF_WILLIAMS"]]
 )
 
 UMASS_1_DEFINITION = UMASS_DEFINITION.set_events(
@@ -344,6 +346,74 @@ CRIME_SCENE_START_DEFINITION = CRIME_SCENE_DEFINITION.set_events(
   []
 ).dict()
 
+INTRO_TO_EVIDENCE_LOCKER_DEFINITION = TranscriptState(
+  setting="A carefully guarded room in the FBI New Hampshire office with lockers containing evidence for different cases",
+  prompt="""
+There is one evidence locker Mike shows the user that is for the Maura Murray case. He will explain to the user that
+evidence is still coming in but it will be divided into three boxes.
+- Box 1: Photos
+- Box 2: Official records
+- Box 3: Other documents like timelines, maps, and notes
+
+Only box one has anything in it, and it's photos of the scene of the accident. 
+  """,
+  events=[
+    { "target": "INTRO_TO_EVIDENCE_LOCKER_ELB1", "if_the_user": "asks to open Box 1."},
+    { "target": ".SELF", "if_the_user": "asks to open Box 2."},
+    { "target": ".SELF", "if_the_user": "asks to open Box 3."},
+  ],
+  people=[]
+).dict()
+
+class EvidenceLocker(CherryPicker):
+    def __init__(self, previous_state, go_back_if_the_user, prompt, evidence_boxes=[], events_to_pick=[]):
+      self.evidence_boxes = evidence_boxes
+      super().__init__("EVIDENCE_LOCKER", previous_state, go_back_if_the_user, prompt, events_to_pick)
+
+class EvidenceBox:
+  def __init__(self, number, evidence=[]):
+    self.number = number
+    self.name = f"Box #{number}"
+    self.evidence = evidence
+
+  def add_evidence(self, evidence):
+    self.evidence.append(evidence)
+
+BOX_1_INITIAL_STATE = EvidenceBox(1, [
+  EVIDENCE["MAURA_AT_ATM"], 
+  EVIDENCE["MAURA_MISSING_POSTER"], 
+  EVIDENCE["BUTCH_INTERVIEWED"]
+])
+
+elb1_options = ""
+for evidence in BOX_1_INITIAL_STATE.evidence:
+      elb1_options = f"{elb1_options}- {evidence.description}\n"
+
+elb1_presentations = ""
+for evidence in BOX_1_INITIAL_STATE.evidence:
+      elb1_presentations = f"{elb1_presentations}## {evidence.description}\n\n{evidence.presentation}\n\n"
+
+INTRO_TO_EVIDENCE_LOCKER_ELB1 = BackForwardState(
+  name="ELB1",
+  previous_state="INTRO_TO_EVIDENCE_LOCKER",
+  prompt=f"""
+    The user can view the following evidence. List out all the
+    options by name. If they request one, show the full presentation.
+
+    # Options
+    { elb1_options }
+
+    # Presentations
+    { elb1_presentations }
+  """
+)
+INTRO_TO_EVIDENCE_LOCKER_ELB1.add_events([
+  { 
+    "target": Map("INTRO_TO_EVIDENCE_LOCKER", "map_map2_fbi_data_lab").state_name, 
+    "if_the_user": "asks_to_see_the_map" 
+  }
+])
+
 cartridge = {
   # Introduction to story
   **cartridge,
@@ -375,9 +445,11 @@ cartridge = {
 
   # Continuing the backbone from the data lab, the next state is an introduction
   # to the evidence locker where they can review evidence they've gathered
-  # TODO
   # Similar to the dummy non-reversible intro to map, this will also be a dummy
   # but those going forwards won't be.
+  "INTRO_TO_EVIDENCE_LOCKER": INTRO_TO_EVIDENCE_LOCKER_DEFINITION,
+    **INTRO_TO_EVIDENCE_LOCKER_ELB1.key_dict(),
+    **Map("INTRO_TO_EVIDENCE_LOCKER", "map_map2_fbi_data_lab").key_dict(),
 
   # From this state, they can go to the next part of the narrative backbone
   # which is to advance the day to February 10th and visit Fred. 
