@@ -361,6 +361,8 @@ cartridge = {
   # Continuing the backbone from the data lab, the next state is an introduction
   # to the evidence locker where they can review evidence they've gathered
   # TODO
+  # Similar to the dummy non-reversible intro to map, this will also be a dummy
+  # but those going forwards won't be.
 
   # From this state, they can go to the next part of the narrative backbone
   # which is to... # TODO
