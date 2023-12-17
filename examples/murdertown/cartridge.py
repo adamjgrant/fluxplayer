@@ -20,12 +20,12 @@ class BackForwardState():
       return f"{self.name}_{self.previous_state}"
 
     def key_dict(self):
-      return {
-        self.state_name: {
+      obj = {}
+      obj[self.state_name()] = {
           "prompt": self.prompt,
           "events": self.events
         }
-      }
+      return obj
 
 class CherryPicker(BackForwardState):
     def __init__(self, name, previous_state="_", go_back_if_the_user="", prompt="", events_to_pick=[]):
