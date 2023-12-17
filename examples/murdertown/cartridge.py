@@ -330,16 +330,42 @@ CRIME_SCENE_START_DEFINITION = CRIME_SCENE_DEFINITION.set_events(
 ).dict()
 
 cartridge = {
+  # Introduction to story
   **cartridge,
+
+  # Choices to go to either UMass or the crime scene
   "UMASS_1": UMASS_1_DEFINITION,
   "CRIME_SCENE_1": CRIME_SCENE_1_DEFINITION,
+
+  # Same choices in an alternate order
   "CRIME_SCENE_2": CRIME_SCENE_2_DEFINITION,
   "UMASS_2": UMASS_2_DEFINITION,
+
+  # Introduced to the map where they can revisit those two places.
   "INTRO_TO_MAP": INTRO_TO_MAP_DEFINITION,
+
+  # Continued narrative backbone to now look at emails and searches
+  # Just before the disappearance
   "DATA_LAB": DATA_LAB_DEFINITION,
+    **Map("DATA_LAB", "map_map2_fbi_data_lab").key_dict(),
+
+  # Crime scene and UMass again, but now in the model narrative backbones
+  # will resemble going forwards where they have backforward states
+  # Evidence locker hasn't been introduced yet.
   "CRIME_SCENE_START": CRIME_SCENE_START_DEFINITION,
+    **Map("CRIME_SCENE_START", "map_map2_fbi_data_lab").key_dict(),
+
   "UMASS_START": UMASS_START_DEFINITION,
-  **Map("DATA_LAB", "map_map2_fbi_data_lab").key_dict(),
-  **Map("CRIME_SCENE_START", "map_map2_fbi_data_lab").key_dict(),
-  **Map("UMASS_START", "map_map2_fbi_data_lab").key_dict(),
+    **Map("UMASS_START", "map_map2_fbi_data_lab").key_dict(),
+
+  # Continuing the backbone from the data lab, the next state is an introduction
+  # to the evidence locker where they can review evidence they've gathered
+  # TODO
+
+  # From this state, they can go to the next part of the narrative backbone
+  # which is to... # TODO
+
+  # ...
+
+  # TODO The final state where they can actually move freely to all nodes.
 }
