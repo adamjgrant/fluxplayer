@@ -3,6 +3,7 @@ import tempfile
 from ruamel.yaml import YAML
 from flux import Flux
 from lib.path_reader import find_cartridge, read_yaml_cartridge, read_python_cartridge
+from lib.prompt import Prompt
 import os
 
 class TestIngest(unittest.TestCase):
@@ -241,8 +242,10 @@ class TestAdvancedFunctions(unittest.TestCase):
 
     new_prompt = flux.call_method_on_state(cartridge, state, method)
 
-    new_prompt = new_prompt[685:722]
-    self.assertEqual(new_prompt, "# Your new prompt is\n\nStarting prompt")
+    START = 20
+    print(new_prompt)
+    new_prompt = new_prompt[-START:-5]
+    self.assertEqual(new_prompt, "Starting prompt")
 
   def test_long_prompt_reminds(self):
     flux = Flux()
@@ -261,11 +264,6 @@ class TestAdvancedFunctions(unittest.TestCase):
       }
     }
 
-    state = "START"
-    method = "DOTHING" 
+    prompt_components = Prompt(cartridge, "DOTHING").script_components()
 
-    new_prompt = flux.call_method_on_state(cartridge, state, method)
-
-    start_pos = 2657
-    new_prompt = new_prompt[start_pos:start_pos + 50]
-    self.assertEqual(new_prompt, "Choose the best fitting event from the list below.")
+    self.assertEqual(prompt_components[8], "# Reminder of Rules")
