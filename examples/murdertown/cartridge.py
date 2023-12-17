@@ -56,6 +56,14 @@ This is the information that {self.name} has and will provide only if asked a qu
 {self.information}\n\n
         """
 
+    def copy_with_new_information(self, information)
+        person = Person(
+          name = self.name
+          bio = self.bio
+          information = f"{self.information}\n{information}"
+        )
+        return person
+
 PEOPLE = {
   "ANONYMOUS_PROF": Person("Anonymous professor at U Mass", "Received messages from Maura Murray", """
 The professor received an email from Maura Murray's account that said she would be gone for a week due to a death in the family the
@@ -101,8 +109,8 @@ go off into the woods, you step off, and you die. This response shocked the offi
 the sister told the officer that Maura probably got in a big fight with her boyfriend Fred, went off into the woods, took a bunch of sleeping
 pills and died.
 Later when EMS arrived, he joined Butch Atwood to search the area west around the accident. They don't find Maura or even foot prints.
-Inside the car, he finds an open coke bottle with red liquid in it. The liquid had a strong alcoholic odor. Some of Maura's personal belongings
-were scattered inside, but her cell phone, credit cards, and backpack are all gone.
+Some of Maura's personal belongings were scattered inside, but her cell phone, credit cards, and backpack are all gone. Inside the card he finds an open 
+coke bottle filled with a red liquid that smelled of alcohol. 
   """),
   "JOHN_MONAGHAN": Person("John Monaghan", "Police officer who responded to the scene", """
 On the night of the disappearance, he got a call that Butch was reporting a car accident. He confined his search area to the area
@@ -110,9 +118,11 @@ where there were stores and people and searched while driving around, staying in
 to note that he was assisting another department with the search. Later, he pulled the surveillance tapes from three locations that
 had surveillance to see if Maura Murray was on them. He didn't find anything.
   """),
-  "JEFF_WILLIAMS": Person("Jeff Williams", "Police Chief of Haverhill, New Hampshire.", """
+  "JEFF_WILLIAMS": Person("Chief Jeff Williams", "Police Chief of Haverhill, New Hampshire.", """
 It has been claimed that he was the driver of the 001 police SUV, which he denies, corroborating with
 Cecil Smith that he is the driver. He also maintains that he was never at the scene.
+Separately and after the Murray incident, the Chief was arrested and charged for driving while intoxicated and disobeying orders.
+While getting pulled over for speeding, he drunkenly tried to get away by driving even faster while his own officers pursued him.
 """),
   "KATHLEEN_MURRAY": Person("Kathleen Murray", "Maura Murray's sister", """
 """),
@@ -139,7 +149,65 @@ Shortly after, there is footage at a nearby liquor store where she purchases $40
 She called to check her voicemail at 4:37 pm, the last recorded use of her cell phone.
   """
   ),
+  "BILLY": Person("Billy Rausch", "Boyfriend of Maura Murray", """
+    Billy says he received a voicemail from Maura. The day after Maura disappeared, Billy turned off his cellphone as he boarded a plane
+    to assist in the search efforts. Shortly after he did, he received a voicemail from an unknown number. It was short and wordless. He says
+    He could only hear crying and at the end a whimper. He swears this was Maura.
+    Billy is also aware of the claim of a letter left in Maura's dorm room addressed to him. However he says he was with the officers when the dorm
+    room was being searched and there was no letter. It's not clear where this information came from.
+  """),
+  "JULIE_MURRAY": Person("Julie Murray", "Maura Murray's second oldest sister", """
+  """),
+  "KATHLEEN_MURRAY": Person("Kathleen Murray", "Maura Murray's oldest sister", """
+    On February 5, 2004, Kathleen got out of rehab and her boyfriend celebrated by taking her to a liquor store. After relapsing mixing sleeping pills with alcohol,
+    Kathleen made a troubling call to Maura but is not able to divulge further details on what they discussed. 
+  """),
+  "ANONYMOUS_INVESTIGATOR": Person("A Massachusettes Police Department investigator", "Worked on a previous case involving Maura Murray prior to her disappearance", """
+    A few months before Maura's disappearance, The investigator worked on a case where someone has been using a stolen credit card to order
+    food delivered to a U Mass dormitory. They were able to set up a sting operation by waiting for the same individual to order pizza. When they did,
+    the investigator travelled with the delivery person to the dormitory. Maura Murray came to pick up the order. She was tried and convicted for the crime.
+    She was very cooperative and scared when she was confronted. The judge dropped the charges contingent on three months of good behavior.
+  """),
+  "ANONYMOUS_WORK_FRIEND": Person("Anonymous Work Friend", "A friend of Maura's who also works shifts with her", """
+    On the same weekend night when Maura dropped off Fred at the Quality Inn and borrowed his Toyota Corolla, Maura attended a dorm party
+    with friends in the evening. The friend doesn't know much about what happened at the party but they found it strange that later into the evening, 
+    Maura said she needed to get the car back to her father. Now that they and Fred have exchanged these details, they both find it odd given
+    that it would have been fine if she came back the next day with the car. He wasn't expecting it that evening. She had also been drinking
+    so she could have sobered up over the evening. The friend feels like she had another reason for leaving such as leaving for or from something.
+
+    On another occasion prior to this on February 5, 2004, the friend and Maura were at work together. During the shift, Maura received a phone
+    call that made her so upset, she just stares out the window completely disengaged. Her supervisor was so worried for her, he ends her shift
+    early and walks her back to her dorm room. When the friend asks what's wrong, the only thing she says is "my sister."
+  """),
+  "ANONYMOUS_LANDLORD": Person("", "", """
+  """),
+  "RED_TRUCK_WITNESS": Person("", "", """
+  """),
+  "TRUTH_SEEKER": Person("", "", """
+  """),
+  "ANONYMOUS_HAVERHILL_OFFICER": Person("Anonymous Haverhill Officer", "Officer who searched Maura's car, providing the items found", """
+    The officer found a computer printout of directions to Burlington, VT and a copy of a book about hiking accidents in New Hampshire.
+    He also found a box of Franzia wine, an open coke bottle filled with a red liquid that smelled of alcohol. Her cellphone, credit cards, and backpack
+    are all gone.
+  """),
+  "ANONYMOUS_FISH_AND_GAME_SEARCH_LEAD": Person("Anonymous Fish & Game Search Lead", "", """
+    The team this person lead canvassed the area handing out flyers and checking with local motels. They used a leather glove belonging to Maura
+    to train the canine team to Maura's scent. The canines were able to trace Maura's scent up the road about 100 yards east of the accident where it
+    abruptly stopped. By nightfall, no other significant evidence was found in a 2 mile radius.
+  """)
 }
+
+PEOPLE["FRED_MURRAY_2"] = PEOPLE["FRED_MURRAY"].copy_with_new_information("""
+  The weekend before Maura went missing, Fred visited Maura at U Mass to go car shopping with her. He knew her 1996 Saturn was breaking down and was
+  desperately in need of a new one. They spent Saturday afternoon missing but didn't buy anything. In the evening, Fred offered to let Maura use his
+  car for the evening. She accepts, drops him off at a Quality inn where he's staying and heads back to campus.
+  Later that evening, Maura crashed the Toyota Corolla into a guard rail causing $10,000 of damage to the car. The police went to the scene
+  but there were no charges against Maura and a breathalizer was not administered. The police drove Maura back to the Quality Inn to stay
+  with her dad.
+  The following day, Fred finds out that insurance is going to cover the damage. However before filing the claim, he asks Maura to pick up
+  accident forms at the Registry of Motor Vehicles. Fred goes back home to Massachusettes and called her later at 11:30PM to remind her to get it
+  done. They make a plan to go over the forms the following night. This never happened because it's the night Maura disappeared.
+""")
 
 class TranscriptState:
     def __init__(self, setting, prompt, events=[], people=[]):
@@ -417,76 +485,85 @@ ELB1_INTRO_TO_EVIDENCE_LOCKER.add_events([
 ])
 
 VISIT_FRED_DEFINITION = TranscriptState(
-  setting = "",
+  setting = "The home of the Murray family in Hanson Massachusettes on February 10th, 2004 at 10PM. Fred is seated at the dining table alone",
   prompt = """
+    Fred recieves a voicemail on his home answering machine earlier in the day at 2:30PM stating that Maura's car was found
+    abandoned. He was working out of state and had not received the call. Then Maura's other sister Kathleen called him at 5PM
+    informing him that Maura was missing. Fred immediately called the Haverhill police department and was told that if Maura was not reported
+    safe by the following morning, the New Hampshire Fish and Game department would start a search. Maura was only referred to as missing
+    by the department at 5:17PM.
   """,
   events = [],
-  people = []
+  people = [PEOPLE["FRED_MURRAY"]]
 ).dict()
 
 SEARCH_FOR_MAURA_DEFINITION = TranscriptState(
-  setting = "",
+  setting = "Dawn in Haverhill, New Hampshire at the hairpin turn at Route 112",
   prompt = """
+    There are no footprints on the ground from the scene of the wreck. Helicopters, officers, volunteers, and a canine team
+    canvas the area. They are also checking local motels, handing out flyers
   """,
   events = [],
-  people = []
+  people = [PEOPLE["FRED_MURRAY"], PEOPLE["ANONYMOUS_FISH_AND_GAME_SEARCH_LEAD"]]
 ).dict()
 
 POLICE_PRECINCT_DEFINITION = TranscriptState(
-  setting = "",
+  setting = "The office of an anonyous investigator at a police precinct near the University of Massachusettes at Amherst",
   prompt = """
   """,
   events = [],
-  people = []
+  people = [PEOPLE["ANONYMOUS_INVESTIGATOR"]]
 ).dict()
 
 WORK_FRIEND_DEFINITION = TranscriptState(
-  setting = "",
+  setting = "Back at the Murray household where now Fred and an anonymous work friend of Maura's are seated in the living room.",
   prompt = """
   """,
   events = [],
-  people = []
+  people = [PEOPLE["ANONYMOUS_WORK_FRIEND"], PEOPLE["FRED_MURRAY_2"]]
 ).dict()
 
 JULIE_MURRAY_DEFINITION = TranscriptState(
-  setting = "",
+  setting = "A local coffee shop in Hanson Massachusettes where Julie Murray is seated with a coffee.",
   prompt = """
   """,
   events = [],
-  people = []
+  people = [PEOPLE["JULIE_MURRAY"]]
 ).dict()
 
-
 MAURA_APARTMENT_DEFINITION = TranscriptState(
-  setting = "",
+  setting = "Maura's apartment with her landlord. A Haverhill police officer is also there with items found in Maura's car",
   prompt = """
+    Maura's things are all in boxes. It is unclear if she packed those boxes before leaving or if she just never unpacked them
+    before moving in.
+    There were also reports of a letter left in the dorm room addressed to Billy.
   """,
   events = [],
-  people = []
+  people = [PEOPLE["ANONYMOUS_LANDLORD"], PEOPLE["ANONYMOUS_HAVERHILL_OFFICER"], PEOPLE["BILLY"]]
 ).dict()
 
 RED_TRUCK_WITNESS_DEFINITION = TranscriptState(
-  setting = "",
+  setting = "Haverhill Swiftwater General Store where a witness waits outside to talk with Mike and the user",
   prompt = """
   """,
   events = [],
-  people = []
+  people = [PEOPLE["RED_TRUCK_WITNESS"]]
 ).dict()
 
 FRED_MURRAY_WITH_KNIFE_DEFINITION = TranscriptState(
-  setting = "",
+  setting = "December 8, 2004. The Murray family house. Fred, Julie, and Kathleen Murray are all seated in the living room",
   prompt = """
   """,
   events = [],
-  people = []
+  people = [PEOPLE["FRED_MURRAY_2"], PEOPLE["JULIE_MURRAY"], PEOPLE["KATHLEEN_MURRAY"]]
 ).dict()
 
 A_FRAME_DEFINITION = TranscriptState(
-  setting = "",
+  setting = "October 4, 2006. An A-Frame house approximately 1 mile from the crash site, nestled in the woods.",
   prompt = """
   """,
   events = [],
-  people = []
+  people = [PEOPLE["TRUTH_SEEKER"]]
 ).dict()
 
 cartridge = {
