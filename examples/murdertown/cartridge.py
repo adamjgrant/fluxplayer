@@ -455,29 +455,38 @@ cartridge = {
 
   # From this state, they can go to the next part of the narrative backbone
   # which is to advance the day to February 10th and visit Fred. 
+  "VISIT_FRED": {},
 
   # Then, dawn the next day where a ground and air search begins. A dog search leads
   # Maura's scent 100 yards east until it stops. Here we also reveal the unaccounted hour of driving time.
+  # "SEARCH_FOR_MAURA": {},
 
   # Then, a talk with a police officer who was involved in an arrest of Maura two
   # a few months earlier for Credit Card fraud.
+  # "POLICE_PRECINCT": {},
 
   # Then, we'll talk to a work friend of hers visiting Fred's place who can both tell the story both of her going
   # car shopping, then borrowing dad's car, then going to the party and having to
   # get back in an inexplicable hurry. This can also cover the call from the sister since it happened
   # at work and this is a work friend.
+  # "WORK_FRIEND": {},
 
   # Then, we go to Julie's place where we can cover the boyfriend Billy.
   # This can also bring up the strange voicemail Billy got
+  # "JULIE_MURRAY": {},
 
   # Then, we go to Maura's apartment where there is the directions to Burlington VT and a book about
   # Hiking accidents
+  # "MAURA_APARTMENT": {},
 
   # Then, the witness who saw the red truck at the general store.
+  # "RED_TRUCK_WITNESS": {},
 
   # Then, we go back to Fred's where he has received the rusted stained knife.
+  # "FRED_MURRAY_WITH_KNIFE": {},
 
   # Then, the A-frame. The final state where they can actually move freely to all nodes.
+  # "A_FRAME": {},
 }
 
 # Print out each key in the object
