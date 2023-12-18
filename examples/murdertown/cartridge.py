@@ -317,7 +317,8 @@ EVIDENCE = {
   "MAURA_AT_ATM": ImageEvidence("https://allthatsinteresting.com/wordpress/wp-content/uploads/2018/05/maura-murray-last-sighting.jpg", "February 9, 2004: Maura Murray at ATM seemingly alone withdrawing $280 before visiting liquor store")
 }
 
-cartridge = {
+cartridge = dict()
+cartridge.update({
   "START": {
       "role": "",
       "prompt": f"""
@@ -381,7 +382,7 @@ then ask them again if they're ready.
       }
     ]
   }
-}
+})
 
 # A/B B/A Criss-cross
 UMASS_DEFINITION = TranscriptState(
@@ -435,9 +436,9 @@ The user's choice now is to go to one of the places on the map or to visit the d
 they have pieced together some events leading up to her disappearance.
   """,
   [
-    { "target": "DATA_LAB", "if_the_user": "decides to go to the data lab'" },
-    { "target": "CRIME_SCENE_START", "if_the_user": "decides to go back to the scene of the wrecked saturn'" },
-    { "target": "UMASS_START", "if_the_user": "decides to go back to U Mass'" }
+    { "target": "DATA_LAB_1", "if_the_user": "decides to go to the data lab'" },
+    { "target": "CRIME_SCENE_1", "if_the_user": "decides to go back to the scene of the wrecked saturn'" },
+    { "target": "UMASS_1", "if_the_user": "decides to go back to U Mass'" }
   ],
   []
 ).dict()
@@ -448,7 +449,7 @@ A data lab in the FBI New Hampshire office. Briefing room with computer equipmen
   """,
   """
   """,
-  [{ "target": "MAP_DATA_LAB", "if_the_user": "agrees to go to the map" }],
+  [{ "target": "MAP_DATA_LAB_1", "if_the_user": "agrees to go to the map" }],
   [PEOPLE["ANONYMOUS_POLICE_DATA_ANALYST"]]
 )
 
@@ -456,7 +457,7 @@ UMASS_START_DEFINITION = UMASS_DEFINITION.copy_with_changes(
   events = [
     { "target": "MAP_CRIME_SCENE_START", "if_the_user": "wants to go to the scene of the accident where Maura disappeared" }
   ]
-).dict()
+)
 
 CRIME_SCENE_START_DEFINITION = CRIME_SCENE_DEFINITION.copy_with_changes(
   events = [
@@ -469,7 +470,7 @@ CRIME_SCENE_START_DEFINITION = CRIME_SCENE_DEFINITION.copy_with_changes(
     PEOPLE["KAREN_MCNAMARA"],
     PEOPLE["ANONYMOUS_FISH_AND_GAME_SEARCH_LEAD"]
   ]
-).dict()
+)
 
 INTRO_TO_EVIDENCE_LOCKER_DEFINITION = TranscriptState(
   setting="A carefully guarded room in the FBI New Hampshire office with lockers containing evidence for different cases",
@@ -648,9 +649,42 @@ FINAL_MAP_EL_EVENTS = [{
   "if_the_user": "asks to go to the evidence_locker"
 }]
 
-cartridge = {
+class LevelMaker:
+  def __init__(self, level=1):
+    self.level = level
+
+  def key_dict(self):
+    _dict = dict() 
+    _dict.update({f"DATA_LAB_{self.level}": DATA_LAB_DEFINITION.dict()})
+    _dict.update({f"CAR_WRECK_{self.level}": CRIME_SCENE_START_DEFINITION.dict()})
+    _dict.update({f"UMASS_OFFICE_{self.level}": UMASS_START_DEFINITION.dict()})
+
+    # Continued narrative backbone to now look at emails and searches
+    # Just before the disappearance
+    _dict.update(Map(f"DATA_LAB_{self.level}", f"map_level{self.level}").add_events([
+        { "target": f"CAR_WRECK_{self.level}", "if_the_user": "wants to go to the site of the wreck where Maura disappeared" },
+        { "target": f"UMASS_OFFICE_{self.level}", "if_the_user": "wants to go to U Mass" }
+      ]).key_dict())
+
+    
+    # Crime scene and UMass again, but now in the model narrative backbones
+    # will resemble going forwards where they have backforward states
+    # Evidence locker hasn't been introduced yet.
+    _dict.update(Map(f"CAR_WRECK_{self.level}", f"map_level{self.level}").add_events([
+        { "target": f"DATA_LAB_{self.level}", "if_the_user": "wants to go to the data lab" },
+        { "target": f"UMASS_OFFICE_{self.level}", "if_the_user": "wants to go to U Mass" }
+      ]).key_dict())
+
+    _dict.update(Map(f"UMASS_OFFICE_{self.level}", f"map_level{self.level}").add_events([
+        { "target": f"DATA_LAB_{self.level}", "if_the_user": "wants to go to the data lab" },
+        { "target": f"CAR_WRECK_{self.level}", "if_the_user": "wants to go to the site of the wreck where Maura disappeared" },
+      ]).key_dict())
+
+    return _dict
+
+
+cartridge.update({
   # Introduction to story
-  **cartridge,
 
   # Choices to go to either UMass or the crime scene
   "UMASS_1": UMASS_1_DEFINITION,
@@ -662,43 +696,25 @@ cartridge = {
 
   # Introduced to the map where they can revisit those two places.
   "INTRO_TO_MAP": INTRO_TO_MAP_DEFINITION,
+})
 
-  ##############################
-  # NARRATIVE BACKBONE LEVEL 1 #
-  ##############################
+##############################
+# NARRATIVE BACKBONE LEVEL 1 #
+##############################
+cartridge.update(LevelMaker(1).key_dict())
 
-  # Continued narrative backbone to now look at emails and searches
-  # Just before the disappearance
-  "DATA_LAB": DATA_LAB_DEFINITION.dict(),
-    **Map("DATA_LAB", "map_level1_fbi_data_lab").add_events([
-      { "target": "CRIME_SCENE_START", "if_the_user": "wants to go to the site of the wreck where Maura disappeared" },
-      { "target": "U_MASS_START", "if_the_user": "wants to go to U Mass" }
-    ]).key_dict(),
-
-  # Crime scene and UMass again, but now in the model narrative backbones
-  # will resemble going forwards where they have backforward states
-  # Evidence locker hasn't been introduced yet.
-  "CRIME_SCENE_START": CRIME_SCENE_START_DEFINITION,
-    **Map("CRIME_SCENE_START", "map_level1_fbi_data_lab").add_events([
-      { "target": "DATA_LAB", "if_the_user": "wants to go to the data lab" },
-      { "target": "U_MASS_START", "if_the_user": "wants to go to U Mass" }
-    ]).key_dict(),
-
-  "UMASS_START": UMASS_START_DEFINITION,
-    **Map("UMASS_START", "map_level1_fbi_data_lab").add_events([
-      { "target": "DATA_LAB", "if_the_user": "wants to go to the data lab" },
-      { "target": "CRIME_SCENE_START", "if_the_user": "wants to go to the site of the wreck where Maura disappeared" },
-    ]).key_dict(),
-
+cartridge.update({
   # Continuing the backbone from the data lab, the next state is an introduction
   # to the evidence locker where they can review evidence they've gathered
   # Similar to the dummy non-reversible intro to map, this will also be a dummy
   # but those going forwards won't be.
   "INTRO_TO_EVIDENCE_LOCKER": INTRO_TO_EVIDENCE_LOCKER_DEFINITION,
-    **ELB1_INTRO_TO_EVIDENCE_LOCKER.key_dict(),
-    **Map(previous_state="INTRO_TO_EVIDENCE_LOCKER", map_key="map_map2_fbi_data_lab", events_to_pick=[]).key_dict(),
+})
 
+cartridge.update(ELB1_INTRO_TO_EVIDENCE_LOCKER.key_dict())
+cartridge.update(Map(previous_state="INTRO_TO_EVIDENCE_LOCKER", map_key="map_map2_fbi_data_lab", events_to_pick=[]).key_dict())
 
+cartridge.update({
   ##############################
   # NARRATIVE BACKBONE LEVEL 2 #
   ##############################
@@ -775,10 +791,10 @@ cartridge = {
     """,
     events = FINAL_MAP_EL_EVENTS,
     people = [PEOPLE["TRUTH_SEEKER"]]
-  ).dict(),
+  ).dict()
+})
 
-  # TODO: BackForward states get jumbled. May need to do this one by hand.
-    **Map(
+cartridge.update(Map(
       previous_state = "EVIDENCE_LOCKER",
       map_key = "map_final"
     ).hard_set_events(FINAL_STATE_EVENTS + [
@@ -786,16 +802,20 @@ cartridge = {
         "target": "EVIDENCE_LOCKER_MAP",
         "if_the_user": "Wants to go to the evidence locker"
       }
-    ]).key_dict(),
-    **EvidenceLocker(
+    ]).key_dict()
+)
+
+cartridge.update(EvidenceLocker(
       previous_state="MAP"
     ).hard_set_events([
       {
         "target": "MAP_EVIDENCE_LOCKER",
         "if_the_user": "Wants to go to the map"
       }
-    ]).key_dict(),
+    ]).key_dict()
+)
 
+cartridge.update({
   # The rest of these nodes are copies (where needed) to permanently put the individuals in places
   # where the user can move to and interview. So the map is basically the central node for now.
   "U_MASS_FINAL": UMASS_DEFINITION.copy_with_changes(events = FINAL_MAP_EL_EVENTS).dict(),
@@ -831,7 +851,7 @@ cartridge = {
 
   "MAURA_APARTMENT_FINAL": MAURA_APARTMENT_DEFINITION.copy_with_changes(events = FINAL_MAP_EL_EVENTS).dict(),
   "RED_TRUCK_WITNESS_FINAL": RED_TRUCK_WITNESS_DEFINITION.copy_with_changes(events = FINAL_MAP_EL_EVENTS).dict()
-}
+})
 
 # Print out each key in the object
 debug_states_to_and_from = True
