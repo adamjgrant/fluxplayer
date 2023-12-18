@@ -505,7 +505,7 @@ VISIT_FRED_DEFINITION = TranscriptState(
   """,
   events = [],
   people = [PEOPLE["FRED_MURRAY"]]
-).dict()
+)
 
 SEARCH_FOR_MAURA_DEFINITION = TranscriptState(
   setting = "Dawn in Haverhill, New Hampshire at the hairpin turn at Route 112",
@@ -613,7 +613,6 @@ class LevelMaker:
     
     LEVELING_EVENTS = [
       { "target": f"DATA_LAB_{self.level}", "if_the_user": "wants to go to the data lab" },
-      { "target": f"CAR_WRECK_{self.level}", "if_the_user": "wants to go to the site of the wreck where Maura disappeared" },
       { "target": f"UMASS_OFFICE_{self.level}", "if_the_user": "wants to go to U Mass" }
     ]
     if self.level > 1:
@@ -621,9 +620,14 @@ class LevelMaker:
         "target": f"VISIT_FRED_{self.level}", "if_the_user": "wants to go to Fred's house"
       }]
 
+    if self.level < 3:
+      LEVELING_EVENTS = LEVELING_EVENTS + [
+        { "target": f"CAR_WRECK_{self.level}", "if_the_user": "wants to go to the site of the wreck where Maura disappeared" },
+      ]
+
     if self.level > 2:
       LEVELING_EVENTS = LEVELING_EVENTS + [{
-        "target": f"SEARCH_FOR_MAURA_{self.level}", "if_the_user": "wants to go to the search for Maura"
+        "target": f"SEARCH_FOR_MAURA_{self.level}", "if_the_user": "wants to go to the search for Maura near the site of the car crash where Maura disappeared"
       }]
 
     if self.level > 3:
@@ -656,7 +660,7 @@ class LevelMaker:
         "target": f"FRED_MURRAY_WITH_KNIFE_{self.level}", "if_the_user": "wants to go to Fred's house to discuss the knife"
       }]
 
-    return {
+    _dict = {
       # Continued narrative backbone to now look at emails and searches
       # Just before the disappearance
       f"DATA_LAB_{self.level}": DATA_LAB_DEFINITION.copy_with_changes(events = [
@@ -664,18 +668,11 @@ class LevelMaker:
           ]).dict(),
       **Map(f"DATA_LAB_{self.level}", f"map_level{self.level}").add_events(LEVELING_EVENTS).key_dict(),
 
-      # Crime scene and UMass again, but now in the model narrative backbones
-      # will resemble going forwards where they have backforward states
-      # Evidence locker hasn't been introduced yet.
-      f"CAR_WRECK_{self.level}": CRIME_SCENE_START_DEFINITION.copy_with_changes(
-            events = [{ "target": f"MAP_CAR_WRECK_{self.level}", "if_the_user": "wants to go to the map" }]
-          ).dict(),
-      **Map(f"CAR_WRECK_{self.level}", f"map_level{self.level}").add_events(LEVELING_EVENTS).key_dict(),
 
       f"UMASS_OFFICE_{self.level}": UMASS_START_DEFINITION.copy_with_changes(
         events = [{ "target": f"MAP_UMASS_{self.level}", "if_the_user": "wants to go to the map" }]
       ).dict(),
-      **Map(f"UMASS_OFFICE_{self.level}", f"map_level{self.level}").add_events(LEVELING_EVENTS).key_dict()
+      **Map(f"UMASS_OFFICE_{self.level}", f"map_level{self.level}").add_events(LEVELING_EVENTS).key_dict(),
 
       f"VISIT_FRED_{self.level}": VISIT_FRED_DEFINITION.copy_with_changes(
         events = [{ "target": f"MAP_VISIT_FRED_{self.level}", "if_the_user": "wants to go to the map" }]
@@ -684,6 +681,26 @@ class LevelMaker:
 
       # TODO Keep building out the different points
     }
+
+    if self.level < 3:
+      _dict.update({
+        # Crime scene and UMass again, but now in the model narrative backbones
+        # will resemble going forwards where they have backforward states
+        # Evidence locker hasn't been introduced yet.
+        f"CAR_WRECK_{self.level}": CRIME_SCENE_START_DEFINITION.copy_with_changes(
+          events = [{ "target": f"MAP_CAR_WRECK_{self.level}", "if_the_user": "wants to go to the map" }]
+        ).dict(),
+        **Map(f"CAR_WRECK_{self.level}", f"map_level{self.level}").add_events(LEVELING_EVENTS).key_dict(),
+      })
+    else:
+      _dict.update({
+        f"SEARCH_FOR_MAURA_{self.level}": SEARCH_FOR_MAURA_DEFINITION.copy_with_changes(
+          events = [{ "target": f"MAP_SEARCH_FOR_MAURA_{self.level}", "if_the_user": "wants to go to the map" }]
+        ).dict(),
+        **Map(f"SEARCH_FOR_MAURA_{self.level}", f"map_level{self.level}").add_events(LEVELING_EVENTS).key_dict(),
+      })
+    
+    return _dict
 
 cartridge = {
   # Introduction to story
@@ -720,7 +737,6 @@ cartridge = {
   # From this state, they can go to the next part of the narrative backbone
   # which is to advance the day to February 10th and visit Fred. 
   **LevelMaker(2).key_dict(),
-  "VISIT_FRED": VISIT_FRED_DEFINITION,
 
   ##############################
   # NARRATIVE BACKBONE LEVEL 3 #
