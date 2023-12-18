@@ -492,53 +492,8 @@ Only box one has anything in it, and it's photos of the scene of the accident.
 ).dict()
 
 class EvidenceLocker(CherryPicker):
-    def __init__(self, previous_state, go_back_if_the_user="asks to go back", prompt="", evidence_boxes=[], events_to_pick=[]):
-      self.evidence_boxes = evidence_boxes
+    def __init__(self, previous_state, go_back_if_the_user="asks to go back", prompt="", events_to_pick=[]):
       super().__init__("EVIDENCE_LOCKER", previous_state, go_back_if_the_user, prompt, events_to_pick)
-
-class EvidenceBox:
-  def __init__(self, number, evidence=[]):
-    self.number = number
-    self.name = f"Box #{number}"
-    self.evidence = evidence
-
-  def add_evidence(self, evidence):
-    self.evidence.append(evidence)
-
-BOX_1_INITIAL_STATE = EvidenceBox(1, [
-  EVIDENCE["MAURA_AT_ATM"], 
-  EVIDENCE["MAURA_MISSING_POSTER"], 
-  EVIDENCE["BUTCH_INTERVIEWED"]
-])
-
-elb1_options = ""
-for evidence in BOX_1_INITIAL_STATE.evidence:
-      elb1_options = f"{elb1_options}- {evidence.description}\n"
-
-elb1_presentations = ""
-for evidence in BOX_1_INITIAL_STATE.evidence:
-      elb1_presentations = f"{elb1_presentations}## {evidence.description}\n\n{evidence.presentation}\n\n"
-
-ELB1_INTRO_TO_EVIDENCE_LOCKER = BackForwardState(
-  name="ELB1",
-  previous_state="INTRO_TO_EVIDENCE_LOCKER",
-  prompt=f"""
-    The user can view the following evidence. List out all the
-    options by name. If they request one, show the full presentation.
-
-    # Options
-    { elb1_options }
-
-    # Presentations
-    { elb1_presentations }
-  """
-)
-ELB1_INTRO_TO_EVIDENCE_LOCKER.add_events([
-  { 
-    "target": Map("INTRO_TO_EVIDENCE_LOCKER", "map_map2_fbi_data_lab").state_name(), 
-    "if_the_user": "asks_to_see_the_map" 
-  }
-])
 
 VISIT_FRED_DEFINITION = TranscriptState(
   setting = "The home of the Murray family in Hanson Massachusettes on February 10th, 2004 at 10PM. Fred is seated at the dining table alone",
@@ -709,7 +664,6 @@ cartridge.update({
   "INTRO_TO_EVIDENCE_LOCKER": INTRO_TO_EVIDENCE_LOCKER_DEFINITION,
 })
 
-cartridge.update(ELB1_INTRO_TO_EVIDENCE_LOCKER.key_dict())
 cartridge.update(Map(previous_state="INTRO_TO_EVIDENCE_LOCKER", map_key="map_map2_fbi_data_lab", events_to_pick=[]).key_dict())
 
 cartridge.update({
