@@ -534,7 +534,17 @@ SEARCH_FOR_MAURA_DEFINITION = TranscriptState(
     canvas the area. They are also checking local motels, handing out flyers
   """,
   events = [],
-  people = [PEOPLE["FRED_MURRAY"], PEOPLE["ANONYMOUS_FISH_AND_GAME_SEARCH_LEAD"]]
+  people = [
+    PEOPLE["FRED_MURRAY"], 
+    PEOPLE["ANONYMOUS_FISH_AND_GAME_SEARCH_LEAD"],
+    PEOPLE["BUTCH_ATWOOD"],
+    PEOPLE["JOHN_MAROTTE"],
+    PEOPLE["FAITH_WESTMAN"],
+    PEOPLE["KAREN_MCNAMARA"],
+    PEOPLE["CECIL_SMITH"],
+    PEOPLE["JOHN_MONAGHAN"],
+    PEOPLE["JEFF_WILLIAMS"]
+  ]
 ).dict()
 
 POLICE_PRECINCT_DEFINITION = TranscriptState(
@@ -666,7 +676,19 @@ cartridge = {
   "FRED_MURRAY_WITH_KNIFE": FRED_MURRAY_WITH_KNIFE_DEFINITION,
 
   # Then, the A-frame. The final state where they can actually move freely to all nodes.
-  "A_FRAME": A_FRAME_DEFINITION
+  "A_FRAME_FINAL": A_FRAME_DEFINITION,
+
+  # The rest of these nodes are copies (where needed) to permanently put the individuals in places
+  # where the user can move to and interview. So the map is basically the central node for now.
+  # "MAP_FINAL": {},
+  # "EVIDENCE_LOCKER_FINAL": {},
+  # "U_MASS_FINAL": {},
+  # "CRIME_SCENE_FINAL": {},
+  # "DATA_LAB_FINAL": {},
+  # "MURRAY_RESIDENCE_FINAL": {},
+  # "POLICE_PRECINCT_FINAL": {},
+  # "MAURA_APARTMENT_FINAL": {},
+  # "RED_TRUCK_WITNESS_FINAL": {}
 }
 
 # Print out each key in the object
