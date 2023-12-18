@@ -608,32 +608,78 @@ class LevelMaker:
     self.level = level
 
   def key_dict(self):
-    _dict = dict() 
-    _dict.update({f"DATA_LAB_{self.level}": DATA_LAB_DEFINITION.dict()})
+    # TODO: This isn't quite right because we want Fred's house (for example) to change what is happening there.
+    # It won't be two separate places between him having sent in the knife and not (for example)
+    
+    LEVELING_EVENTS = [
+      { "target": f"DATA_LAB_{self.level}", "if_the_user": "wants to go to the data lab" },
+      { "target": f"CAR_WRECK_{self.level}", "if_the_user": "wants to go to the site of the wreck where Maura disappeared" },
+      { "target": f"UMASS_OFFICE_{self.level}", "if_the_user": "wants to go to U Mass" }
+    ]
+    if self.level > 1:
+      LEVELING_EVENTS = LEVELING_EVENTS + [{
+        "target": f"VISIT_FRED_{self.level}", "if_the_user": "wants to go to Fred's house"
+      }]
 
-    # Continued narrative backbone to now look at emails and searches
-    # Just before the disappearance
-    _dict.update(Map(f"DATA_LAB_{self.level}", f"map_level{self.level}").add_events([
-        { "target": f"CAR_WRECK_{self.level}", "if_the_user": "wants to go to the site of the wreck where Maura disappeared" },
-        { "target": f"UMASS_OFFICE_{self.level}", "if_the_user": "wants to go to U Mass" }
-      ]).key_dict())
+    if self.level > 2:
+      LEVELING_EVENTS = LEVELING_EVENTS + [{
+        "target": f"SEARCH_FOR_MAURA_{self.level}", "if_the_user": "wants to go to the search for Maura"
+      }]
 
-    # Crime scene and UMass again, but now in the model narrative backbones
-    # will resemble going forwards where they have backforward states
-    # Evidence locker hasn't been introduced yet.
-    _dict.update({f"CAR_WRECK_{self.level}": CRIME_SCENE_START_DEFINITION.dict()})
-    _dict.update(Map(f"CAR_WRECK_{self.level}", f"map_level{self.level}").add_events([
-        { "target": f"DATA_LAB_{self.level}", "if_the_user": "wants to go to the data lab" },
-        { "target": f"UMASS_OFFICE_{self.level}", "if_the_user": "wants to go to U Mass" }
-      ]).key_dict())
+    if self.level > 3:
+      LEVELING_EVENTS = LEVELING_EVENTS + [{
+        "target": f"POLICE_PRECINCT_{self.level}", "if_the_user": "wants to go to the police precinct"
+      }]
 
-    _dict.update({f"UMASS_OFFICE_{self.level}": UMASS_START_DEFINITION.dict()})
-    _dict.update(Map(f"UMASS_OFFICE_{self.level}", f"map_level{self.level}").add_events([
-        { "target": f"DATA_LAB_{self.level}", "if_the_user": "wants to go to the data lab" },
-        { "target": f"CAR_WRECK_{self.level}", "if_the_user": "wants to go to the site of the wreck where Maura disappeared" },
-      ]).key_dict())
+    if self.level > 4:
+      LEVELING_EVENTS = LEVELING_EVENTS + [{
+        "target": f"WORK_FRIEND_{self.level}", "if_the_user": "wants to go to talk to Maura's work friend"
+      }]
 
-    return _dict
+    if self.level > 5:
+      LEVELING_EVENTS = LEVELING_EVENTS + [{
+        "target": f"JULIE_MURRAY_{self.level}", "if_the_user": "wants to go to Julie Murray's place"
+      }]
+    
+    if self.level > 6:
+      LEVELING_EVENTS = LEVELING_EVENTS + [{
+        "target": f"MAURA_APARTMENT_{self.level}", "if_the_user": "wants to go to Maura's apartment"
+      }]
+
+    if self.level > 7:
+      LEVELING_EVENTS = LEVELING_EVENTS + [{
+        "target": f"RED_TRUCK_WITNESS_{self.level}", "if_the_user": "wants to go to the Swiftwater general store to talk to the witness who saw the red truck"
+      }]
+
+    if self.level > 8:
+      LEVELING_EVENTS = LEVELING_EVENTS + [{
+        "target": f"FRED_MURRAY_WITH_KNIFE_{self.level}", "if_the_user": "wants to go to Fred's house to discuss the knife"
+      }]
+
+    return {
+      # Continued narrative backbone to now look at emails and searches
+      # Just before the disappearance
+      f"DATA_LAB_{self.level}": DATA_LAB_DEFINITION.copy_with_changes(events = [
+            { "target": f"MAP_DATA_LAB_{self.level}", "if_the_user": "wants to go to the map" }
+          ]).dict(),
+      **Map(f"DATA_LAB_{self.level}", f"map_level{self.level}").add_events(LEVELING_EVENTS).key_dict(),
+
+      # Crime scene and UMass again, but now in the model narrative backbones
+      # will resemble going forwards where they have backforward states
+      # Evidence locker hasn't been introduced yet.
+      f"CAR_WRECK_{self.level}": CRIME_SCENE_START_DEFINITION.copy_with_changes(
+            events = [{ "target": f"MAP_CAR_WRECK_{self.level}", "if_the_user": "wants to go to the map" }]
+          ).dict(),
+      **Map(f"CAR_WRECK_{self.level}", f"map_level{self.level}").add_events(LEVELING_EVENTS).key_dict(),
+
+      f"UMASS_OFFICE_{self.level}": UMASS_START_DEFINITION.copy_with_changes(
+        events = [{ "target": f"MAP_UMASS_{self.level}", "if_the_user": "wants to go to the map" }]
+      ).dict(),
+      **Map(f"UMASS_OFFICE_{self.level}", f"map_level{self.level}").add_events(LEVELING_EVENTS).key_dict()
+
+      # TODO Keep building out the different points
+    }
+
 cartridge = {
   # Introduction to story
   **beginning,
@@ -668,6 +714,7 @@ cartridge = {
 
   # From this state, they can go to the next part of the narrative backbone
   # which is to advance the day to February 10th and visit Fred. 
+  **LevelMaker(2).key_dict(),
   "VISIT_FRED": VISIT_FRED_DEFINITION,
 
   ##############################
@@ -676,6 +723,7 @@ cartridge = {
 
   # Then, dawn the next day where a ground and air search begins. A dog search leads
   # Maura's scent 100 yards east until it stops. Here we also reveal the unaccounted hour of driving time.
+  **LevelMaker(3).key_dict(),
   "SEARCH_FOR_MAURA": SEARCH_FOR_MAURA_DEFINITION,
 
   ##############################
@@ -684,6 +732,7 @@ cartridge = {
 
   # Then, a talk with a police officer who was involved in an arrest of Maura two
   # a few months earlier for Credit Card fraud.
+  **LevelMaker(4).key_dict(),
   "POLICE_PRECINCT": POLICE_PRECINCT_DEFINITION.dict(),
 
   ##############################
@@ -694,6 +743,7 @@ cartridge = {
   # car shopping, then borrowing dad's car, then going to the party and having to
   # get back in an inexplicable hurry. This can also cover the call from the sister since it happened
   # at work and this is a work friend.
+  **LevelMaker(5).key_dict(),
   "WORK_FRIEND": WORK_FRIEND_DEFINITION,
 
   ##############################
@@ -702,6 +752,8 @@ cartridge = {
 
   # Then, we go to Julie's place where we can cover the boyfriend Billy.
   # This can also bring up the strange voicemail Billy got
+
+  **LevelMaker(6).key_dict(),
   "JULIE_MURRAY": JULIE_MURRAY_DEFINITION,
 
   ##############################
@@ -710,6 +762,7 @@ cartridge = {
 
   # Then, we go to Maura's apartment where there is the directions to Burlington VT and a book about
   # Hiking accidents
+  **LevelMaker(7).key_dict(),
   "MAURA_APARTMENT": MAURA_APARTMENT_DEFINITION.dict(),
 
   ##############################
@@ -717,6 +770,7 @@ cartridge = {
   ##############################
 
   # Then, the witness who saw the red truck at the general store.
+  **LevelMaker(8).key_dict(),
   "RED_TRUCK_WITNESS": RED_TRUCK_WITNESS_DEFINITION.dict(),
 
   ##############################
@@ -724,6 +778,7 @@ cartridge = {
   ##############################
 
   # Then, we go back to Fred's where he has received the rusted stained knife.
+  **LevelMaker(9).key_dict(),
   "FRED_MURRAY_WITH_KNIFE": FRED_MURRAY_WITH_KNIFE_DEFINITION,
 
   #####################################
