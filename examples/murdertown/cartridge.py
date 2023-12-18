@@ -317,8 +317,7 @@ EVIDENCE = {
   "MAURA_AT_ATM": ImageEvidence("https://allthatsinteresting.com/wordpress/wp-content/uploads/2018/05/maura-murray-last-sighting.jpg", "February 9, 2004: Maura Murray at ATM seemingly alone withdrawing $280 before visiting liquor store")
 }
 
-cartridge = dict()
-cartridge.update({
+beginning = {
   "START": {
       "role": "",
       "prompt": f"""
@@ -382,7 +381,7 @@ then ask them again if they're ready.
       }
     ]
   }
-})
+}
 
 # A/B B/A Criss-cross
 UMASS_DEFINITION = TranscriptState(
@@ -635,9 +634,9 @@ class LevelMaker:
       ]).key_dict())
 
     return _dict
-
-cartridge.update({
+cartridge = {
   # Introduction to story
+  **beginning,
 
   # Choices to go to either UMass or the crime scene
   "UMASS_1": UMASS_1_DEFINITION,
@@ -649,24 +648,20 @@ cartridge.update({
 
   # Introduced to the map where they can revisit those two places.
   "INTRO_TO_MAP": INTRO_TO_MAP_DEFINITION,
-})
 
-##############################
-# NARRATIVE BACKBONE LEVEL 1 #
-##############################
-cartridge.update(LevelMaker(1).key_dict())
+  ##############################
+  # NARRATIVE BACKBONE LEVEL 1 #
+  ##############################
 
-cartridge.update({
+  **LevelMaker(1).key_dict(),
+
   # Continuing the backbone from the data lab, the next state is an introduction
   # to the evidence locker where they can review evidence they've gathered
   # Similar to the dummy non-reversible intro to map, this will also be a dummy
   # but those going forwards won't be.
   "INTRO_TO_EVIDENCE_LOCKER": INTRO_TO_EVIDENCE_LOCKER_DEFINITION,
-})
-
-cartridge.update(Map(previous_state="INTRO_TO_EVIDENCE_LOCKER", map_key="map_map2_fbi_data_lab", events_to_pick=[]).key_dict())
-
-cartridge.update({
+    **Map(previous_state="INTRO_TO_EVIDENCE_LOCKER", map_key="map_map2_fbi_data_lab", events_to_pick=[]).key_dict(),
+  
   ##############################
   # NARRATIVE BACKBONE LEVEL 2 #
   ##############################
@@ -674,7 +669,6 @@ cartridge.update({
   # From this state, they can go to the next part of the narrative backbone
   # which is to advance the day to February 10th and visit Fred. 
   "VISIT_FRED": VISIT_FRED_DEFINITION,
-
 
   ##############################
   # NARRATIVE BACKBONE LEVEL 3 #
@@ -743,31 +737,27 @@ cartridge.update({
     """,
     events = FINAL_MAP_EL_EVENTS,
     people = [PEOPLE["TRUTH_SEEKER"]]
-  ).dict()
-})
+  ).dict(),
 
-cartridge.update(Map(
-      previous_state = "EVIDENCE_LOCKER",
-      map_key = "map_final"
-    ).hard_set_events(FINAL_STATE_EVENTS + [
-      {
-        "target": "EVIDENCE_LOCKER_MAP",
-        "if_the_user": "Wants to go to the evidence locker"
-      }
-    ]).key_dict()
-)
+  **Map(
+        previous_state = "EVIDENCE_LOCKER",
+        map_key = "map_final"
+      ).hard_set_events(FINAL_STATE_EVENTS + [
+        {
+          "target": "EVIDENCE_LOCKER_MAP",
+          "if_the_user": "Wants to go to the evidence locker"
+        }
+      ]).key_dict(),
 
-cartridge.update(EvidenceLocker(
-      previous_state="MAP"
-    ).hard_set_events([
-      {
-        "target": "MAP_EVIDENCE_LOCKER",
-        "if_the_user": "Wants to go to the map"
-      }
-    ]).key_dict()
-)
+  **EvidenceLocker(
+        previous_state="MAP"
+      ).hard_set_events([
+        {
+          "target": "MAP_EVIDENCE_LOCKER",
+          "if_the_user": "Wants to go to the map"
+        }
+      ]).key_dict(),
 
-cartridge.update({
   # The rest of these nodes are copies (where needed) to permanently put the individuals in places
   # where the user can move to and interview. So the map is basically the central node for now.
   "U_MASS_FINAL": UMASS_DEFINITION.copy_with_changes(events = FINAL_MAP_EL_EVENTS).dict(),
@@ -803,7 +793,7 @@ cartridge.update({
 
   "MAURA_APARTMENT_FINAL": MAURA_APARTMENT_DEFINITION.copy_with_changes(events = FINAL_MAP_EL_EVENTS).dict(),
   "RED_TRUCK_WITNESS_FINAL": RED_TRUCK_WITNESS_DEFINITION.copy_with_changes(events = FINAL_MAP_EL_EVENTS).dict()
-})
+}
 
 # Print out each key in the object
 debug_states_to_and_from = True
