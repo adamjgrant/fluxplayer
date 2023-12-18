@@ -770,7 +770,7 @@ cartridge = {
 }
 
 # Print out each key in the object
-debug_states_to_and_from = False
+debug_states_to_and_from = True
 
 if debug_states_to_and_from:
   for key in cartridge:
