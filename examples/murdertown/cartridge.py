@@ -28,6 +28,10 @@ class BackForwardState():
         }
       return obj
 
+    def hard_set_events(self, events):
+      self.events = events
+      return self
+
 class CherryPicker(BackForwardState):
     def __init__(self, name, previous_state="_", go_back_if_the_user="", prompt="", events_to_pick=[]):
       super().__init__(name, previous_state, go_back_if_the_user, prompt)
@@ -36,6 +40,8 @@ class CherryPicker(BackForwardState):
 class Map(CherryPicker):
     def __init__(self, previous_state, map_key, go_back_if_the_user="", prompt="", events_to_pick=[]):
       super().__init__("MAP", previous_state, "asks to go back", prompt, events_to_pick)
+      self.map_key = map_key
+      self.events_to_pick = events_to_pick
       self.prompt = f"""
 {prompt}
 
@@ -77,7 +83,7 @@ He pulled over and asked her if she needed help. She said no and that she alread
 He knew that was a lie because there was no cell service in that area. He offered to call the police for her but she said no.
 He went home and called the police anyway. while he didn't have eyes on Maura or tue car while he called, he did notice several cars pass by. Butch claims she didn't look intoxicated nor injured but was cold and shivering. You can share [this link](https://youtu.be/OfrIJQ5xgJE) to an interview with Atwood
   """),
-  "JOHN MAROTTE": Person("John Marotte", "Neighbor who saw activity around Maura's car", """
+  "JOHN_MAROTTE": Person("John Marotte", "Neighbor who saw activity around Maura's car", """
 With his wife Virginia, John saw someone walking around Maura's car and spending some time near the trunk. Other than that, they didn't
 witness anything else.
   """),
@@ -87,7 +93,7 @@ thud and saw a single-car accident.
 From her point of view, it looked like a car had gone over the curb on a hairpin turn and crashed into a snowbank.
 She told police she saw a man in the vehicle smoking a cigarette.
   """),
-  "KAREN MCNAMARA": Person("Karen McNamara", "Neighbor who saw a car parked in front of Maura's", """
+  "KAREN_MCNAMARA": Person("Karen McNamara", "Neighbor who saw a car parked in front of Maura's", """
 She left the office that night around 10 past 7 and arrived at the scene around 7:37 pm.
 When she passed by the Saturn on the side of the road, it was facing the opposite direction and there was a police SUV with
 the number '001' on the side of it. It was parked
@@ -252,6 +258,14 @@ class TranscriptState:
           "if_the_user": "does not say they are out of questions or asks to go somewhere else."
         }]
         return self
+
+    def copy_with_changes(self, setting=None, prompt=None, events=None, people=None):
+        return TranscriptState(
+          setting=setting if setting else self.setting,
+          prompt=prompt if prompt else self.prompt,
+          events=events if events else self.events,
+          people=people if people else self.people
+        )
 
     def dict(self):
         overviews = list(map(lambda person: person.overview(), self.people)) 
@@ -466,7 +480,7 @@ Only box one has anything in it, and it's photos of the scene of the accident.
 ).dict()
 
 class EvidenceLocker(CherryPicker):
-    def __init__(self, previous_state, go_back_if_the_user, prompt, evidence_boxes=[], events_to_pick=[]):
+    def __init__(self, previous_state, go_back_if_the_user="asks to go back", prompt="", evidence_boxes=[], events_to_pick=[]):
       self.evidence_boxes = evidence_boxes
       super().__init__("EVIDENCE_LOCKER", previous_state, go_back_if_the_user, prompt, events_to_pick)
 
@@ -598,13 +612,30 @@ FRED_MURRAY_WITH_KNIFE_DEFINITION = TranscriptState(
   people = [PEOPLE["FRED_MURRAY_3"], PEOPLE["JULIE_MURRAY"], PEOPLE["KATHLEEN_MURRAY"]]
 ).dict()
 
-A_FRAME_DEFINITION = TranscriptState(
-  setting = "October 4, 2006. An A-Frame house approximately 1 mile from the crash site, nestled in the woods.",
-  prompt = """
-  """,
-  events = [],
-  people = [PEOPLE["TRUTH_SEEKER"]]
-).dict()
+FINAL_STATES = [
+  ["A_FRAME_FINAL", "A-Frame"],
+  ["U_MASS_FINAL", "U Mass"],
+  ["CRIME_SCENE_FINAL", "scene of the car wreck where Maura disappeared"],
+  ["DATA_LAB_FINAL", "data lab"],
+  ["MURRAY_RESIDENCE_FINAL", "Murray family residence"],
+  ["POLICE_PRECINCT_FINAL", "Massachusettes police precinct"],
+  ["MAURA_APARTMENT_FINAL", "apartment where Maura was living"],
+  ["RED_TRUCK_WITNESS_FINAL", "Swiftwater general store where the red truck was witnessed"]
+]
+FINAL_STATE_EVENTS = []
+for tuple in FINAL_STATES:
+  FINAL_STATE_EVENTS = FINAL_STATE_EVENTS + [{
+    "target": tuple[0],
+    "if_the_user": f"asks to go to the {tuple[1]}"
+  }]
+
+FINAL_MAP_EL_EVENTS = [{
+  "target": "MAP_EVIDENCE_LOCKER",
+  "if_the_user": "asks to go to the map"
+}, {
+  "target": "EVIDENCE_LOCKER_MAP",
+  "if_the_user": "asks to go to the evidence_locker"
+}]
 
 cartridge = {
   # Introduction to story
@@ -676,14 +707,37 @@ cartridge = {
   "FRED_MURRAY_WITH_KNIFE": FRED_MURRAY_WITH_KNIFE_DEFINITION,
 
   # Then, the A-frame. The final state where they can actually move freely to all nodes.
-  "A_FRAME_FINAL": A_FRAME_DEFINITION,
+  "A_FRAME_FINAL": TranscriptState(
+    setting = "October 4, 2006. An A-Frame house approximately 1 mile from the crash site, nestled in the woods.",
+    prompt = """
+    """,
+    events = FINAL_MAP_EL_EVENTS,
+    people = [PEOPLE["TRUTH_SEEKER"]]
+  ).dict(),
+
+  # TODO: BackForward states get jumbled. May need to do this one by hand.
+    **Map(
+      previous_state = "EVIDENCE_LOCKER",
+      map_key = "map_final"
+    ).hard_set_events(FINAL_STATE_EVENTS + [
+      {
+        "target": "EVIDENCE_LOCKER_MAP",
+        "if_the_user": "Wants to go to the evidence locker"
+      }
+    ]).key_dict(),
+    **EvidenceLocker(
+      previous_state="MAP"
+    ).hard_set_events([
+      {
+        "target": "MAP_EVIDENCE_LOCKER",
+        "if_the_user": "Wants to go to the map"
+      }
+    ]).key_dict(),
 
   # The rest of these nodes are copies (where needed) to permanently put the individuals in places
   # where the user can move to and interview. So the map is basically the central node for now.
-  # "MAP_FINAL": {},
-  # "EVIDENCE_LOCKER_FINAL": {},
-  # "U_MASS_FINAL": {},
-  # "CRIME_SCENE_FINAL": {},
+  "U_MASS_FINAL": UMASS_DEFINITION.copy_with_changes(events = FINAL_MAP_EL_EVENTS).dict(),
+  "CRIME_SCENE_FINAL": CRIME_SCENE_DEFINITION.copy_with_changes(events = FINAL_MAP_EL_EVENTS).dict(),
   # "DATA_LAB_FINAL": {},
   # "MURRAY_RESIDENCE_FINAL": {},
   # "POLICE_PRECINCT_FINAL": {},
