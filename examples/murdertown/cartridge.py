@@ -677,6 +677,11 @@ class LevelMaker:
       ).dict(),
       **Map(f"UMASS_OFFICE_{self.level}", f"map_level{self.level}").add_events(LEVELING_EVENTS).key_dict()
 
+      f"VISIT_FRED_{self.level}": VISIT_FRED_DEFINITION.copy_with_changes(
+        events = [{ "target": f"MAP_VISIT_FRED_{self.level}", "if_the_user": "wants to go to the map" }]
+      ).dict(),
+      **Map(f"VISIT_FRED_{self.level}", f"map_level{self.level}").add_events(LEVELING_EVENTS).key_dict(),
+
       # TODO Keep building out the different points
     }
 
