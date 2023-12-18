@@ -15,6 +15,7 @@ class BackForwardState():
 
     def add_events(self, events=[]):
       self.events = self.events + events
+      return self
 
     def state_name(self):
       return f"{self.name}_{self.previous_state}"
@@ -242,19 +243,20 @@ PEOPLE["FRED_MURRAY_3"] = PEOPLE["FRED_MURRAY"].copy_with_new_information("""
   anything else about it or learned of any other lab results. He also found out that a backpack possibly belonging to Maura was found in the woods
   but didn't know anything else about it. Officials on the case have only responded, "we are aware of the backpack."
 """)
+EVENT_SELF = {
+  "target": ".SELF",
+  "if_the_user": "does not ask or agree with a suggestion to go somewhere else."
+}
 
 class TranscriptState:
     def __init__(self, setting, prompt="", events=[], people=[]):
         self.prompt = prompt
-        self.events = events
+        self.events = events + [EVENT_SELF]
         self.people = people
         self.setting = setting
 
     def set_events(self, events):
-        self.events = events + [{
-          "target": ".SELF",
-          "if_the_user": "does not say they are out of questions or asks to go somewhere else."
-        }]
+        self.events = events + [EVENT_SELF]
         return self
 
     def copy_with_changes(self, setting=None, prompt=None, events=None, people=None):
@@ -450,12 +452,23 @@ A data lab in the FBI New Hampshire office. Briefing room with computer equipmen
   [PEOPLE["ANONYMOUS_POLICE_DATA_ANALYST"]]
 )
 
-UMASS_START_DEFINITION = UMASS_DEFINITION.set_events(
-  []
+UMASS_START_DEFINITION = UMASS_DEFINITION.copy_with_changes(
+  events = [
+    { "target": "MAP_CRIME_SCENE_START", "if_the_user": "wants to go to the scene of the accident where Maura disappeared" }
+  ]
 ).dict()
 
-CRIME_SCENE_START_DEFINITION = CRIME_SCENE_DEFINITION.set_events(
-  []
+CRIME_SCENE_START_DEFINITION = CRIME_SCENE_DEFINITION.copy_with_changes(
+  events = [
+    { "target": "MAP_CRIME_SCENE_START", "if_the_user": "wants to go to the map" }
+  ],
+  people = [
+    PEOPLE["BUTCH_ATWOOD"],
+    PEOPLE["JOHN_MAROTTE"],
+    PEOPLE["FAITH_WESTMAN"],
+    PEOPLE["KAREN_MCNAMARA"],
+    PEOPLE["ANONYMOUS_FISH_AND_GAME_SEARCH_LEAD"]
+  ]
 ).dict()
 
 INTRO_TO_EVIDENCE_LOCKER_DEFINITION = TranscriptState(
@@ -650,19 +663,32 @@ cartridge = {
   # Introduced to the map where they can revisit those two places.
   "INTRO_TO_MAP": INTRO_TO_MAP_DEFINITION,
 
+  ##############################
+  # NARRATIVE BACKBONE LEVEL 1 #
+  ##############################
+
   # Continued narrative backbone to now look at emails and searches
   # Just before the disappearance
   "DATA_LAB": DATA_LAB_DEFINITION.dict(),
-    **Map("DATA_LAB", "map_map2_fbi_data_lab").key_dict(),
+    **Map("DATA_LAB", "map_level1_fbi_data_lab").add_events([
+      { "target": "CRIME_SCENE_START", "if_the_user": "wants to go to the site of the wreck where Maura disappeared" },
+      { "target": "U_MASS_START", "if_the_user": "wants to go to U Mass" }
+    ]).key_dict(),
 
   # Crime scene and UMass again, but now in the model narrative backbones
   # will resemble going forwards where they have backforward states
   # Evidence locker hasn't been introduced yet.
   "CRIME_SCENE_START": CRIME_SCENE_START_DEFINITION,
-    **Map("CRIME_SCENE_START", "map_map2_fbi_data_lab").key_dict(),
+    **Map("CRIME_SCENE_START", "map_level1_fbi_data_lab").add_events([
+      { "target": "DATA_LAB", "if_the_user": "wants to go to the data lab" },
+      { "target": "U_MASS_START", "if_the_user": "wants to go to U Mass" }
+    ]).key_dict(),
 
   "UMASS_START": UMASS_START_DEFINITION,
-    **Map("UMASS_START", "map_map2_fbi_data_lab").key_dict(),
+    **Map("UMASS_START", "map_level1_fbi_data_lab").add_events([
+      { "target": "DATA_LAB", "if_the_user": "wants to go to the data lab" },
+      { "target": "CRIME_SCENE_START", "if_the_user": "wants to go to the site of the wreck where Maura disappeared" },
+    ]).key_dict(),
 
   # Continuing the backbone from the data lab, the next state is an introduction
   # to the evidence locker where they can review evidence they've gathered
@@ -672,17 +698,35 @@ cartridge = {
     **ELB1_INTRO_TO_EVIDENCE_LOCKER.key_dict(),
     **Map(previous_state="INTRO_TO_EVIDENCE_LOCKER", map_key="map_map2_fbi_data_lab", events_to_pick=[]).key_dict(),
 
+
+  ##############################
+  # NARRATIVE BACKBONE LEVEL 2 #
+  ##############################
+
   # From this state, they can go to the next part of the narrative backbone
   # which is to advance the day to February 10th and visit Fred. 
   "VISIT_FRED": VISIT_FRED_DEFINITION,
+
+
+  ##############################
+  # NARRATIVE BACKBONE LEVEL 3 #
+  ##############################
 
   # Then, dawn the next day where a ground and air search begins. A dog search leads
   # Maura's scent 100 yards east until it stops. Here we also reveal the unaccounted hour of driving time.
   "SEARCH_FOR_MAURA": SEARCH_FOR_MAURA_DEFINITION,
 
+  ##############################
+  # NARRATIVE BACKBONE LEVEL 4 #
+  ##############################
+
   # Then, a talk with a police officer who was involved in an arrest of Maura two
   # a few months earlier for Credit Card fraud.
   "POLICE_PRECINCT": POLICE_PRECINCT_DEFINITION.dict(),
+
+  ##############################
+  # NARRATIVE BACKBONE LEVEL 5 #
+  ##############################
 
   # Then, we'll talk to a work friend of hers visiting Fred's place who can both tell the story both of her going
   # car shopping, then borrowing dad's car, then going to the party and having to
@@ -690,19 +734,39 @@ cartridge = {
   # at work and this is a work friend.
   "WORK_FRIEND": WORK_FRIEND_DEFINITION,
 
+  ##############################
+  # NARRATIVE BACKBONE LEVEL 6 #
+  ##############################
+
   # Then, we go to Julie's place where we can cover the boyfriend Billy.
   # This can also bring up the strange voicemail Billy got
   "JULIE_MURRAY": JULIE_MURRAY_DEFINITION,
+
+  ##############################
+  # NARRATIVE BACKBONE LEVEL 7 #
+  ##############################
 
   # Then, we go to Maura's apartment where there is the directions to Burlington VT and a book about
   # Hiking accidents
   "MAURA_APARTMENT": MAURA_APARTMENT_DEFINITION.dict(),
 
+  ##############################
+  # NARRATIVE BACKBONE LEVEL 8 #
+  ##############################
+
   # Then, the witness who saw the red truck at the general store.
   "RED_TRUCK_WITNESS": RED_TRUCK_WITNESS_DEFINITION.dict(),
 
+  ##############################
+  # NARRATIVE BACKBONE LEVEL 9 #
+  ##############################
+
   # Then, we go back to Fred's where he has received the rusted stained knife.
   "FRED_MURRAY_WITH_KNIFE": FRED_MURRAY_WITH_KNIFE_DEFINITION,
+
+  #####################################
+  # NARRATIVE BACKBONE LEVEL 10 FINAL #
+  #####################################
 
   # Then, the A-frame. The final state where they can actually move freely to all nodes.
   "A_FRAME_FINAL": TranscriptState(

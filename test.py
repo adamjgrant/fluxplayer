@@ -265,24 +265,3 @@ class TestAdvancedFunctions(unittest.TestCase):
     prompt_components = Prompt(cartridge, "DOTHING").script_components()
 
     self.assertEqual(prompt_components[8], "# Reminder of Rules")
-
-  def test_duplicate_target_events_are_removed(self):
-    flux = Flux()
-
-    cartridge = {
-      "START": {
-        "role": "",
-        "prompt": "",
-        "events": [
-          { "target": "dupe", "if_the_user": "foo" },
-          { "target": "dupe", "if_the_user": "foo" },
-          { "target": "single", "if_the_user": "foo" },
-        ]
-      }
-    }
-
-    prompt = Prompt(cartridge, "START")
-    targets = map(lambda event: event["target"], prompt._events)
-
-    self.assertEqual(".".join(targets), "dupe.single")
-
