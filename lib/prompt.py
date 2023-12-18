@@ -10,7 +10,9 @@ class Prompt:
       self.connection = connection
       self.state_definition = cartridge[state]
       self.role = cartridge["START"]["role"] if "role" in cartridge["START"] else ""
-      self._events = list(self.state_definition["events"])
+      events = list(self.state_definition["events"])
+      # TODO remove events with duplicate targets
+      self._events = events 
       
       # Return the type for the events variable.
       if type(self._events) != list:
