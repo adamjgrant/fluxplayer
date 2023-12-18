@@ -130,8 +130,6 @@ Cecil Smith that he is the driver. He also maintains that he was never at the sc
 Separately and after the Murray incident, the Chief was arrested and charged for driving while intoxicated and disobeying orders.
 While getting pulled over for speeding, he drunkenly tried to get away by driving even faster while his own officers pursued him.
 """),
-  "KATHLEEN_MURRAY": Person("Kathleen Murray", "Maura Murray's sister", """
-"""),
   "FRED_MURRAY": Person("Fred Murray", "Maura Murray's father", """
 Fred will agree with Cecil's account that Maura might have gone on a 'squaw walk' but says he just didn't know how to express himself and he
 was very upset about Maura going missing.
@@ -737,7 +735,15 @@ cartridge = {
   # The rest of these nodes are copies (where needed) to permanently put the individuals in places
   # where the user can move to and interview. So the map is basically the central node for now.
   "U_MASS_FINAL": UMASS_DEFINITION.copy_with_changes(events = FINAL_MAP_EL_EVENTS).dict(),
-  "CRIME_SCENE_FINAL": CRIME_SCENE_DEFINITION.copy_with_changes(events = FINAL_MAP_EL_EVENTS).dict(),
+  "CRIME_SCENE_FINAL": CRIME_SCENE_DEFINITION.copy_with_changes(events = FINAL_MAP_EL_EVENTS,
+    people = [
+      PEOPLE["BUTCH_ATWOOD"],
+      PEOPLE["JOHN_MAROTTE"],
+      PEOPLE["FAITH_WESTMAN"],
+      PEOPLE["KAREN_MCNAMARA"],
+      PEOPLE["ANONYMOUS_FISH_AND_GAME_SEARCH_LEAD"]
+    ]
+  ).dict(),
   "DATA_LAB_FINAL": DATA_LAB_DEFINITION.copy_with_changes(events = FINAL_MAP_EL_EVENTS).dict(),
   "MURRAY_RESIDENCE_FINAL": TranscriptState(
     setting = "The Murray family home living room, present day.",
@@ -745,18 +751,28 @@ cartridge = {
       PEOPLE["FRED_MURRAY"],
       PEOPLE["KATHLEEN_MURRAY"],
       PEOPLE["JULIE_MURRAY"],
-      PEOPLE["BILLY"]
+      PEOPLE["BILLY"],
+      PEOPLE["ANONYMOUS_WORK_FRIEND"]
     ],
     events = FINAL_MAP_EL_EVENTS
   ).dict(),
-  "POLICE_PRECINCT_FINAL": POLICE_PRECINCT_DEFINITION.copy_with_changes(events = FINAL_MAP_EL_EVENTS).dict(),
+  "POLICE_PRECINCT_FINAL": POLICE_PRECINCT_DEFINITION.copy_with_changes(events = FINAL_MAP_EL_EVENTS,
+    people = [
+      PEOPLE["CECIL_SMITH"],
+      PEOPLE["JOHN_MONAGHAN"],
+      PEOPLE["JEFF_WILLIAMS"],
+      PEOPLE["ANONYMOUS_INVESTIGATOR"]
+    ] 
+  ).dict(),
+
   "MAURA_APARTMENT_FINAL": MAURA_APARTMENT_DEFINITION.copy_with_changes(events = FINAL_MAP_EL_EVENTS).dict(),
   "RED_TRUCK_WITNESS_FINAL": RED_TRUCK_WITNESS_DEFINITION.copy_with_changes(events = FINAL_MAP_EL_EVENTS).dict()
 }
 
 # Print out each key in the object
-debug = True
-if debug:
+debug_states_to_and_from = False
+
+if debug_states_to_and_from:
   for key in cartridge:
     print(key)
     for event in cartridge[key]["events"]:
