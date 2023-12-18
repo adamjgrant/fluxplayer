@@ -246,7 +246,7 @@ PEOPLE["FRED_MURRAY_3"] = PEOPLE["FRED_MURRAY"].copy_with_new_information("""
 """)
 
 class TranscriptState:
-    def __init__(self, setting, prompt, events=[], people=[]):
+    def __init__(self, setting, prompt="", events=[], people=[]):
         self.prompt = prompt
         self.events = events
         self.people = people
@@ -450,7 +450,7 @@ A data lab in the FBI New Hampshire office. Briefing room with computer equipmen
   """,
   [{ "target": "MAP_DATA_LAB", "if_the_user": "agrees to go to the map" }],
   [PEOPLE["ANONYMOUS_POLICE_DATA_ANALYST"]]
-).dict()
+)
 
 UMASS_START_DEFINITION = UMASS_DEFINITION.set_events(
   []
@@ -567,7 +567,7 @@ POLICE_PRECINCT_DEFINITION = TranscriptState(
   """,
   events = [],
   people = [PEOPLE["ANONYMOUS_INVESTIGATOR"]]
-).dict()
+)
 
 WORK_FRIEND_DEFINITION = TranscriptState(
   setting = "Back at the Murray household where now Fred and an anonymous work friend of Maura's are seated in the living room.",
@@ -594,7 +594,7 @@ MAURA_APARTMENT_DEFINITION = TranscriptState(
   """,
   events = [],
   people = [PEOPLE["ANONYMOUS_HAVERHILL_OFFICER"], PEOPLE["BILLY"]]
-).dict()
+)
 
 RED_TRUCK_WITNESS_DEFINITION = TranscriptState(
   setting = "Haverhill Swiftwater General Store where a witness waits outside to talk with Mike and the user",
@@ -602,7 +602,7 @@ RED_TRUCK_WITNESS_DEFINITION = TranscriptState(
   """,
   events = [],
   people = [PEOPLE["RED_TRUCK_WITNESS"]]
-).dict()
+)
 
 FRED_MURRAY_WITH_KNIFE_DEFINITION = TranscriptState(
   setting = "December 8, 2004. The Murray family house. Fred, Julie, and Kathleen Murray are all seated in the living room",
@@ -654,7 +654,7 @@ cartridge = {
 
   # Continued narrative backbone to now look at emails and searches
   # Just before the disappearance
-  "DATA_LAB": DATA_LAB_DEFINITION,
+  "DATA_LAB": DATA_LAB_DEFINITION.dict(),
     **Map("DATA_LAB", "map_map2_fbi_data_lab").key_dict(),
 
   # Crime scene and UMass again, but now in the model narrative backbones
@@ -684,7 +684,7 @@ cartridge = {
 
   # Then, a talk with a police officer who was involved in an arrest of Maura two
   # a few months earlier for Credit Card fraud.
-  "POLICE_PRECINCT": POLICE_PRECINCT_DEFINITION,
+  "POLICE_PRECINCT": POLICE_PRECINCT_DEFINITION.dict(),
 
   # Then, we'll talk to a work friend of hers visiting Fred's place who can both tell the story both of her going
   # car shopping, then borrowing dad's car, then going to the party and having to
@@ -698,10 +698,10 @@ cartridge = {
 
   # Then, we go to Maura's apartment where there is the directions to Burlington VT and a book about
   # Hiking accidents
-  "MAURA_APARTMENT": MAURA_APARTMENT_DEFINITION,
+  "MAURA_APARTMENT": MAURA_APARTMENT_DEFINITION.dict(),
 
   # Then, the witness who saw the red truck at the general store.
-  "RED_TRUCK_WITNESS": RED_TRUCK_WITNESS_DEFINITION,
+  "RED_TRUCK_WITNESS": RED_TRUCK_WITNESS_DEFINITION.dict(),
 
   # Then, we go back to Fred's where he has received the rusted stained knife.
   "FRED_MURRAY_WITH_KNIFE": FRED_MURRAY_WITH_KNIFE_DEFINITION,
@@ -738,11 +738,20 @@ cartridge = {
   # where the user can move to and interview. So the map is basically the central node for now.
   "U_MASS_FINAL": UMASS_DEFINITION.copy_with_changes(events = FINAL_MAP_EL_EVENTS).dict(),
   "CRIME_SCENE_FINAL": CRIME_SCENE_DEFINITION.copy_with_changes(events = FINAL_MAP_EL_EVENTS).dict(),
-  # "DATA_LAB_FINAL": {},
-  # "MURRAY_RESIDENCE_FINAL": {},
-  # "POLICE_PRECINCT_FINAL": {},
-  # "MAURA_APARTMENT_FINAL": {},
-  # "RED_TRUCK_WITNESS_FINAL": {}
+  "DATA_LAB_FINAL": DATA_LAB_DEFINITION.copy_with_changes(events = FINAL_MAP_EL_EVENTS).dict(),
+  "MURRAY_RESIDENCE_FINAL": TranscriptState(
+    setting = "The Murray family home living room, present day.",
+    people = [
+      PEOPLE["FRED_MURRAY"],
+      PEOPLE["KATHLEEN_MURRAY"],
+      PEOPLE["JULIE_MURRAY"],
+      PEOPLE["BILLY"]
+    ],
+    events = FINAL_MAP_EL_EVENTS
+  ).dict(),
+  "POLICE_PRECINCT_FINAL": POLICE_PRECINCT_DEFINITION.copy_with_changes(events = FINAL_MAP_EL_EVENTS).dict(),
+  "MAURA_APARTMENT_FINAL": MAURA_APARTMENT_DEFINITION.copy_with_changes(events = FINAL_MAP_EL_EVENTS).dict(),
+  "RED_TRUCK_WITNESS_FINAL": RED_TRUCK_WITNESS_DEFINITION.copy_with_changes(events = FINAL_MAP_EL_EVENTS).dict()
 }
 
 # Print out each key in the object
