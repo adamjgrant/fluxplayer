@@ -56,10 +56,10 @@ This is the information that {self.name} has and will provide only if asked a qu
 {self.information}\n\n
         """
 
-    def copy_with_new_information(self, information)
+    def copy_with_new_information(self, information):
         person = Person(
-          name = self.name
-          bio = self.bio
+          name = self.name,
+          bio = self.bio,
           information = f"{self.information}\n{information}"
         )
         return person
@@ -150,13 +150,22 @@ She called to check her voicemail at 4:37 pm, the last recorded use of her cell 
   """
   ),
   "BILLY": Person("Billy Rausch", "Boyfriend of Maura Murray", """
-    Billy says he received a voicemail from Maura. The day after Maura disappeared, Billy turned off his cellphone as he boarded a plane
+    Billy met Maura at Westpoint Military Academy in upstate NY during Maura's sophomore year and transferred to U Mass shortly after to study Nursing.
+    At this point, they were dating long distance through the point of her disappearance. Maura planned on spending time in Oklahoma where he was stationed.
+    Billy will describe their relationship as "engaged to be engaged".
+    Billy says he received a voicemail from Maura the day after Maura disappeared, Billy turned off his cellphone as he boarded a plane
     to assist in the search efforts. Shortly after he did, he received a voicemail from an unknown number. It was short and wordless. He says
-    He could only hear crying and at the end a whimper. He swears this was Maura.
+    He could only hear crying and at the end a whimper. He swears this was Maura. Officials traced the number to an AT&T calling card. He remembers
+    this well because Billy's mother Sharon gave Maura two AT&T calling cards a couple months earlier. Haverhill police claimed they traced the call
+    back to the American Red cross. Yet Sharon says multiple private investigators had tried and failed to trace the call.
     Billy is also aware of the claim of a letter left in Maura's dorm room addressed to him. However he says he was with the officers when the dorm
     room was being searched and there was no letter. It's not clear where this information came from.
   """),
   "JULIE_MURRAY": Person("Julie Murray", "Maura Murray's second oldest sister", """
+    Julie attended West Point at the same time as Maura and ran track together and were incredibly close.
+    Julie and Billy weren't close but they shared some friends. Julie caught wind of a rumor that Billy might be cheating on Maura.
+    She confronted Maura about it, expressing her concerns as a big sister and suggested it was time for Maura to move on. She will say
+    Maura and Billy got into fights fairly frequently. When they did, Maura needed to be comforted and talked down afterwards.
   """),
   "KATHLEEN_MURRAY": Person("Kathleen Murray", "Maura Murray's oldest sister", """
     On February 5, 2004, Kathleen got out of rehab and her boyfriend celebrated by taking her to a liquor store. After relapsing mixing sleeping pills with alcohol,
@@ -179,16 +188,26 @@ She called to check her voicemail at 4:37 pm, the last recorded use of her cell 
     call that made her so upset, she just stares out the window completely disengaged. Her supervisor was so worried for her, he ends her shift
     early and walks her back to her dorm room. When the friend asks what's wrong, the only thing she says is "my sister."
   """),
-  "ANONYMOUS_LANDLORD": Person("", "", """
-  """),
-  "RED_TRUCK_WITNESS": Person("", "", """
+  "RED_TRUCK_WITNESS": Person("Anonymous Red Truck Witness", "", """
+    On the night Maura went missing, this woman was walking to the Swiftwater general store, a red truck passed by her and slowed down
+    for some reason. It was too dark to see the passengers. As she got closer, it took off up the hill and out of sight. She saw it again soon
+    after soon after idling outside the general store. When she stepped out into the light of the parking lot, the car sped off down
+    the road in the direction of Maura's accident. They went inside and asked about the truck. They said, no one came in. It wasn't long until
+    a police cruiser and ambulance came by heading in the same direction. The only way she can describe the truck is that it looked like
+    someone who was delivering wood.
   """),
   "TRUTH_SEEKER": Person("", "", """
+    This individual is aware of a previous search of the A-frame house with Fred and volunteers and the person who implicated his brother.
+    They came with cadaver dogs which became active around a closet upstairs indicating human remains might have been there. Private investigators
+    cut out two pieces of the carpet in the closet. They sent one to New Hampshire police but heard nothing back. Then in 2016, private investigators
+    returned to the A-frame house and notice stains on the walls of the closet. They were able to confirm with testing the stains are the blood of two
+    people. One person was male, the other person was inconclusive and could not be confirmed to belong to Maura due to the sample size and
+    degredation of the blood.
   """),
   "ANONYMOUS_HAVERHILL_OFFICER": Person("Anonymous Haverhill Officer", "Officer who searched Maura's car, providing the items found", """
     The officer found a computer printout of directions to Burlington, VT and a copy of a book about hiking accidents in New Hampshire.
     He also found a box of Franzia wine, an open coke bottle filled with a red liquid that smelled of alcohol. Her cellphone, credit cards, and backpack
-    are all gone.
+    were all gone.
   """),
   "ANONYMOUS_FISH_AND_GAME_SEARCH_LEAD": Person("Anonymous Fish & Game Search Lead", "", """
     The team this person lead canvassed the area handing out flyers and checking with local motels. They used a leather glove belonging to Maura
@@ -207,6 +226,17 @@ PEOPLE["FRED_MURRAY_2"] = PEOPLE["FRED_MURRAY"].copy_with_new_information("""
   The following day, Fred finds out that insurance is going to cover the damage. However before filing the claim, he asks Maura to pick up
   accident forms at the Registry of Motor Vehicles. Fred goes back home to Massachusettes and called her later at 11:30PM to remind her to get it
   done. They make a plan to go over the forms the following night. This never happened because it's the night Maura disappeared.
+  Fred believes Maura was most likely headed to Bartlett, New Hampshire on the night of her disappearance. Growing up, the Murrays used to go
+  hiking frequently, as often as four times a week. She loved the white mountains.
+""")
+
+PEOPLE["FRED_MURRAY_3"] = PEOPLE["FRED_MURRAY"].copy_with_new_information("""
+  In late 2004, a stranger approached Fred with a rusted and reddish-brown stained knife and tells him "I think my brother might have killed your daughter."
+  The stranger's brother lived in an A-Frame house less than a mile from the crash. After that night, he remembered his brother acting
+  really strange. Later he found a bloody knife in the glove compartment of his brother's car. Fred mails the knife to New Hampshire police along
+  with a note explaining everything. Fred gets a confirmation letter days later confirming they've received the package. Fred never heard
+  anything else about it or learned of any other lab results. He also found out that a backpack possibly belonging to Maura was found in the woods
+  but didn't know anything else about it. Officials on the case have only responded, "we are aware of the backpack."
 """)
 
 class TranscriptState:
@@ -520,7 +550,7 @@ WORK_FRIEND_DEFINITION = TranscriptState(
   prompt = """
   """,
   events = [],
-  people = [PEOPLE["ANONYMOUS_WORK_FRIEND"], PEOPLE["FRED_MURRAY_2"]]
+  people = [PEOPLE["ANONYMOUS_WORK_FRIEND"], PEOPLE["FRED_MURRAY_2"], PEOPLE["BILLY"]]
 ).dict()
 
 JULIE_MURRAY_DEFINITION = TranscriptState(
@@ -539,7 +569,7 @@ MAURA_APARTMENT_DEFINITION = TranscriptState(
     There were also reports of a letter left in the dorm room addressed to Billy.
   """,
   events = [],
-  people = [PEOPLE["ANONYMOUS_LANDLORD"], PEOPLE["ANONYMOUS_HAVERHILL_OFFICER"], PEOPLE["BILLY"]]
+  people = [PEOPLE["ANONYMOUS_HAVERHILL_OFFICER"], PEOPLE["BILLY"]]
 ).dict()
 
 RED_TRUCK_WITNESS_DEFINITION = TranscriptState(
@@ -555,7 +585,7 @@ FRED_MURRAY_WITH_KNIFE_DEFINITION = TranscriptState(
   prompt = """
   """,
   events = [],
-  people = [PEOPLE["FRED_MURRAY_2"], PEOPLE["JULIE_MURRAY"], PEOPLE["KATHLEEN_MURRAY"]]
+  people = [PEOPLE["FRED_MURRAY_3"], PEOPLE["JULIE_MURRAY"], PEOPLE["KATHLEEN_MURRAY"]]
 ).dict()
 
 A_FRAME_DEFINITION = TranscriptState(
