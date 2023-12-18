@@ -437,8 +437,8 @@ they have pieced together some events leading up to her disappearance.
   """,
   [
     { "target": "DATA_LAB_1", "if_the_user": "decides to go to the data lab'" },
-    { "target": "CRIME_SCENE_1", "if_the_user": "decides to go back to the scene of the wrecked saturn'" },
-    { "target": "UMASS_1", "if_the_user": "decides to go back to U Mass'" }
+    { "target": "CAR_WRECK_1", "if_the_user": "decides to go back to the scene of the wrecked saturn'" },
+    { "target": "UMASS_OFFICE_1", "if_the_user": "decides to go back to U Mass'" }
   ],
   []
 ).dict()
@@ -656,8 +656,6 @@ class LevelMaker:
   def key_dict(self):
     _dict = dict() 
     _dict.update({f"DATA_LAB_{self.level}": DATA_LAB_DEFINITION.dict()})
-    _dict.update({f"CAR_WRECK_{self.level}": CRIME_SCENE_START_DEFINITION.dict()})
-    _dict.update({f"UMASS_OFFICE_{self.level}": UMASS_START_DEFINITION.dict()})
 
     # Continued narrative backbone to now look at emails and searches
     # Just before the disappearance
@@ -666,22 +664,22 @@ class LevelMaker:
         { "target": f"UMASS_OFFICE_{self.level}", "if_the_user": "wants to go to U Mass" }
       ]).key_dict())
 
-    
     # Crime scene and UMass again, but now in the model narrative backbones
     # will resemble going forwards where they have backforward states
     # Evidence locker hasn't been introduced yet.
+    _dict.update({f"CAR_WRECK_{self.level}": CRIME_SCENE_START_DEFINITION.dict()})
     _dict.update(Map(f"CAR_WRECK_{self.level}", f"map_level{self.level}").add_events([
         { "target": f"DATA_LAB_{self.level}", "if_the_user": "wants to go to the data lab" },
         { "target": f"UMASS_OFFICE_{self.level}", "if_the_user": "wants to go to U Mass" }
       ]).key_dict())
 
+    _dict.update({f"UMASS_OFFICE_{self.level}": UMASS_START_DEFINITION.dict()})
     _dict.update(Map(f"UMASS_OFFICE_{self.level}", f"map_level{self.level}").add_events([
         { "target": f"DATA_LAB_{self.level}", "if_the_user": "wants to go to the data lab" },
         { "target": f"CAR_WRECK_{self.level}", "if_the_user": "wants to go to the site of the wreck where Maura disappeared" },
       ]).key_dict())
 
     return _dict
-
 
 cartridge.update({
   # Introduction to story
