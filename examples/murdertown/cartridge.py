@@ -525,7 +525,7 @@ SEARCH_FOR_MAURA_DEFINITION = TranscriptState(
     PEOPLE["JOHN_MONAGHAN"],
     PEOPLE["JEFF_WILLIAMS"]
   ]
-).dict()
+)
 
 POLICE_PRECINCT_DEFINITION = TranscriptState(
   setting = "The office of an anonyous investigator at a police precinct near the University of Massachusettes at Amherst",
@@ -745,7 +745,7 @@ cartridge = {
   # Then, dawn the next day where a ground and air search begins. A dog search leads
   # Maura's scent 100 yards east until it stops. Here we also reveal the unaccounted hour of driving time.
   **LevelMaker(3).key_dict(),
-  "SEARCH_FOR_MAURA": SEARCH_FOR_MAURA_DEFINITION,
+  "SEARCH_FOR_MAURA": SEARCH_FOR_MAURA_DEFINITION.dict(),
 
   ##############################
   # NARRATIVE BACKBONE LEVEL 4 #
