@@ -241,8 +241,8 @@ class TestAdvancedFunctions(unittest.TestCase):
 
     new_prompt = flux.call_method_on_state(cartridge, state, method)
 
-    START = 20
-    new_prompt = new_prompt[-START:-5]
+    START = 451
+    new_prompt = new_prompt[START:START+15]
     self.assertEqual(new_prompt, "Starting prompt")
 
   def test_long_prompt_reminds(self):
