@@ -384,7 +384,7 @@ then ask them again if they're ready.
 }
 
 # A/B B/A Criss-cross
-UMASS_DEFINITION = TranscriptState(
+UMASS_OFFICE_DEFINITION = TranscriptState(
   "The office of a professor at the University of Massachusettes who prefers to remain anonymous",
   "", 
   [],
@@ -402,7 +402,7 @@ The car is pointed west on the eastbound side of the road. The windshield is cra
   people=[PEOPLE["BUTCH_ATWOOD"], PEOPLE["FAITH_WESTMAN"], PEOPLE["CECIL_SMITH"], PEOPLE["JOHN_MONAGHAN"], PEOPLE["JEFF_WILLIAMS"]]
 )
 
-UMASS_1_DEFINITION = UMASS_DEFINITION.set_events(
+UMASS_1_DEFINITION = UMASS_OFFICE_DEFINITION.set_events(
   [{ "target": "CRIME_SCENE_1", "if_the_user": "agrees to go to New Hampshire to see the crime scene" }]
 ).dict()
 
@@ -414,7 +414,7 @@ CRIME_SCENE_2_DEFINITION = CRIME_SCENE_DEFINITION.set_events(
   [{ "target": "UMASS_2", "if_the_user": "agrees to go to U Mass to talk to about communications" }]
 ).dict()
 
-UMASS_2_DEFINITION = UMASS_DEFINITION.set_events(
+UMASS_2_DEFINITION = UMASS_OFFICE_DEFINITION.set_events(
   [{ "target": "INTRO_TO_MAP", "if_the_user": "agrees with Mike's suggestion to continue to the map" }]
 ).dict()
 
@@ -452,7 +452,7 @@ A data lab in the FBI New Hampshire office. Briefing room with computer equipmen
   [PEOPLE["ANONYMOUS_POLICE_DATA_ANALYST"]]
 )
 
-UMASS_START_DEFINITION = UMASS_DEFINITION.copy_with_changes(
+UMASS_START_DEFINITION = UMASS_OFFICE_DEFINITION.copy_with_changes(
   events = [
     { "target": "MAP_CRIME_SCENE_START", "if_the_user": "wants to go to the scene of the accident where Maura disappeared" }
   ]
@@ -615,7 +615,7 @@ class LevelMaker:
       { "target": f"DATA_LAB_{self.level}", "if_the_user": "wants to go to the data lab" },
       { "target": f"UMASS_OFFICE_{self.level}", "if_the_user": "wants to go to U Mass" }
     ]
-    if self.level > 1:
+    if self.level > 1 and self.level < 5:
       LEVELING_EVENTS = LEVELING_EVENTS + [{
         "target": f"VISIT_FRED_{self.level}", "if_the_user": "wants to go to Fred's house"
       }]
@@ -635,7 +635,7 @@ class LevelMaker:
         "target": f"POLICE_PRECINCT_{self.level}", "if_the_user": "wants to go to the police precinct"
       }]
 
-    if self.level > 4:
+    if self.level > 4 and self.level < 9:
       LEVELING_EVENTS = LEVELING_EVENTS + [{
         "target": f"WORK_FRIEND_{self.level}", "if_the_user": "wants to go to talk to Maura's work friend"
       }]
@@ -660,27 +660,21 @@ class LevelMaker:
         "target": f"FRED_MURRAY_WITH_KNIFE_{self.level}", "if_the_user": "wants to go to Fred's house to discuss the knife"
       }]
 
-    _dict = {
-      # Continued narrative backbone to now look at emails and searches
-      # Just before the disappearance
-      f"DATA_LAB_{self.level}": DATA_LAB_DEFINITION.copy_with_changes(events = [
-            { "target": f"MAP_DATA_LAB_{self.level}", "if_the_user": "wants to go to the map" }
-          ]).dict(),
-      **Map(f"DATA_LAB_{self.level}", f"map_level{self.level}").add_events(LEVELING_EVENTS).key_dict(),
+    _dict = {}
 
-
-      f"UMASS_OFFICE_{self.level}": UMASS_START_DEFINITION.copy_with_changes(
-        events = [{ "target": f"MAP_UMASS_{self.level}", "if_the_user": "wants to go to the map" }]
-      ).dict(),
-      **Map(f"UMASS_OFFICE_{self.level}", f"map_level{self.level}").add_events(LEVELING_EVENTS).key_dict(),
-
-      f"VISIT_FRED_{self.level}": VISIT_FRED_DEFINITION.copy_with_changes(
-        events = [{ "target": f"MAP_VISIT_FRED_{self.level}", "if_the_user": "wants to go to the map" }]
-      ).dict(),
-      **Map(f"VISIT_FRED_{self.level}", f"map_level{self.level}").add_events(LEVELING_EVENTS).key_dict(),
-
+    backbone_names = [
+      "DATA_LAB", "UMASS_OFFICE", "VISIT_FRED", "SEARCH_FOR_MAURA", 
+      "POLICE_PRECINCT"
       # TODO Keep building out the different points
-    }
+    ]
+
+    for backbone_name in backbone_names:
+      _dict.update({
+        f"{backbone_name}_{self.level}": globals()[f"{backbone_name}_DEFINITION"].copy_with_changes(
+          events = [{ "target": f"MAP_{backbone_name}_{self.level}", "if_the_user": "wants to go to the map" }]
+        ).dict(),
+        **Map(f"{backbone_name}_{self.level}", f"map_level{self.level}").add_events(LEVELING_EVENTS).key_dict(),
+      })
 
     if self.level < 3:
       _dict.update({
@@ -692,13 +686,13 @@ class LevelMaker:
         ).dict(),
         **Map(f"CAR_WRECK_{self.level}", f"map_level{self.level}").add_events(LEVELING_EVENTS).key_dict(),
       })
-    else:
-      _dict.update({
-        f"SEARCH_FOR_MAURA_{self.level}": SEARCH_FOR_MAURA_DEFINITION.copy_with_changes(
-          events = [{ "target": f"MAP_SEARCH_FOR_MAURA_{self.level}", "if_the_user": "wants to go to the map" }]
-        ).dict(),
-        **Map(f"SEARCH_FOR_MAURA_{self.level}", f"map_level{self.level}").add_events(LEVELING_EVENTS).key_dict(),
-      })
+    # else:
+    #   _dict.update({
+    #     f"SEARCH_FOR_MAURA_{self.level}": SEARCH_FOR_MAURA_DEFINITION.copy_with_changes(
+    #       events = [{ "target": f"MAP_SEARCH_FOR_MAURA_{self.level}", "if_the_user": "wants to go to the map" }]
+    #     ).dict(),
+    #     **Map(f"SEARCH_FOR_MAURA_{self.level}", f"map_level{self.level}").add_events(LEVELING_EVENTS).key_dict(),
+    #   })
     
     return _dict
 
@@ -721,6 +715,7 @@ cartridge = {
   # NARRATIVE BACKBONE LEVEL 1 #
   ##############################
 
+  # Adds DATA LAB, then Evidence Locker
   **LevelMaker(1).key_dict(),
 
   # Continuing the backbone from the data lab, the next state is an introduction
@@ -736,6 +731,8 @@ cartridge = {
 
   # From this state, they can go to the next part of the narrative backbone
   # which is to advance the day to February 10th and visit Fred. 
+
+  # Adds VISIT_FRED
   **LevelMaker(2).key_dict(),
 
   ##############################
@@ -744,8 +741,9 @@ cartridge = {
 
   # Then, dawn the next day where a ground and air search begins. A dog search leads
   # Maura's scent 100 yards east until it stops. Here we also reveal the unaccounted hour of driving time.
+
+  # Adds SEARCH_FOR_MAURA
   **LevelMaker(3).key_dict(),
-  "SEARCH_FOR_MAURA": SEARCH_FOR_MAURA_DEFINITION.dict(),
 
   ##############################
   # NARRATIVE BACKBONE LEVEL 4 #
@@ -753,6 +751,8 @@ cartridge = {
 
   # Then, a talk with a police officer who was involved in an arrest of Maura two
   # a few months earlier for Credit Card fraud.
+  
+  # Adds POLICE_PRECINCT
   **LevelMaker(4).key_dict(),
   "POLICE_PRECINCT": POLICE_PRECINCT_DEFINITION.dict(),
 
@@ -836,7 +836,7 @@ cartridge = {
 
   # The rest of these nodes are copies (where needed) to permanently put the individuals in places
   # where the user can move to and interview. So the map is basically the central node for now.
-  "U_MASS_FINAL": UMASS_DEFINITION.copy_with_changes(events = FINAL_MAP_EL_EVENTS).dict(),
+  "U_MASS_FINAL": UMASS_OFFICE_DEFINITION.copy_with_changes(events = FINAL_MAP_EL_EVENTS).dict(),
   "CRIME_SCENE_FINAL": CRIME_SCENE_DEFINITION.copy_with_changes(events = FINAL_MAP_EL_EVENTS,
     people = [
       PEOPLE["BUTCH_ATWOOD"],
