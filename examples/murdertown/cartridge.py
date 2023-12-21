@@ -245,15 +245,16 @@ PEOPLE["FRED_MURRAY_3"] = PEOPLE["FRED_MURRAY"].copy_with_new_information("""
 """)
 EVENT_SELF = {
   "target": ".SELF",
-  "if_the_user": "does not ask or agree with a suggestion to go somewhere else."
+  "if_the_user": "is wanting to stay here and ask questions or otherwise does not ask to go somewhere else."
 }
 
 class TranscriptState:
-    def __init__(self, setting, prompt="", events=[], people=[]):
+    def __init__(self, setting, prompt="", events=[], people=[], next_backbone=None):
         self.prompt = prompt
         self.events = events + [EVENT_SELF]
         self.people = people
         self.setting = setting
+        self.next_backbone = next_backbone
 
     def set_events(self, events):
         self.events = events + [EVENT_SELF]
@@ -266,6 +267,15 @@ class TranscriptState:
           events=events if events else self.events,
           people=people if people else self.people
         )
+
+    def user_menu(self):
+        if self.next_backbone:
+          return """
+Lastly, add this to your message at the bottom:
+_🗺️ Map has a new item: "{self.next_backbone}". Ask for the map to go there or anywhere else)
+          """
+        else:
+          return ""
 
     def dict(self):
         overviews = list(map(lambda person: person.overview(), self.people)) 
@@ -294,6 +304,7 @@ If you haven't already, briefly narrate the setting with some creative flair on 
 {"".join(overviews)}
 
 Remember this information is only revealed by each person and only if the user asks the right questions.
+{self.user_menu()}
 
             """,
             "events": self.events
@@ -376,7 +387,7 @@ then ask them again if they're ready.
         "if_the_user": "chooses to go to University of Massachusettes to discuss the communication"
       },
       {
-        "target": "CRIME_SCENE_2",
+        "target": "CRIME_SCENE_1",
         "if_the_user": "chooses to go to New Hampshire to see the abandoned vehicle"
       }
     ]
@@ -885,7 +896,7 @@ cartridge = {
 }
 
 # Print out each key in the object
-debug_states_to_and_from = False
+debug_states_to_and_from = True
 
 if debug_states_to_and_from:
   for key in cartridge:
