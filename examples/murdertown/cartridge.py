@@ -576,7 +576,7 @@ FRED_MURRAY_WITH_KNIFE_DEFINITION = TranscriptState(
   """,
   events = [],
   people = [PEOPLE["FRED_MURRAY_3"], PEOPLE["JULIE_MURRAY"], PEOPLE["KATHLEEN_MURRAY"]]
-).dict()
+)
 
 FINAL_STATES = [
   ["A_FRAME_FINAL", "A-Frame"],
@@ -608,8 +608,7 @@ class LevelMaker:
     self.level = level
 
   def key_dict(self):
-    # TODO: This isn't quite right because we want Fred's house (for example) to change what is happening there.
-    # It won't be two separate places between him having sent in the knife and not (for example)
+    backbone_names = [ "DATA_LAB", "UMASS_OFFICE" ]
     
     LEVELING_EVENTS = [
       { "target": f"DATA_LAB_{self.level}", "if_the_user": "wants to go to the data lab" },
@@ -619,6 +618,8 @@ class LevelMaker:
       LEVELING_EVENTS = LEVELING_EVENTS + [{
         "target": f"VISIT_FRED_{self.level}", "if_the_user": "wants to go to Fred's house"
       }]
+
+      backbone_names = backbone_names + ["VISIT_FRED"]
 
     if self.level < 3:
       LEVELING_EVENTS = LEVELING_EVENTS + [
@@ -630,43 +631,52 @@ class LevelMaker:
         "target": f"SEARCH_FOR_MAURA_{self.level}", "if_the_user": "wants to go to the search for Maura near the site of the car crash where Maura disappeared"
       }]
 
+      backbone_names = backbone_names + ["SEARCH_FOR_MAURA"]
+
     if self.level > 3:
       LEVELING_EVENTS = LEVELING_EVENTS + [{
         "target": f"POLICE_PRECINCT_{self.level}", "if_the_user": "wants to go to the police precinct"
       }]
+
+      backbone_names + backbone_names + ["POLICE_PRECINCT"]
 
     if self.level > 4 and self.level < 9:
       LEVELING_EVENTS = LEVELING_EVENTS + [{
         "target": f"WORK_FRIEND_{self.level}", "if_the_user": "wants to go to talk to Maura's work friend"
       }]
 
+      backbone_names + backbone_names + ["WORK_FRIEND"]
+
     if self.level > 5:
       LEVELING_EVENTS = LEVELING_EVENTS + [{
         "target": f"JULIE_MURRAY_{self.level}", "if_the_user": "wants to go to Julie Murray's place"
       }]
+
+      backbone_names + backbone_names + ["JULIE_MURRAY"]
     
     if self.level > 6:
       LEVELING_EVENTS = LEVELING_EVENTS + [{
         "target": f"MAURA_APARTMENT_{self.level}", "if_the_user": "wants to go to Maura's apartment"
       }]
 
+      backbone_names + backbone_names + ["MAURA_APARTMENT"]
+
     if self.level > 7:
       LEVELING_EVENTS = LEVELING_EVENTS + [{
         "target": f"RED_TRUCK_WITNESS_{self.level}", "if_the_user": "wants to go to the Swiftwater general store to talk to the witness who saw the red truck"
       }]
+
+      backbone_names = backbone_names + ["RED_TRUCK_WITNESS"]
 
     if self.level > 8:
       LEVELING_EVENTS = LEVELING_EVENTS + [{
         "target": f"FRED_MURRAY_WITH_KNIFE_{self.level}", "if_the_user": "wants to go to Fred's house to discuss the knife"
       }]
 
+      backbone_names = backbone_names + ["FRED_MURRAY_WITH_KNIFE"]
+
     _dict = {}
 
-    backbone_names = [
-      "DATA_LAB", "UMASS_OFFICE", "VISIT_FRED", "SEARCH_FOR_MAURA", 
-      "POLICE_PRECINCT"
-      # TODO Keep building out the different points
-    ]
 
     for backbone_name in backbone_names:
       _dict.update({
@@ -754,7 +764,6 @@ cartridge = {
   
   # Adds POLICE_PRECINCT
   **LevelMaker(4).key_dict(),
-  "POLICE_PRECINCT": POLICE_PRECINCT_DEFINITION.dict(),
 
   ##############################
   # NARRATIVE BACKBONE LEVEL 5 #
@@ -764,8 +773,9 @@ cartridge = {
   # car shopping, then borrowing dad's car, then going to the party and having to
   # get back in an inexplicable hurry. This can also cover the call from the sister since it happened
   # at work and this is a work friend.
+
+  # Adds WORK_FRIEND
   **LevelMaker(5).key_dict(),
-  "WORK_FRIEND": WORK_FRIEND_DEFINITION,
 
   ##############################
   # NARRATIVE BACKBONE LEVEL 6 #
@@ -774,8 +784,8 @@ cartridge = {
   # Then, we go to Julie's place where we can cover the boyfriend Billy.
   # This can also bring up the strange voicemail Billy got
 
+  # Adds JULIE_MURRAY
   **LevelMaker(6).key_dict(),
-  "JULIE_MURRAY": JULIE_MURRAY_DEFINITION,
 
   ##############################
   # NARRATIVE BACKBONE LEVEL 7 #
@@ -783,24 +793,27 @@ cartridge = {
 
   # Then, we go to Maura's apartment where there is the directions to Burlington VT and a book about
   # Hiking accidents
+
+  # Adds MAURA_APARTMENT
   **LevelMaker(7).key_dict(),
-  "MAURA_APARTMENT": MAURA_APARTMENT_DEFINITION.dict(),
 
   ##############################
   # NARRATIVE BACKBONE LEVEL 8 #
   ##############################
 
   # Then, the witness who saw the red truck at the general store.
+
+  # Adds RED_TRUCK_WITNESS
   **LevelMaker(8).key_dict(),
-  "RED_TRUCK_WITNESS": RED_TRUCK_WITNESS_DEFINITION.dict(),
 
   ##############################
   # NARRATIVE BACKBONE LEVEL 9 #
   ##############################
 
   # Then, we go back to Fred's where he has received the rusted stained knife.
+
+  # Adds FRED_MURRAY_WITH_KNIFE
   **LevelMaker(9).key_dict(),
-  "FRED_MURRAY_WITH_KNIFE": FRED_MURRAY_WITH_KNIFE_DEFINITION,
 
   #####################################
   # NARRATIVE BACKBONE LEVEL 10 FINAL #
