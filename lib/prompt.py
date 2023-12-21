@@ -76,6 +76,7 @@ For example
         "---",
         "# Reminder of Rules" if self.is_long_prompt() else "",
         self.rules() if self.is_long_prompt() else "",
+        self.events()
       ]
 
     def output(self):
