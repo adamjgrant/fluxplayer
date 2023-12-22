@@ -502,7 +502,8 @@ Only box one has anything in it, and it's photos of the scene of the accident.
   events=[
     { "target": "MAP_EVIDENCE_LOCKER", "if_the_user": "asks to go to map" }
   ],
-  people=[]
+  people=[],
+  next_backbone="Murray Family Home"
 )
 
 class EvidenceLocker(CherryPicker):
@@ -630,14 +631,18 @@ class LevelMaker:
       { "target": f"UMASS_OFFICE_{self.level}", "if_the_user": "wants to go to U Mass" }
     ]
 
-    if self.level >= 1:
+    # TODO: This > works because it sets the next leveling event at n+1, however, for the n map
+    #       it doesn't add the next leveling event as an event.
+    #       so instead, let's add all the leveling events above and below we instead do a variadic
+    #       array slice.
+    if self.level > 1:
       LEVELING_EVENTS = LEVELING_EVENTS + [{
         "target": f"EVIDENCE_LOCKER_{self.level}", "if_the_user": "asks to go to the evidence locker"
       }]
 
       backbone_names = backbone_names + ["EVIDENCE_LOCKER"]
 
-    if self.level >= 2 and self.level < 6:
+    if self.level > 2 and self.level < 6:
       LEVELING_EVENTS = LEVELING_EVENTS + [{
         "target": f"VISIT_FRED_{self.level}", "if_the_user": "wants to go to Fred's house"
       }]
@@ -649,49 +654,49 @@ class LevelMaker:
         { "target": f"CAR_WRECK_{self.level}", "if_the_user": "wants to go to the site of the wreck where Maura disappeared" },
       ]
 
-    if self.level >= 3:
+    if self.level > 3:
       LEVELING_EVENTS = LEVELING_EVENTS + [{
         "target": f"SEARCH_FOR_MAURA_{self.level}", "if_the_user": "wants to go to the search for Maura near the site of the car crash where Maura disappeared"
       }]
 
       backbone_names = backbone_names + ["SEARCH_FOR_MAURA"]
 
-    if self.level >= 4:
+    if self.level > 4:
       LEVELING_EVENTS = LEVELING_EVENTS + [{
         "target": f"POLICE_PRECINCT_{self.level}", "if_the_user": "wants to go to the police precinct"
       }]
 
       backbone_names + backbone_names + ["POLICE_PRECINCT"]
 
-    if self.level >= 5 and self.level < 10:
+    if self.level > 5 and self.level < 10:
       LEVELING_EVENTS = LEVELING_EVENTS + [{
         "target": f"WORK_FRIEND_{self.level}", "if_the_user": "wants to go to talk to Maura's work friend"
       }]
 
       backbone_names + backbone_names + ["WORK_FRIEND"]
 
-    if self.level >= 6:
+    if self.level > 6:
       LEVELING_EVENTS = LEVELING_EVENTS + [{
         "target": f"JULIE_MURRAY_{self.level}", "if_the_user": "wants to go to Julie Murray's place"
       }]
 
       backbone_names + backbone_names + ["JULIE_MURRAY"]
     
-    if self.level >= 7:
+    if self.level > 7:
       LEVELING_EVENTS = LEVELING_EVENTS + [{
         "target": f"MAURA_APARTMENT_{self.level}", "if_the_user": "wants to go to Maura's apartment"
       }]
 
       backbone_names + backbone_names + ["MAURA_APARTMENT"]
 
-    if self.level >= 8:
+    if self.level > 8:
       LEVELING_EVENTS = LEVELING_EVENTS + [{
         "target": f"RED_TRUCK_WITNESS_{self.level}", "if_the_user": "wants to go to the Swiftwater general store to talk to the witness who saw the red truck"
       }]
 
       backbone_names = backbone_names + ["RED_TRUCK_WITNESS"]
 
-    if self.level >= 9:
+    if self.level > 9:
       LEVELING_EVENTS = LEVELING_EVENTS + [{
         "target": f"FRED_MURRAY_WITH_KNIFE_{self.level}", "if_the_user": "wants to go to Fred's house to discuss the knife"
       }]
@@ -913,7 +918,7 @@ cartridge = {
 }
 
 # Print out each key in the object
-debug_states_to_and_from = True
+debug_states_to_and_from = False
 
 if debug_states_to_and_from:
   for key in cartridge:
