@@ -461,9 +461,11 @@ A data lab in the FBI New Hampshire office. Briefing room with computer equipmen
   """,
   """
   """,
-  [{ "target": "MAP_DATA_LAB_1", "if_the_user": "agrees to go to the map" }],
+  [
+    { "target": "MAP_DATA_LAB_1", "if_the_user": "agrees to go to the map" }
+  ],
   [PEOPLE["ANONYMOUS_POLICE_DATA_ANALYST"]],
-  "Murray Family House"
+  "Evidence Locker"
 )
 
 UMASS_START_DEFINITION = UMASS_OFFICE_DEFINITION.copy_with_changes(
@@ -485,7 +487,8 @@ CRIME_SCENE_START_DEFINITION = CRIME_SCENE_DEFINITION.copy_with_changes(
   ]
 )
 
-INTRO_TO_EVIDENCE_LOCKER_DEFINITION = TranscriptState(
+# TODO: Remove the boxes thing from this.
+EVIDENCE_LOCKER_DEFINITION = TranscriptState(
   setting="A carefully guarded room in the FBI New Hampshire office with lockers containing evidence for different cases",
   prompt="""
 There is one evidence locker Mike shows the user that is for the Maura Murray case. He will explain to the user that
@@ -497,11 +500,10 @@ evidence is still coming in but it will be divided into three boxes.
 Only box one has anything in it, and it's photos of the scene of the accident. 
   """,
   events=[
-    { "target": "INTRO_TO_EVIDENCE_LOCKER_ELB1", "if_the_user": "asks to open Box 1."},
-    { "target": "MAP_INTRO_TO_EVIDENCE_LOCKER", "if_the_user": "asks to go to map" }
+    { "target": "MAP_EVIDENCE_LOCKER", "if_the_user": "asks to go to map" }
   ],
   people=[]
-).dict()
+)
 
 class EvidenceLocker(CherryPicker):
     def __init__(self, previous_state, go_back_if_the_user="asks to go back", prompt="", events_to_pick=[]):
@@ -622,75 +624,74 @@ class LevelMaker:
 
   def key_dict(self):
     backbone_names = [ "DATA_LAB", "UMASS_OFFICE" ]
-    new_backbone_item = None
     
     LEVELING_EVENTS = [
       { "target": f"DATA_LAB_{self.level}", "if_the_user": "wants to go to the data lab" },
       { "target": f"UMASS_OFFICE_{self.level}", "if_the_user": "wants to go to U Mass" }
     ]
 
-    # if self.level == 1:
-      # TODO Need to work out the Intro to evidence locker step so
-      #      we can add this
-      #
-      # new_backbone_item = "The Murray Family House"
+    if self.level >= 1:
+      LEVELING_EVENTS = LEVELING_EVENTS + [{
+        "target": f"EVIDENCE_LOCKER_{self.level}", "if_the_user": "asks to go to the evidence locker"
+      }]
 
-    if self.level > 2 and self.level < 6:
+      backbone_names = backbone_names + ["EVIDENCE_LOCKER"]
+
+    if self.level >= 2 and self.level < 6:
       LEVELING_EVENTS = LEVELING_EVENTS + [{
         "target": f"VISIT_FRED_{self.level}", "if_the_user": "wants to go to Fred's house"
       }]
 
       backbone_names = backbone_names + ["VISIT_FRED"]
-      new_backbone_item = ""
 
     if self.level < 4:
       LEVELING_EVENTS = LEVELING_EVENTS + [
         { "target": f"CAR_WRECK_{self.level}", "if_the_user": "wants to go to the site of the wreck where Maura disappeared" },
       ]
 
-    if self.level > 3:
+    if self.level >= 3:
       LEVELING_EVENTS = LEVELING_EVENTS + [{
         "target": f"SEARCH_FOR_MAURA_{self.level}", "if_the_user": "wants to go to the search for Maura near the site of the car crash where Maura disappeared"
       }]
 
       backbone_names = backbone_names + ["SEARCH_FOR_MAURA"]
 
-    if self.level > 4:
+    if self.level >= 4:
       LEVELING_EVENTS = LEVELING_EVENTS + [{
         "target": f"POLICE_PRECINCT_{self.level}", "if_the_user": "wants to go to the police precinct"
       }]
 
       backbone_names + backbone_names + ["POLICE_PRECINCT"]
 
-    if self.level > 5 and self.level < 10:
+    if self.level >= 5 and self.level < 10:
       LEVELING_EVENTS = LEVELING_EVENTS + [{
         "target": f"WORK_FRIEND_{self.level}", "if_the_user": "wants to go to talk to Maura's work friend"
       }]
 
       backbone_names + backbone_names + ["WORK_FRIEND"]
 
-    if self.level > 6:
+    if self.level >= 6:
       LEVELING_EVENTS = LEVELING_EVENTS + [{
         "target": f"JULIE_MURRAY_{self.level}", "if_the_user": "wants to go to Julie Murray's place"
       }]
 
       backbone_names + backbone_names + ["JULIE_MURRAY"]
     
-    if self.level > 7:
+    if self.level >= 7:
       LEVELING_EVENTS = LEVELING_EVENTS + [{
         "target": f"MAURA_APARTMENT_{self.level}", "if_the_user": "wants to go to Maura's apartment"
       }]
 
       backbone_names + backbone_names + ["MAURA_APARTMENT"]
 
-    if self.level > 8:
+    if self.level >= 8:
       LEVELING_EVENTS = LEVELING_EVENTS + [{
         "target": f"RED_TRUCK_WITNESS_{self.level}", "if_the_user": "wants to go to the Swiftwater general store to talk to the witness who saw the red truck"
       }]
 
       backbone_names = backbone_names + ["RED_TRUCK_WITNESS"]
 
-    if self.level > 9:
+    if self.level >= 9:
       LEVELING_EVENTS = LEVELING_EVENTS + [{
         "target": f"FRED_MURRAY_WITH_KNIFE_{self.level}", "if_the_user": "wants to go to Fred's house to discuss the knife"
       }]
@@ -704,7 +705,6 @@ class LevelMaker:
       _dict.update({
         f"{backbone_name}_{self.level}": globals()[f"{backbone_name}_DEFINITION"].copy_with_changes(
           events = [{ "target": f"MAP_{backbone_name}_{self.level}", "if_the_user": "wants to go to the map" }],
-          next_backbone = new_backbone_item
         ).dict(),
         **Map(f"{backbone_name}_{self.level}", f"map_level{self.level}").add_events(LEVELING_EVENTS).key_dict(),
       })
@@ -748,7 +748,7 @@ cartridge = {
   # NARRATIVE BACKBONE LEVEL 1 #
   ##############################
 
-  # Adds DATA LAB, then Evidence Locker
+  # Adds DATA LAB
   **LevelMaker(1).key_dict(),
 
   # Continuing the backbone from the data lab, the next state is an introduction
@@ -760,9 +760,8 @@ cartridge = {
   # NARRATIVE BACKBONE LEVEL 2 #
   ##############################
 
-  # TODO Make this level 2
-  "INTRO_TO_EVIDENCE_LOCKER": INTRO_TO_EVIDENCE_LOCKER_DEFINITION,
-    **Map(previous_state="INTRO_TO_EVIDENCE_LOCKER", map_key="map_map2_fbi_data_lab", events_to_pick=[]).key_dict(),
+  # Adds EVIDENCE_LOCKER
+  **LevelMaker(2).key_dict(),
   
   ##############################
   # NARRATIVE BACKBONE LEVEL 3 #
