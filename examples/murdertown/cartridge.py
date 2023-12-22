@@ -635,7 +635,7 @@ class LevelMaker:
       #
       # new_backbone_item = "The Murray Family House"
 
-    if self.level > 1 and self.level < 5:
+    if self.level > 2 and self.level < 6:
       LEVELING_EVENTS = LEVELING_EVENTS + [{
         "target": f"VISIT_FRED_{self.level}", "if_the_user": "wants to go to Fred's house"
       }]
@@ -643,54 +643,54 @@ class LevelMaker:
       backbone_names = backbone_names + ["VISIT_FRED"]
       new_backbone_item = ""
 
-    if self.level < 3:
+    if self.level < 4:
       LEVELING_EVENTS = LEVELING_EVENTS + [
         { "target": f"CAR_WRECK_{self.level}", "if_the_user": "wants to go to the site of the wreck where Maura disappeared" },
       ]
 
-    if self.level > 2:
+    if self.level > 3:
       LEVELING_EVENTS = LEVELING_EVENTS + [{
         "target": f"SEARCH_FOR_MAURA_{self.level}", "if_the_user": "wants to go to the search for Maura near the site of the car crash where Maura disappeared"
       }]
 
       backbone_names = backbone_names + ["SEARCH_FOR_MAURA"]
 
-    if self.level > 3:
+    if self.level > 4:
       LEVELING_EVENTS = LEVELING_EVENTS + [{
         "target": f"POLICE_PRECINCT_{self.level}", "if_the_user": "wants to go to the police precinct"
       }]
 
       backbone_names + backbone_names + ["POLICE_PRECINCT"]
 
-    if self.level > 4 and self.level < 9:
+    if self.level > 5 and self.level < 10:
       LEVELING_EVENTS = LEVELING_EVENTS + [{
         "target": f"WORK_FRIEND_{self.level}", "if_the_user": "wants to go to talk to Maura's work friend"
       }]
 
       backbone_names + backbone_names + ["WORK_FRIEND"]
 
-    if self.level > 5:
+    if self.level > 6:
       LEVELING_EVENTS = LEVELING_EVENTS + [{
         "target": f"JULIE_MURRAY_{self.level}", "if_the_user": "wants to go to Julie Murray's place"
       }]
 
       backbone_names + backbone_names + ["JULIE_MURRAY"]
     
-    if self.level > 6:
+    if self.level > 7:
       LEVELING_EVENTS = LEVELING_EVENTS + [{
         "target": f"MAURA_APARTMENT_{self.level}", "if_the_user": "wants to go to Maura's apartment"
       }]
 
       backbone_names + backbone_names + ["MAURA_APARTMENT"]
 
-    if self.level > 7:
+    if self.level > 8:
       LEVELING_EVENTS = LEVELING_EVENTS + [{
         "target": f"RED_TRUCK_WITNESS_{self.level}", "if_the_user": "wants to go to the Swiftwater general store to talk to the witness who saw the red truck"
       }]
 
       backbone_names = backbone_names + ["RED_TRUCK_WITNESS"]
 
-    if self.level > 8:
+    if self.level > 9:
       LEVELING_EVENTS = LEVELING_EVENTS + [{
         "target": f"FRED_MURRAY_WITH_KNIFE_{self.level}", "if_the_user": "wants to go to Fred's house to discuss the knife"
       }]
@@ -709,7 +709,7 @@ class LevelMaker:
         **Map(f"{backbone_name}_{self.level}", f"map_level{self.level}").add_events(LEVELING_EVENTS).key_dict(),
       })
 
-    if self.level < 3:
+    if self.level < 4:
       _dict.update({
         # Crime scene and UMass again, but now in the model narrative backbones
         # will resemble going forwards where they have backforward states
@@ -755,41 +755,47 @@ cartridge = {
   # to the evidence locker where they can review evidence they've gathered
   # Similar to the dummy non-reversible intro to map, this will also be a dummy
   # but those going forwards won't be.
+
+  ##############################
+  # NARRATIVE BACKBONE LEVEL 2 #
+  ##############################
+
+  # TODO Make this level 2
   "INTRO_TO_EVIDENCE_LOCKER": INTRO_TO_EVIDENCE_LOCKER_DEFINITION,
     **Map(previous_state="INTRO_TO_EVIDENCE_LOCKER", map_key="map_map2_fbi_data_lab", events_to_pick=[]).key_dict(),
   
   ##############################
-  # NARRATIVE BACKBONE LEVEL 2 #
+  # NARRATIVE BACKBONE LEVEL 3 #
   ##############################
 
   # From this state, they can go to the next part of the narrative backbone
   # which is to advance the day to February 10th and visit Fred. 
 
   # Adds VISIT_FRED
-  **LevelMaker(2).key_dict(),
-
-  ##############################
-  # NARRATIVE BACKBONE LEVEL 3 #
-  ##############################
-
-  # Then, dawn the next day where a ground and air search begins. A dog search leads
-  # Maura's scent 100 yards east until it stops. Here we also reveal the unaccounted hour of driving time.
-
-  # Adds SEARCH_FOR_MAURA
   **LevelMaker(3).key_dict(),
 
   ##############################
   # NARRATIVE BACKBONE LEVEL 4 #
   ##############################
 
-  # Then, a talk with a police officer who was involved in an arrest of Maura two
-  # a few months earlier for Credit Card fraud.
-  
-  # Adds POLICE_PRECINCT
+  # Then, dawn the next day where a ground and air search begins. A dog search leads
+  # Maura's scent 100 yards east until it stops. Here we also reveal the unaccounted hour of driving time.
+
+  # Adds SEARCH_FOR_MAURA
   **LevelMaker(4).key_dict(),
 
   ##############################
   # NARRATIVE BACKBONE LEVEL 5 #
+  ##############################
+
+  # Then, a talk with a police officer who was involved in an arrest of Maura two
+  # a few months earlier for Credit Card fraud.
+  
+  # Adds POLICE_PRECINCT
+  **LevelMaker(5).key_dict(),
+
+  ##############################
+  # NARRATIVE BACKBONE LEVEL 6 #
   ##############################
 
   # Then, we'll talk to a work friend of hers visiting Fred's place who can both tell the story both of her going
@@ -798,48 +804,48 @@ cartridge = {
   # at work and this is a work friend.
 
   # Adds WORK_FRIEND
-  **LevelMaker(5).key_dict(),
-
-  ##############################
-  # NARRATIVE BACKBONE LEVEL 6 #
-  ##############################
-
-  # Then, we go to Julie's place where we can cover the boyfriend Billy.
-  # This can also bring up the strange voicemail Billy got
-
-  # Adds JULIE_MURRAY
   **LevelMaker(6).key_dict(),
 
   ##############################
   # NARRATIVE BACKBONE LEVEL 7 #
   ##############################
 
-  # Then, we go to Maura's apartment where there is the directions to Burlington VT and a book about
-  # Hiking accidents
+  # Then, we go to Julie's place where we can cover the boyfriend Billy.
+  # This can also bring up the strange voicemail Billy got
 
-  # Adds MAURA_APARTMENT
+  # Adds JULIE_MURRAY
   **LevelMaker(7).key_dict(),
 
   ##############################
   # NARRATIVE BACKBONE LEVEL 8 #
   ##############################
 
-  # Then, the witness who saw the red truck at the general store.
+  # Then, we go to Maura's apartment where there is the directions to Burlington VT and a book about
+  # Hiking accidents
 
-  # Adds RED_TRUCK_WITNESS
+  # Adds MAURA_APARTMENT
   **LevelMaker(8).key_dict(),
 
   ##############################
   # NARRATIVE BACKBONE LEVEL 9 #
   ##############################
 
+  # Then, the witness who saw the red truck at the general store.
+
+  # Adds RED_TRUCK_WITNESS
+  **LevelMaker(9).key_dict(),
+
+  ###############################
+  # NARRATIVE BACKBONE LEVEL 10 #
+  ###############################
+
   # Then, we go back to Fred's where he has received the rusted stained knife.
 
   # Adds FRED_MURRAY_WITH_KNIFE
-  **LevelMaker(9).key_dict(),
+  **LevelMaker(10).key_dict(),
 
   #####################################
-  # NARRATIVE BACKBONE LEVEL 10 FINAL #
+  # NARRATIVE BACKBONE LEVEL 11 FINAL #
   #####################################
 
   # Then, the A-frame. The final state where they can actually move freely to all nodes.
