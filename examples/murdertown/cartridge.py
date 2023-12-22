@@ -260,19 +260,20 @@ class TranscriptState:
         self.events = events + [EVENT_SELF]
         return self
 
-    def copy_with_changes(self, setting=None, prompt=None, events=None, people=None):
+    def copy_with_changes(self, setting=None, prompt=None, events=None, people=None, next_backbone=None):
         return TranscriptState(
           setting=setting if setting else self.setting,
           prompt=prompt if prompt else self.prompt,
           events=events if events else self.events,
-          people=people if people else self.people
+          people=people if people else self.people,
+          next_backbone=next_backbone if next_backbone else self.next_backbone
         )
 
     def user_menu(self):
         if self.next_backbone:
-          return """
+          return f"""
 Lastly, add this to your message at the bottom:
-_🗺️ Map has a new item: "{self.next_backbone}". Ask for the map to go there or anywhere else)
+_🗺️ Map has a new item: "{self.next_backbone}". Ask for the map to go there or anywhere else_
           """
         else:
           return ""
@@ -450,7 +451,8 @@ they have pieced together some events leading up to her disappearance.
     { "target": "CAR_WRECK_1", "if_the_user": "decides to go back to the scene of the wrecked saturn'" },
     { "target": "UMASS_OFFICE_1", "if_the_user": "decides to go back to U Mass'" }
   ],
-  []
+  [],
+  "Data Lab"
 ).dict()
 
 DATA_LAB_DEFINITION = TranscriptState(
@@ -460,7 +462,8 @@ A data lab in the FBI New Hampshire office. Briefing room with computer equipmen
   """
   """,
   [{ "target": "MAP_DATA_LAB_1", "if_the_user": "agrees to go to the map" }],
-  [PEOPLE["ANONYMOUS_POLICE_DATA_ANALYST"]]
+  [PEOPLE["ANONYMOUS_POLICE_DATA_ANALYST"]],
+  "Murray Family House"
 )
 
 UMASS_START_DEFINITION = UMASS_OFFICE_DEFINITION.copy_with_changes(
@@ -495,8 +498,7 @@ Only box one has anything in it, and it's photos of the scene of the accident.
   """,
   events=[
     { "target": "INTRO_TO_EVIDENCE_LOCKER_ELB1", "if_the_user": "asks to open Box 1."},
-    { "target": ".SELF", "if_the_user": "asks to open Box 2."},
-    { "target": ".SELF", "if_the_user": "asks to open Box 3."},
+    { "target": "MAP_INTRO_TO_EVIDENCE_LOCKER", "if_the_user": "asks to go to map" }
   ],
   people=[]
 ).dict()
@@ -620,17 +622,26 @@ class LevelMaker:
 
   def key_dict(self):
     backbone_names = [ "DATA_LAB", "UMASS_OFFICE" ]
+    new_backbone_item = None
     
     LEVELING_EVENTS = [
       { "target": f"DATA_LAB_{self.level}", "if_the_user": "wants to go to the data lab" },
       { "target": f"UMASS_OFFICE_{self.level}", "if_the_user": "wants to go to U Mass" }
     ]
+
+    # if self.level == 1:
+      # TODO Need to work out the Intro to evidence locker step so
+      #      we can add this
+      #
+      # new_backbone_item = "The Murray Family House"
+
     if self.level > 1 and self.level < 5:
       LEVELING_EVENTS = LEVELING_EVENTS + [{
         "target": f"VISIT_FRED_{self.level}", "if_the_user": "wants to go to Fred's house"
       }]
 
       backbone_names = backbone_names + ["VISIT_FRED"]
+      new_backbone_item = ""
 
     if self.level < 3:
       LEVELING_EVENTS = LEVELING_EVENTS + [
@@ -692,7 +703,8 @@ class LevelMaker:
     for backbone_name in backbone_names:
       _dict.update({
         f"{backbone_name}_{self.level}": globals()[f"{backbone_name}_DEFINITION"].copy_with_changes(
-          events = [{ "target": f"MAP_{backbone_name}_{self.level}", "if_the_user": "wants to go to the map" }]
+          events = [{ "target": f"MAP_{backbone_name}_{self.level}", "if_the_user": "wants to go to the map" }],
+          next_backbone = new_backbone_item
         ).dict(),
         **Map(f"{backbone_name}_{self.level}", f"map_level{self.level}").add_events(LEVELING_EVENTS).key_dict(),
       })
