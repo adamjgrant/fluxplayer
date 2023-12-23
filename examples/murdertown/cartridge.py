@@ -261,10 +261,17 @@ class TranscriptState:
         return self
 
     def copy_with_changes(self, setting=None, prompt=None, events=None, people=None, next_backbone=None):
+        # We do this because it always adds EVENT_SELF each time we make a new transcript state.
+        if events:
+          _events = events
+        else:
+          _events = self.events
+          _events.pop()
+
         return TranscriptState(
           setting=setting if setting else self.setting,
           prompt=prompt if prompt else self.prompt,
-          events=events if events else self.events,
+          events=_events,
           people=people if people else self.people,
           next_backbone=next_backbone if next_backbone else self.next_backbone
         )
@@ -414,21 +421,22 @@ The car is pointed west on the eastbound side of the road. The windshield is cra
   people=[PEOPLE["BUTCH_ATWOOD"], PEOPLE["FAITH_WESTMAN"], PEOPLE["CECIL_SMITH"], PEOPLE["JOHN_MONAGHAN"], PEOPLE["JEFF_WILLIAMS"]]
 )
 
+# TODO: We should also nudge the user on these to let them know they can move to the respective part 2s.
 UMASS_A_DEFINITION = UMASS_OFFICE_DEFINITION.set_events(
   [{ "target": "CAR_WRECK_A", "if_the_user": "agrees to go to New Hampshire to see the crime scene" }]
-).dict()
+).copy_with_changes(prompt="Remind the user at the end of your message they can also go to the site of a car wreck as their next step.").dict()
 
 CAR_WRECK_B_DEFINITION = CAR_WRECK_DEFINITION.set_events(
   [{ "target": "UMASS_B", "if_the_user": "agrees to go to U Mass to talk to about communications" }]
-).dict()
+).copy_with_changes(prompt="Remind the user at the end of your message they can also go to the University of Massachusettes as their next step.").dict()
 
 CAR_WRECK_A_DEFINITION = CAR_WRECK_DEFINITION.set_events(
   [{ "target": "INTRO_TO_MAP", "if_the_user": "agrees with Mike's suggestion to continue to the map" }]
-).dict()
+).copy_with_changes(prompt="Remind the user at the end of your message they can also view a map of other locations to visit as their next step.").dict()
 
 UMASS_B_DEFINITION = UMASS_OFFICE_DEFINITION.set_events(
   [{ "target": "INTRO_TO_MAP", "if_the_user": "agrees with Mike's suggestion to continue to the map" }]
-).dict()
+).copy_with_changes(prompt="Remind the user at the end of your message they can also view a map of other locations to visit as their next step.").dict()
 
 INTRO_TO_MAP_DEFINITION = TranscriptState(
   "At the same scene, with Mike's map folded out showing key locations",
