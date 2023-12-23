@@ -75,7 +75,7 @@ class TestStatesLevel1(unittest.TestCase):
 
     map_events = cartridge["MAP_DATA_LAB_1"]["events"]
     map_targets = [event["target"] for event in map_events]
-    self.assertEqual(sorted(map_targets), sorted(["DATA_LAB_1", "UMASS_OFFICE_1", "CAR_WRECK_1", "EVIDENCE_LOCKER_2"]))
+    self.assertEqual(sorted(map_targets), sorted(["DATA_LAB_1", "UMASS_OFFICE_1", "CAR_WRECK_1", "EVIDENCE_LOCKER_2", "DATA_LAB_1"]))
 
   def test_backbone_level_1_umass(self):
     events = cartridge["UMASS_OFFICE_1"]["events"]
@@ -84,7 +84,7 @@ class TestStatesLevel1(unittest.TestCase):
 
     map_events = cartridge["MAP_UMASS_OFFICE_1"]["events"]
     map_targets = [event["target"] for event in map_events]
-    self.assertEqual(sorted(map_targets), sorted(["DATA_LAB_1", "UMASS_OFFICE_1", "CAR_WRECK_1", "EVIDENCE_LOCKER_2"]))
+    self.assertEqual(sorted(map_targets), sorted(["DATA_LAB_1", "UMASS_OFFICE_1", "CAR_WRECK_1", "EVIDENCE_LOCKER_2", "UMASS_OFFICE_1"]))
 
   def test_backbone_level_1_car_wreck(self):
     events = cartridge["CAR_WRECK_1"]["events"]
@@ -93,7 +93,7 @@ class TestStatesLevel1(unittest.TestCase):
 
     map_events = cartridge["MAP_CAR_WRECK_1"]["events"]
     map_targets = [event["target"] for event in map_events]
-    self.assertEqual(sorted(map_targets), sorted(["DATA_LAB_1", "UMASS_OFFICE_1", "CAR_WRECK_1", "EVIDENCE_LOCKER_2"]))
+    self.assertEqual(sorted(map_targets), sorted(["DATA_LAB_1", "UMASS_OFFICE_1", "CAR_WRECK_1", "EVIDENCE_LOCKER_2", "CAR_WRECK_1"]))
 
 class TestStatesLevel2(unittest.TestCase):
   def test_backbone_level_2_data_lab(self):

@@ -628,8 +628,8 @@ class LevelMaker:
     
     LEVELING_EVENTS = [
       { "target": f"CAR_WRECK_{self.level}", "if_the_user": "wants to go to the site of the wreck where Maura disappeared" },
-      { "target": f"DATA_LAB_{self.level}", "if_the_user": "wants to go to the data lab" },
       { "target": f"UMASS_OFFICE_{self.level}", "if_the_user": "wants to go to U Mass" },
+      { "target": f"DATA_LAB_{self.level}", "if_the_user": "wants to go to the data lab" },
       { "target": f"EVIDENCE_LOCKER_{self.level}", "if_the_user": "asks to go to the evidence locker" },
       { "target": f"VISIT_FRED_{self.level}", "if_the_user": "wants to go to Fred's house" },
       { "target": f"SEARCH_FOR_MAURA_{self.level}", "if_the_user": "wants to go to the search for Maura near the site of the car crash where Maura disappeared" },
@@ -650,7 +650,13 @@ class LevelMaker:
     #       (pseudo) LEVELING_EVENTS = LEVELING_EVENTS.slice(0, level + 1) (I think?)
     #       And the rest I'm too tired to pseudo.
 
-    LEVELING_EVENTS_FOR_MAP = LEVELING_EVENTS[0:self.level+1]
+    LEVELING_EVENTS_FOR_MAP = LEVELING_EVENTS[0:self.level+2]
+
+    # Then, the map will always have an event for the next level
+    EXTRA_LEVELING_EVENT_FOR_MAP = LEVELING_EVENTS[self.level+2:self.level+3]
+    if len(EXTRA_LEVELING_EVENT_FOR_MAP) > 0:
+      EXTRA_LEVELING_EVENT_FOR_MAP[0]["target"] = EXTRA_LEVELING_EVENT_FOR_MAP[0]["target"].replace(f"_{self.level}", f"_{self.level+1}")
+      LEVELING_EVENTS_FOR_MAP = LEVELING_EVENTS_FOR_MAP + EXTRA_LEVELING_EVENT_FOR_MAP
 
     _dict = {}
 
@@ -866,7 +872,7 @@ cartridge = {
 }
 
 # Print out each key in the object
-debug_states_to_and_from = True
+debug_states_to_and_from = False
 
 if debug_states_to_and_from:
   for key in cartridge:
