@@ -627,11 +627,11 @@ class LevelMaker:
     backbone_names = [ "DATA_LAB", "UMASS_OFFICE" ]
     
     LEVELING_EVENTS = [
+      { "target": f"CAR_WRECK_{self.level}", "if_the_user": "wants to go to the site of the wreck where Maura disappeared" },
       { "target": f"DATA_LAB_{self.level}", "if_the_user": "wants to go to the data lab" },
       { "target": f"UMASS_OFFICE_{self.level}", "if_the_user": "wants to go to U Mass" },
       { "target": f"EVIDENCE_LOCKER_{self.level}", "if_the_user": "asks to go to the evidence locker" },
       { "target": f"VISIT_FRED_{self.level}", "if_the_user": "wants to go to Fred's house" },
-      { "target": f"CAR_WRECK_{self.level}", "if_the_user": "wants to go to the site of the wreck where Maura disappeared" },
       { "target": f"SEARCH_FOR_MAURA_{self.level}", "if_the_user": "wants to go to the search for Maura near the site of the car crash where Maura disappeared" },
       { "target": f"POLICE_PRECINCT_{self.level}", "if_the_user": "wants to go to the police precinct" },
       { "target": f"WORK_FRIEND_{self.level}", "if_the_user": "wants to go to talk to Maura's work friend" },
@@ -650,7 +650,7 @@ class LevelMaker:
     #       (pseudo) LEVELING_EVENTS = LEVELING_EVENTS.slice(0, level + 1) (I think?)
     #       And the rest I'm too tired to pseudo.
 
-    LEVELING_EVENTS_FOR_MAP = LEVELING_EVENTS[0:self.level]
+    LEVELING_EVENTS_FOR_MAP = LEVELING_EVENTS[0:self.level+1]
 
     _dict = {}
 
