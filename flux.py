@@ -33,9 +33,9 @@ class Flux:
 
       # Throw an error if the event is not found
       if event == None and target_state != state:
-          helpful_message = format_prompt(cartridge, state, data, first_run, True)
-          print(helpful_message)
-          raise ValueError("The state %s is not a valid transition from the state %s.\n\n%s"%(target_state, state, helpful_message))
+          helpful_message = format_prompt(cartridge, state, data, first_run)
+          advisory = "Please let the user know this was not a valid transition."
+          raise ValueError("The state %s is not a valid transition from the state %s.\n\n%s\n\n%s"%(target_state, state, advisory, helpful_message))
 
       # Get the state definition for the target state.
       target_state_definition = cartridge[target_state]

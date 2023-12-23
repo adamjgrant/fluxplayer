@@ -2,12 +2,11 @@
 # -*- coding: utf-8 -*-
 
 class Prompt:
-    def __init__(self, cartridge, state, data=None, first_run=False, connection=False):
+    def __init__(self, cartridge, state, data=None, first_run=False):
       self.cartridge = cartridge
       self.state = state
       self.data = data
       self.first_run = first_run
-      self.connection = connection
       self.state_definition = cartridge[state]
       self.role = cartridge["START"]["role"] if "role" in cartridge["START"] else ""
       self._events = list(self.state_definition["events"])
@@ -89,5 +88,5 @@ For example
 def format_event(event):
     return "- If the user %s, set the target state to `%s`."%(event["if_the_user"], event["target"])
 
-def format_prompt(cartridge, state, data=None, first_run=False, correction=False):
-    return Prompt(cartridge, state, data, first_run, correction).output()
+def format_prompt(cartridge, state, data=None, first_run=False):
+    return Prompt(cartridge, state, data, first_run).output()

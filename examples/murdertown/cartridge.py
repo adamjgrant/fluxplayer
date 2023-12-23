@@ -245,7 +245,7 @@ PEOPLE["FRED_MURRAY_3"] = PEOPLE["FRED_MURRAY"].copy_with_new_information("""
 """)
 EVENT_SELF = {
   "target": ".SELF",
-  "if_the_user": "is wanting to stay here and ask questions or otherwise does not ask to go somewhere else."
+  "if_the_user": "is wanting to stay here and ask questions or asks for an option that is not one of the events available."
 }
 
 class TranscriptState:
@@ -487,17 +487,12 @@ CRIME_SCENE_START_DEFINITION = CAR_WRECK_DEFINITION.copy_with_changes(
   ]
 )
 
-# TODO: Remove the boxes thing from this.
 EVIDENCE_LOCKER_DEFINITION = TranscriptState(
   setting="A carefully guarded room in the FBI New Hampshire office with lockers containing evidence for different cases",
   prompt="""
-There is one evidence locker Mike shows the user that is for the Maura Murray case. He will explain to the user that
-evidence is still coming in but it will be divided into three boxes.
-- Box 1: Photos
-- Box 2: Official records
-- Box 3: Other documents like timelines, maps, and notes
-
-Only box one has anything in it, and it's photos of the scene of the accident. 
+  Mike will give the user a list of evidence currently on file and will explain how additional evidence will be gathered
+  as they progress to visit more places and talk to more people. He will also explain that they can always ask to go back to
+  the map to visit another location to review evidence or talk to someone. All they have to do is ask.
   """,
   events=[
     { "target": "MAP_EVIDENCE_LOCKER", "if_the_user": "asks to go to map" }
@@ -872,7 +867,7 @@ cartridge = {
 }
 
 # Print out each key in the object
-debug_states_to_and_from = True
+debug_states_to_and_from = False
 
 if debug_states_to_and_from:
   for key in cartridge:
