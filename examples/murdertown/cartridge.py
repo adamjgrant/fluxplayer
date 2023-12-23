@@ -628,83 +628,58 @@ class LevelMaker:
     
     LEVELING_EVENTS = [
       { "target": f"DATA_LAB_{self.level}", "if_the_user": "wants to go to the data lab" },
-      { "target": f"UMASS_OFFICE_{self.level}", "if_the_user": "wants to go to U Mass" }
+      { "target": f"UMASS_OFFICE_{self.level}", "if_the_user": "wants to go to U Mass" },
+      { "target": f"EVIDENCE_LOCKER_{self.level}", "if_the_user": "asks to go to the evidence locker" },
+      { "target": f"VISIT_FRED_{self.level}", "if_the_user": "wants to go to Fred's house" },
+      { "target": f"CAR_WRECK_{self.level}", "if_the_user": "wants to go to the site of the wreck where Maura disappeared" },
+      { "target": f"SEARCH_FOR_MAURA_{self.level}", "if_the_user": "wants to go to the search for Maura near the site of the car crash where Maura disappeared" },
+      { "target": f"POLICE_PRECINCT_{self.level}", "if_the_user": "wants to go to the police precinct" },
+      { "target": f"WORK_FRIEND_{self.level}", "if_the_user": "wants to go to talk to Maura's work friend" },
+      { "target": f"JULIE_MURRAY_{self.level}", "if_the_user": "wants to go to Julie Murray's place" },
+      { "target": f"MAURA_APARTMENT_{self.level}", "if_the_user": "wants to go to Maura's apartment" },
+      { "target": f"RED_TRUCK_WITNESS_{self.level}", "if_the_user": "wants to go to the Swiftwater general store to talk to the witness who saw the red truck" },
+      { "target": f"FRED_MURRAY_WITH_KNIFE_{self.level}", "if_the_user": "wants to go to Fred's house to discuss the knife" }
     ]
 
     # TODO: This > works because it sets the next leveling event at n+1, however, for the n map
     #       it doesn't add the next leveling event as an event.
     #       so instead, let's add all the leveling events above and below we instead do a variadic
     #       array slice.
-    if self.level > 1:
-      LEVELING_EVENTS = LEVELING_EVENTS + [{
-        "target": f"EVIDENCE_LOCKER_{self.level}", "if_the_user": "asks to go to the evidence locker"
-      }]
+    #
+    #       (pseudo) LEVELING_EVENTS = LEVELING_EVENTS.slice(0, level + 1) (I think?)
+    #       And the rest I'm too tired to pseudo.
 
+    if self.level > 1:
       backbone_names = backbone_names + ["EVIDENCE_LOCKER"]
 
     if self.level > 2 and self.level < 6:
-      LEVELING_EVENTS = LEVELING_EVENTS + [{
-        "target": f"VISIT_FRED_{self.level}", "if_the_user": "wants to go to Fred's house"
-      }]
-
       backbone_names = backbone_names + ["VISIT_FRED"]
 
-    if self.level < 4:
-      LEVELING_EVENTS = LEVELING_EVENTS + [
-        { "target": f"CAR_WRECK_{self.level}", "if_the_user": "wants to go to the site of the wreck where Maura disappeared" },
-      ]
+    # if self.level < 4:
+    #   TODO: Empty for now, something is supposed to happen
 
     if self.level > 3:
-      LEVELING_EVENTS = LEVELING_EVENTS + [{
-        "target": f"SEARCH_FOR_MAURA_{self.level}", "if_the_user": "wants to go to the search for Maura near the site of the car crash where Maura disappeared"
-      }]
-
       backbone_names = backbone_names + ["SEARCH_FOR_MAURA"]
 
     if self.level > 4:
-      LEVELING_EVENTS = LEVELING_EVENTS + [{
-        "target": f"POLICE_PRECINCT_{self.level}", "if_the_user": "wants to go to the police precinct"
-      }]
-
       backbone_names + backbone_names + ["POLICE_PRECINCT"]
 
     if self.level > 5 and self.level < 10:
-      LEVELING_EVENTS = LEVELING_EVENTS + [{
-        "target": f"WORK_FRIEND_{self.level}", "if_the_user": "wants to go to talk to Maura's work friend"
-      }]
-
       backbone_names + backbone_names + ["WORK_FRIEND"]
 
     if self.level > 6:
-      LEVELING_EVENTS = LEVELING_EVENTS + [{
-        "target": f"JULIE_MURRAY_{self.level}", "if_the_user": "wants to go to Julie Murray's place"
-      }]
-
       backbone_names + backbone_names + ["JULIE_MURRAY"]
     
     if self.level > 7:
-      LEVELING_EVENTS = LEVELING_EVENTS + [{
-        "target": f"MAURA_APARTMENT_{self.level}", "if_the_user": "wants to go to Maura's apartment"
-      }]
-
       backbone_names + backbone_names + ["MAURA_APARTMENT"]
 
     if self.level > 8:
-      LEVELING_EVENTS = LEVELING_EVENTS + [{
-        "target": f"RED_TRUCK_WITNESS_{self.level}", "if_the_user": "wants to go to the Swiftwater general store to talk to the witness who saw the red truck"
-      }]
-
       backbone_names = backbone_names + ["RED_TRUCK_WITNESS"]
 
     if self.level > 9:
-      LEVELING_EVENTS = LEVELING_EVENTS + [{
-        "target": f"FRED_MURRAY_WITH_KNIFE_{self.level}", "if_the_user": "wants to go to Fred's house to discuss the knife"
-      }]
-
       backbone_names = backbone_names + ["FRED_MURRAY_WITH_KNIFE"]
 
     _dict = {}
-
 
     for backbone_name in backbone_names:
       _dict.update({
