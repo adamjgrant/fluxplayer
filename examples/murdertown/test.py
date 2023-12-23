@@ -103,7 +103,7 @@ class TestStatesLevel2(unittest.TestCase):
 
     map_events = cartridge["MAP_DATA_LAB_2"]["events"]
     map_targets = [event["target"] for event in map_events]
-    self.assertEqual(map_targets.sort(), sorted(["DATA_LAB_2", "UMASS_OFFICE_2", "CAR_WRECK_2", "DATA_LAB_2", "EVIDENCE_LOCKER_2", "VISIT_FRED_3"]))
+    self.assertEqual(sorted(map_targets), sorted(["DATA_LAB_2", "UMASS_OFFICE_2", "CAR_WRECK_2", "DATA_LAB_2", "EVIDENCE_LOCKER_2", "VISIT_FRED_3"]))
 
   def test_backbone_level_2_umass(self):
     events = cartridge["UMASS_OFFICE_2"]["events"]
