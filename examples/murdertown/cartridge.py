@@ -557,7 +557,7 @@ WORK_FRIEND_DEFINITION = TranscriptState(
   """,
   events = [],
   people = [PEOPLE["ANONYMOUS_WORK_FRIEND"], PEOPLE["FRED_MURRAY_2"], PEOPLE["BILLY"]]
-).dict()
+)
 
 JULIE_MURRAY_DEFINITION = TranscriptState(
   setting = "A local coffee shop in Hanson Massachusettes where Julie Murray is seated with a coffee.",
@@ -565,7 +565,7 @@ JULIE_MURRAY_DEFINITION = TranscriptState(
   """,
   events = [],
   people = [PEOPLE["JULIE_MURRAY"]]
-).dict()
+)
 
 MAURA_APARTMENT_DEFINITION = TranscriptState(
   setting = "Maura's apartment with her landlord. A Haverhill police officer is also there with items found in Maura's car",
@@ -623,9 +623,12 @@ class LevelMaker:
   def __init__(self, level=1):
     self.level = level
 
+  def get_backbone_name(self, event):
+    target_parts = event["target"].split("_")
+    target_parts.pop()
+    return "_".join(target_parts)
+
   def key_dict(self):
-    backbone_names = [ "DATA_LAB", "UMASS_OFFICE" ]
-    
     LEVELING_EVENTS = [
       { "target": f"CAR_WRECK_{self.level}", "if_the_user": "wants to go to the site of the wreck where Maura disappeared" },
       { "target": f"UMASS_OFFICE_{self.level}", "if_the_user": "wants to go to U Mass" },
@@ -640,6 +643,8 @@ class LevelMaker:
       { "target": f"RED_TRUCK_WITNESS_{self.level}", "if_the_user": "wants to go to the Swiftwater general store to talk to the witness who saw the red truck" },
       { "target": f"FRED_MURRAY_WITH_KNIFE_{self.level}", "if_the_user": "wants to go to Fred's house to discuss the knife" }
     ]
+
+    backbone_names = map(self.get_backbone_name, LEVELING_EVENTS[0:self.level+2])
 
     # The map should have the events at its level of the backbone...
     LEVELING_EVENTS_FOR_MAP = LEVELING_EVENTS[0:self.level+2]
@@ -660,16 +665,16 @@ class LevelMaker:
         **Map(f"{backbone_name}_{self.level}", f"map_level{self.level}").add_events(LEVELING_EVENTS_FOR_MAP).key_dict(),
       })
 
-    if self.level < 4:
-      _dict.update({
-        # Crime scene and UMass again, but now in the model narrative backbones
-        # will resemble going forwards where they have backforward states
-        # Evidence locker hasn't been introduced yet.
-        f"CAR_WRECK_{self.level}": CRIME_SCENE_START_DEFINITION.copy_with_changes(
-          events = [{ "target": f"MAP_CAR_WRECK_{self.level}", "if_the_user": "wants to go to the map" }]
-        ).dict(),
-        **Map(f"CAR_WRECK_{self.level}", f"map_level{self.level}").add_events(LEVELING_EVENTS_FOR_MAP).key_dict(),
-      })
+    # if self.level < 4:
+    #  _dict.update({
+    #    # Crime scene and UMass again, but now in the model narrative backbones
+    #    # will resemble going forwards where they have backforward states
+    #    # Evidence locker hasn't been introduced yet.
+    #    f"CAR_WRECK_{self.level}": CRIME_SCENE_START_DEFINITION.copy_with_changes(
+    #      events = [{ "target": f"MAP_CAR_WRECK_{self.level}", "if_the_user": "wants to go to the map" }]
+    #    ).dict(),
+    #    **Map(f"CAR_WRECK_{self.level}", f"map_level{self.level}").add_events(LEVELING_EVENTS_FOR_MAP).key_dict(),
+    #  })
     # else:
     #   _dict.update({
     #     f"SEARCH_FOR_MAURA_{self.level}": SEARCH_FOR_MAURA_DEFINITION.copy_with_changes(
