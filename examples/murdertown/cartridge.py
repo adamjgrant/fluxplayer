@@ -641,18 +641,10 @@ class LevelMaker:
       { "target": f"FRED_MURRAY_WITH_KNIFE_{self.level}", "if_the_user": "wants to go to Fred's house to discuss the knife" }
     ]
 
-
-    # TODO: This > works because it sets the next leveling event at n+1, however, for the n map
-    #       it doesn't add the next leveling event as an event.
-    #       so instead, let's add all the leveling events above and below we instead do a variadic
-    #       array slice.
-    #
-    #       (pseudo) LEVELING_EVENTS = LEVELING_EVENTS.slice(0, level + 1) (I think?)
-    #       And the rest I'm too tired to pseudo.
-
+    # The map should have the events at its level of the backbone...
     LEVELING_EVENTS_FOR_MAP = LEVELING_EVENTS[0:self.level+2]
 
-    # Then, the map will always have an event for the next level
+    # And the new event at the next level
     EXTRA_LEVELING_EVENT_FOR_MAP = LEVELING_EVENTS[self.level+2:self.level+3]
     if len(EXTRA_LEVELING_EVENT_FOR_MAP) > 0:
       EXTRA_LEVELING_EVENT_FOR_MAP[0]["target"] = EXTRA_LEVELING_EVENT_FOR_MAP[0]["target"].replace(f"_{self.level}", f"_{self.level+1}")
@@ -872,7 +864,7 @@ cartridge = {
 }
 
 # Print out each key in the object
-debug_states_to_and_from = False
+debug_states_to_and_from = True
 
 if debug_states_to_and_from:
   for key in cartridge:
