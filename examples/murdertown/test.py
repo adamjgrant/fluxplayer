@@ -65,7 +65,7 @@ class TestStates(unittest.TestCase):
   def test_intro_to_map(self):
     events = cartridge["INTRO_TO_MAP"]["events"]
     targets = [event["target"] for event in events]
-    self.assertEqual(targets, ["DATA_LAB_1", "CAR_WRECK_1", ".SELF"])
+    self.assertEqual(targets, ["DATA_LAB_1", "CAR_WRECK_1", "UMASS_OFFICE_1", ".SELF"])
 
 class TestStatesLevel1(unittest.TestCase):
   def test_backbone_level_1_data_lab(self):
@@ -82,6 +82,6 @@ class TestStatesLevel1(unittest.TestCase):
     targets = [event["target"] for event in events]
     self.assertEqual(targets, ["MAP_UMASS_OFFICE_1", ".SELF"])
 
-    map_events = cartridge["MAP_UMASS_1"]["events"]
+    map_events = cartridge["MAP_UMASS_OFFICE_1"]["events"]
     map_targets = [event["target"] for event in map_events]
-    self.assertEqual(map_targets, ["UMASS_1", "UMASS_1"])
+    self.assertEqual(map_targets, ["UMASS_OFFICE_1", "DATA_LAB_1"])
