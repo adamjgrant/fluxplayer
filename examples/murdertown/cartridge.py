@@ -515,7 +515,8 @@ VISIT_FRED_DEFINITION = TranscriptState(
     by the department at 5:17PM.
   """,
   events = [],
-  people = [PEOPLE["FRED_MURRAY"]]
+  people = [PEOPLE["FRED_MURRAY"]],
+  next_backbone = "Search party for Maura"
 )
 
 SEARCH_FOR_MAURA_DEFINITION = TranscriptState(
@@ -535,7 +536,8 @@ SEARCH_FOR_MAURA_DEFINITION = TranscriptState(
     PEOPLE["CECIL_SMITH"],
     PEOPLE["JOHN_MONAGHAN"],
     PEOPLE["JEFF_WILLIAMS"]
-  ]
+  ],
+  next_backbone = "Police Precinct"
 )
 
 POLICE_PRECINCT_DEFINITION = TranscriptState(
@@ -543,7 +545,8 @@ POLICE_PRECINCT_DEFINITION = TranscriptState(
   prompt = """
   """,
   events = [],
-  people = [PEOPLE["ANONYMOUS_INVESTIGATOR"]]
+  people = [PEOPLE["ANONYMOUS_INVESTIGATOR"]],
+  next_backbone = "Murray house where a work friend of Maura's is seated with Fred"
 )
 
 WORK_FRIEND_DEFINITION = TranscriptState(
@@ -551,7 +554,8 @@ WORK_FRIEND_DEFINITION = TranscriptState(
   prompt = """
   """,
   events = [],
-  people = [PEOPLE["ANONYMOUS_WORK_FRIEND"], PEOPLE["FRED_MURRAY_2"], PEOPLE["BILLY"]]
+  people = [PEOPLE["ANONYMOUS_WORK_FRIEND"], PEOPLE["FRED_MURRAY_2"], PEOPLE["BILLY"]],
+  next_backbone = "A café where Julie Murray is ready to speak to us"
 )
 
 JULIE_MURRAY_DEFINITION = TranscriptState(
@@ -559,7 +563,8 @@ JULIE_MURRAY_DEFINITION = TranscriptState(
   prompt = """
   """,
   events = [],
-  people = [PEOPLE["JULIE_MURRAY"]]
+  people = [PEOPLE["JULIE_MURRAY"]],
+  next_backbone = "Maura's apartment"
 )
 
 MAURA_APARTMENT_DEFINITION = TranscriptState(
@@ -570,7 +575,8 @@ MAURA_APARTMENT_DEFINITION = TranscriptState(
     There were also reports of a letter left in the dorm room addressed to Billy.
   """,
   events = [],
-  people = [PEOPLE["ANONYMOUS_HAVERHILL_OFFICER"], PEOPLE["BILLY"]]
+  people = [PEOPLE["ANONYMOUS_HAVERHILL_OFFICER"], PEOPLE["BILLY"]],
+  next_backbone = "Swiftwater General Store"
 )
 
 RED_TRUCK_WITNESS_DEFINITION = TranscriptState(
@@ -578,7 +584,8 @@ RED_TRUCK_WITNESS_DEFINITION = TranscriptState(
   prompt = """
   """,
   events = [],
-  people = [PEOPLE["RED_TRUCK_WITNESS"]]
+  people = [PEOPLE["RED_TRUCK_WITNESS"]],
+  next_backbone = "Murray residence again where Fred has reported receiving a bloody knife."
 )
 
 FRED_MURRAY_WITH_KNIFE_DEFINITION = TranscriptState(
@@ -586,7 +593,8 @@ FRED_MURRAY_WITH_KNIFE_DEFINITION = TranscriptState(
   prompt = """
   """,
   events = [],
-  people = [PEOPLE["FRED_MURRAY_3"], PEOPLE["JULIE_MURRAY"], PEOPLE["KATHLEEN_MURRAY"]]
+  people = [PEOPLE["FRED_MURRAY_3"], PEOPLE["JULIE_MURRAY"], PEOPLE["KATHLEEN_MURRAY"]],
+  next_backbone = "A-frame house"
 )
 
 FINAL_STATES = [
@@ -663,24 +671,6 @@ class LevelMaker:
         **Map(f"{backbone_name}_{self.level}", f"map_level{self.level}").add_events(LEVELING_EVENTS_FOR_MAP).key_dict(),
       })
 
-    # if self.level < 4:
-    #  _dict.update({
-    #    # Crime scene and UMass again, but now in the model narrative backbones
-    #    # will resemble going forwards where they have backforward states
-    #    # Evidence locker hasn't been introduced yet.
-    #    f"CAR_WRECK_{self.level}": CRIME_SCENE_START_DEFINITION.copy_with_changes(
-    #      events = [{ "target": f"MAP_CAR_WRECK_{self.level}", "if_the_user": "wants to go to the map" }]
-    #    ).dict(),
-    #    **Map(f"CAR_WRECK_{self.level}", f"map_level{self.level}").add_events(LEVELING_EVENTS_FOR_MAP).key_dict(),
-    #  })
-    # else:
-    #   _dict.update({
-    #     f"SEARCH_FOR_MAURA_{self.level}": SEARCH_FOR_MAURA_DEFINITION.copy_with_changes(
-    #       events = [{ "target": f"MAP_SEARCH_FOR_MAURA_{self.level}", "if_the_user": "wants to go to the map" }]
-    #     ).dict(),
-    #     **Map(f"SEARCH_FOR_MAURA_{self.level}", f"map_level{self.level}").add_events(LEVELING_EVENTS_FOR_MAP).key_dict(),
-    #   })
-    
     return _dict
 
 cartridge = {
