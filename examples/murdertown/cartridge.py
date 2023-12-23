@@ -384,11 +384,11 @@ then ask them again if they're ready.
     """,
     "events": [
       {
-        "target": "UMASS_1",
+        "target": "UMASS_A",
         "if_the_user": "chooses to go to University of Massachusettes to discuss the communication"
       },
       {
-        "target": "CRIME_SCENE_1",
+        "target": "CAR_WRECK_B",
         "if_the_user": "chooses to go to New Hampshire to see the abandoned vehicle"
       }
     ]
@@ -403,7 +403,7 @@ UMASS_OFFICE_DEFINITION = TranscriptState(
   [PEOPLE["ANONYMOUS_PROF"]]
 )
 
-CRIME_SCENE_DEFINITION = TranscriptState(
+CAR_WRECK_DEFINITION = TranscriptState(
   setting = """
 Haverhill, New Hampshire. Morning at the scene of a black 1996 Saturn sedan up against the snowbank along Route 112, also known as Wild Ammonoosuc Road. 
 The car is pointed west on the eastbound side of the road. The windshield is cracked and the car appears to have been involved in a collision
@@ -414,19 +414,19 @@ The car is pointed west on the eastbound side of the road. The windshield is cra
   people=[PEOPLE["BUTCH_ATWOOD"], PEOPLE["FAITH_WESTMAN"], PEOPLE["CECIL_SMITH"], PEOPLE["JOHN_MONAGHAN"], PEOPLE["JEFF_WILLIAMS"]]
 )
 
-UMASS_1_DEFINITION = UMASS_OFFICE_DEFINITION.set_events(
-  [{ "target": "CRIME_SCENE_1", "if_the_user": "agrees to go to New Hampshire to see the crime scene" }]
+UMASS_A_DEFINITION = UMASS_OFFICE_DEFINITION.set_events(
+  [{ "target": "CAR_WRECK_A", "if_the_user": "agrees to go to New Hampshire to see the crime scene" }]
 ).dict()
 
-CRIME_SCENE_1_DEFINITION = CRIME_SCENE_DEFINITION.set_events(
+CAR_WRECK_B_DEFINITION = CAR_WRECK_DEFINITION.set_events(
+  [{ "target": "UMASS_B", "if_the_user": "agrees to go to U Mass to talk to about communications" }]
+).dict()
+
+CAR_WRECK_A_DEFINITION = CAR_WRECK_DEFINITION.set_events(
   [{ "target": "INTRO_TO_MAP", "if_the_user": "agrees with Mike's suggestion to continue to the map" }]
 ).dict()
 
-CRIME_SCENE_2_DEFINITION = CRIME_SCENE_DEFINITION.set_events(
-  [{ "target": "UMASS_2", "if_the_user": "agrees to go to U Mass to talk to about communications" }]
-).dict()
-
-UMASS_2_DEFINITION = UMASS_OFFICE_DEFINITION.set_events(
+UMASS_B_DEFINITION = UMASS_OFFICE_DEFINITION.set_events(
   [{ "target": "INTRO_TO_MAP", "if_the_user": "agrees with Mike's suggestion to continue to the map" }]
 ).dict()
 
@@ -474,7 +474,7 @@ UMASS_START_DEFINITION = UMASS_OFFICE_DEFINITION.copy_with_changes(
   ]
 )
 
-CRIME_SCENE_START_DEFINITION = CRIME_SCENE_DEFINITION.copy_with_changes(
+CRIME_SCENE_START_DEFINITION = CAR_WRECK_DEFINITION.copy_with_changes(
   events = [
     { "target": "MAP_CRIME_SCENE_START", "if_the_user": "wants to go to the map" }
   ],
@@ -641,6 +641,7 @@ class LevelMaker:
       { "target": f"FRED_MURRAY_WITH_KNIFE_{self.level}", "if_the_user": "wants to go to Fred's house to discuss the knife" }
     ]
 
+
     # TODO: This > works because it sets the next leveling event at n+1, however, for the n map
     #       it doesn't add the next leveling event as an event.
     #       so instead, let's add all the leveling events above and below we instead do a variadic
@@ -649,35 +650,7 @@ class LevelMaker:
     #       (pseudo) LEVELING_EVENTS = LEVELING_EVENTS.slice(0, level + 1) (I think?)
     #       And the rest I'm too tired to pseudo.
 
-    if self.level > 1:
-      backbone_names = backbone_names + ["EVIDENCE_LOCKER"]
-
-    if self.level > 2 and self.level < 6:
-      backbone_names = backbone_names + ["VISIT_FRED"]
-
-    # if self.level < 4:
-    #   TODO: Empty for now, something is supposed to happen
-
-    if self.level > 3:
-      backbone_names = backbone_names + ["SEARCH_FOR_MAURA"]
-
-    if self.level > 4:
-      backbone_names + backbone_names + ["POLICE_PRECINCT"]
-
-    if self.level > 5 and self.level < 10:
-      backbone_names + backbone_names + ["WORK_FRIEND"]
-
-    if self.level > 6:
-      backbone_names + backbone_names + ["JULIE_MURRAY"]
-    
-    if self.level > 7:
-      backbone_names + backbone_names + ["MAURA_APARTMENT"]
-
-    if self.level > 8:
-      backbone_names = backbone_names + ["RED_TRUCK_WITNESS"]
-
-    if self.level > 9:
-      backbone_names = backbone_names + ["FRED_MURRAY_WITH_KNIFE"]
+    LEVELING_EVENTS_FOR_MAP = LEVELING_EVENTS[0:self.level]
 
     _dict = {}
 
@@ -686,7 +659,7 @@ class LevelMaker:
         f"{backbone_name}_{self.level}": globals()[f"{backbone_name}_DEFINITION"].copy_with_changes(
           events = [{ "target": f"MAP_{backbone_name}_{self.level}", "if_the_user": "wants to go to the map" }],
         ).dict(),
-        **Map(f"{backbone_name}_{self.level}", f"map_level{self.level}").add_events(LEVELING_EVENTS).key_dict(),
+        **Map(f"{backbone_name}_{self.level}", f"map_level{self.level}").add_events(LEVELING_EVENTS_FOR_MAP).key_dict(),
       })
 
     if self.level < 4:
@@ -697,14 +670,14 @@ class LevelMaker:
         f"CAR_WRECK_{self.level}": CRIME_SCENE_START_DEFINITION.copy_with_changes(
           events = [{ "target": f"MAP_CAR_WRECK_{self.level}", "if_the_user": "wants to go to the map" }]
         ).dict(),
-        **Map(f"CAR_WRECK_{self.level}", f"map_level{self.level}").add_events(LEVELING_EVENTS).key_dict(),
+        **Map(f"CAR_WRECK_{self.level}", f"map_level{self.level}").add_events(LEVELING_EVENTS_FOR_MAP).key_dict(),
       })
     # else:
     #   _dict.update({
     #     f"SEARCH_FOR_MAURA_{self.level}": SEARCH_FOR_MAURA_DEFINITION.copy_with_changes(
     #       events = [{ "target": f"MAP_SEARCH_FOR_MAURA_{self.level}", "if_the_user": "wants to go to the map" }]
     #     ).dict(),
-    #     **Map(f"SEARCH_FOR_MAURA_{self.level}", f"map_level{self.level}").add_events(LEVELING_EVENTS).key_dict(),
+    #     **Map(f"SEARCH_FOR_MAURA_{self.level}", f"map_level{self.level}").add_events(LEVELING_EVENTS_FOR_MAP).key_dict(),
     #   })
     
     return _dict
@@ -714,12 +687,12 @@ cartridge = {
   **beginning,
 
   # Choices to go to either UMass or the crime scene
-  "UMASS_1": UMASS_1_DEFINITION,
-  "CRIME_SCENE_1": CRIME_SCENE_1_DEFINITION,
+  "UMASS_A": UMASS_A_DEFINITION,
+  "CAR_WRECK_B": CAR_WRECK_B_DEFINITION,
 
   # Same choices in an alternate order
-  "CRIME_SCENE_2": CRIME_SCENE_2_DEFINITION,
-  "UMASS_2": UMASS_2_DEFINITION,
+  "CAR_WRECK_A": CAR_WRECK_A_DEFINITION,
+  "UMASS_B": UMASS_B_DEFINITION,
 
   # Introduced to the map where they can revisit those two places.
   "INTRO_TO_MAP": INTRO_TO_MAP_DEFINITION,
@@ -858,7 +831,7 @@ cartridge = {
   # The rest of these nodes are copies (where needed) to permanently put the individuals in places
   # where the user can move to and interview. So the map is basically the central node for now.
   "U_MASS_FINAL": UMASS_OFFICE_DEFINITION.copy_with_changes(events = FINAL_MAP_EL_EVENTS).dict(),
-  "CRIME_SCENE_FINAL": CRIME_SCENE_DEFINITION.copy_with_changes(events = FINAL_MAP_EL_EVENTS,
+  "CRIME_SCENE_FINAL": CAR_WRECK_DEFINITION.copy_with_changes(events = FINAL_MAP_EL_EVENTS,
     people = [
       PEOPLE["BUTCH_ATWOOD"],
       PEOPLE["JOHN_MAROTTE"],
@@ -893,7 +866,7 @@ cartridge = {
 }
 
 # Print out each key in the object
-debug_states_to_and_from = False
+debug_states_to_and_from = True
 
 if debug_states_to_and_from:
   for key in cartridge:
