@@ -113,3 +113,21 @@ class TestStatesLevel2(unittest.TestCase):
     map_events = cartridge["MAP_UMASS_OFFICE_2"]["events"]
     map_targets = [event["target"] for event in map_events]
     self.assertEqual(map_targets.sort(), ["DATA_LAB_2", "UMASS_OFFICE_2", "CAR_WRECK_2", "UMASS_OFFICE_2", "EVIDENCE_LOCKER_2", "VISIT_FRED_3"].sort())
+
+  def test_backbone_level_2_car_wreck(self):
+    events = cartridge["CAR_WRECK_2"]["events"]
+    targets = [event["target"] for event in events]
+    self.assertEqual(targets, ["MAP_CAR_WRECK_2", ".SELF"])
+
+    map_events = cartridge["MAP_CAR_WRECK_2"]["events"]
+    map_targets = [event["target"] for event in map_events]
+    self.assertEqual(map_targets.sort(), ["DATA_LAB_2", "UMASS_OFFICE_2", "CAR_WRECK_2", "CAR_WRECK_2", "EVIDENCE_LOCKER_2", "VISIT_FRED_3"].sort())
+
+  def test_backbone_level_2_evidence_locker(self):
+    events = cartridge["EVIDENCE_LOCKER_2"]["events"]
+    targets = [event["target"] for event in events]
+    self.assertEqual(targets, ["MAP_EVIDENCE_LOCKER_2", ".SELF"])
+
+    map_events = cartridge["MAP_EVIDENCE_LOCKER_2"]["events"]
+    map_targets = [event["target"] for event in map_events]
+    self.assertEqual(map_targets.sort(), ["DATA_LAB_2", "UMASS_OFFICE_2", "CAR_WRECK_2", "EVIDENCE_LOCKER_2", "EVIDENCE_LOCKER_2", "VISIT_FRED_3"].sort())
