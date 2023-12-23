@@ -629,6 +629,7 @@ class LevelMaker:
     return "_".join(target_parts)
 
   def key_dict(self):
+    global FINAL_STATES
     LEVELING_EVENTS = [
       { "target": f"CAR_WRECK_{self.level}", "if_the_user": "wants to go to the site of the wreck where Maura disappeared" },
       { "target": f"UMASS_OFFICE_{self.level}", "if_the_user": "wants to go to U Mass" },
@@ -654,6 +655,8 @@ class LevelMaker:
     if len(EXTRA_LEVELING_EVENT_FOR_MAP) > 0:
       EXTRA_LEVELING_EVENT_FOR_MAP[0]["target"] = EXTRA_LEVELING_EVENT_FOR_MAP[0]["target"].replace(f"_{self.level}", f"_{self.level+1}")
       LEVELING_EVENTS_FOR_MAP = LEVELING_EVENTS_FOR_MAP + EXTRA_LEVELING_EVENT_FOR_MAP
+    else:
+      LEVELING_EVENTS_FOR_MAP = LEVELING_EVENTS_FOR_MAP + FINAL_STATE_EVENTS[0:1]
 
     _dict = {}
 
