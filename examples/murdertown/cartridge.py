@@ -654,19 +654,19 @@ class LevelMaker:
     LEVELING_EVENTS_FOR_MAP = LEVELING_EVENTS[0:self.level+2]
 
     # And the new event at the next level
-    EXTRA_LEVELING_EVENT_FOR_MAP = LEVELING_EVENTS[self.level+2:self.level+3]
-    if len(EXTRA_LEVELING_EVENT_FOR_MAP) > 0:
-      EXTRA_LEVELING_EVENT_FOR_MAP[0]["target"] = EXTRA_LEVELING_EVENT_FOR_MAP[0]["target"].replace(f"_{self.level}", f"_{self.level+1}")
-      LEVELING_EVENTS_FOR_MAP = LEVELING_EVENTS_FOR_MAP + EXTRA_LEVELING_EVENT_FOR_MAP
+    EXTRA_LEVELING_EVENT = LEVELING_EVENTS[self.level+2:self.level+3]
+    if len(EXTRA_LEVELING_EVENT) > 0:
+      EXTRA_LEVELING_EVENT[0]["target"] = EXTRA_LEVELING_EVENT[0]["target"].replace(f"_{self.level}", f"_{self.level+1}")
     else:
-      LEVELING_EVENTS_FOR_MAP = LEVELING_EVENTS_FOR_MAP + FINAL_STATE_EVENTS[0:1]
+      EXTRA_LEVELING_EVENT = FINAL_STATE_EVENTS[0:1]
+    LEVELING_EVENTS_FOR_MAP = LEVELING_EVENTS_FOR_MAP + EXTRA_LEVELING_EVENT
 
     _dict = {}
 
     for backbone_name in backbone_names:
       _dict.update({
         f"{backbone_name}_{self.level}": globals()[f"{backbone_name}_DEFINITION"].copy_with_changes(
-          events = [{ "target": f"MAP_{backbone_name}_{self.level}", "if_the_user": "wants to go to the map" }],
+          events = [{ "target": f"MAP_{backbone_name}_{self.level}", "if_the_user": "wants to go to the map" }] + EXTRA_LEVELING_EVENT,
         ).dict(),
         **Map(f"{backbone_name}_{self.level}", f"map_level{self.level}").add_events(LEVELING_EVENTS_FOR_MAP).key_dict(),
       })
