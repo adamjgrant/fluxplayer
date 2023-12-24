@@ -676,7 +676,7 @@ class LevelMaker:
         f"{backbone_name}_{self.level}": globals()[f"{backbone_name}_DEFINITION"].copy_with_changes(
           events = [{ "target": f"MAP_{backbone_name}_{self.level}", "if_the_user": "wants to go to the map" }] + EXTRA_LEVELING_EVENT,
         ).dict(),
-        **Map(f"{backbone_name}_{self.level}", f"map_level{self.level}").add_events(LEVELING_EVENTS_FOR_MAP).key_dict(),
+        **Map(f"{backbone_name}_{self.level}", f"map_level_{self.level}").add_events(LEVELING_EVENTS_FOR_MAP).key_dict(),
       })
 
     return _dict
