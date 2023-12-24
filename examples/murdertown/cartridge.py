@@ -443,7 +443,7 @@ INTRO_TO_MAP_DEFINITION = TranscriptState(
   """
 Mike will show this image to the user:
 
-![map](https://cdn.everything.io/chatgpt/maura/map_map2_fbi_data_lab.png)
+![map](https://cdn.everything.io/chatgpt/maura/map_level_intro.png)
 
 And let them know from now on they can always ask to review the map to visit another location
 to review evidence or talk to someone. All they have to do is ask.
@@ -810,7 +810,7 @@ cartridge = {
 
   **Map(
         previous_state = "EVIDENCE_LOCKER",
-        map_key = "map_final"
+        map_key = "map_level_final"
       ).hard_set_events(FINAL_STATE_EVENTS + [
         {
           "target": "EVIDENCE_LOCKER_MAP",
