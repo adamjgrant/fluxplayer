@@ -155,6 +155,6 @@ class TestStatesPenultimateLevel(unittest.TestCase):
 
 class TestImages(unittest.TestCase):
   def test_image(self):
-    image = Image("image", "image.png")
+    image = Image(url="image.png", description="image")
     markdown = image.markdown()
     self.assertEqual(markdown, "![image](https://cdn.everything.io/chatgpt/maura/image.png)\n_image, [Open image in new window](https://cdn.everything.io/chatgpt/maura/image.png)_")
