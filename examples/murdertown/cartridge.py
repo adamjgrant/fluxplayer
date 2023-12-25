@@ -51,7 +51,7 @@ class Map(CherryPicker):
       super().__init__("MAP", previous_state, "asks to go back", prompt, events_to_pick)
       self.map_key = map_key
       self.events_to_pick = events_to_pick
-      image = Image(f"https://cdn.everything.io/chatgpt/maura/{map_key}.png", "Map of key locations")
+      image = Image(f"https://cdn.everything.io/chatgpt/maura/{map_key}.png", "Map of key locations").markdown()
       self.prompt = f"""
 {prompt}
 
@@ -448,7 +448,7 @@ UMASS_B_DEFINITION = UMASS_OFFICE_DEFINITION.set_events(
   [{ "target": "INTRO_TO_MAP", "if_the_user": "agrees with Mike's suggestion to continue to the map" }]
 ).copy_with_changes(prompt="Remind the user at the end of your message they can also view a map of other locations to visit as their next step.").dict()
 
-map_intro_image = Image("https://cdn.everything.io/chatgpt/maura/map_intro.png", "Map of key locations")
+map_intro_image = Image("https://cdn.everything.io/chatgpt/maura/map_intro.png", "Map of key locations").markdown()
 INTRO_TO_MAP_DEFINITION = TranscriptState(
   "At the same scene, with Mike's map folded out showing key locations",
   f"""
