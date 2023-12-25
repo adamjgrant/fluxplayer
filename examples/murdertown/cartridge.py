@@ -6,6 +6,14 @@ def merge_states(states=[]):
       merged_state_object.update(obj)
   return merged_state_object
 
+class Image():
+  def __init__(self, url, description):
+    self.url = url
+    self.description = description
+
+  def markdown(self):
+    return f"![{self.description}]({self.url})\n_{self.description}, [Open image in new window]({self.url})_"
+
 class BackForwardState():
     def __init__(self, name="", previous_state="", go_back_if_the_user="asks to go back", prompt=""):
       self.events = [ { "target": previous_state, "if_the_user": go_back_if_the_user } ]
@@ -43,10 +51,12 @@ class Map(CherryPicker):
       super().__init__("MAP", previous_state, "asks to go back", prompt, events_to_pick)
       self.map_key = map_key
       self.events_to_pick = events_to_pick
+      image = Image(f"https://cdn.everything.io/chatgpt/maura/{map_key}.png", "Map of key locations")
       self.prompt = f"""
 {prompt}
 
-Remember to show the user this map ![map](https://cdn.everything.io/chatgpt/maura/{map_key}.png)
+Remember to show the user a map like this:
+{image}
       """
 
 class Person():
@@ -438,12 +448,13 @@ UMASS_B_DEFINITION = UMASS_OFFICE_DEFINITION.set_events(
   [{ "target": "INTRO_TO_MAP", "if_the_user": "agrees with Mike's suggestion to continue to the map" }]
 ).copy_with_changes(prompt="Remind the user at the end of your message they can also view a map of other locations to visit as their next step.").dict()
 
+map_intro_image = Image("https://cdn.everything.io/chatgpt/maura/map_intro.png", "Map of key locations")
 INTRO_TO_MAP_DEFINITION = TranscriptState(
   "At the same scene, with Mike's map folded out showing key locations",
-  """
+  f"""
 Mike will show this image to the user:
 
-![map](https://cdn.everything.io/chatgpt/maura/map_level_intro.png)
+{map_intro_image}
 
 And let them know from now on they can always ask to review the map to visit another location
 to review evidence or talk to someone. All they have to do is ask.
