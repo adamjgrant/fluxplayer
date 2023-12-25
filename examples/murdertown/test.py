@@ -1,6 +1,6 @@
 import unittest
 import sys
-from examples.murdertown.cartridge import merge_states, BackForwardState, CherryPicker, Map, EvidenceLocker, cartridge
+from examples.murdertown.cartridge import merge_states, BackForwardState, CherryPicker, Map, EvidenceLocker, cartridge, Image
 
 class TestMerge(unittest.TestCase):
     def test_merges_states(self):
@@ -152,3 +152,9 @@ class TestStatesPenultimateLevel(unittest.TestCase):
       "FRED_MURRAY_WITH_KNIFE_10",
       "A_FRAME_FINAL"
     ]))
+
+class TestImages(unittest.TestCase):
+  def test_image(self):
+    image = Image("image", "image.png")
+    markdown = image.markdown()
+    self.assertEqual(markdown, "![image](https://cdn.everything.io/chatgpt/maura/image.png)\n_image, [Open image in new window](https://cdn.everything.io/chatgpt/maura/image.png)_")
