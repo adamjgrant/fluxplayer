@@ -51,7 +51,7 @@ class Map(CherryPicker):
       super().__init__("MAP", previous_state, "asks to go back", prompt, events_to_pick)
       self.map_key = map_key
       self.events_to_pick = events_to_pick
-      image = Image(f"{map_key}.png", "Map of key locations").markdown()
+      image = Image(url=f"{map_key}.png", description="Map of key locations").markdown()
       self.prompt = f"""
 {prompt}
 
@@ -334,8 +334,7 @@ class Evidence:
   
 class ImageEvidence(Evidence):
   def __init__(self, url, description):
-    self.description = description
-    self.presentation = Image(url, description).markdown()
+    self.presentation = Image(url=url, description=description).markdown()
 
 EVIDENCE = {
   "BUTCH_INTERVIEWED": ImageEvidence("https://i.redd.it/93a45ibm68tz.png", "Butch Atwood being interviewed by a local TV station"),
@@ -445,7 +444,7 @@ UMASS_B_DEFINITION = UMASS_OFFICE_DEFINITION.set_events(
   [{ "target": "INTRO_TO_MAP", "if_the_user": "agrees with Mike's suggestion to continue to the map" }]
 ).copy_with_changes(prompt="Remind the user at the end of your message they can also view a map of other locations to visit as their next step.").dict()
 
-map_intro_image = Image("map_intro.png", "Map of key locations").markdown()
+map_intro_image = Image(url="map_intro.png", description="Map of key locations").markdown()
 INTRO_TO_MAP_DEFINITION =TranscriptState(
   "At the same scene, with Mike's map folded out showing key locations",
   f"""
