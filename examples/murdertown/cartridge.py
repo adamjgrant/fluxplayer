@@ -8,7 +8,7 @@ def merge_states(states=[]):
 
 class Image():
   def __init__(self, url, description):
-    self.url = url
+    self.url = f"https://cdn.everything.io/chatgpt/maura/{url}"
     self.description = description
 
   def markdown(self):
@@ -51,7 +51,7 @@ class Map(CherryPicker):
       super().__init__("MAP", previous_state, "asks to go back", prompt, events_to_pick)
       self.map_key = map_key
       self.events_to_pick = events_to_pick
-      image = Image(f"https://cdn.everything.io/chatgpt/maura/{map_key}.png", "Map of key locations").markdown()
+      image = Image(f"{map_key}.png", "Map of key locations").markdown()
       self.prompt = f"""
 {prompt}
 
@@ -335,14 +335,11 @@ class Evidence:
 class ImageEvidence(Evidence):
   def __init__(self, url, description):
     self.description = description
-    self.presentation = f"""
-      ![]({url})
-      _{description}_
-    """
+    self.presentation = Image(url, description).markdown()
 
 EVIDENCE = {
   "BUTCH_INTERVIEWED": ImageEvidence("https://i.redd.it/93a45ibm68tz.png", "Butch Atwood being interviewed by a local TV station"),
-  "MAURA_MISSING_POSTER": ImageEvidence("https://allthatsinteresting.com/wordpress/wp-content/uploads/2018/05/maura-murray-missing-poster.png", "Missing Poster for Maura Murray"),
+  "MAURA_MISSING_POSTER": ImageEvidence("missingposter.gif", "Missing Poster for Maura Murray"),
   "MAURA_AT_ATM": ImageEvidence("https://allthatsinteresting.com/wordpress/wp-content/uploads/2018/05/maura-murray-last-sighting.jpg", "February 9, 2004: Maura Murray at ATM seemingly alone withdrawing $280 before visiting liquor store")
 }
 
@@ -448,8 +445,8 @@ UMASS_B_DEFINITION = UMASS_OFFICE_DEFINITION.set_events(
   [{ "target": "INTRO_TO_MAP", "if_the_user": "agrees with Mike's suggestion to continue to the map" }]
 ).copy_with_changes(prompt="Remind the user at the end of your message they can also view a map of other locations to visit as their next step.").dict()
 
-map_intro_image = Image("https://cdn.everything.io/chatgpt/maura/map_intro.png", "Map of key locations").markdown()
-INTRO_TO_MAP_DEFINITION = TranscriptState(
+map_intro_image = Image("map_intro.png", "Map of key locations").markdown()
+INTRO_TO_MAP_DEFINITION =TranscriptState(
   "At the same scene, with Mike's map folded out showing key locations",
   f"""
 Mike will show this image to the user:
