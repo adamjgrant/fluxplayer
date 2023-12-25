@@ -12,7 +12,7 @@ class Image():
     self.description = description
 
   def markdown(self):
-    return f"![{self.description}]({self.url})\n_{self.description}, [Open image in new window]({self.url})_"
+    return f"![{self.description}]({self.url})\n_{self.description}, [Open image in new window]({self.url})_\n\n"
 
 class BackForwardState():
     def __init__(self, name="", previous_state="", go_back_if_the_user="asks to go back", prompt=""):
