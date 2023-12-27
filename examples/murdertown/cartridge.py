@@ -346,23 +346,53 @@ Remember this information is only revealed by each person and only if the user a
         }
 
 class Evidence:
-  def __init__(self, presentation=""):
+  def __init__(self, presentation="", description=""):
     self.presentation = f"{presentation}\n"
   
 class ImageEvidence(Evidence):
   def __init__(self, url, description):
     self.presentation = Image(url=url, description=description).markdown()
 
+class EvidenceSet:
+  def __init__(self, evidences=[], description=""):
+    self.evidences = evidences
+    self.description = description
+    self.presentation = ""
+
+    for evidence in evidences:
+      self.presentation += evidence.presentation
+
 EVIDENCE = {
   "BUTCH_INTERVIEWED": ImageEvidence("butch_atwood_interview.png", "Butch Atwood being interviewed by a local TV station"),
   "BUTCH_ATWOOD_HOME": ImageEvidence("butch_atwood_home.png", "Butch Atwood being interviewed by a local TV station"),
   "MAURA_MISSING_POSTER": ImageEvidence("missingposter.gif", "Missing Poster for Maura Murray"),
-  "MAURA_AT_ATM_01": ImageEvidence("maura_atm_01.png", "February 9, 2004: Maura Murray at ATM seemingly alone withdrawing $280 before visiting liquor store"),
-  "MAURA_AT_ATM_02": ImageEvidence("maura_atm_02.png", "February 9, 2004: Maura Murray at ATM seemingly alone withdrawing $280 before visiting liquor store"),
-  "MAURA_AT_ATM_03": ImageEvidence("maura_atm_03.png", "February 9, 2004: Maura Murray at ATM seemingly alone withdrawing $280 before visiting liquor store"),
-  "MAURA_AT_ATM_04": ImageEvidence("maura_atm_04.png", "February 9, 2004: Maura Murray at ATM seemingly alone withdrawing $280 before visiting liquor store"),
-  "MAURA_AT_ATM_05": ImageEvidence("maura_atm_05.png", "February 9, 2004: Maura Murray at ATM seemingly alone withdrawing $280 before visiting liquor store")
+  "MAURA_AT_ATM": EvidenceSet(evidences = [
+    ImageEvidence("maura_atm_01.png", "February 9, 2004: Maura Murray at ATM seemingly alone withdrawing $280 before visiting liquor store"),
+    ImageEvidence("maura_atm_02.png", "February 9, 2004: Maura Murray at ATM seemingly alone withdrawing $280 before visiting liquor store"),
+    ImageEvidence("maura_atm_03.png", "February 9, 2004: Maura Murray at ATM seemingly alone withdrawing $280 before visiting liquor store"),
+    ImageEvidence("maura_atm_04.png", "February 9, 2004: Maura Murray at ATM seemingly alone withdrawing $280 before visiting liquor store"),
+    ImageEvidence("maura_atm_05.png", "February 9, 2004: Maura Murray at ATM seemingly alone withdrawing $280 before visiting liquor store")
+  ], description="Security camera footage of Maura Murray at ATM")
 }
+
+# TODO provide both an index and the full information from the evidence object using common methods.
+EVIDENCE_LOCKER_DEFINITION = TranscriptState(
+  setting="A carefully guarded room in the FBI New Hampshire office with lockers containing evidence for different cases",
+  prompt="""
+  Mike will give the user a list of evidence currently on file and will explain how additional evidence will be gathered
+  as they progress to visit more places and talk to more people. He will also explain that they can always ask to go back to
+  the map to visit another location to review evidence or talk to someone. All they have to do is ask.
+  """,
+  events=[
+    { "target": "MAP_EVIDENCE_LOCKER", "if_the_user": "asks to go to map" }
+  ],
+  people=[],
+  next_backbone="Murray Family Home"
+)
+
+class EvidenceLocker(CherryPicker):
+    def __init__(self, previous_state, go_back_if_the_user="asks to go back", prompt="", events_to_pick=[]):
+      super().__init__("EVIDENCE_LOCKER", previous_state, go_back_if_the_user, prompt, events_to_pick)
 
 beginning = {
   "START": {
@@ -403,6 +433,8 @@ then ask them again if they're ready.
   },
   "MEET_MIKE": {
     "prompt": """
+          Generate a dall-e image of an official FBI photograph of a male investigator in his 40s.
+
           From now on, the messages you give back to the user will be transcript style, so anything you write must
           have a person's name in front of it. For now, that only person will be the user's fellow investigator, Mike Crenshaw.
 
@@ -449,7 +481,6 @@ The car is pointed west on the eastbound side of the road. The windshield is cra
   people=[PEOPLE["BUTCH_ATWOOD"], PEOPLE["FAITH_WESTMAN"], PEOPLE["CECIL_SMITH"], PEOPLE["JOHN_MONAGHAN"], PEOPLE["JEFF_WILLIAMS"]]
 )
 
-# TODO: We should also nudge the user on these to let them know they can move to the respective part 2s.
 UMASS_A_DEFINITION = UMASS_OFFICE_DEFINITION.set_events(
   [{ "target": "CAR_WRECK_A", "if_the_user": "agrees to go to New Hampshire to see the crime scene" }]
 ).copy_with_changes(prompt="Remind the user at the end of your message they can also go to the site of a car wreck as their next step.").dict()
@@ -524,23 +555,6 @@ CRIME_SCENE_START_DEFINITION = CAR_WRECK_DEFINITION.copy_with_changes(
   ]
 )
 
-EVIDENCE_LOCKER_DEFINITION = TranscriptState(
-  setting="A carefully guarded room in the FBI New Hampshire office with lockers containing evidence for different cases",
-  prompt="""
-  Mike will give the user a list of evidence currently on file and will explain how additional evidence will be gathered
-  as they progress to visit more places and talk to more people. He will also explain that they can always ask to go back to
-  the map to visit another location to review evidence or talk to someone. All they have to do is ask.
-  """,
-  events=[
-    { "target": "MAP_EVIDENCE_LOCKER", "if_the_user": "asks to go to map" }
-  ],
-  people=[],
-  next_backbone="Murray Family Home"
-)
-
-class EvidenceLocker(CherryPicker):
-    def __init__(self, previous_state, go_back_if_the_user="asks to go back", prompt="", events_to_pick=[]):
-      super().__init__("EVIDENCE_LOCKER", previous_state, go_back_if_the_user, prompt, events_to_pick)
 
 VISIT_FRED_DEFINITION = TranscriptState(
   setting = "The home of the Murray family in Hanson Massachusettes on February 10th, 2004 at 10PM. Fred is seated at the dining table alone",
