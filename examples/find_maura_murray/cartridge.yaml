@@ -388,6 +388,7 @@ MAP_CAR_WRECK_1:
   events:
   - target: CAR_WRECK_1
     if_the_user: asks to go back
+  - *id001
   - &id003
     target: CAR_WRECK_1
     if_the_user: wants to go to the site of the wreck where Maura disappeared
@@ -398,6 +399,19 @@ MAP_CAR_WRECK_1:
     target: DATA_LAB_1
     if_the_user: wants to go to the data lab
   - *id002
+EVIDENCE_LOCKER_MAP_CAR_WRECK_1_1:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n
+    Lastly, add this to your message at the bottom:\n_🗺️ Map has a new item: \"CAR_WRECK\"\
+    . Ask for the map to go there or anywhere else_\n          \n      "
+  events:
+  - target: MAP_CAR_WRECK_1
+    if_the_user: asks to go back
+  - *id001
 UMASS_OFFICE_1:
   prompt: "\nAll messages you send back to the user must be written in the style of
     a transcript where a person's name\nappears before everything spoken.\n\ne.g.
@@ -433,10 +447,24 @@ MAP_UMASS_OFFICE_1:
   events:
   - target: UMASS_OFFICE_1
     if_the_user: asks to go back
+  - *id001
   - *id003
   - *id004
   - *id005
   - *id002
+EVIDENCE_LOCKER_MAP_UMASS_OFFICE_1_1:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n
+    Lastly, add this to your message at the bottom:\n_🗺️ Map has a new item: \"UMASS_OFFICE\"\
+    . Ask for the map to go there or anywhere else_\n          \n      "
+  events:
+  - target: MAP_UMASS_OFFICE_1
+    if_the_user: asks to go back
+  - *id001
 DATA_LAB_1:
   prompt: "\nAll messages you send back to the user must be written in the style of
     a transcript where a person's name\nappears before everything spoken.\n\ne.g.
@@ -492,10 +520,24 @@ MAP_DATA_LAB_1:
   events:
   - target: DATA_LAB_1
     if_the_user: asks to go back
+  - *id001
   - *id003
   - *id004
   - *id005
   - *id002
+EVIDENCE_LOCKER_MAP_DATA_LAB_1_1:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n
+    Lastly, add this to your message at the bottom:\n_🗺️ Map has a new item: \"DATA_LAB\"\
+    . Ask for the map to go there or anywhere else_\n          \n      "
+  events:
+  - target: MAP_DATA_LAB_1
+    if_the_user: asks to go back
+  - *id001
 CAR_WRECK_2:
   prompt: "\nAll messages you send back to the user must be written in the style of
     a transcript where a person's name\nappears before everything spoken.\n\ne.g.
@@ -584,6 +626,7 @@ MAP_CAR_WRECK_2:
   events:
   - target: CAR_WRECK_2
     if_the_user: asks to go back
+  - *id001
   - &id007
     target: CAR_WRECK_2
     if_the_user: wants to go to the site of the wreck where Maura disappeared
@@ -597,6 +640,19 @@ MAP_CAR_WRECK_2:
     target: EVIDENCE_LOCKER_2
     if_the_user: asks to go to the evidence locker
   - *id006
+EVIDENCE_LOCKER_MAP_CAR_WRECK_2_2:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n
+    Lastly, add this to your message at the bottom:\n_🗺️ Map has a new item: \"CAR_WRECK\"\
+    . Ask for the map to go there or anywhere else_\n          \n      "
+  events:
+  - target: MAP_CAR_WRECK_2
+    if_the_user: asks to go back
+  - *id001
 UMASS_OFFICE_2:
   prompt: "\nAll messages you send back to the user must be written in the style of
     a transcript where a person's name\nappears before everything spoken.\n\ne.g.
@@ -632,11 +688,25 @@ MAP_UMASS_OFFICE_2:
   events:
   - target: UMASS_OFFICE_2
     if_the_user: asks to go back
+  - *id001
   - *id007
   - *id008
   - *id009
   - *id010
   - *id006
+EVIDENCE_LOCKER_MAP_UMASS_OFFICE_2_2:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n
+    Lastly, add this to your message at the bottom:\n_🗺️ Map has a new item: \"UMASS_OFFICE\"\
+    . Ask for the map to go there or anywhere else_\n          \n      "
+  events:
+  - target: MAP_UMASS_OFFICE_2
+    if_the_user: asks to go back
+  - *id001
 DATA_LAB_2:
   prompt: "\nAll messages you send back to the user must be written in the style of
     a transcript where a person's name\nappears before everything spoken.\n\ne.g.
@@ -692,11 +762,25 @@ MAP_DATA_LAB_2:
   events:
   - target: DATA_LAB_2
     if_the_user: asks to go back
+  - *id001
   - *id007
   - *id008
   - *id009
   - *id010
   - *id006
+EVIDENCE_LOCKER_MAP_DATA_LAB_2_2:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n
+    Lastly, add this to your message at the bottom:\n_🗺️ Map has a new item: \"DATA_LAB\"\
+    . Ask for the map to go there or anywhere else_\n          \n      "
+  events:
+  - target: MAP_DATA_LAB_2
+    if_the_user: asks to go back
+  - *id001
 EVIDENCE_LOCKER_2:
   prompt: "\nAll messages you send back to the user must be written in the style of
     a transcript where a person's name\nappears before everything spoken.\n\ne.g.
@@ -729,11 +813,25 @@ MAP_EVIDENCE_LOCKER_2:
   events:
   - target: EVIDENCE_LOCKER_2
     if_the_user: asks to go back
+  - *id001
   - *id007
   - *id008
   - *id009
   - *id010
   - *id006
+EVIDENCE_LOCKER_MAP_EVIDENCE_LOCKER_2_2:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n
+    Lastly, add this to your message at the bottom:\n_🗺️ Map has a new item: \"EVIDENCE_LOCKER\"\
+    . Ask for the map to go there or anywhere else_\n          \n      "
+  events:
+  - target: MAP_EVIDENCE_LOCKER_2
+    if_the_user: asks to go back
+  - *id001
 CAR_WRECK_3:
   prompt: "\nAll messages you send back to the user must be written in the style of
     a transcript where a person's name\nappears before everything spoken.\n\ne.g.
@@ -812,9 +910,8 @@ CAR_WRECK_3:
   - target: MAP_CAR_WRECK_3
     if_the_user: wants to go to the map
   - &id011
-    target: SEARCH_FOR_MAURA_4
-    if_the_user: wants to go to the search for Maura near the site of the car crash
-      where Maura disappeared
+    target: POLICE_PRECINCT_4
+    if_the_user: wants to go to the police precinct
   - *id001
 MAP_CAR_WRECK_3:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_3.png)\n
@@ -823,6 +920,7 @@ MAP_CAR_WRECK_3:
   events:
   - target: CAR_WRECK_3
     if_the_user: asks to go back
+  - *id001
   - &id012
     target: CAR_WRECK_3
     if_the_user: wants to go to the site of the wreck where Maura disappeared
@@ -833,12 +931,26 @@ MAP_CAR_WRECK_3:
     target: DATA_LAB_3
     if_the_user: wants to go to the data lab
   - &id015
-    target: EVIDENCE_LOCKER_3
-    if_the_user: asks to go to the evidence locker
-  - &id016
     target: VISIT_FRED_3
     if_the_user: wants to go to Fred's house
+  - &id016
+    target: SEARCH_FOR_MAURA_3
+    if_the_user: wants to go to the search for Maura near the site of the car crash
+      where Maura disappeared
   - *id011
+EVIDENCE_LOCKER_MAP_CAR_WRECK_3_3:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n
+    Lastly, add this to your message at the bottom:\n_🗺️ Map has a new item: \"CAR_WRECK\"\
+    . Ask for the map to go there or anywhere else_\n          \n      "
+  events:
+  - target: MAP_CAR_WRECK_3
+    if_the_user: asks to go back
+  - *id001
 UMASS_OFFICE_3:
   prompt: "\nAll messages you send back to the user must be written in the style of
     a transcript where a person's name\nappears before everything spoken.\n\ne.g.
@@ -874,12 +986,26 @@ MAP_UMASS_OFFICE_3:
   events:
   - target: UMASS_OFFICE_3
     if_the_user: asks to go back
+  - *id001
   - *id012
   - *id013
   - *id014
   - *id015
   - *id016
   - *id011
+EVIDENCE_LOCKER_MAP_UMASS_OFFICE_3_3:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n
+    Lastly, add this to your message at the bottom:\n_🗺️ Map has a new item: \"UMASS_OFFICE\"\
+    . Ask for the map to go there or anywhere else_\n          \n      "
+  events:
+  - target: MAP_UMASS_OFFICE_3
+    if_the_user: asks to go back
+  - *id001
 DATA_LAB_3:
   prompt: "\nAll messages you send back to the user must be written in the style of
     a transcript where a person's name\nappears before everything spoken.\n\ne.g.
@@ -935,12 +1061,26 @@ MAP_DATA_LAB_3:
   events:
   - target: DATA_LAB_3
     if_the_user: asks to go back
+  - *id001
   - *id012
   - *id013
   - *id014
   - *id015
   - *id016
   - *id011
+EVIDENCE_LOCKER_MAP_DATA_LAB_3_3:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n
+    Lastly, add this to your message at the bottom:\n_🗺️ Map has a new item: \"DATA_LAB\"\
+    . Ask for the map to go there or anywhere else_\n          \n      "
+  events:
+  - target: MAP_DATA_LAB_3
+    if_the_user: asks to go back
+  - *id001
 EVIDENCE_LOCKER_3:
   prompt: "\nAll messages you send back to the user must be written in the style of
     a transcript where a person's name\nappears before everything spoken.\n\ne.g.
@@ -973,12 +1113,26 @@ MAP_EVIDENCE_LOCKER_3:
   events:
   - target: EVIDENCE_LOCKER_3
     if_the_user: asks to go back
+  - *id001
   - *id012
   - *id013
   - *id014
   - *id015
   - *id016
   - *id011
+EVIDENCE_LOCKER_MAP_EVIDENCE_LOCKER_3_3:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n
+    Lastly, add this to your message at the bottom:\n_🗺️ Map has a new item: \"EVIDENCE_LOCKER\"\
+    . Ask for the map to go there or anywhere else_\n          \n      "
+  events:
+  - target: MAP_EVIDENCE_LOCKER_3
+    if_the_user: asks to go back
+  - *id001
 VISIT_FRED_3:
   prompt: "\nAll messages you send back to the user must be written in the style of
     a transcript where a person's name\nappears before everything spoken.\n\ne.g.
@@ -1032,12 +1186,26 @@ MAP_VISIT_FRED_3:
   events:
   - target: VISIT_FRED_3
     if_the_user: asks to go back
+  - *id001
   - *id012
   - *id013
   - *id014
   - *id015
   - *id016
   - *id011
+EVIDENCE_LOCKER_MAP_VISIT_FRED_3_3:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n
+    Lastly, add this to your message at the bottom:\n_🗺️ Map has a new item: \"VISIT_FRED\"\
+    . Ask for the map to go there or anywhere else_\n          \n      "
+  events:
+  - target: MAP_VISIT_FRED_3
+    if_the_user: asks to go back
+  - *id001
 CAR_WRECK_4:
   prompt: "\nAll messages you send back to the user must be written in the style of
     a transcript where a person's name\nappears before everything spoken.\n\ne.g.
@@ -1116,8 +1284,8 @@ CAR_WRECK_4:
   - target: MAP_CAR_WRECK_4
     if_the_user: wants to go to the map
   - &id017
-    target: POLICE_PRECINCT_5
-    if_the_user: wants to go to the police precinct
+    target: WORK_FRIEND_5
+    if_the_user: wants to go to talk to Maura's work friend
   - *id001
 MAP_CAR_WRECK_4:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_4.png)\n
@@ -1126,6 +1294,7 @@ MAP_CAR_WRECK_4:
   events:
   - target: CAR_WRECK_4
     if_the_user: asks to go back
+  - *id001
   - &id018
     target: CAR_WRECK_4
     if_the_user: wants to go to the site of the wreck where Maura disappeared
@@ -1136,16 +1305,29 @@ MAP_CAR_WRECK_4:
     target: DATA_LAB_4
     if_the_user: wants to go to the data lab
   - &id021
-    target: EVIDENCE_LOCKER_4
-    if_the_user: asks to go to the evidence locker
-  - &id022
     target: VISIT_FRED_4
     if_the_user: wants to go to Fred's house
-  - &id023
+  - &id022
     target: SEARCH_FOR_MAURA_4
     if_the_user: wants to go to the search for Maura near the site of the car crash
       where Maura disappeared
+  - &id023
+    target: POLICE_PRECINCT_4
+    if_the_user: wants to go to the police precinct
   - *id017
+EVIDENCE_LOCKER_MAP_CAR_WRECK_4_4:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n
+    Lastly, add this to your message at the bottom:\n_🗺️ Map has a new item: \"CAR_WRECK\"\
+    . Ask for the map to go there or anywhere else_\n          \n      "
+  events:
+  - target: MAP_CAR_WRECK_4
+    if_the_user: asks to go back
+  - *id001
 UMASS_OFFICE_4:
   prompt: "\nAll messages you send back to the user must be written in the style of
     a transcript where a person's name\nappears before everything spoken.\n\ne.g.
@@ -1181,6 +1363,7 @@ MAP_UMASS_OFFICE_4:
   events:
   - target: UMASS_OFFICE_4
     if_the_user: asks to go back
+  - *id001
   - *id018
   - *id019
   - *id020
@@ -1188,6 +1371,19 @@ MAP_UMASS_OFFICE_4:
   - *id022
   - *id023
   - *id017
+EVIDENCE_LOCKER_MAP_UMASS_OFFICE_4_4:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n
+    Lastly, add this to your message at the bottom:\n_🗺️ Map has a new item: \"UMASS_OFFICE\"\
+    . Ask for the map to go there or anywhere else_\n          \n      "
+  events:
+  - target: MAP_UMASS_OFFICE_4
+    if_the_user: asks to go back
+  - *id001
 DATA_LAB_4:
   prompt: "\nAll messages you send back to the user must be written in the style of
     a transcript where a person's name\nappears before everything spoken.\n\ne.g.
@@ -1243,6 +1439,7 @@ MAP_DATA_LAB_4:
   events:
   - target: DATA_LAB_4
     if_the_user: asks to go back
+  - *id001
   - *id018
   - *id019
   - *id020
@@ -1250,6 +1447,19 @@ MAP_DATA_LAB_4:
   - *id022
   - *id023
   - *id017
+EVIDENCE_LOCKER_MAP_DATA_LAB_4_4:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n
+    Lastly, add this to your message at the bottom:\n_🗺️ Map has a new item: \"DATA_LAB\"\
+    . Ask for the map to go there or anywhere else_\n          \n      "
+  events:
+  - target: MAP_DATA_LAB_4
+    if_the_user: asks to go back
+  - *id001
 EVIDENCE_LOCKER_4:
   prompt: "\nAll messages you send back to the user must be written in the style of
     a transcript where a person's name\nappears before everything spoken.\n\ne.g.
@@ -1282,6 +1492,7 @@ MAP_EVIDENCE_LOCKER_4:
   events:
   - target: EVIDENCE_LOCKER_4
     if_the_user: asks to go back
+  - *id001
   - *id018
   - *id019
   - *id020
@@ -1289,6 +1500,19 @@ MAP_EVIDENCE_LOCKER_4:
   - *id022
   - *id023
   - *id017
+EVIDENCE_LOCKER_MAP_EVIDENCE_LOCKER_4_4:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n
+    Lastly, add this to your message at the bottom:\n_🗺️ Map has a new item: \"EVIDENCE_LOCKER\"\
+    . Ask for the map to go there or anywhere else_\n          \n      "
+  events:
+  - target: MAP_EVIDENCE_LOCKER_4
+    if_the_user: asks to go back
+  - *id001
 VISIT_FRED_4:
   prompt: "\nAll messages you send back to the user must be written in the style of
     a transcript where a person's name\nappears before everything spoken.\n\ne.g.
@@ -1342,6 +1566,7 @@ MAP_VISIT_FRED_4:
   events:
   - target: VISIT_FRED_4
     if_the_user: asks to go back
+  - *id001
   - *id018
   - *id019
   - *id020
@@ -1349,6 +1574,19 @@ MAP_VISIT_FRED_4:
   - *id022
   - *id023
   - *id017
+EVIDENCE_LOCKER_MAP_VISIT_FRED_4_4:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n
+    Lastly, add this to your message at the bottom:\n_🗺️ Map has a new item: \"VISIT_FRED\"\
+    . Ask for the map to go there or anywhere else_\n          \n      "
+  events:
+  - target: MAP_VISIT_FRED_4
+    if_the_user: asks to go back
+  - *id001
 SEARCH_FOR_MAURA_4:
   prompt: "\nAll messages you send back to the user must be written in the style of
     a transcript where a person's name\nappears before everything spoken.\n\ne.g.
@@ -1481,6 +1719,7 @@ MAP_SEARCH_FOR_MAURA_4:
   events:
   - target: SEARCH_FOR_MAURA_4
     if_the_user: asks to go back
+  - *id001
   - *id018
   - *id019
   - *id020
@@ -1488,6 +1727,19 @@ MAP_SEARCH_FOR_MAURA_4:
   - *id022
   - *id023
   - *id017
+EVIDENCE_LOCKER_MAP_SEARCH_FOR_MAURA_4_4:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n
+    Lastly, add this to your message at the bottom:\n_🗺️ Map has a new item: \"SEARCH_FOR_MAURA\"\
+    . Ask for the map to go there or anywhere else_\n          \n      "
+  events:
+  - target: MAP_SEARCH_FOR_MAURA_4
+    if_the_user: asks to go back
+  - *id001
 CAR_WRECK_5:
   prompt: "\nAll messages you send back to the user must be written in the style of
     a transcript where a person's name\nappears before everything spoken.\n\ne.g.
@@ -1566,8 +1818,8 @@ CAR_WRECK_5:
   - target: MAP_CAR_WRECK_5
     if_the_user: wants to go to the map
   - &id024
-    target: WORK_FRIEND_6
-    if_the_user: wants to go to talk to Maura's work friend
+    target: JULIE_MURRAY_6
+    if_the_user: wants to go to Julie Murray's place
   - *id001
 MAP_CAR_WRECK_5:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_5.png)\n
@@ -1576,6 +1828,7 @@ MAP_CAR_WRECK_5:
   events:
   - target: CAR_WRECK_5
     if_the_user: asks to go back
+  - *id001
   - &id025
     target: CAR_WRECK_5
     if_the_user: wants to go to the site of the wreck where Maura disappeared
@@ -1586,19 +1839,32 @@ MAP_CAR_WRECK_5:
     target: DATA_LAB_5
     if_the_user: wants to go to the data lab
   - &id028
-    target: EVIDENCE_LOCKER_5
-    if_the_user: asks to go to the evidence locker
-  - &id029
     target: VISIT_FRED_5
     if_the_user: wants to go to Fred's house
-  - &id030
+  - &id029
     target: SEARCH_FOR_MAURA_5
     if_the_user: wants to go to the search for Maura near the site of the car crash
       where Maura disappeared
-  - &id031
+  - &id030
     target: POLICE_PRECINCT_5
     if_the_user: wants to go to the police precinct
+  - &id031
+    target: WORK_FRIEND_5
+    if_the_user: wants to go to talk to Maura's work friend
   - *id024
+EVIDENCE_LOCKER_MAP_CAR_WRECK_5_5:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n
+    Lastly, add this to your message at the bottom:\n_🗺️ Map has a new item: \"CAR_WRECK\"\
+    . Ask for the map to go there or anywhere else_\n          \n      "
+  events:
+  - target: MAP_CAR_WRECK_5
+    if_the_user: asks to go back
+  - *id001
 UMASS_OFFICE_5:
   prompt: "\nAll messages you send back to the user must be written in the style of
     a transcript where a person's name\nappears before everything spoken.\n\ne.g.
@@ -1634,6 +1900,7 @@ MAP_UMASS_OFFICE_5:
   events:
   - target: UMASS_OFFICE_5
     if_the_user: asks to go back
+  - *id001
   - *id025
   - *id026
   - *id027
@@ -1642,6 +1909,19 @@ MAP_UMASS_OFFICE_5:
   - *id030
   - *id031
   - *id024
+EVIDENCE_LOCKER_MAP_UMASS_OFFICE_5_5:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n
+    Lastly, add this to your message at the bottom:\n_🗺️ Map has a new item: \"UMASS_OFFICE\"\
+    . Ask for the map to go there or anywhere else_\n          \n      "
+  events:
+  - target: MAP_UMASS_OFFICE_5
+    if_the_user: asks to go back
+  - *id001
 DATA_LAB_5:
   prompt: "\nAll messages you send back to the user must be written in the style of
     a transcript where a person's name\nappears before everything spoken.\n\ne.g.
@@ -1697,6 +1977,7 @@ MAP_DATA_LAB_5:
   events:
   - target: DATA_LAB_5
     if_the_user: asks to go back
+  - *id001
   - *id025
   - *id026
   - *id027
@@ -1705,6 +1986,19 @@ MAP_DATA_LAB_5:
   - *id030
   - *id031
   - *id024
+EVIDENCE_LOCKER_MAP_DATA_LAB_5_5:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n
+    Lastly, add this to your message at the bottom:\n_🗺️ Map has a new item: \"DATA_LAB\"\
+    . Ask for the map to go there or anywhere else_\n          \n      "
+  events:
+  - target: MAP_DATA_LAB_5
+    if_the_user: asks to go back
+  - *id001
 EVIDENCE_LOCKER_5:
   prompt: "\nAll messages you send back to the user must be written in the style of
     a transcript where a person's name\nappears before everything spoken.\n\ne.g.
@@ -1737,6 +2031,7 @@ MAP_EVIDENCE_LOCKER_5:
   events:
   - target: EVIDENCE_LOCKER_5
     if_the_user: asks to go back
+  - *id001
   - *id025
   - *id026
   - *id027
@@ -1745,6 +2040,19 @@ MAP_EVIDENCE_LOCKER_5:
   - *id030
   - *id031
   - *id024
+EVIDENCE_LOCKER_MAP_EVIDENCE_LOCKER_5_5:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n
+    Lastly, add this to your message at the bottom:\n_🗺️ Map has a new item: \"EVIDENCE_LOCKER\"\
+    . Ask for the map to go there or anywhere else_\n          \n      "
+  events:
+  - target: MAP_EVIDENCE_LOCKER_5
+    if_the_user: asks to go back
+  - *id001
 VISIT_FRED_5:
   prompt: "\nAll messages you send back to the user must be written in the style of
     a transcript where a person's name\nappears before everything spoken.\n\ne.g.
@@ -1798,6 +2106,7 @@ MAP_VISIT_FRED_5:
   events:
   - target: VISIT_FRED_5
     if_the_user: asks to go back
+  - *id001
   - *id025
   - *id026
   - *id027
@@ -1806,6 +2115,19 @@ MAP_VISIT_FRED_5:
   - *id030
   - *id031
   - *id024
+EVIDENCE_LOCKER_MAP_VISIT_FRED_5_5:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n
+    Lastly, add this to your message at the bottom:\n_🗺️ Map has a new item: \"VISIT_FRED\"\
+    . Ask for the map to go there or anywhere else_\n          \n      "
+  events:
+  - target: MAP_VISIT_FRED_5
+    if_the_user: asks to go back
+  - *id001
 SEARCH_FOR_MAURA_5:
   prompt: "\nAll messages you send back to the user must be written in the style of
     a transcript where a person's name\nappears before everything spoken.\n\ne.g.
@@ -1938,6 +2260,7 @@ MAP_SEARCH_FOR_MAURA_5:
   events:
   - target: SEARCH_FOR_MAURA_5
     if_the_user: asks to go back
+  - *id001
   - *id025
   - *id026
   - *id027
@@ -1946,6 +2269,19 @@ MAP_SEARCH_FOR_MAURA_5:
   - *id030
   - *id031
   - *id024
+EVIDENCE_LOCKER_MAP_SEARCH_FOR_MAURA_5_5:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n
+    Lastly, add this to your message at the bottom:\n_🗺️ Map has a new item: \"SEARCH_FOR_MAURA\"\
+    . Ask for the map to go there or anywhere else_\n          \n      "
+  events:
+  - target: MAP_SEARCH_FOR_MAURA_5
+    if_the_user: asks to go back
+  - *id001
 POLICE_PRECINCT_5:
   prompt: "\nAll messages you send back to the user must be written in the style of
     a transcript where a person's name\nappears before everything spoken.\n\ne.g.
@@ -1987,6 +2323,7 @@ MAP_POLICE_PRECINCT_5:
   events:
   - target: POLICE_PRECINCT_5
     if_the_user: asks to go back
+  - *id001
   - *id025
   - *id026
   - *id027
@@ -1995,6 +2332,19 @@ MAP_POLICE_PRECINCT_5:
   - *id030
   - *id031
   - *id024
+EVIDENCE_LOCKER_MAP_POLICE_PRECINCT_5_5:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n
+    Lastly, add this to your message at the bottom:\n_🗺️ Map has a new item: \"POLICE_PRECINCT\"\
+    . Ask for the map to go there or anywhere else_\n          \n      "
+  events:
+  - target: MAP_POLICE_PRECINCT_5
+    if_the_user: asks to go back
+  - *id001
 CAR_WRECK_6:
   prompt: "\nAll messages you send back to the user must be written in the style of
     a transcript where a person's name\nappears before everything spoken.\n\ne.g.
@@ -2073,8 +2423,8 @@ CAR_WRECK_6:
   - target: MAP_CAR_WRECK_6
     if_the_user: wants to go to the map
   - &id032
-    target: JULIE_MURRAY_7
-    if_the_user: wants to go to Julie Murray's place
+    target: MAURA_APARTMENT_7
+    if_the_user: wants to go to Maura's apartment
   - *id001
 MAP_CAR_WRECK_6:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_6.png)\n
@@ -2083,6 +2433,7 @@ MAP_CAR_WRECK_6:
   events:
   - target: CAR_WRECK_6
     if_the_user: asks to go back
+  - *id001
   - &id033
     target: CAR_WRECK_6
     if_the_user: wants to go to the site of the wreck where Maura disappeared
@@ -2093,22 +2444,35 @@ MAP_CAR_WRECK_6:
     target: DATA_LAB_6
     if_the_user: wants to go to the data lab
   - &id036
-    target: EVIDENCE_LOCKER_6
-    if_the_user: asks to go to the evidence locker
-  - &id037
     target: VISIT_FRED_6
     if_the_user: wants to go to Fred's house
-  - &id038
+  - &id037
     target: SEARCH_FOR_MAURA_6
     if_the_user: wants to go to the search for Maura near the site of the car crash
       where Maura disappeared
-  - &id039
+  - &id038
     target: POLICE_PRECINCT_6
     if_the_user: wants to go to the police precinct
-  - &id040
+  - &id039
     target: WORK_FRIEND_6
     if_the_user: wants to go to talk to Maura's work friend
+  - &id040
+    target: JULIE_MURRAY_6
+    if_the_user: wants to go to Julie Murray's place
   - *id032
+EVIDENCE_LOCKER_MAP_CAR_WRECK_6_6:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n
+    Lastly, add this to your message at the bottom:\n_🗺️ Map has a new item: \"CAR_WRECK\"\
+    . Ask for the map to go there or anywhere else_\n          \n      "
+  events:
+  - target: MAP_CAR_WRECK_6
+    if_the_user: asks to go back
+  - *id001
 UMASS_OFFICE_6:
   prompt: "\nAll messages you send back to the user must be written in the style of
     a transcript where a person's name\nappears before everything spoken.\n\ne.g.
@@ -2144,6 +2508,7 @@ MAP_UMASS_OFFICE_6:
   events:
   - target: UMASS_OFFICE_6
     if_the_user: asks to go back
+  - *id001
   - *id033
   - *id034
   - *id035
@@ -2153,6 +2518,19 @@ MAP_UMASS_OFFICE_6:
   - *id039
   - *id040
   - *id032
+EVIDENCE_LOCKER_MAP_UMASS_OFFICE_6_6:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n
+    Lastly, add this to your message at the bottom:\n_🗺️ Map has a new item: \"UMASS_OFFICE\"\
+    . Ask for the map to go there or anywhere else_\n          \n      "
+  events:
+  - target: MAP_UMASS_OFFICE_6
+    if_the_user: asks to go back
+  - *id001
 DATA_LAB_6:
   prompt: "\nAll messages you send back to the user must be written in the style of
     a transcript where a person's name\nappears before everything spoken.\n\ne.g.
@@ -2208,6 +2586,7 @@ MAP_DATA_LAB_6:
   events:
   - target: DATA_LAB_6
     if_the_user: asks to go back
+  - *id001
   - *id033
   - *id034
   - *id035
@@ -2217,6 +2596,19 @@ MAP_DATA_LAB_6:
   - *id039
   - *id040
   - *id032
+EVIDENCE_LOCKER_MAP_DATA_LAB_6_6:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n
+    Lastly, add this to your message at the bottom:\n_🗺️ Map has a new item: \"DATA_LAB\"\
+    . Ask for the map to go there or anywhere else_\n          \n      "
+  events:
+  - target: MAP_DATA_LAB_6
+    if_the_user: asks to go back
+  - *id001
 EVIDENCE_LOCKER_6:
   prompt: "\nAll messages you send back to the user must be written in the style of
     a transcript where a person's name\nappears before everything spoken.\n\ne.g.
@@ -2249,6 +2641,7 @@ MAP_EVIDENCE_LOCKER_6:
   events:
   - target: EVIDENCE_LOCKER_6
     if_the_user: asks to go back
+  - *id001
   - *id033
   - *id034
   - *id035
@@ -2258,6 +2651,19 @@ MAP_EVIDENCE_LOCKER_6:
   - *id039
   - *id040
   - *id032
+EVIDENCE_LOCKER_MAP_EVIDENCE_LOCKER_6_6:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n
+    Lastly, add this to your message at the bottom:\n_🗺️ Map has a new item: \"EVIDENCE_LOCKER\"\
+    . Ask for the map to go there or anywhere else_\n          \n      "
+  events:
+  - target: MAP_EVIDENCE_LOCKER_6
+    if_the_user: asks to go back
+  - *id001
 VISIT_FRED_6:
   prompt: "\nAll messages you send back to the user must be written in the style of
     a transcript where a person's name\nappears before everything spoken.\n\ne.g.
@@ -2311,6 +2717,7 @@ MAP_VISIT_FRED_6:
   events:
   - target: VISIT_FRED_6
     if_the_user: asks to go back
+  - *id001
   - *id033
   - *id034
   - *id035
@@ -2320,6 +2727,19 @@ MAP_VISIT_FRED_6:
   - *id039
   - *id040
   - *id032
+EVIDENCE_LOCKER_MAP_VISIT_FRED_6_6:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n
+    Lastly, add this to your message at the bottom:\n_🗺️ Map has a new item: \"VISIT_FRED\"\
+    . Ask for the map to go there or anywhere else_\n          \n      "
+  events:
+  - target: MAP_VISIT_FRED_6
+    if_the_user: asks to go back
+  - *id001
 SEARCH_FOR_MAURA_6:
   prompt: "\nAll messages you send back to the user must be written in the style of
     a transcript where a person's name\nappears before everything spoken.\n\ne.g.
@@ -2452,6 +2872,7 @@ MAP_SEARCH_FOR_MAURA_6:
   events:
   - target: SEARCH_FOR_MAURA_6
     if_the_user: asks to go back
+  - *id001
   - *id033
   - *id034
   - *id035
@@ -2461,6 +2882,19 @@ MAP_SEARCH_FOR_MAURA_6:
   - *id039
   - *id040
   - *id032
+EVIDENCE_LOCKER_MAP_SEARCH_FOR_MAURA_6_6:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n
+    Lastly, add this to your message at the bottom:\n_🗺️ Map has a new item: \"SEARCH_FOR_MAURA\"\
+    . Ask for the map to go there or anywhere else_\n          \n      "
+  events:
+  - target: MAP_SEARCH_FOR_MAURA_6
+    if_the_user: asks to go back
+  - *id001
 POLICE_PRECINCT_6:
   prompt: "\nAll messages you send back to the user must be written in the style of
     a transcript where a person's name\nappears before everything spoken.\n\ne.g.
@@ -2502,6 +2936,7 @@ MAP_POLICE_PRECINCT_6:
   events:
   - target: POLICE_PRECINCT_6
     if_the_user: asks to go back
+  - *id001
   - *id033
   - *id034
   - *id035
@@ -2511,6 +2946,19 @@ MAP_POLICE_PRECINCT_6:
   - *id039
   - *id040
   - *id032
+EVIDENCE_LOCKER_MAP_POLICE_PRECINCT_6_6:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n
+    Lastly, add this to your message at the bottom:\n_🗺️ Map has a new item: \"POLICE_PRECINCT\"\
+    . Ask for the map to go there or anywhere else_\n          \n      "
+  events:
+  - target: MAP_POLICE_PRECINCT_6
+    if_the_user: asks to go back
+  - *id001
 WORK_FRIEND_6:
   prompt: "\nAll messages you send back to the user must be written in the style of
     a transcript where a person's name\nappears before everything spoken.\n\ne.g.
@@ -2611,6 +3059,7 @@ MAP_WORK_FRIEND_6:
   events:
   - target: WORK_FRIEND_6
     if_the_user: asks to go back
+  - *id001
   - *id033
   - *id034
   - *id035
@@ -2620,6 +3069,19 @@ MAP_WORK_FRIEND_6:
   - *id039
   - *id040
   - *id032
+EVIDENCE_LOCKER_MAP_WORK_FRIEND_6_6:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n
+    Lastly, add this to your message at the bottom:\n_🗺️ Map has a new item: \"WORK_FRIEND\"\
+    . Ask for the map to go there or anywhere else_\n          \n      "
+  events:
+  - target: MAP_WORK_FRIEND_6
+    if_the_user: asks to go back
+  - *id001
 CAR_WRECK_7:
   prompt: "\nAll messages you send back to the user must be written in the style of
     a transcript where a person's name\nappears before everything spoken.\n\ne.g.
@@ -2698,8 +3160,9 @@ CAR_WRECK_7:
   - target: MAP_CAR_WRECK_7
     if_the_user: wants to go to the map
   - &id041
-    target: MAURA_APARTMENT_8
-    if_the_user: wants to go to Maura's apartment
+    target: RED_TRUCK_WITNESS_8
+    if_the_user: wants to go to the Swiftwater general store to talk to the witness
+      who saw the red truck
   - *id001
 MAP_CAR_WRECK_7:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_7.png)\n
@@ -2708,6 +3171,7 @@ MAP_CAR_WRECK_7:
   events:
   - target: CAR_WRECK_7
     if_the_user: asks to go back
+  - *id001
   - &id042
     target: CAR_WRECK_7
     if_the_user: wants to go to the site of the wreck where Maura disappeared
@@ -2718,25 +3182,38 @@ MAP_CAR_WRECK_7:
     target: DATA_LAB_7
     if_the_user: wants to go to the data lab
   - &id045
-    target: EVIDENCE_LOCKER_7
-    if_the_user: asks to go to the evidence locker
-  - &id046
     target: VISIT_FRED_7
     if_the_user: wants to go to Fred's house
-  - &id047
+  - &id046
     target: SEARCH_FOR_MAURA_7
     if_the_user: wants to go to the search for Maura near the site of the car crash
       where Maura disappeared
-  - &id048
+  - &id047
     target: POLICE_PRECINCT_7
     if_the_user: wants to go to the police precinct
-  - &id049
+  - &id048
     target: WORK_FRIEND_7
     if_the_user: wants to go to talk to Maura's work friend
-  - &id050
+  - &id049
     target: JULIE_MURRAY_7
     if_the_user: wants to go to Julie Murray's place
+  - &id050
+    target: MAURA_APARTMENT_7
+    if_the_user: wants to go to Maura's apartment
   - *id041
+EVIDENCE_LOCKER_MAP_CAR_WRECK_7_7:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n
+    Lastly, add this to your message at the bottom:\n_🗺️ Map has a new item: \"CAR_WRECK\"\
+    . Ask for the map to go there or anywhere else_\n          \n      "
+  events:
+  - target: MAP_CAR_WRECK_7
+    if_the_user: asks to go back
+  - *id001
 UMASS_OFFICE_7:
   prompt: "\nAll messages you send back to the user must be written in the style of
     a transcript where a person's name\nappears before everything spoken.\n\ne.g.
@@ -2772,6 +3249,7 @@ MAP_UMASS_OFFICE_7:
   events:
   - target: UMASS_OFFICE_7
     if_the_user: asks to go back
+  - *id001
   - *id042
   - *id043
   - *id044
@@ -2782,6 +3260,19 @@ MAP_UMASS_OFFICE_7:
   - *id049
   - *id050
   - *id041
+EVIDENCE_LOCKER_MAP_UMASS_OFFICE_7_7:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n
+    Lastly, add this to your message at the bottom:\n_🗺️ Map has a new item: \"UMASS_OFFICE\"\
+    . Ask for the map to go there or anywhere else_\n          \n      "
+  events:
+  - target: MAP_UMASS_OFFICE_7
+    if_the_user: asks to go back
+  - *id001
 DATA_LAB_7:
   prompt: "\nAll messages you send back to the user must be written in the style of
     a transcript where a person's name\nappears before everything spoken.\n\ne.g.
@@ -2837,6 +3328,7 @@ MAP_DATA_LAB_7:
   events:
   - target: DATA_LAB_7
     if_the_user: asks to go back
+  - *id001
   - *id042
   - *id043
   - *id044
@@ -2847,6 +3339,19 @@ MAP_DATA_LAB_7:
   - *id049
   - *id050
   - *id041
+EVIDENCE_LOCKER_MAP_DATA_LAB_7_7:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n
+    Lastly, add this to your message at the bottom:\n_🗺️ Map has a new item: \"DATA_LAB\"\
+    . Ask for the map to go there or anywhere else_\n          \n      "
+  events:
+  - target: MAP_DATA_LAB_7
+    if_the_user: asks to go back
+  - *id001
 EVIDENCE_LOCKER_7:
   prompt: "\nAll messages you send back to the user must be written in the style of
     a transcript where a person's name\nappears before everything spoken.\n\ne.g.
@@ -2879,6 +3384,7 @@ MAP_EVIDENCE_LOCKER_7:
   events:
   - target: EVIDENCE_LOCKER_7
     if_the_user: asks to go back
+  - *id001
   - *id042
   - *id043
   - *id044
@@ -2889,6 +3395,19 @@ MAP_EVIDENCE_LOCKER_7:
   - *id049
   - *id050
   - *id041
+EVIDENCE_LOCKER_MAP_EVIDENCE_LOCKER_7_7:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n
+    Lastly, add this to your message at the bottom:\n_🗺️ Map has a new item: \"EVIDENCE_LOCKER\"\
+    . Ask for the map to go there or anywhere else_\n          \n      "
+  events:
+  - target: MAP_EVIDENCE_LOCKER_7
+    if_the_user: asks to go back
+  - *id001
 VISIT_FRED_7:
   prompt: "\nAll messages you send back to the user must be written in the style of
     a transcript where a person's name\nappears before everything spoken.\n\ne.g.
@@ -2942,6 +3461,7 @@ MAP_VISIT_FRED_7:
   events:
   - target: VISIT_FRED_7
     if_the_user: asks to go back
+  - *id001
   - *id042
   - *id043
   - *id044
@@ -2952,6 +3472,19 @@ MAP_VISIT_FRED_7:
   - *id049
   - *id050
   - *id041
+EVIDENCE_LOCKER_MAP_VISIT_FRED_7_7:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n
+    Lastly, add this to your message at the bottom:\n_🗺️ Map has a new item: \"VISIT_FRED\"\
+    . Ask for the map to go there or anywhere else_\n          \n      "
+  events:
+  - target: MAP_VISIT_FRED_7
+    if_the_user: asks to go back
+  - *id001
 SEARCH_FOR_MAURA_7:
   prompt: "\nAll messages you send back to the user must be written in the style of
     a transcript where a person's name\nappears before everything spoken.\n\ne.g.
@@ -3084,6 +3617,7 @@ MAP_SEARCH_FOR_MAURA_7:
   events:
   - target: SEARCH_FOR_MAURA_7
     if_the_user: asks to go back
+  - *id001
   - *id042
   - *id043
   - *id044
@@ -3094,6 +3628,19 @@ MAP_SEARCH_FOR_MAURA_7:
   - *id049
   - *id050
   - *id041
+EVIDENCE_LOCKER_MAP_SEARCH_FOR_MAURA_7_7:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n
+    Lastly, add this to your message at the bottom:\n_🗺️ Map has a new item: \"SEARCH_FOR_MAURA\"\
+    . Ask for the map to go there or anywhere else_\n          \n      "
+  events:
+  - target: MAP_SEARCH_FOR_MAURA_7
+    if_the_user: asks to go back
+  - *id001
 POLICE_PRECINCT_7:
   prompt: "\nAll messages you send back to the user must be written in the style of
     a transcript where a person's name\nappears before everything spoken.\n\ne.g.
@@ -3135,6 +3682,7 @@ MAP_POLICE_PRECINCT_7:
   events:
   - target: POLICE_PRECINCT_7
     if_the_user: asks to go back
+  - *id001
   - *id042
   - *id043
   - *id044
@@ -3145,6 +3693,19 @@ MAP_POLICE_PRECINCT_7:
   - *id049
   - *id050
   - *id041
+EVIDENCE_LOCKER_MAP_POLICE_PRECINCT_7_7:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n
+    Lastly, add this to your message at the bottom:\n_🗺️ Map has a new item: \"POLICE_PRECINCT\"\
+    . Ask for the map to go there or anywhere else_\n          \n      "
+  events:
+  - target: MAP_POLICE_PRECINCT_7
+    if_the_user: asks to go back
+  - *id001
 WORK_FRIEND_7:
   prompt: "\nAll messages you send back to the user must be written in the style of
     a transcript where a person's name\nappears before everything spoken.\n\ne.g.
@@ -3245,6 +3806,7 @@ MAP_WORK_FRIEND_7:
   events:
   - target: WORK_FRIEND_7
     if_the_user: asks to go back
+  - *id001
   - *id042
   - *id043
   - *id044
@@ -3255,6 +3817,19 @@ MAP_WORK_FRIEND_7:
   - *id049
   - *id050
   - *id041
+EVIDENCE_LOCKER_MAP_WORK_FRIEND_7_7:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n
+    Lastly, add this to your message at the bottom:\n_🗺️ Map has a new item: \"WORK_FRIEND\"\
+    . Ask for the map to go there or anywhere else_\n          \n      "
+  events:
+  - target: MAP_WORK_FRIEND_7
+    if_the_user: asks to go back
+  - *id001
 JULIE_MURRAY_7:
   prompt: "\nAll messages you send back to the user must be written in the style of
     a transcript where a person's name\nappears before everything spoken.\n\ne.g.
@@ -3310,6 +3885,7 @@ MAP_JULIE_MURRAY_7:
   events:
   - target: JULIE_MURRAY_7
     if_the_user: asks to go back
+  - *id001
   - *id042
   - *id043
   - *id044
@@ -3320,6 +3896,19 @@ MAP_JULIE_MURRAY_7:
   - *id049
   - *id050
   - *id041
+EVIDENCE_LOCKER_MAP_JULIE_MURRAY_7_7:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n
+    Lastly, add this to your message at the bottom:\n_🗺️ Map has a new item: \"JULIE_MURRAY\"\
+    . Ask for the map to go there or anywhere else_\n          \n      "
+  events:
+  - target: MAP_JULIE_MURRAY_7
+    if_the_user: asks to go back
+  - *id001
 CAR_WRECK_8:
   prompt: "\nAll messages you send back to the user must be written in the style of
     a transcript where a person's name\nappears before everything spoken.\n\ne.g.
@@ -3398,9 +3987,8 @@ CAR_WRECK_8:
   - target: MAP_CAR_WRECK_8
     if_the_user: wants to go to the map
   - &id051
-    target: RED_TRUCK_WITNESS_9
-    if_the_user: wants to go to the Swiftwater general store to talk to the witness
-      who saw the red truck
+    target: FRED_MURRAY_WITH_KNIFE_9
+    if_the_user: wants to go to Fred's house to discuss the knife
   - *id001
 MAP_CAR_WRECK_8:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_8.png)\n
@@ -3409,6 +3997,7 @@ MAP_CAR_WRECK_8:
   events:
   - target: CAR_WRECK_8
     if_the_user: asks to go back
+  - *id001
   - &id052
     target: CAR_WRECK_8
     if_the_user: wants to go to the site of the wreck where Maura disappeared
@@ -3419,28 +4008,42 @@ MAP_CAR_WRECK_8:
     target: DATA_LAB_8
     if_the_user: wants to go to the data lab
   - &id055
-    target: EVIDENCE_LOCKER_8
-    if_the_user: asks to go to the evidence locker
-  - &id056
     target: VISIT_FRED_8
     if_the_user: wants to go to Fred's house
-  - &id057
+  - &id056
     target: SEARCH_FOR_MAURA_8
     if_the_user: wants to go to the search for Maura near the site of the car crash
       where Maura disappeared
-  - &id058
+  - &id057
     target: POLICE_PRECINCT_8
     if_the_user: wants to go to the police precinct
-  - &id059
+  - &id058
     target: WORK_FRIEND_8
     if_the_user: wants to go to talk to Maura's work friend
-  - &id060
+  - &id059
     target: JULIE_MURRAY_8
     if_the_user: wants to go to Julie Murray's place
-  - &id061
+  - &id060
     target: MAURA_APARTMENT_8
     if_the_user: wants to go to Maura's apartment
+  - &id061
+    target: RED_TRUCK_WITNESS_8
+    if_the_user: wants to go to the Swiftwater general store to talk to the witness
+      who saw the red truck
   - *id051
+EVIDENCE_LOCKER_MAP_CAR_WRECK_8_8:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n
+    Lastly, add this to your message at the bottom:\n_🗺️ Map has a new item: \"CAR_WRECK\"\
+    . Ask for the map to go there or anywhere else_\n          \n      "
+  events:
+  - target: MAP_CAR_WRECK_8
+    if_the_user: asks to go back
+  - *id001
 UMASS_OFFICE_8:
   prompt: "\nAll messages you send back to the user must be written in the style of
     a transcript where a person's name\nappears before everything spoken.\n\ne.g.
@@ -3476,6 +4079,7 @@ MAP_UMASS_OFFICE_8:
   events:
   - target: UMASS_OFFICE_8
     if_the_user: asks to go back
+  - *id001
   - *id052
   - *id053
   - *id054
@@ -3487,6 +4091,19 @@ MAP_UMASS_OFFICE_8:
   - *id060
   - *id061
   - *id051
+EVIDENCE_LOCKER_MAP_UMASS_OFFICE_8_8:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n
+    Lastly, add this to your message at the bottom:\n_🗺️ Map has a new item: \"UMASS_OFFICE\"\
+    . Ask for the map to go there or anywhere else_\n          \n      "
+  events:
+  - target: MAP_UMASS_OFFICE_8
+    if_the_user: asks to go back
+  - *id001
 DATA_LAB_8:
   prompt: "\nAll messages you send back to the user must be written in the style of
     a transcript where a person's name\nappears before everything spoken.\n\ne.g.
@@ -3542,6 +4159,7 @@ MAP_DATA_LAB_8:
   events:
   - target: DATA_LAB_8
     if_the_user: asks to go back
+  - *id001
   - *id052
   - *id053
   - *id054
@@ -3553,6 +4171,19 @@ MAP_DATA_LAB_8:
   - *id060
   - *id061
   - *id051
+EVIDENCE_LOCKER_MAP_DATA_LAB_8_8:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n
+    Lastly, add this to your message at the bottom:\n_🗺️ Map has a new item: \"DATA_LAB\"\
+    . Ask for the map to go there or anywhere else_\n          \n      "
+  events:
+  - target: MAP_DATA_LAB_8
+    if_the_user: asks to go back
+  - *id001
 EVIDENCE_LOCKER_8:
   prompt: "\nAll messages you send back to the user must be written in the style of
     a transcript where a person's name\nappears before everything spoken.\n\ne.g.
@@ -3585,6 +4216,7 @@ MAP_EVIDENCE_LOCKER_8:
   events:
   - target: EVIDENCE_LOCKER_8
     if_the_user: asks to go back
+  - *id001
   - *id052
   - *id053
   - *id054
@@ -3596,6 +4228,19 @@ MAP_EVIDENCE_LOCKER_8:
   - *id060
   - *id061
   - *id051
+EVIDENCE_LOCKER_MAP_EVIDENCE_LOCKER_8_8:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n
+    Lastly, add this to your message at the bottom:\n_🗺️ Map has a new item: \"EVIDENCE_LOCKER\"\
+    . Ask for the map to go there or anywhere else_\n          \n      "
+  events:
+  - target: MAP_EVIDENCE_LOCKER_8
+    if_the_user: asks to go back
+  - *id001
 VISIT_FRED_8:
   prompt: "\nAll messages you send back to the user must be written in the style of
     a transcript where a person's name\nappears before everything spoken.\n\ne.g.
@@ -3649,6 +4294,7 @@ MAP_VISIT_FRED_8:
   events:
   - target: VISIT_FRED_8
     if_the_user: asks to go back
+  - *id001
   - *id052
   - *id053
   - *id054
@@ -3660,6 +4306,19 @@ MAP_VISIT_FRED_8:
   - *id060
   - *id061
   - *id051
+EVIDENCE_LOCKER_MAP_VISIT_FRED_8_8:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n
+    Lastly, add this to your message at the bottom:\n_🗺️ Map has a new item: \"VISIT_FRED\"\
+    . Ask for the map to go there or anywhere else_\n          \n      "
+  events:
+  - target: MAP_VISIT_FRED_8
+    if_the_user: asks to go back
+  - *id001
 SEARCH_FOR_MAURA_8:
   prompt: "\nAll messages you send back to the user must be written in the style of
     a transcript where a person's name\nappears before everything spoken.\n\ne.g.
@@ -3792,6 +4451,7 @@ MAP_SEARCH_FOR_MAURA_8:
   events:
   - target: SEARCH_FOR_MAURA_8
     if_the_user: asks to go back
+  - *id001
   - *id052
   - *id053
   - *id054
@@ -3803,6 +4463,19 @@ MAP_SEARCH_FOR_MAURA_8:
   - *id060
   - *id061
   - *id051
+EVIDENCE_LOCKER_MAP_SEARCH_FOR_MAURA_8_8:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n
+    Lastly, add this to your message at the bottom:\n_🗺️ Map has a new item: \"SEARCH_FOR_MAURA\"\
+    . Ask for the map to go there or anywhere else_\n          \n      "
+  events:
+  - target: MAP_SEARCH_FOR_MAURA_8
+    if_the_user: asks to go back
+  - *id001
 POLICE_PRECINCT_8:
   prompt: "\nAll messages you send back to the user must be written in the style of
     a transcript where a person's name\nappears before everything spoken.\n\ne.g.
@@ -3844,6 +4517,7 @@ MAP_POLICE_PRECINCT_8:
   events:
   - target: POLICE_PRECINCT_8
     if_the_user: asks to go back
+  - *id001
   - *id052
   - *id053
   - *id054
@@ -3855,6 +4529,19 @@ MAP_POLICE_PRECINCT_8:
   - *id060
   - *id061
   - *id051
+EVIDENCE_LOCKER_MAP_POLICE_PRECINCT_8_8:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n
+    Lastly, add this to your message at the bottom:\n_🗺️ Map has a new item: \"POLICE_PRECINCT\"\
+    . Ask for the map to go there or anywhere else_\n          \n      "
+  events:
+  - target: MAP_POLICE_PRECINCT_8
+    if_the_user: asks to go back
+  - *id001
 WORK_FRIEND_8:
   prompt: "\nAll messages you send back to the user must be written in the style of
     a transcript where a person's name\nappears before everything spoken.\n\ne.g.
@@ -3955,6 +4642,7 @@ MAP_WORK_FRIEND_8:
   events:
   - target: WORK_FRIEND_8
     if_the_user: asks to go back
+  - *id001
   - *id052
   - *id053
   - *id054
@@ -3966,6 +4654,19 @@ MAP_WORK_FRIEND_8:
   - *id060
   - *id061
   - *id051
+EVIDENCE_LOCKER_MAP_WORK_FRIEND_8_8:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n
+    Lastly, add this to your message at the bottom:\n_🗺️ Map has a new item: \"WORK_FRIEND\"\
+    . Ask for the map to go there or anywhere else_\n          \n      "
+  events:
+  - target: MAP_WORK_FRIEND_8
+    if_the_user: asks to go back
+  - *id001
 JULIE_MURRAY_8:
   prompt: "\nAll messages you send back to the user must be written in the style of
     a transcript where a person's name\nappears before everything spoken.\n\ne.g.
@@ -4021,6 +4722,7 @@ MAP_JULIE_MURRAY_8:
   events:
   - target: JULIE_MURRAY_8
     if_the_user: asks to go back
+  - *id001
   - *id052
   - *id053
   - *id054
@@ -4032,6 +4734,19 @@ MAP_JULIE_MURRAY_8:
   - *id060
   - *id061
   - *id051
+EVIDENCE_LOCKER_MAP_JULIE_MURRAY_8_8:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n
+    Lastly, add this to your message at the bottom:\n_🗺️ Map has a new item: \"JULIE_MURRAY\"\
+    . Ask for the map to go there or anywhere else_\n          \n      "
+  events:
+  - target: MAP_JULIE_MURRAY_8
+    if_the_user: asks to go back
+  - *id001
 MAURA_APARTMENT_8:
   prompt: "\nAll messages you send back to the user must be written in the style of
     a transcript where a person's name\nappears before everything spoken.\n\ne.g.
@@ -4090,6 +4805,7 @@ MAP_MAURA_APARTMENT_8:
   events:
   - target: MAURA_APARTMENT_8
     if_the_user: asks to go back
+  - *id001
   - *id052
   - *id053
   - *id054
@@ -4101,6 +4817,19 @@ MAP_MAURA_APARTMENT_8:
   - *id060
   - *id061
   - *id051
+EVIDENCE_LOCKER_MAP_MAURA_APARTMENT_8_8:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n
+    Lastly, add this to your message at the bottom:\n_🗺️ Map has a new item: \"MAURA_APARTMENT\"\
+    . Ask for the map to go there or anywhere else_\n          \n      "
+  events:
+  - target: MAP_MAURA_APARTMENT_8
+    if_the_user: asks to go back
+  - *id001
 CAR_WRECK_9:
   prompt: "\nAll messages you send back to the user must be written in the style of
     a transcript where a person's name\nappears before everything spoken.\n\ne.g.
@@ -4179,8 +4908,8 @@ CAR_WRECK_9:
   - target: MAP_CAR_WRECK_9
     if_the_user: wants to go to the map
   - &id062
-    target: FRED_MURRAY_WITH_KNIFE_10
-    if_the_user: wants to go to Fred's house to discuss the knife
+    target: A_FRAME_FINAL
+    if_the_user: asks to go to the A-Frame
   - *id001
 MAP_CAR_WRECK_9:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_9.png)\n
@@ -4189,6 +4918,7 @@ MAP_CAR_WRECK_9:
   events:
   - target: CAR_WRECK_9
     if_the_user: asks to go back
+  - *id001
   - &id063
     target: CAR_WRECK_9
     if_the_user: wants to go to the site of the wreck where Maura disappeared
@@ -4199,32 +4929,45 @@ MAP_CAR_WRECK_9:
     target: DATA_LAB_9
     if_the_user: wants to go to the data lab
   - &id066
-    target: EVIDENCE_LOCKER_9
-    if_the_user: asks to go to the evidence locker
-  - &id067
     target: VISIT_FRED_9
     if_the_user: wants to go to Fred's house
-  - &id068
+  - &id067
     target: SEARCH_FOR_MAURA_9
     if_the_user: wants to go to the search for Maura near the site of the car crash
       where Maura disappeared
-  - &id069
+  - &id068
     target: POLICE_PRECINCT_9
     if_the_user: wants to go to the police precinct
-  - &id070
+  - &id069
     target: WORK_FRIEND_9
     if_the_user: wants to go to talk to Maura's work friend
-  - &id071
+  - &id070
     target: JULIE_MURRAY_9
     if_the_user: wants to go to Julie Murray's place
-  - &id072
+  - &id071
     target: MAURA_APARTMENT_9
     if_the_user: wants to go to Maura's apartment
-  - &id073
+  - &id072
     target: RED_TRUCK_WITNESS_9
     if_the_user: wants to go to the Swiftwater general store to talk to the witness
       who saw the red truck
+  - &id073
+    target: FRED_MURRAY_WITH_KNIFE_9
+    if_the_user: wants to go to Fred's house to discuss the knife
   - *id062
+EVIDENCE_LOCKER_MAP_CAR_WRECK_9_9:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n
+    Lastly, add this to your message at the bottom:\n_🗺️ Map has a new item: \"CAR_WRECK\"\
+    . Ask for the map to go there or anywhere else_\n          \n      "
+  events:
+  - target: MAP_CAR_WRECK_9
+    if_the_user: asks to go back
+  - *id001
 UMASS_OFFICE_9:
   prompt: "\nAll messages you send back to the user must be written in the style of
     a transcript where a person's name\nappears before everything spoken.\n\ne.g.
@@ -4260,6 +5003,7 @@ MAP_UMASS_OFFICE_9:
   events:
   - target: UMASS_OFFICE_9
     if_the_user: asks to go back
+  - *id001
   - *id063
   - *id064
   - *id065
@@ -4272,6 +5016,19 @@ MAP_UMASS_OFFICE_9:
   - *id072
   - *id073
   - *id062
+EVIDENCE_LOCKER_MAP_UMASS_OFFICE_9_9:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n
+    Lastly, add this to your message at the bottom:\n_🗺️ Map has a new item: \"UMASS_OFFICE\"\
+    . Ask for the map to go there or anywhere else_\n          \n      "
+  events:
+  - target: MAP_UMASS_OFFICE_9
+    if_the_user: asks to go back
+  - *id001
 DATA_LAB_9:
   prompt: "\nAll messages you send back to the user must be written in the style of
     a transcript where a person's name\nappears before everything spoken.\n\ne.g.
@@ -4327,6 +5084,7 @@ MAP_DATA_LAB_9:
   events:
   - target: DATA_LAB_9
     if_the_user: asks to go back
+  - *id001
   - *id063
   - *id064
   - *id065
@@ -4339,6 +5097,19 @@ MAP_DATA_LAB_9:
   - *id072
   - *id073
   - *id062
+EVIDENCE_LOCKER_MAP_DATA_LAB_9_9:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n
+    Lastly, add this to your message at the bottom:\n_🗺️ Map has a new item: \"DATA_LAB\"\
+    . Ask for the map to go there or anywhere else_\n          \n      "
+  events:
+  - target: MAP_DATA_LAB_9
+    if_the_user: asks to go back
+  - *id001
 EVIDENCE_LOCKER_9:
   prompt: "\nAll messages you send back to the user must be written in the style of
     a transcript where a person's name\nappears before everything spoken.\n\ne.g.
@@ -4371,6 +5142,7 @@ MAP_EVIDENCE_LOCKER_9:
   events:
   - target: EVIDENCE_LOCKER_9
     if_the_user: asks to go back
+  - *id001
   - *id063
   - *id064
   - *id065
@@ -4383,6 +5155,19 @@ MAP_EVIDENCE_LOCKER_9:
   - *id072
   - *id073
   - *id062
+EVIDENCE_LOCKER_MAP_EVIDENCE_LOCKER_9_9:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n
+    Lastly, add this to your message at the bottom:\n_🗺️ Map has a new item: \"EVIDENCE_LOCKER\"\
+    . Ask for the map to go there or anywhere else_\n          \n      "
+  events:
+  - target: MAP_EVIDENCE_LOCKER_9
+    if_the_user: asks to go back
+  - *id001
 VISIT_FRED_9:
   prompt: "\nAll messages you send back to the user must be written in the style of
     a transcript where a person's name\nappears before everything spoken.\n\ne.g.
@@ -4436,6 +5221,7 @@ MAP_VISIT_FRED_9:
   events:
   - target: VISIT_FRED_9
     if_the_user: asks to go back
+  - *id001
   - *id063
   - *id064
   - *id065
@@ -4448,6 +5234,19 @@ MAP_VISIT_FRED_9:
   - *id072
   - *id073
   - *id062
+EVIDENCE_LOCKER_MAP_VISIT_FRED_9_9:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n
+    Lastly, add this to your message at the bottom:\n_🗺️ Map has a new item: \"VISIT_FRED\"\
+    . Ask for the map to go there or anywhere else_\n          \n      "
+  events:
+  - target: MAP_VISIT_FRED_9
+    if_the_user: asks to go back
+  - *id001
 SEARCH_FOR_MAURA_9:
   prompt: "\nAll messages you send back to the user must be written in the style of
     a transcript where a person's name\nappears before everything spoken.\n\ne.g.
@@ -4580,6 +5379,7 @@ MAP_SEARCH_FOR_MAURA_9:
   events:
   - target: SEARCH_FOR_MAURA_9
     if_the_user: asks to go back
+  - *id001
   - *id063
   - *id064
   - *id065
@@ -4592,6 +5392,19 @@ MAP_SEARCH_FOR_MAURA_9:
   - *id072
   - *id073
   - *id062
+EVIDENCE_LOCKER_MAP_SEARCH_FOR_MAURA_9_9:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n
+    Lastly, add this to your message at the bottom:\n_🗺️ Map has a new item: \"SEARCH_FOR_MAURA\"\
+    . Ask for the map to go there or anywhere else_\n          \n      "
+  events:
+  - target: MAP_SEARCH_FOR_MAURA_9
+    if_the_user: asks to go back
+  - *id001
 POLICE_PRECINCT_9:
   prompt: "\nAll messages you send back to the user must be written in the style of
     a transcript where a person's name\nappears before everything spoken.\n\ne.g.
@@ -4633,6 +5446,7 @@ MAP_POLICE_PRECINCT_9:
   events:
   - target: POLICE_PRECINCT_9
     if_the_user: asks to go back
+  - *id001
   - *id063
   - *id064
   - *id065
@@ -4645,6 +5459,19 @@ MAP_POLICE_PRECINCT_9:
   - *id072
   - *id073
   - *id062
+EVIDENCE_LOCKER_MAP_POLICE_PRECINCT_9_9:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n
+    Lastly, add this to your message at the bottom:\n_🗺️ Map has a new item: \"POLICE_PRECINCT\"\
+    . Ask for the map to go there or anywhere else_\n          \n      "
+  events:
+  - target: MAP_POLICE_PRECINCT_9
+    if_the_user: asks to go back
+  - *id001
 WORK_FRIEND_9:
   prompt: "\nAll messages you send back to the user must be written in the style of
     a transcript where a person's name\nappears before everything spoken.\n\ne.g.
@@ -4745,6 +5572,7 @@ MAP_WORK_FRIEND_9:
   events:
   - target: WORK_FRIEND_9
     if_the_user: asks to go back
+  - *id001
   - *id063
   - *id064
   - *id065
@@ -4757,6 +5585,19 @@ MAP_WORK_FRIEND_9:
   - *id072
   - *id073
   - *id062
+EVIDENCE_LOCKER_MAP_WORK_FRIEND_9_9:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n
+    Lastly, add this to your message at the bottom:\n_🗺️ Map has a new item: \"WORK_FRIEND\"\
+    . Ask for the map to go there or anywhere else_\n          \n      "
+  events:
+  - target: MAP_WORK_FRIEND_9
+    if_the_user: asks to go back
+  - *id001
 JULIE_MURRAY_9:
   prompt: "\nAll messages you send back to the user must be written in the style of
     a transcript where a person's name\nappears before everything spoken.\n\ne.g.
@@ -4812,6 +5653,7 @@ MAP_JULIE_MURRAY_9:
   events:
   - target: JULIE_MURRAY_9
     if_the_user: asks to go back
+  - *id001
   - *id063
   - *id064
   - *id065
@@ -4824,6 +5666,19 @@ MAP_JULIE_MURRAY_9:
   - *id072
   - *id073
   - *id062
+EVIDENCE_LOCKER_MAP_JULIE_MURRAY_9_9:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n
+    Lastly, add this to your message at the bottom:\n_🗺️ Map has a new item: \"JULIE_MURRAY\"\
+    . Ask for the map to go there or anywhere else_\n          \n      "
+  events:
+  - target: MAP_JULIE_MURRAY_9
+    if_the_user: asks to go back
+  - *id001
 MAURA_APARTMENT_9:
   prompt: "\nAll messages you send back to the user must be written in the style of
     a transcript where a person's name\nappears before everything spoken.\n\ne.g.
@@ -4882,6 +5737,7 @@ MAP_MAURA_APARTMENT_9:
   events:
   - target: MAURA_APARTMENT_9
     if_the_user: asks to go back
+  - *id001
   - *id063
   - *id064
   - *id065
@@ -4894,6 +5750,19 @@ MAP_MAURA_APARTMENT_9:
   - *id072
   - *id073
   - *id062
+EVIDENCE_LOCKER_MAP_MAURA_APARTMENT_9_9:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n
+    Lastly, add this to your message at the bottom:\n_🗺️ Map has a new item: \"MAURA_APARTMENT\"\
+    . Ask for the map to go there or anywhere else_\n          \n      "
+  events:
+  - target: MAP_MAURA_APARTMENT_9
+    if_the_user: asks to go back
+  - *id001
 RED_TRUCK_WITNESS_9:
   prompt: "\nAll messages you send back to the user must be written in the style of
     a transcript where a person's name\nappears before everything spoken.\n\ne.g.
@@ -4935,6 +5804,7 @@ MAP_RED_TRUCK_WITNESS_9:
   events:
   - target: RED_TRUCK_WITNESS_9
     if_the_user: asks to go back
+  - *id001
   - *id063
   - *id064
   - *id065
@@ -4947,6 +5817,19 @@ MAP_RED_TRUCK_WITNESS_9:
   - *id072
   - *id073
   - *id062
+EVIDENCE_LOCKER_MAP_RED_TRUCK_WITNESS_9_9:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n
+    Lastly, add this to your message at the bottom:\n_🗺️ Map has a new item: \"RED_TRUCK_WITNESS\"\
+    . Ask for the map to go there or anywhere else_\n          \n      "
+  events:
+  - target: MAP_RED_TRUCK_WITNESS_9
+    if_the_user: asks to go back
+  - *id001
 CAR_WRECK_10:
   prompt: "\nAll messages you send back to the user must be written in the style of
     a transcript where a person's name\nappears before everything spoken.\n\ne.g.
@@ -5024,9 +5907,7 @@ CAR_WRECK_10:
   events:
   - target: MAP_CAR_WRECK_10
     if_the_user: wants to go to the map
-  - &id074
-    target: A_FRAME_FINAL
-    if_the_user: asks to go to the A-Frame
+  - *id062
   - *id001
 MAP_CAR_WRECK_10:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_10.png)\n
@@ -5035,45 +5916,56 @@ MAP_CAR_WRECK_10:
   events:
   - target: CAR_WRECK_10
     if_the_user: asks to go back
-  - &id075
+  - *id001
+  - &id074
     target: CAR_WRECK_10
     if_the_user: wants to go to the site of the wreck where Maura disappeared
-  - &id076
+  - &id075
     target: UMASS_OFFICE_10
     if_the_user: wants to go to U Mass
-  - &id077
+  - &id076
     target: DATA_LAB_10
     if_the_user: wants to go to the data lab
-  - &id078
-    target: EVIDENCE_LOCKER_10
-    if_the_user: asks to go to the evidence locker
-  - &id079
+  - &id077
     target: VISIT_FRED_10
     if_the_user: wants to go to Fred's house
-  - &id080
+  - &id078
     target: SEARCH_FOR_MAURA_10
     if_the_user: wants to go to the search for Maura near the site of the car crash
       where Maura disappeared
-  - &id081
+  - &id079
     target: POLICE_PRECINCT_10
     if_the_user: wants to go to the police precinct
-  - &id082
+  - &id080
     target: WORK_FRIEND_10
     if_the_user: wants to go to talk to Maura's work friend
-  - &id083
+  - &id081
     target: JULIE_MURRAY_10
     if_the_user: wants to go to Julie Murray's place
-  - &id084
+  - &id082
     target: MAURA_APARTMENT_10
     if_the_user: wants to go to Maura's apartment
-  - &id085
+  - &id083
     target: RED_TRUCK_WITNESS_10
     if_the_user: wants to go to the Swiftwater general store to talk to the witness
       who saw the red truck
-  - &id086
+  - &id084
     target: FRED_MURRAY_WITH_KNIFE_10
     if_the_user: wants to go to Fred's house to discuss the knife
-  - *id074
+  - *id062
+EVIDENCE_LOCKER_MAP_CAR_WRECK_10_10:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n
+    Lastly, add this to your message at the bottom:\n_🗺️ Map has a new item: \"CAR_WRECK\"\
+    . Ask for the map to go there or anywhere else_\n          \n      "
+  events:
+  - target: MAP_CAR_WRECK_10
+    if_the_user: asks to go back
+  - *id001
 UMASS_OFFICE_10:
   prompt: "\nAll messages you send back to the user must be written in the style of
     a transcript where a person's name\nappears before everything spoken.\n\ne.g.
@@ -5100,7 +5992,7 @@ UMASS_OFFICE_10:
   events:
   - target: MAP_UMASS_OFFICE_10
     if_the_user: wants to go to the map
-  - *id074
+  - *id062
   - *id001
 MAP_UMASS_OFFICE_10:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_10.png)\n
@@ -5109,6 +6001,8 @@ MAP_UMASS_OFFICE_10:
   events:
   - target: UMASS_OFFICE_10
     if_the_user: asks to go back
+  - *id001
+  - *id074
   - *id075
   - *id076
   - *id077
@@ -5119,9 +6013,20 @@ MAP_UMASS_OFFICE_10:
   - *id082
   - *id083
   - *id084
-  - *id085
-  - *id086
-  - *id074
+  - *id062
+EVIDENCE_LOCKER_MAP_UMASS_OFFICE_10_10:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n
+    Lastly, add this to your message at the bottom:\n_🗺️ Map has a new item: \"UMASS_OFFICE\"\
+    . Ask for the map to go there or anywhere else_\n          \n      "
+  events:
+  - target: MAP_UMASS_OFFICE_10
+    if_the_user: asks to go back
+  - *id001
 DATA_LAB_10:
   prompt: "\nAll messages you send back to the user must be written in the style of
     a transcript where a person's name\nappears before everything spoken.\n\ne.g.
@@ -5168,7 +6073,7 @@ DATA_LAB_10:
   events:
   - target: MAP_DATA_LAB_10
     if_the_user: wants to go to the map
-  - *id074
+  - *id062
   - *id001
 MAP_DATA_LAB_10:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_10.png)\n
@@ -5177,6 +6082,8 @@ MAP_DATA_LAB_10:
   events:
   - target: DATA_LAB_10
     if_the_user: asks to go back
+  - *id001
+  - *id074
   - *id075
   - *id076
   - *id077
@@ -5187,9 +6094,20 @@ MAP_DATA_LAB_10:
   - *id082
   - *id083
   - *id084
-  - *id085
-  - *id086
-  - *id074
+  - *id062
+EVIDENCE_LOCKER_MAP_DATA_LAB_10_10:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n
+    Lastly, add this to your message at the bottom:\n_🗺️ Map has a new item: \"DATA_LAB\"\
+    . Ask for the map to go there or anywhere else_\n          \n      "
+  events:
+  - target: MAP_DATA_LAB_10
+    if_the_user: asks to go back
+  - *id001
 EVIDENCE_LOCKER_10:
   prompt: "\nAll messages you send back to the user must be written in the style of
     a transcript where a person's name\nappears before everything spoken.\n\ne.g.
@@ -5213,7 +6131,7 @@ EVIDENCE_LOCKER_10:
   events:
   - target: MAP_EVIDENCE_LOCKER_10
     if_the_user: wants to go to the map
-  - *id074
+  - *id062
   - *id001
 MAP_EVIDENCE_LOCKER_10:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_10.png)\n
@@ -5222,6 +6140,8 @@ MAP_EVIDENCE_LOCKER_10:
   events:
   - target: EVIDENCE_LOCKER_10
     if_the_user: asks to go back
+  - *id001
+  - *id074
   - *id075
   - *id076
   - *id077
@@ -5232,9 +6152,20 @@ MAP_EVIDENCE_LOCKER_10:
   - *id082
   - *id083
   - *id084
-  - *id085
-  - *id086
-  - *id074
+  - *id062
+EVIDENCE_LOCKER_MAP_EVIDENCE_LOCKER_10_10:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n
+    Lastly, add this to your message at the bottom:\n_🗺️ Map has a new item: \"EVIDENCE_LOCKER\"\
+    . Ask for the map to go there or anywhere else_\n          \n      "
+  events:
+  - target: MAP_EVIDENCE_LOCKER_10
+    if_the_user: asks to go back
+  - *id001
 VISIT_FRED_10:
   prompt: "\nAll messages you send back to the user must be written in the style of
     a transcript where a person's name\nappears before everything spoken.\n\ne.g.
@@ -5279,7 +6210,7 @@ VISIT_FRED_10:
   events:
   - target: MAP_VISIT_FRED_10
     if_the_user: wants to go to the map
-  - *id074
+  - *id062
   - *id001
 MAP_VISIT_FRED_10:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_10.png)\n
@@ -5288,6 +6219,8 @@ MAP_VISIT_FRED_10:
   events:
   - target: VISIT_FRED_10
     if_the_user: asks to go back
+  - *id001
+  - *id074
   - *id075
   - *id076
   - *id077
@@ -5298,9 +6231,20 @@ MAP_VISIT_FRED_10:
   - *id082
   - *id083
   - *id084
-  - *id085
-  - *id086
-  - *id074
+  - *id062
+EVIDENCE_LOCKER_MAP_VISIT_FRED_10_10:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n
+    Lastly, add this to your message at the bottom:\n_🗺️ Map has a new item: \"VISIT_FRED\"\
+    . Ask for the map to go there or anywhere else_\n          \n      "
+  events:
+  - target: MAP_VISIT_FRED_10
+    if_the_user: asks to go back
+  - *id001
 SEARCH_FOR_MAURA_10:
   prompt: "\nAll messages you send back to the user must be written in the style of
     a transcript where a person's name\nappears before everything spoken.\n\ne.g.
@@ -5424,7 +6368,7 @@ SEARCH_FOR_MAURA_10:
   events:
   - target: MAP_SEARCH_FOR_MAURA_10
     if_the_user: wants to go to the map
-  - *id074
+  - *id062
   - *id001
 MAP_SEARCH_FOR_MAURA_10:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_10.png)\n
@@ -5433,6 +6377,8 @@ MAP_SEARCH_FOR_MAURA_10:
   events:
   - target: SEARCH_FOR_MAURA_10
     if_the_user: asks to go back
+  - *id001
+  - *id074
   - *id075
   - *id076
   - *id077
@@ -5443,9 +6389,20 @@ MAP_SEARCH_FOR_MAURA_10:
   - *id082
   - *id083
   - *id084
-  - *id085
-  - *id086
-  - *id074
+  - *id062
+EVIDENCE_LOCKER_MAP_SEARCH_FOR_MAURA_10_10:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n
+    Lastly, add this to your message at the bottom:\n_🗺️ Map has a new item: \"SEARCH_FOR_MAURA\"\
+    . Ask for the map to go there or anywhere else_\n          \n      "
+  events:
+  - target: MAP_SEARCH_FOR_MAURA_10
+    if_the_user: asks to go back
+  - *id001
 POLICE_PRECINCT_10:
   prompt: "\nAll messages you send back to the user must be written in the style of
     a transcript where a person's name\nappears before everything spoken.\n\ne.g.
@@ -5478,7 +6435,7 @@ POLICE_PRECINCT_10:
   events:
   - target: MAP_POLICE_PRECINCT_10
     if_the_user: wants to go to the map
-  - *id074
+  - *id062
   - *id001
 MAP_POLICE_PRECINCT_10:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_10.png)\n
@@ -5487,6 +6444,8 @@ MAP_POLICE_PRECINCT_10:
   events:
   - target: POLICE_PRECINCT_10
     if_the_user: asks to go back
+  - *id001
+  - *id074
   - *id075
   - *id076
   - *id077
@@ -5497,9 +6456,20 @@ MAP_POLICE_PRECINCT_10:
   - *id082
   - *id083
   - *id084
-  - *id085
-  - *id086
-  - *id074
+  - *id062
+EVIDENCE_LOCKER_MAP_POLICE_PRECINCT_10_10:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n
+    Lastly, add this to your message at the bottom:\n_🗺️ Map has a new item: \"POLICE_PRECINCT\"\
+    . Ask for the map to go there or anywhere else_\n          \n      "
+  events:
+  - target: MAP_POLICE_PRECINCT_10
+    if_the_user: asks to go back
+  - *id001
 WORK_FRIEND_10:
   prompt: "\nAll messages you send back to the user must be written in the style of
     a transcript where a person's name\nappears before everything spoken.\n\ne.g.
@@ -5591,7 +6561,7 @@ WORK_FRIEND_10:
   events:
   - target: MAP_WORK_FRIEND_10
     if_the_user: wants to go to the map
-  - *id074
+  - *id062
   - *id001
 MAP_WORK_FRIEND_10:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_10.png)\n
@@ -5600,6 +6570,8 @@ MAP_WORK_FRIEND_10:
   events:
   - target: WORK_FRIEND_10
     if_the_user: asks to go back
+  - *id001
+  - *id074
   - *id075
   - *id076
   - *id077
@@ -5610,9 +6582,20 @@ MAP_WORK_FRIEND_10:
   - *id082
   - *id083
   - *id084
-  - *id085
-  - *id086
-  - *id074
+  - *id062
+EVIDENCE_LOCKER_MAP_WORK_FRIEND_10_10:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n
+    Lastly, add this to your message at the bottom:\n_🗺️ Map has a new item: \"WORK_FRIEND\"\
+    . Ask for the map to go there or anywhere else_\n          \n      "
+  events:
+  - target: MAP_WORK_FRIEND_10
+    if_the_user: asks to go back
+  - *id001
 JULIE_MURRAY_10:
   prompt: "\nAll messages you send back to the user must be written in the style of
     a transcript where a person's name\nappears before everything spoken.\n\ne.g.
@@ -5659,7 +6642,7 @@ JULIE_MURRAY_10:
   events:
   - target: MAP_JULIE_MURRAY_10
     if_the_user: wants to go to the map
-  - *id074
+  - *id062
   - *id001
 MAP_JULIE_MURRAY_10:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_10.png)\n
@@ -5668,6 +6651,8 @@ MAP_JULIE_MURRAY_10:
   events:
   - target: JULIE_MURRAY_10
     if_the_user: asks to go back
+  - *id001
+  - *id074
   - *id075
   - *id076
   - *id077
@@ -5678,9 +6663,20 @@ MAP_JULIE_MURRAY_10:
   - *id082
   - *id083
   - *id084
-  - *id085
-  - *id086
-  - *id074
+  - *id062
+EVIDENCE_LOCKER_MAP_JULIE_MURRAY_10_10:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n
+    Lastly, add this to your message at the bottom:\n_🗺️ Map has a new item: \"JULIE_MURRAY\"\
+    . Ask for the map to go there or anywhere else_\n          \n      "
+  events:
+  - target: MAP_JULIE_MURRAY_10
+    if_the_user: asks to go back
+  - *id001
 MAURA_APARTMENT_10:
   prompt: "\nAll messages you send back to the user must be written in the style of
     a transcript where a person's name\nappears before everything spoken.\n\ne.g.
@@ -5730,7 +6726,7 @@ MAURA_APARTMENT_10:
   events:
   - target: MAP_MAURA_APARTMENT_10
     if_the_user: wants to go to the map
-  - *id074
+  - *id062
   - *id001
 MAP_MAURA_APARTMENT_10:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_10.png)\n
@@ -5739,6 +6735,8 @@ MAP_MAURA_APARTMENT_10:
   events:
   - target: MAURA_APARTMENT_10
     if_the_user: asks to go back
+  - *id001
+  - *id074
   - *id075
   - *id076
   - *id077
@@ -5749,9 +6747,20 @@ MAP_MAURA_APARTMENT_10:
   - *id082
   - *id083
   - *id084
-  - *id085
-  - *id086
-  - *id074
+  - *id062
+EVIDENCE_LOCKER_MAP_MAURA_APARTMENT_10_10:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n
+    Lastly, add this to your message at the bottom:\n_🗺️ Map has a new item: \"MAURA_APARTMENT\"\
+    . Ask for the map to go there or anywhere else_\n          \n      "
+  events:
+  - target: MAP_MAURA_APARTMENT_10
+    if_the_user: asks to go back
+  - *id001
 RED_TRUCK_WITNESS_10:
   prompt: "\nAll messages you send back to the user must be written in the style of
     a transcript where a person's name\nappears before everything spoken.\n\ne.g.
@@ -5784,7 +6793,7 @@ RED_TRUCK_WITNESS_10:
   events:
   - target: MAP_RED_TRUCK_WITNESS_10
     if_the_user: wants to go to the map
-  - *id074
+  - *id062
   - *id001
 MAP_RED_TRUCK_WITNESS_10:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_10.png)\n
@@ -5793,6 +6802,8 @@ MAP_RED_TRUCK_WITNESS_10:
   events:
   - target: RED_TRUCK_WITNESS_10
     if_the_user: asks to go back
+  - *id001
+  - *id074
   - *id075
   - *id076
   - *id077
@@ -5803,9 +6814,20 @@ MAP_RED_TRUCK_WITNESS_10:
   - *id082
   - *id083
   - *id084
-  - *id085
-  - *id086
-  - *id074
+  - *id062
+EVIDENCE_LOCKER_MAP_RED_TRUCK_WITNESS_10_10:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n
+    Lastly, add this to your message at the bottom:\n_🗺️ Map has a new item: \"RED_TRUCK_WITNESS\"\
+    . Ask for the map to go there or anywhere else_\n          \n      "
+  events:
+  - target: MAP_RED_TRUCK_WITNESS_10
+    if_the_user: asks to go back
+  - *id001
 FRED_MURRAY_WITH_KNIFE_10:
   prompt: "\nAll messages you send back to the user must be written in the style of
     a transcript where a person's name\nappears before everything spoken.\n\ne.g.
@@ -5886,7 +6908,7 @@ FRED_MURRAY_WITH_KNIFE_10:
   events:
   - target: MAP_FRED_MURRAY_WITH_KNIFE_10
     if_the_user: wants to go to the map
-  - *id074
+  - *id062
   - *id001
 MAP_FRED_MURRAY_WITH_KNIFE_10:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_10.png)\n
@@ -5895,6 +6917,8 @@ MAP_FRED_MURRAY_WITH_KNIFE_10:
   events:
   - target: FRED_MURRAY_WITH_KNIFE_10
     if_the_user: asks to go back
+  - *id001
+  - *id074
   - *id075
   - *id076
   - *id077
@@ -5905,9 +6929,20 @@ MAP_FRED_MURRAY_WITH_KNIFE_10:
   - *id082
   - *id083
   - *id084
-  - *id085
-  - *id086
-  - *id074
+  - *id062
+EVIDENCE_LOCKER_MAP_FRED_MURRAY_WITH_KNIFE_10_10:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n
+    Lastly, add this to your message at the bottom:\n_🗺️ Map has a new item: \"FRED_MURRAY_WITH_KNIFE\"\
+    . Ask for the map to go there or anywhere else_\n          \n      "
+  events:
+  - target: MAP_FRED_MURRAY_WITH_KNIFE_10
+    if_the_user: asks to go back
+  - *id001
 A_FRAME_FINAL:
   prompt: "\nAll messages you send back to the user must be written in the style of
     a transcript where a person's name\nappears before everything spoken.\n\ne.g.
@@ -5935,10 +6970,10 @@ A_FRAME_FINAL:
     by each person and only if the user asks the right questions.\n\n\n          \
     \  "
   events:
-  - &id087
+  - &id085
     target: MAP_EVIDENCE_LOCKER
     if_the_user: asks to go to the map
-  - &id088
+  - &id086
     target: EVIDENCE_LOCKER_MAP
     if_the_user: asks to go to the evidence_locker
   - *id001
@@ -5947,7 +6982,7 @@ MAP_EVIDENCE_LOCKER:
     _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_final.png)_\n\
     \n\n      "
   events:
-  - *id074
+  - *id062
   - target: U_MASS_FINAL
     if_the_user: asks to go to the U Mass
   - target: CRIME_SCENE_FINAL
@@ -6000,8 +7035,8 @@ U_MASS_FINAL:
     away.\n  \n\n\n        \n\nRemember this information is only revealed by each
     person and only if the user asks the right questions.\n\n\n            "
   events:
-  - *id087
-  - *id088
+  - *id085
+  - *id086
   - *id001
 CRIME_SCENE_FINAL:
   prompt: "\nAll messages you send back to the user must be written in the style of
@@ -6066,8 +7101,8 @@ CRIME_SCENE_FINAL:
     \nRemember this information is only revealed by each person and only if the user
     asks the right questions.\n\n\n            "
   events:
-  - *id087
-  - *id088
+  - *id085
+  - *id086
   - *id001
 DATA_LAB_FINAL:
   prompt: "\nAll messages you send back to the user must be written in the style of
@@ -6113,8 +7148,8 @@ DATA_LAB_FINAL:
     to your message at the bottom:\n_🗺️ Map has a new item: \"Evidence Locker\". Ask
     for the map to go there or anywhere else_\n          \n\n            "
   events:
-  - *id087
-  - *id088
+  - *id085
+  - *id086
   - *id001
 MURRAY_RESIDENCE_FINAL:
   prompt: "\nAll messages you send back to the user must be written in the style of
@@ -6218,8 +7253,8 @@ MURRAY_RESIDENCE_FINAL:
     this information is only revealed by each person and only if the user asks the
     right questions.\n\n\n            "
   events:
-  - *id087
-  - *id088
+  - *id085
+  - *id086
   - *id001
 POLICE_PRECINCT_FINAL:
   prompt: "\nAll messages you send back to the user must be written in the style of
@@ -6290,8 +7325,8 @@ POLICE_PRECINCT_FINAL:
     of Maura's is seated with Fred\". Ask for the map to go there or anywhere else_\n\
     \          \n\n            "
   events:
-  - *id087
-  - *id088
+  - *id085
+  - *id086
   - *id001
 MAURA_APARTMENT_FINAL:
   prompt: "\nAll messages you send back to the user must be written in the style of
@@ -6340,8 +7375,8 @@ MAURA_APARTMENT_FINAL:
     _🗺️ Map has a new item: \"Swiftwater General Store\". Ask for the map to go there
     or anywhere else_\n          \n\n            "
   events:
-  - *id087
-  - *id088
+  - *id085
+  - *id086
   - *id001
 RED_TRUCK_WITNESS_FINAL:
   prompt: "\nAll messages you send back to the user must be written in the style of
@@ -6373,6 +7408,6 @@ RED_TRUCK_WITNESS_FINAL:
     a bloody knife.\". Ask for the map to go there or anywhere else_\n          \n\
     \n            "
   events:
-  - *id087
-  - *id088
+  - *id085
+  - *id086
   - *id001

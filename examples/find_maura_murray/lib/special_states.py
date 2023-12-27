@@ -1,4 +1,5 @@
 from examples.find_maura_murray.lib.image import Image
+from examples.find_maura_murray.lib.event_self import EVENT_SELF
 
 class BackForwardState():
     def __init__(self, name="", previous_state="", go_back_if_the_user="asks to go back", prompt=""):
@@ -34,9 +35,8 @@ class CherryPicker(BackForwardState):
 
 class Map(CherryPicker):
     def __init__(self, previous_state, map_key, go_back_if_the_user="", prompt="", events_to_pick=[]):
-      super().__init__("MAP", previous_state, "asks to go back", prompt, events_to_pick)
+      super().__init__("MAP", previous_state, "asks to go back", prompt, events_to_pick + [EVENT_SELF])
       self.map_key = map_key
-      self.events_to_pick = events_to_pick
       image = Image(url=f"{map_key}.png", description="Map of key locations").markdown()
       self.prompt = f"""
 {prompt}
@@ -44,11 +44,6 @@ class Map(CherryPicker):
 Remember to show the user a map like this:
 {image}
       """
-
-EVENT_SELF = {
-  "target": ".SELF",
-  "if_the_user": "is wanting to stay here and ask questions or asks for an option that is not one of the events available."
-}
 
 class TranscriptState:
     def __init__(self, setting, prompt="", events=[], people=[], next_backbone=None):

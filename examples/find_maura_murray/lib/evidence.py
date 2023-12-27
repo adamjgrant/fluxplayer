@@ -1,5 +1,6 @@
 from examples.find_maura_murray.lib.special_states import CherryPicker
 from examples.find_maura_murray.lib.image import Image
+from examples.find_maura_murray.lib.event_self import EVENT_SELF
 
 class Evidence:
   def __init__(self, presentation="", description=""):
@@ -33,7 +34,7 @@ EVIDENCE = {
 
 class EvidenceLocker(CherryPicker):
     def __init__(self, previous_state, go_back_if_the_user="asks to go back", prompt="", events_to_pick=[], evidence_object=EVIDENCE, level="", next_backbone=""):
-      super().__init__("EVIDENCE_LOCKER", previous_state, go_back_if_the_user, prompt, events_to_pick)
+      super().__init__("EVIDENCE_LOCKER", previous_state, go_back_if_the_user, prompt, events_to_pick + [EVENT_SELF])
       self.evidence_object = evidence_object
       self.level = level
       self.next_backbone = next_backbone
