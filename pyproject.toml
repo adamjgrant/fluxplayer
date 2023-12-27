@@ -5,12 +5,15 @@ description = "The missing OS for LLMs"
 authors = ["Adam Grant <hello@adamgrant.me>"]
 license = "MIT"
 readme = "README.md"
-packages = [{include = "fluxplayer"}]
+packages = [{include = "src"}]
 
 [tool.poetry.dependencies]
 python = "^3.11"
 ruamel-yaml = "^0.18.5"
 ruamel-yaml-clib = "^0.2.8"
+
+[tool.poetry.scripts]
+flux = 'flux:main'
 
 [build-system]
 requires = ["poetry-core"]
