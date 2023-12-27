@@ -46,6 +46,7 @@ flux -c cartridge.py -x
 ```
 
 which will create a `cartridge.yaml` file in the same directory as `cartridge.py`.
+This is particularly useful if you want to divide up your cartridge into many project files yet still have a single portable file to distribute.
 
 The advantage to using Python over YAML is the flexibility of the language. You can use variables and functions to make the cartridge more dynamic. This is also important when doing interesting manipulations with `data` between states in a way that can't be done in YAML. This is done using the `before` function.
 

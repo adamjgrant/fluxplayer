@@ -1,14 +1,16 @@
 class Person():
-    def __init__(self, name, bio, information):
+    def __init__(self, name, bio, information, avatar=None):
         self.name = name
         self.bio = bio 
         self.information = information
+        self.avatar = avatar
 
     def overview(self):
+        avatar_copy = f"\nAlways show their avatar above their text: ![{self.name}]({self.avatar})" if self.avatar else ""
         return f"""
 Name: {self.name}
 Background: {self.bio}.
-This is the information that {self.name} has and will provide only if asked a question that would reveal it:
+{avatar_copy}This is the information that {self.name} has and will provide only if asked a question that would reveal it:
 {self.information}\n\n
         """
 
