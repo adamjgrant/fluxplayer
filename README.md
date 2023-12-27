@@ -38,7 +38,14 @@ cartridge = {
     'events': (A list of events. See the next section)
   }
 }
+
+You can also "print" your Python cartridge to a YAML file using the `-x` flag:
+
+```bash
+flux -c cartridge.py -x
 ```
+
+which will create a `cartridge.yaml` file in the same directory as `cartridge.py`.
 
 The advantage to using Python over YAML is the flexibility of the language. You can use variables and functions to make the cartridge more dynamic. This is also important when doing interesting manipulations with `data` between states in a way that can't be done in YAML. This is done using the `before` function.
 
@@ -64,7 +71,7 @@ To execute directly, you can run `python flux.py` without any arguments. This wi
 You can also specify a custom cartridge path with `-c`
 
 ```bash
-python flux.py -c /path/to/cartridge
+flux -c /path/to/cartridge
 ```
 
 Use `-s=<STATE>` and `-t=<transition>` to define the current state and transition respectively. This will otherwise default to the `START` state.

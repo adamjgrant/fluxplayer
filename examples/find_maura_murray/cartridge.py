@@ -207,6 +207,7 @@ DATA_LAB_DEFINITION = TranscriptState(
 A data lab in the FBI New Hampshire office. Briefing room with computer equipment and a large television screen.
   """,
   """
+Generate a dall-e image of a computer lab where a lone expert is seated at a computer. Two FBI investigators are next to her listening to her explanation.
   """,
   [
     { "target": "MAP_DATA_LAB_1", "if_the_user": "agrees to go to the map" }
@@ -238,6 +239,8 @@ CRIME_SCENE_START_DEFINITION = CAR_WRECK_DEFINITION.copy_with_changes(
 VISIT_FRED_DEFINITION = TranscriptState(
   setting = "The home of the Murray family in Hanson Massachusettes on February 10th, 2004 at 10PM. Fred is seated at the dining table alone",
   prompt = """
+    Generate a dall-e image of a middle-aged man in his home talking to two FBI investigators at his dining table.
+
     Fred recieves a voicemail on his home answering machine earlier in the day at 2:30PM stating that Maura's car was found
     abandoned. He was working out of state and had not received the call. Then Maura's other sister Kathleen called him at 5PM
     informing him that Maura was missing. Fred immediately called the Haverhill police department and was told that if Maura was not reported
@@ -252,8 +255,10 @@ VISIT_FRED_DEFINITION = TranscriptState(
 SEARCH_FOR_MAURA_DEFINITION = TranscriptState(
   setting = "Dawn in Haverhill, New Hampshire at the hairpin turn at Route 112",
   prompt = """
-    There are no footprints on the ground from the scene of the wreck. Helicopters, officers, volunteers, and a canine team
-    canvas the area. They are also checking local motels, handing out flyers
+Generate a dall-e image of a search party of 20 people with flashlights and dogs searching the woods near the site of the car wreck.
+
+There are no footprints on the ground from the scene of the wreck. Helicopters, officers, volunteers, and a canine team
+canvas the area. They are also checking local motels, handing out flyers
   """,
   events = [],
   people = [
@@ -273,6 +278,7 @@ SEARCH_FOR_MAURA_DEFINITION = TranscriptState(
 POLICE_PRECINCT_DEFINITION = TranscriptState(
   setting = "The office of an anonyous investigator at a police precinct near the University of Massachusettes at Amherst",
   prompt = """
+Generate a dall-e image of a police officer in his 40s being interviewed by two FBI investigators.
   """,
   events = [],
   people = [PEOPLE["ANONYMOUS_INVESTIGATOR"]],
@@ -282,6 +288,7 @@ POLICE_PRECINCT_DEFINITION = TranscriptState(
 WORK_FRIEND_DEFINITION = TranscriptState(
   setting = "Back at the Murray household where now Fred and an anonymous work friend of Maura's are seated in the living room.",
   prompt = """
+Generate a dall-e image of middle-aged Fred murray seated in the living room with a 20-something work friend of Maura's.
   """,
   events = [],
   people = [PEOPLE["ANONYMOUS_WORK_FRIEND"], PEOPLE["FRED_MURRAY_2"], PEOPLE["BILLY"]],
@@ -291,6 +298,7 @@ WORK_FRIEND_DEFINITION = TranscriptState(
 JULIE_MURRAY_DEFINITION = TranscriptState(
   setting = "A local coffee shop in Hanson Massachusettes where Julie Murray is seated with a coffee.",
   prompt = """
+Generate a dall-e image of Julie Murray seated at a table with a coffee. She is in her 20s and is wearing a winter coat.
   """,
   events = [],
   people = [PEOPLE["JULIE_MURRAY"]],
@@ -300,9 +308,11 @@ JULIE_MURRAY_DEFINITION = TranscriptState(
 MAURA_APARTMENT_DEFINITION = TranscriptState(
   setting = "Maura's apartment with her landlord. A Haverhill police officer is also there with items found in Maura's car",
   prompt = """
-    Maura's things are all in boxes. It is unclear if she packed those boxes before leaving or if she just never unpacked them
-    before moving in.
-    There were also reports of a letter left in the dorm room addressed to Billy.
+Generate a dall-e image of a police officer in his 40s being interviewed by two FBI investigators while standing in a college apartment with everything in boxes.
+
+Maura's things are all in boxes. It is unclear if she packed those boxes before leaving or if she just never unpacked them
+before moving in.
+There were also reports of a letter left in the dorm room addressed to Billy.
   """,
   events = [],
   people = [PEOPLE["ANONYMOUS_HAVERHILL_OFFICER"], PEOPLE["BILLY"]],
@@ -312,6 +322,7 @@ MAURA_APARTMENT_DEFINITION = TranscriptState(
 RED_TRUCK_WITNESS_DEFINITION = TranscriptState(
   setting = "Haverhill Swiftwater General Store where a witness waits outside to talk with Mike and the user",
   prompt = """
+Generate a dall-e image of a witness in his 20s being interviewed by two FBI investigators outside of a small town general store.
   """,
   events = [],
   people = [PEOPLE["RED_TRUCK_WITNESS"]],
@@ -321,6 +332,7 @@ RED_TRUCK_WITNESS_DEFINITION = TranscriptState(
 FRED_MURRAY_WITH_KNIFE_DEFINITION = TranscriptState(
   setting = "December 8, 2004. The Murray family house. Fred, Julie, and Kathleen Murray are all seated in the living room",
   prompt = """
+Generate a dall-e image of Fred, Julie, and Kathleen Murray seated in the living room of their house. Fred is holding a rusted knife with a red stain on it.
   """,
   events = [],
   people = [PEOPLE["FRED_MURRAY_3"], PEOPLE["JULIE_MURRAY"], PEOPLE["KATHLEEN_MURRAY"]],

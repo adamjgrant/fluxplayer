@@ -5,12 +5,12 @@ from examples.find_maura_murray.lib.event_self import EVENT_SELF
 class Evidence:
   def __init__(self, presentation="", description=""):
     self.presentation = f"{presentation}\n"
+    self.description = description
   
 class ImageEvidence(Evidence):
   def __init__(self, url, description):
     presentation = Image(url=url, description=description).markdown()
     super().__init__(description=description, presentation=presentation)
-    self.description = description
 
 class EvidenceSet:
   def __init__(self, evidences=[], description=""):
@@ -33,7 +33,19 @@ EVIDENCE = {
     ImageEvidence("maura_atm_03.png", "February 9, 2004: Maura Murray at ATM seemingly alone withdrawing $280 before visiting liquor store"),
     ImageEvidence("maura_atm_04.png", "February 9, 2004: Maura Murray at ATM seemingly alone withdrawing $280 before visiting liquor store"),
     ImageEvidence("maura_atm_05.png", "February 9, 2004: Maura Murray at ATM seemingly alone withdrawing $280 before visiting liquor store")
-  ], description="Security camera footage of Maura Murray at ATM")
+  ], description="Security camera footage of Maura Murray at ATM"),
+  "MAURAS_COMPUTER": Evidence(description="Computer records collected in the data lab from Maura Murray's computer", presentation="""
+Data gathered about Maura Murray's activities on February 9, the day she disappeared:
+Email to Boyfriend: At 1:00 PM, Maura emailed her boyfriend, expressing affection and promising to call later.
+Phone Call Inquiries: She made a call inquiring about a rental property in Bartlett, New Hampshire.
+Email to Professor: Maura sent an email to her professor at UMass, indicating she would be out of town for a week due to a death in the family.
+MapQuest Searches: She used her computer to search for directions to the Berkshires and Burlington, Vermont.
+Hotel Inquiry: At 2:05 PM, she called a number for hotel bookings in Stowe, Vermont, lasting about five minutes.
+Voicemail to Boyfriend: At 2:18 PM, Maura left a voicemail for her boyfriend, saying they would talk later.
+ATM Withdrawal: At 3:15 PM, security footage shows Maura withdrawing $280 from an ATM, nearly all the money in her account. She was alone.
+Liquor Store Visit: Shortly after, footage shows her purchasing $40 worth of alcohol, including Baileys, Kahlúa, vodka, and Franzia wine, at a liquor store. She was alone.
+Final Phone Usage: The last recorded use of her cell phone was at 4:37 PM, when she checked her voicemail.
+  """),
 }
 
 class EvidenceLocker(CherryPicker):
