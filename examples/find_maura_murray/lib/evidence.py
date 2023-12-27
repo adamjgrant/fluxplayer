@@ -22,8 +22,10 @@ class EvidenceSet:
       self.presentation += evidence.presentation
 
 EVIDENCE = {
-  "BUTCH_INTERVIEWED": ImageEvidence("butch_atwood_interview.png", "Butch Atwood being interviewed by a local TV station"),
-  "BUTCH_ATWOOD_HOME": ImageEvidence("butch_atwood_home.png", "Butch Atwood being interviewed by a local TV station"),
+  "BUTCH_ATWOOD": EvidenceSet(evidences = [
+    ImageEvidence("butch_atwood_interview.png", "Butch Atwood being interviewed by a local TV station"),
+    ImageEvidence("butch_atwood_home.png", "Butch Atwood being interviewed by a local TV station")
+  ], description="Images of Butch Atwood around his home near the time of Maura Murray's disappearance"),
   "MAURA_MISSING_POSTER": ImageEvidence("missingposter.gif", "Missing Poster for Maura Murray"),
   "MAURA_AT_ATM": EvidenceSet(evidences = [
     ImageEvidence("maura_atm_01.png", "February 9, 2004: Maura Murray at ATM seemingly alone withdrawing $280 before visiting liquor store"),
