@@ -1,8 +1,9 @@
 import copy
+
 from examples.find_maura_murray.lib.people import PEOPLE
-from examples.find_maura_murray.lib.image import Image
-from examples.find_maura_murray.lib.special_states import TranscriptState, CherryPicker, Map, BackForwardState
-from examples.find_maura_murray.lib.evidence import EVIDENCE, EvidenceLocker
+from lib.image import Image
+from lib.special_states import TranscriptState, CherryPicker, Map, BackForwardState
+from lib.evidence import EVIDENCE, EvidenceLocker
 
 class LevelMaker:
   def __init__(self, level=1):
