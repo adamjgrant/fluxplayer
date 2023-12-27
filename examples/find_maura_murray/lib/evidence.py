@@ -3,13 +3,15 @@ from examples.find_maura_murray.lib.image import Image
 from examples.find_maura_murray.lib.event_self import EVENT_SELF
 
 class Evidence:
-  def __init__(self, presentation="", description=""):
+  def __init__(self, date, time=None, presentation="", description=""):
     self.presentation = f"{presentation}\n"
     self.description = description
+    self.date = date
+    self.time = time
   
 class ImageEvidence(Evidence):
-  def __init__(self, url, description):
-    presentation = Image(url=url, description=description).markdown()
+  def __init__(self, date, url, description, time=None):
+    presentation = Image(url=url, description=description, date=date, time=time).markdown()
     super().__init__(description=description, presentation=presentation)
 
 class EvidenceSet:
@@ -23,18 +25,18 @@ class EvidenceSet:
 
 EVIDENCE = {
   "BUTCH_ATWOOD": EvidenceSet(evidences = [
-    ImageEvidence("butch_atwood_interview.png", "Butch Atwood being interviewed by a local TV station"),
-    ImageEvidence("butch_atwood_home.png", "Butch Atwood being interviewed by a local TV station")
+    ImageEvidence("butch_atwood_interview.png", "Butch Atwood being interviewed by a local TV station", date="February 10, 2024"),
+    ImageEvidence("butch_atwood_home.png", "Butch Atwood being interviewed by a local TV station", date="February 10, 2024")
   ], description="Images of Butch Atwood around his home near the time of Maura Murray's disappearance"),
-  "MAURA_MISSING_POSTER": ImageEvidence("missingposter.gif", "Missing Poster for Maura Murray"),
+  "MAURA_MISSING_POSTER": ImageEvidence("missingposter.gif", "Missing Poster for Maura Murray", date="2024"),
   "MAURA_AT_ATM": EvidenceSet(evidences = [
-    ImageEvidence("maura_atm_01.png", "February 9, 2004: Maura Murray at ATM seemingly alone withdrawing $280 before visiting liquor store"),
-    ImageEvidence("maura_atm_02.png", "February 9, 2004: Maura Murray at ATM seemingly alone withdrawing $280 before visiting liquor store"),
-    ImageEvidence("maura_atm_03.png", "February 9, 2004: Maura Murray at ATM seemingly alone withdrawing $280 before visiting liquor store"),
-    ImageEvidence("maura_atm_04.png", "February 9, 2004: Maura Murray at ATM seemingly alone withdrawing $280 before visiting liquor store"),
-    ImageEvidence("maura_atm_05.png", "February 9, 2004: Maura Murray at ATM seemingly alone withdrawing $280 before visiting liquor store")
+    ImageEvidence("maura_atm_01.png", "February 9, 2004: Maura Murray at ATM seemingly alone withdrawing $280 before visiting liquor store", date="February 9, 2024"),
+    ImageEvidence("maura_atm_02.png", "February 9, 2004: Maura Murray at ATM seemingly alone withdrawing $280 before visiting liquor store", date="February 9, 2024"),
+    ImageEvidence("maura_atm_03.png", "February 9, 2004: Maura Murray at ATM seemingly alone withdrawing $280 before visiting liquor store", date="February 9, 2024"),
+    ImageEvidence("maura_atm_04.png", "February 9, 2004: Maura Murray at ATM seemingly alone withdrawing $280 before visiting liquor store", date="February 9, 2024"),
+    ImageEvidence("maura_atm_05.png", "February 9, 2004: Maura Murray at ATM seemingly alone withdrawing $280 before visiting liquor store", date="February 9, 2024")
   ], description="Security camera footage of Maura Murray at ATM"),
-  "MAURAS_COMPUTER": Evidence(description="Computer records collected in the data lab from Maura Murray's computer", presentation="""
+  "MAURAS_COMPUTER": Evidence(date="February 9, 2024", description="Computer records collected in the data lab from Maura Murray's computer", presentation="""
 Data gathered about Maura Murray's activities on February 9, the day she disappeared:
 Email to Boyfriend: At 1:00 PM, Maura emailed her boyfriend, expressing affection and promising to call later.
 Phone Call Inquiries: She made a call inquiring about a rental property in Bartlett, New Hampshire.
@@ -66,6 +68,9 @@ Mike can give the user a list of evidence available:
 If the user asks to see some evidence, here is what Mike can show for each item:
 {self.evidence_as_catalogue()}
       """
+
+    def add_evidence(self, key, value):
+      self.evidence_object[key] = value 
 
     def evidence_as_list(self):
       x = 1
