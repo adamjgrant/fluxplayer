@@ -38,6 +38,7 @@ cartridge = {
     'events': (A list of events. See the next section)
   }
 }
+```
 
 You can also "print" your Python cartridge to a YAML file using the `-x` flag:
 
