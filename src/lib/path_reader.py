@@ -15,6 +15,9 @@ if getattr(sys, 'frozen', False):
     root_dir = Path(exe_path).resolve()
 else:
     root_dir = Path(__file__).resolve().parent.parent.parent
+    src_dir = Path(__file__).resolve().parent.parent.parent
+    sys.path.insert(0, root_dir)
+    sys.path.insert(0, src_dir)
 
 def get_absolute_path(relative_path):
     # Check if the path is already absolute
