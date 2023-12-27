@@ -15,10 +15,10 @@ class Flux:
       parser.add_argument("-s", "--state", help="State transitioning from")
       parser.add_argument("-t", "--transition", help="State to transition to")
       parser.add_argument("-d", "--data", help="Data to pass to the prompt function")
-      parser.add_argument("-x", "--export", help="Export a Python cartridge to a YAML file", type=int, default=0)
+      parser.add_argument("-x", "--export", help="Export a Python cartridge to a YAML file", action="store_true")
       args = parser.parse_args()
       flux = Flux()
-      return flux.main(args.cartridge, args.state, args.transition, args.data)
+      return flux.main(args.cartridge, args.state, args.transition, args.data, args.export)
 
   def call_method_on_state(self, cartridge, state, target_state, data=None, first_run=False):
       if target_state == ".SELF":
@@ -51,7 +51,12 @@ class Flux:
       return format_prompt(cartridge, "START", True)
 
   # Output the cartridge variable as JSON.
-  def main(self, path=None, state=None, transition=None, data=None):
+  def main(self, path=None, state=None, transition=None, data=None, export=False):
+      # Export cartridge
+      if export:
+          return convert_and_save_python_to_yaml(path)
+
+      # Run cartridge
       try:
           cartridge = find_cartridge(path)
           current_state = state if state else "START"
