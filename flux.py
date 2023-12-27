@@ -49,6 +49,9 @@ class Flux:
   def start_cartridge(self, cartridge):
       return format_prompt(cartridge, "START", True)
 
+  def convert_and_save_python_to_yaml(self, path):
+    return "NOT IMPLEMENTED"
+
   # Output the cartridge variable as JSON.
   def main(self, path=None, state=None, transition=None, data=None):
       try:

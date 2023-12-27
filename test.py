@@ -106,6 +106,32 @@ class TestIngest(unittest.TestCase):
           os.remove(new_file_path_yaml)
           os.remove(new_file_path)
 
+    def test_converts_python_file_to_yaml(self):
+        # TODO
+        try:
+          flux = Flux()
+          # Create a temporary python file called cartridge.py
+          with tempfile.NamedTemporaryFile(delete=False, suffix=".py") as temp_file:
+            # Add some contents to temp_file
+            file_contents = b"cartridge = 'foo'"
+            temp_file.write(file_contents)
+            temp_file.close()
+
+            self.assertTrue(os.path.exists(temp_file.name))
+
+            # Move the temporary file to the current directory and rename to cartridge.py
+            new_file_path = os.path.join(os.path.dirname(__file__), "cartridge.py")
+            os.rename(temp_file.name, new_file_path)
+
+            found_cartridge = find_cartridge()
+            flux.convert_and_save_python_to_yaml(new_file_path)
+            yaml_file_path = os.path.join(os.path.dirname(__file__), "cartridge.yaml")
+            found_contents = read_yaml_cartridge(yaml_file_path)
+            self.assertEqual(found_cartridge, yaml_data)
+
+        finally:
+          os.remove(new_file_path)
+
     def test_reads_yaml_file_at_specific_path(self):
         try:
           flux = Flux()
