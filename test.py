@@ -2,7 +2,7 @@ import unittest
 import tempfile
 from ruamel.yaml import YAML
 from flux import Flux
-from lib.path_reader import find_cartridge, read_yaml_cartridge, read_python_cartridge
+from lib.path_reader import find_cartridge, read_yaml_cartridge, read_python_cartridge, convert_and_save_python_to_yaml
 from lib.prompt import Prompt
 import os
 
@@ -51,6 +51,10 @@ class TestIngest(unittest.TestCase):
 
     def test_sees_python_file(self):
         try:
+          full_yaml_file_path = os.path.join(os.path.dirname(__file__), "cartridge.yaml")
+          if os.path.exists(full_yaml_file_path):
+            os.remove(full_yaml_file_path)
+
           flux = Flux()
           # Create a temporary python file called cartridge.py
           with tempfile.NamedTemporaryFile(delete=False, suffix=".py") as temp_file:
@@ -109,11 +113,10 @@ class TestIngest(unittest.TestCase):
     def test_converts_python_file_to_yaml(self):
         # TODO
         try:
-          flux = Flux()
           # Create a temporary python file called cartridge.py
           with tempfile.NamedTemporaryFile(delete=False, suffix=".py") as temp_file:
             # Add some contents to temp_file
-            file_contents = b"cartridge = 'foo'"
+            file_contents = b"cartridge = { 'hello': [1, 2] }"
             temp_file.write(file_contents)
             temp_file.close()
 
@@ -123,13 +126,14 @@ class TestIngest(unittest.TestCase):
             new_file_path = os.path.join(os.path.dirname(__file__), "cartridge.py")
             os.rename(temp_file.name, new_file_path)
 
-            found_cartridge = find_cartridge()
-            flux.convert_and_save_python_to_yaml(new_file_path)
-            yaml_file_path = os.path.join(os.path.dirname(__file__), "cartridge.yaml")
-            found_contents = read_yaml_cartridge(yaml_file_path)
-            self.assertEqual(found_cartridge, yaml_data)
+            convert_and_save_python_to_yaml(new_file_path)
+            yaml_file_path = new_file_path.replace(".py", ".yaml")
+            yaml_data = read_yaml_cartridge(yaml_file_path)
+            full_yaml_file_path = os.path.join(os.path.dirname(__file__), "cartridge.yaml")
+            self.assertEqual({"hello": [1, 2]}, yaml_data)
 
         finally:
+          os.remove(full_yaml_file_path)
           os.remove(new_file_path)
 
     def test_reads_yaml_file_at_specific_path(self):

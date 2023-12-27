@@ -83,3 +83,15 @@ def find_cartridge(path=None):
       cartridge = read_yaml_cartridge(full_path)
     
     return cartridge
+
+def convert_and_save_python_to_yaml(path):
+  cartridge = find_cartridge(path)
+  cartridge_path = detect_full_catridge_path(path)
+  
+  # Save the cartridge as a YAML file.
+  yaml = YAML()
+  yaml_path = cartridge_path.replace(".py", ".yaml")
+  with open(yaml_path, "w") as file:
+      yaml.dump(cartridge, file)
+
+  return yaml_path

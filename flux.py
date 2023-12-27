@@ -5,7 +5,7 @@
 import sys
 import os
 import argparse
-from lib.path_reader import find_cartridge
+from lib.path_reader import find_cartridge, convert_and_save_python_to_yaml
 from lib.prompt import format_prompt
 
 class Flux:
@@ -15,6 +15,7 @@ class Flux:
       parser.add_argument("-s", "--state", help="State transitioning from")
       parser.add_argument("-t", "--transition", help="State to transition to")
       parser.add_argument("-d", "--data", help="Data to pass to the prompt function")
+      parser.add_argument("-x", "--export", help="Export a Python cartridge to a YAML file", type=int, default=0)
       args = parser.parse_args()
       flux = Flux()
       return flux.main(args.cartridge, args.state, args.transition, args.data)
@@ -48,9 +49,6 @@ class Flux:
 
   def start_cartridge(self, cartridge):
       return format_prompt(cartridge, "START", True)
-
-  def convert_and_save_python_to_yaml(self, path):
-    return "NOT IMPLEMENTED"
 
   # Output the cartridge variable as JSON.
   def main(self, path=None, state=None, transition=None, data=None):
