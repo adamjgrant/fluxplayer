@@ -389,16 +389,14 @@ MAP_CAR_WRECK_1:
   - target: CAR_WRECK_1
     if_the_user: asks to go back
   - *id001
-  - &id003
-    target: CAR_WRECK_1
+  - target: CAR_WRECK_1
     if_the_user: wants to go to the site of the wreck where Maura disappeared
-  - &id004
-    target: UMASS_OFFICE_1
+  - target: UMASS_OFFICE_1
     if_the_user: wants to go to U Mass
-  - &id005
-    target: DATA_LAB_1
+  - target: DATA_LAB_1
     if_the_user: wants to go to the data lab
-  - *id002
+  - target: EVIDENCE_LOCKER_2
+    if_the_user: asks to go to the evidence locker
 EVIDENCE_LOCKER_MAP_CAR_WRECK_1_1:
   prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
     lockers containing evidence for different cases\nMike will give the user a list
@@ -448,10 +446,14 @@ MAP_UMASS_OFFICE_1:
   - target: UMASS_OFFICE_1
     if_the_user: asks to go back
   - *id001
-  - *id003
-  - *id004
-  - *id005
-  - *id002
+  - target: CAR_WRECK_1
+    if_the_user: wants to go to the site of the wreck where Maura disappeared
+  - target: UMASS_OFFICE_1
+    if_the_user: wants to go to U Mass
+  - target: DATA_LAB_1
+    if_the_user: wants to go to the data lab
+  - target: EVIDENCE_LOCKER_2
+    if_the_user: asks to go to the evidence locker
 EVIDENCE_LOCKER_MAP_UMASS_OFFICE_1_1:
   prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
     lockers containing evidence for different cases\nMike will give the user a list
@@ -521,10 +523,14 @@ MAP_DATA_LAB_1:
   - target: DATA_LAB_1
     if_the_user: asks to go back
   - *id001
-  - *id003
-  - *id004
-  - *id005
-  - *id002
+  - target: CAR_WRECK_1
+    if_the_user: wants to go to the site of the wreck where Maura disappeared
+  - target: UMASS_OFFICE_1
+    if_the_user: wants to go to U Mass
+  - target: DATA_LAB_1
+    if_the_user: wants to go to the data lab
+  - target: EVIDENCE_LOCKER_2
+    if_the_user: asks to go to the evidence locker
 EVIDENCE_LOCKER_MAP_DATA_LAB_1_1:
   prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
     lockers containing evidence for different cases\nMike will give the user a list
@@ -615,7 +621,7 @@ CAR_WRECK_2:
   events:
   - target: MAP_CAR_WRECK_2
     if_the_user: wants to go to the map
-  - &id006
+  - &id003
     target: VISIT_FRED_3
     if_the_user: wants to go to Fred's house
   - *id001
@@ -627,19 +633,16 @@ MAP_CAR_WRECK_2:
   - target: CAR_WRECK_2
     if_the_user: asks to go back
   - *id001
-  - &id007
-    target: CAR_WRECK_2
+  - target: CAR_WRECK_2
     if_the_user: wants to go to the site of the wreck where Maura disappeared
-  - &id008
-    target: UMASS_OFFICE_2
+  - target: UMASS_OFFICE_2
     if_the_user: wants to go to U Mass
-  - &id009
-    target: DATA_LAB_2
+  - target: DATA_LAB_2
     if_the_user: wants to go to the data lab
-  - &id010
-    target: EVIDENCE_LOCKER_2
+  - target: EVIDENCE_LOCKER_2
     if_the_user: asks to go to the evidence locker
-  - *id006
+  - target: VISIT_FRED_3
+    if_the_user: wants to go to Fred's house
 EVIDENCE_LOCKER_MAP_CAR_WRECK_2_2:
   prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
     lockers containing evidence for different cases\nMike will give the user a list
@@ -679,7 +682,7 @@ UMASS_OFFICE_2:
   events:
   - target: MAP_UMASS_OFFICE_2
     if_the_user: wants to go to the map
-  - *id006
+  - *id003
   - *id001
 MAP_UMASS_OFFICE_2:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_2.png)\n
@@ -689,11 +692,16 @@ MAP_UMASS_OFFICE_2:
   - target: UMASS_OFFICE_2
     if_the_user: asks to go back
   - *id001
-  - *id007
-  - *id008
-  - *id009
-  - *id010
-  - *id006
+  - target: CAR_WRECK_2
+    if_the_user: wants to go to the site of the wreck where Maura disappeared
+  - target: UMASS_OFFICE_2
+    if_the_user: wants to go to U Mass
+  - target: DATA_LAB_2
+    if_the_user: wants to go to the data lab
+  - target: EVIDENCE_LOCKER_2
+    if_the_user: asks to go to the evidence locker
+  - target: VISIT_FRED_3
+    if_the_user: wants to go to Fred's house
 EVIDENCE_LOCKER_MAP_UMASS_OFFICE_2_2:
   prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
     lockers containing evidence for different cases\nMike will give the user a list
@@ -753,7 +761,7 @@ DATA_LAB_2:
   events:
   - target: MAP_DATA_LAB_2
     if_the_user: wants to go to the map
-  - *id006
+  - *id003
   - *id001
 MAP_DATA_LAB_2:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_2.png)\n
@@ -763,11 +771,16 @@ MAP_DATA_LAB_2:
   - target: DATA_LAB_2
     if_the_user: asks to go back
   - *id001
-  - *id007
-  - *id008
-  - *id009
-  - *id010
-  - *id006
+  - target: CAR_WRECK_2
+    if_the_user: wants to go to the site of the wreck where Maura disappeared
+  - target: UMASS_OFFICE_2
+    if_the_user: wants to go to U Mass
+  - target: DATA_LAB_2
+    if_the_user: wants to go to the data lab
+  - target: EVIDENCE_LOCKER_2
+    if_the_user: asks to go to the evidence locker
+  - target: VISIT_FRED_3
+    if_the_user: wants to go to Fred's house
 EVIDENCE_LOCKER_MAP_DATA_LAB_2_2:
   prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
     lockers containing evidence for different cases\nMike will give the user a list
@@ -804,7 +817,7 @@ EVIDENCE_LOCKER_2:
   events:
   - target: MAP_EVIDENCE_LOCKER_2
     if_the_user: wants to go to the map
-  - *id006
+  - *id003
   - *id001
 MAP_EVIDENCE_LOCKER_2:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_2.png)\n
@@ -814,11 +827,16 @@ MAP_EVIDENCE_LOCKER_2:
   - target: EVIDENCE_LOCKER_2
     if_the_user: asks to go back
   - *id001
-  - *id007
-  - *id008
-  - *id009
-  - *id010
-  - *id006
+  - target: CAR_WRECK_2
+    if_the_user: wants to go to the site of the wreck where Maura disappeared
+  - target: UMASS_OFFICE_2
+    if_the_user: wants to go to U Mass
+  - target: DATA_LAB_2
+    if_the_user: wants to go to the data lab
+  - target: EVIDENCE_LOCKER_2
+    if_the_user: asks to go to the evidence locker
+  - target: VISIT_FRED_3
+    if_the_user: wants to go to Fred's house
 EVIDENCE_LOCKER_MAP_EVIDENCE_LOCKER_2_2:
   prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
     lockers containing evidence for different cases\nMike will give the user a list
@@ -909,9 +927,10 @@ CAR_WRECK_3:
   events:
   - target: MAP_CAR_WRECK_3
     if_the_user: wants to go to the map
-  - &id011
-    target: POLICE_PRECINCT_4
-    if_the_user: wants to go to the police precinct
+  - &id004
+    target: SEARCH_FOR_MAURA_4
+    if_the_user: wants to go to the search for Maura near the site of the car crash
+      where Maura disappeared
   - *id001
 MAP_CAR_WRECK_3:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_3.png)\n
@@ -921,23 +940,18 @@ MAP_CAR_WRECK_3:
   - target: CAR_WRECK_3
     if_the_user: asks to go back
   - *id001
-  - &id012
-    target: CAR_WRECK_3
+  - target: CAR_WRECK_3
     if_the_user: wants to go to the site of the wreck where Maura disappeared
-  - &id013
-    target: UMASS_OFFICE_3
+  - target: UMASS_OFFICE_3
     if_the_user: wants to go to U Mass
-  - &id014
-    target: DATA_LAB_3
+  - target: DATA_LAB_3
     if_the_user: wants to go to the data lab
-  - &id015
-    target: VISIT_FRED_3
+  - target: VISIT_FRED_3
     if_the_user: wants to go to Fred's house
-  - &id016
-    target: SEARCH_FOR_MAURA_3
+  - target: SEARCH_FOR_MAURA_4
     if_the_user: wants to go to the search for Maura near the site of the car crash
       where Maura disappeared
-  - *id011
+  - target: EVIDENCE_LOCKER_MAP_CAR_WRECK_3_3
 EVIDENCE_LOCKER_MAP_CAR_WRECK_3_3:
   prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
     lockers containing evidence for different cases\nMike will give the user a list
@@ -977,7 +991,7 @@ UMASS_OFFICE_3:
   events:
   - target: MAP_UMASS_OFFICE_3
     if_the_user: wants to go to the map
-  - *id011
+  - *id004
   - *id001
 MAP_UMASS_OFFICE_3:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_3.png)\n
@@ -987,12 +1001,18 @@ MAP_UMASS_OFFICE_3:
   - target: UMASS_OFFICE_3
     if_the_user: asks to go back
   - *id001
-  - *id012
-  - *id013
-  - *id014
-  - *id015
-  - *id016
-  - *id011
+  - target: CAR_WRECK_3
+    if_the_user: wants to go to the site of the wreck where Maura disappeared
+  - target: UMASS_OFFICE_3
+    if_the_user: wants to go to U Mass
+  - target: DATA_LAB_3
+    if_the_user: wants to go to the data lab
+  - target: VISIT_FRED_3
+    if_the_user: wants to go to Fred's house
+  - target: SEARCH_FOR_MAURA_4
+    if_the_user: wants to go to the search for Maura near the site of the car crash
+      where Maura disappeared
+  - target: EVIDENCE_LOCKER_MAP_UMASS_OFFICE_3_3
 EVIDENCE_LOCKER_MAP_UMASS_OFFICE_3_3:
   prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
     lockers containing evidence for different cases\nMike will give the user a list
@@ -1052,7 +1072,7 @@ DATA_LAB_3:
   events:
   - target: MAP_DATA_LAB_3
     if_the_user: wants to go to the map
-  - *id011
+  - *id004
   - *id001
 MAP_DATA_LAB_3:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_3.png)\n
@@ -1062,12 +1082,18 @@ MAP_DATA_LAB_3:
   - target: DATA_LAB_3
     if_the_user: asks to go back
   - *id001
-  - *id012
-  - *id013
-  - *id014
-  - *id015
-  - *id016
-  - *id011
+  - target: CAR_WRECK_3
+    if_the_user: wants to go to the site of the wreck where Maura disappeared
+  - target: UMASS_OFFICE_3
+    if_the_user: wants to go to U Mass
+  - target: DATA_LAB_3
+    if_the_user: wants to go to the data lab
+  - target: VISIT_FRED_3
+    if_the_user: wants to go to Fred's house
+  - target: SEARCH_FOR_MAURA_4
+    if_the_user: wants to go to the search for Maura near the site of the car crash
+      where Maura disappeared
+  - target: EVIDENCE_LOCKER_MAP_DATA_LAB_3_3
 EVIDENCE_LOCKER_MAP_DATA_LAB_3_3:
   prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
     lockers containing evidence for different cases\nMike will give the user a list
@@ -1104,7 +1130,7 @@ EVIDENCE_LOCKER_3:
   events:
   - target: MAP_EVIDENCE_LOCKER_3
     if_the_user: wants to go to the map
-  - *id011
+  - *id004
   - *id001
 MAP_EVIDENCE_LOCKER_3:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_3.png)\n
@@ -1114,12 +1140,18 @@ MAP_EVIDENCE_LOCKER_3:
   - target: EVIDENCE_LOCKER_3
     if_the_user: asks to go back
   - *id001
-  - *id012
-  - *id013
-  - *id014
-  - *id015
-  - *id016
-  - *id011
+  - target: CAR_WRECK_3
+    if_the_user: wants to go to the site of the wreck where Maura disappeared
+  - target: UMASS_OFFICE_3
+    if_the_user: wants to go to U Mass
+  - target: DATA_LAB_3
+    if_the_user: wants to go to the data lab
+  - target: VISIT_FRED_3
+    if_the_user: wants to go to Fred's house
+  - target: SEARCH_FOR_MAURA_4
+    if_the_user: wants to go to the search for Maura near the site of the car crash
+      where Maura disappeared
+  - target: EVIDENCE_LOCKER_MAP_EVIDENCE_LOCKER_3_3
 EVIDENCE_LOCKER_MAP_EVIDENCE_LOCKER_3_3:
   prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
     lockers containing evidence for different cases\nMike will give the user a list
@@ -1177,7 +1209,7 @@ VISIT_FRED_3:
   events:
   - target: MAP_VISIT_FRED_3
     if_the_user: wants to go to the map
-  - *id011
+  - *id004
   - *id001
 MAP_VISIT_FRED_3:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_3.png)\n
@@ -1187,12 +1219,18 @@ MAP_VISIT_FRED_3:
   - target: VISIT_FRED_3
     if_the_user: asks to go back
   - *id001
-  - *id012
-  - *id013
-  - *id014
-  - *id015
-  - *id016
-  - *id011
+  - target: CAR_WRECK_3
+    if_the_user: wants to go to the site of the wreck where Maura disappeared
+  - target: UMASS_OFFICE_3
+    if_the_user: wants to go to U Mass
+  - target: DATA_LAB_3
+    if_the_user: wants to go to the data lab
+  - target: VISIT_FRED_3
+    if_the_user: wants to go to Fred's house
+  - target: SEARCH_FOR_MAURA_4
+    if_the_user: wants to go to the search for Maura near the site of the car crash
+      where Maura disappeared
+  - target: EVIDENCE_LOCKER_MAP_VISIT_FRED_3_3
 EVIDENCE_LOCKER_MAP_VISIT_FRED_3_3:
   prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
     lockers containing evidence for different cases\nMike will give the user a list
@@ -1283,9 +1321,9 @@ CAR_WRECK_4:
   events:
   - target: MAP_CAR_WRECK_4
     if_the_user: wants to go to the map
-  - &id017
-    target: WORK_FRIEND_5
-    if_the_user: wants to go to talk to Maura's work friend
+  - &id005
+    target: POLICE_PRECINCT_5
+    if_the_user: wants to go to the police precinct
   - *id001
 MAP_CAR_WRECK_4:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_4.png)\n
@@ -1295,26 +1333,20 @@ MAP_CAR_WRECK_4:
   - target: CAR_WRECK_4
     if_the_user: asks to go back
   - *id001
-  - &id018
-    target: CAR_WRECK_4
+  - target: CAR_WRECK_4
     if_the_user: wants to go to the site of the wreck where Maura disappeared
-  - &id019
-    target: UMASS_OFFICE_4
+  - target: UMASS_OFFICE_4
     if_the_user: wants to go to U Mass
-  - &id020
-    target: DATA_LAB_4
+  - target: DATA_LAB_4
     if_the_user: wants to go to the data lab
-  - &id021
-    target: VISIT_FRED_4
+  - target: VISIT_FRED_4
     if_the_user: wants to go to Fred's house
-  - &id022
-    target: SEARCH_FOR_MAURA_4
+  - target: SEARCH_FOR_MAURA_4
     if_the_user: wants to go to the search for Maura near the site of the car crash
       where Maura disappeared
-  - &id023
-    target: POLICE_PRECINCT_4
+  - target: POLICE_PRECINCT_5
     if_the_user: wants to go to the police precinct
-  - *id017
+  - target: EVIDENCE_LOCKER_MAP_CAR_WRECK_4_4
 EVIDENCE_LOCKER_MAP_CAR_WRECK_4_4:
   prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
     lockers containing evidence for different cases\nMike will give the user a list
@@ -1354,7 +1386,7 @@ UMASS_OFFICE_4:
   events:
   - target: MAP_UMASS_OFFICE_4
     if_the_user: wants to go to the map
-  - *id017
+  - *id005
   - *id001
 MAP_UMASS_OFFICE_4:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_4.png)\n
@@ -1364,13 +1396,20 @@ MAP_UMASS_OFFICE_4:
   - target: UMASS_OFFICE_4
     if_the_user: asks to go back
   - *id001
-  - *id018
-  - *id019
-  - *id020
-  - *id021
-  - *id022
-  - *id023
-  - *id017
+  - target: CAR_WRECK_4
+    if_the_user: wants to go to the site of the wreck where Maura disappeared
+  - target: UMASS_OFFICE_4
+    if_the_user: wants to go to U Mass
+  - target: DATA_LAB_4
+    if_the_user: wants to go to the data lab
+  - target: VISIT_FRED_4
+    if_the_user: wants to go to Fred's house
+  - target: SEARCH_FOR_MAURA_4
+    if_the_user: wants to go to the search for Maura near the site of the car crash
+      where Maura disappeared
+  - target: POLICE_PRECINCT_5
+    if_the_user: wants to go to the police precinct
+  - target: EVIDENCE_LOCKER_MAP_UMASS_OFFICE_4_4
 EVIDENCE_LOCKER_MAP_UMASS_OFFICE_4_4:
   prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
     lockers containing evidence for different cases\nMike will give the user a list
@@ -1430,7 +1469,7 @@ DATA_LAB_4:
   events:
   - target: MAP_DATA_LAB_4
     if_the_user: wants to go to the map
-  - *id017
+  - *id005
   - *id001
 MAP_DATA_LAB_4:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_4.png)\n
@@ -1440,13 +1479,20 @@ MAP_DATA_LAB_4:
   - target: DATA_LAB_4
     if_the_user: asks to go back
   - *id001
-  - *id018
-  - *id019
-  - *id020
-  - *id021
-  - *id022
-  - *id023
-  - *id017
+  - target: CAR_WRECK_4
+    if_the_user: wants to go to the site of the wreck where Maura disappeared
+  - target: UMASS_OFFICE_4
+    if_the_user: wants to go to U Mass
+  - target: DATA_LAB_4
+    if_the_user: wants to go to the data lab
+  - target: VISIT_FRED_4
+    if_the_user: wants to go to Fred's house
+  - target: SEARCH_FOR_MAURA_4
+    if_the_user: wants to go to the search for Maura near the site of the car crash
+      where Maura disappeared
+  - target: POLICE_PRECINCT_5
+    if_the_user: wants to go to the police precinct
+  - target: EVIDENCE_LOCKER_MAP_DATA_LAB_4_4
 EVIDENCE_LOCKER_MAP_DATA_LAB_4_4:
   prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
     lockers containing evidence for different cases\nMike will give the user a list
@@ -1483,7 +1529,7 @@ EVIDENCE_LOCKER_4:
   events:
   - target: MAP_EVIDENCE_LOCKER_4
     if_the_user: wants to go to the map
-  - *id017
+  - *id005
   - *id001
 MAP_EVIDENCE_LOCKER_4:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_4.png)\n
@@ -1493,13 +1539,20 @@ MAP_EVIDENCE_LOCKER_4:
   - target: EVIDENCE_LOCKER_4
     if_the_user: asks to go back
   - *id001
-  - *id018
-  - *id019
-  - *id020
-  - *id021
-  - *id022
-  - *id023
-  - *id017
+  - target: CAR_WRECK_4
+    if_the_user: wants to go to the site of the wreck where Maura disappeared
+  - target: UMASS_OFFICE_4
+    if_the_user: wants to go to U Mass
+  - target: DATA_LAB_4
+    if_the_user: wants to go to the data lab
+  - target: VISIT_FRED_4
+    if_the_user: wants to go to Fred's house
+  - target: SEARCH_FOR_MAURA_4
+    if_the_user: wants to go to the search for Maura near the site of the car crash
+      where Maura disappeared
+  - target: POLICE_PRECINCT_5
+    if_the_user: wants to go to the police precinct
+  - target: EVIDENCE_LOCKER_MAP_EVIDENCE_LOCKER_4_4
 EVIDENCE_LOCKER_MAP_EVIDENCE_LOCKER_4_4:
   prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
     lockers containing evidence for different cases\nMike will give the user a list
@@ -1557,7 +1610,7 @@ VISIT_FRED_4:
   events:
   - target: MAP_VISIT_FRED_4
     if_the_user: wants to go to the map
-  - *id017
+  - *id005
   - *id001
 MAP_VISIT_FRED_4:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_4.png)\n
@@ -1567,13 +1620,20 @@ MAP_VISIT_FRED_4:
   - target: VISIT_FRED_4
     if_the_user: asks to go back
   - *id001
-  - *id018
-  - *id019
-  - *id020
-  - *id021
-  - *id022
-  - *id023
-  - *id017
+  - target: CAR_WRECK_4
+    if_the_user: wants to go to the site of the wreck where Maura disappeared
+  - target: UMASS_OFFICE_4
+    if_the_user: wants to go to U Mass
+  - target: DATA_LAB_4
+    if_the_user: wants to go to the data lab
+  - target: VISIT_FRED_4
+    if_the_user: wants to go to Fred's house
+  - target: SEARCH_FOR_MAURA_4
+    if_the_user: wants to go to the search for Maura near the site of the car crash
+      where Maura disappeared
+  - target: POLICE_PRECINCT_5
+    if_the_user: wants to go to the police precinct
+  - target: EVIDENCE_LOCKER_MAP_VISIT_FRED_4_4
 EVIDENCE_LOCKER_MAP_VISIT_FRED_4_4:
   prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
     lockers containing evidence for different cases\nMike will give the user a list
@@ -1710,7 +1770,7 @@ SEARCH_FOR_MAURA_4:
   events:
   - target: MAP_SEARCH_FOR_MAURA_4
     if_the_user: wants to go to the map
-  - *id017
+  - *id005
   - *id001
 MAP_SEARCH_FOR_MAURA_4:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_4.png)\n
@@ -1720,13 +1780,20 @@ MAP_SEARCH_FOR_MAURA_4:
   - target: SEARCH_FOR_MAURA_4
     if_the_user: asks to go back
   - *id001
-  - *id018
-  - *id019
-  - *id020
-  - *id021
-  - *id022
-  - *id023
-  - *id017
+  - target: CAR_WRECK_4
+    if_the_user: wants to go to the site of the wreck where Maura disappeared
+  - target: UMASS_OFFICE_4
+    if_the_user: wants to go to U Mass
+  - target: DATA_LAB_4
+    if_the_user: wants to go to the data lab
+  - target: VISIT_FRED_4
+    if_the_user: wants to go to Fred's house
+  - target: SEARCH_FOR_MAURA_4
+    if_the_user: wants to go to the search for Maura near the site of the car crash
+      where Maura disappeared
+  - target: POLICE_PRECINCT_5
+    if_the_user: wants to go to the police precinct
+  - target: EVIDENCE_LOCKER_MAP_SEARCH_FOR_MAURA_4_4
 EVIDENCE_LOCKER_MAP_SEARCH_FOR_MAURA_4_4:
   prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
     lockers containing evidence for different cases\nMike will give the user a list
@@ -1817,9 +1884,9 @@ CAR_WRECK_5:
   events:
   - target: MAP_CAR_WRECK_5
     if_the_user: wants to go to the map
-  - &id024
-    target: JULIE_MURRAY_6
-    if_the_user: wants to go to Julie Murray's place
+  - &id006
+    target: WORK_FRIEND_6
+    if_the_user: wants to go to talk to Maura's work friend
   - *id001
 MAP_CAR_WRECK_5:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_5.png)\n
@@ -1829,29 +1896,22 @@ MAP_CAR_WRECK_5:
   - target: CAR_WRECK_5
     if_the_user: asks to go back
   - *id001
-  - &id025
-    target: CAR_WRECK_5
+  - target: CAR_WRECK_5
     if_the_user: wants to go to the site of the wreck where Maura disappeared
-  - &id026
-    target: UMASS_OFFICE_5
+  - target: UMASS_OFFICE_5
     if_the_user: wants to go to U Mass
-  - &id027
-    target: DATA_LAB_5
+  - target: DATA_LAB_5
     if_the_user: wants to go to the data lab
-  - &id028
-    target: VISIT_FRED_5
+  - target: VISIT_FRED_5
     if_the_user: wants to go to Fred's house
-  - &id029
-    target: SEARCH_FOR_MAURA_5
+  - target: SEARCH_FOR_MAURA_5
     if_the_user: wants to go to the search for Maura near the site of the car crash
       where Maura disappeared
-  - &id030
-    target: POLICE_PRECINCT_5
+  - target: POLICE_PRECINCT_5
     if_the_user: wants to go to the police precinct
-  - &id031
-    target: WORK_FRIEND_5
+  - target: WORK_FRIEND_6
     if_the_user: wants to go to talk to Maura's work friend
-  - *id024
+  - target: EVIDENCE_LOCKER_MAP_CAR_WRECK_5_5
 EVIDENCE_LOCKER_MAP_CAR_WRECK_5_5:
   prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
     lockers containing evidence for different cases\nMike will give the user a list
@@ -1891,7 +1951,7 @@ UMASS_OFFICE_5:
   events:
   - target: MAP_UMASS_OFFICE_5
     if_the_user: wants to go to the map
-  - *id024
+  - *id006
   - *id001
 MAP_UMASS_OFFICE_5:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_5.png)\n
@@ -1901,14 +1961,22 @@ MAP_UMASS_OFFICE_5:
   - target: UMASS_OFFICE_5
     if_the_user: asks to go back
   - *id001
-  - *id025
-  - *id026
-  - *id027
-  - *id028
-  - *id029
-  - *id030
-  - *id031
-  - *id024
+  - target: CAR_WRECK_5
+    if_the_user: wants to go to the site of the wreck where Maura disappeared
+  - target: UMASS_OFFICE_5
+    if_the_user: wants to go to U Mass
+  - target: DATA_LAB_5
+    if_the_user: wants to go to the data lab
+  - target: VISIT_FRED_5
+    if_the_user: wants to go to Fred's house
+  - target: SEARCH_FOR_MAURA_5
+    if_the_user: wants to go to the search for Maura near the site of the car crash
+      where Maura disappeared
+  - target: POLICE_PRECINCT_5
+    if_the_user: wants to go to the police precinct
+  - target: WORK_FRIEND_6
+    if_the_user: wants to go to talk to Maura's work friend
+  - target: EVIDENCE_LOCKER_MAP_UMASS_OFFICE_5_5
 EVIDENCE_LOCKER_MAP_UMASS_OFFICE_5_5:
   prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
     lockers containing evidence for different cases\nMike will give the user a list
@@ -1968,7 +2036,7 @@ DATA_LAB_5:
   events:
   - target: MAP_DATA_LAB_5
     if_the_user: wants to go to the map
-  - *id024
+  - *id006
   - *id001
 MAP_DATA_LAB_5:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_5.png)\n
@@ -1978,14 +2046,22 @@ MAP_DATA_LAB_5:
   - target: DATA_LAB_5
     if_the_user: asks to go back
   - *id001
-  - *id025
-  - *id026
-  - *id027
-  - *id028
-  - *id029
-  - *id030
-  - *id031
-  - *id024
+  - target: CAR_WRECK_5
+    if_the_user: wants to go to the site of the wreck where Maura disappeared
+  - target: UMASS_OFFICE_5
+    if_the_user: wants to go to U Mass
+  - target: DATA_LAB_5
+    if_the_user: wants to go to the data lab
+  - target: VISIT_FRED_5
+    if_the_user: wants to go to Fred's house
+  - target: SEARCH_FOR_MAURA_5
+    if_the_user: wants to go to the search for Maura near the site of the car crash
+      where Maura disappeared
+  - target: POLICE_PRECINCT_5
+    if_the_user: wants to go to the police precinct
+  - target: WORK_FRIEND_6
+    if_the_user: wants to go to talk to Maura's work friend
+  - target: EVIDENCE_LOCKER_MAP_DATA_LAB_5_5
 EVIDENCE_LOCKER_MAP_DATA_LAB_5_5:
   prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
     lockers containing evidence for different cases\nMike will give the user a list
@@ -2022,7 +2098,7 @@ EVIDENCE_LOCKER_5:
   events:
   - target: MAP_EVIDENCE_LOCKER_5
     if_the_user: wants to go to the map
-  - *id024
+  - *id006
   - *id001
 MAP_EVIDENCE_LOCKER_5:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_5.png)\n
@@ -2032,14 +2108,22 @@ MAP_EVIDENCE_LOCKER_5:
   - target: EVIDENCE_LOCKER_5
     if_the_user: asks to go back
   - *id001
-  - *id025
-  - *id026
-  - *id027
-  - *id028
-  - *id029
-  - *id030
-  - *id031
-  - *id024
+  - target: CAR_WRECK_5
+    if_the_user: wants to go to the site of the wreck where Maura disappeared
+  - target: UMASS_OFFICE_5
+    if_the_user: wants to go to U Mass
+  - target: DATA_LAB_5
+    if_the_user: wants to go to the data lab
+  - target: VISIT_FRED_5
+    if_the_user: wants to go to Fred's house
+  - target: SEARCH_FOR_MAURA_5
+    if_the_user: wants to go to the search for Maura near the site of the car crash
+      where Maura disappeared
+  - target: POLICE_PRECINCT_5
+    if_the_user: wants to go to the police precinct
+  - target: WORK_FRIEND_6
+    if_the_user: wants to go to talk to Maura's work friend
+  - target: EVIDENCE_LOCKER_MAP_EVIDENCE_LOCKER_5_5
 EVIDENCE_LOCKER_MAP_EVIDENCE_LOCKER_5_5:
   prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
     lockers containing evidence for different cases\nMike will give the user a list
@@ -2097,7 +2181,7 @@ VISIT_FRED_5:
   events:
   - target: MAP_VISIT_FRED_5
     if_the_user: wants to go to the map
-  - *id024
+  - *id006
   - *id001
 MAP_VISIT_FRED_5:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_5.png)\n
@@ -2107,14 +2191,22 @@ MAP_VISIT_FRED_5:
   - target: VISIT_FRED_5
     if_the_user: asks to go back
   - *id001
-  - *id025
-  - *id026
-  - *id027
-  - *id028
-  - *id029
-  - *id030
-  - *id031
-  - *id024
+  - target: CAR_WRECK_5
+    if_the_user: wants to go to the site of the wreck where Maura disappeared
+  - target: UMASS_OFFICE_5
+    if_the_user: wants to go to U Mass
+  - target: DATA_LAB_5
+    if_the_user: wants to go to the data lab
+  - target: VISIT_FRED_5
+    if_the_user: wants to go to Fred's house
+  - target: SEARCH_FOR_MAURA_5
+    if_the_user: wants to go to the search for Maura near the site of the car crash
+      where Maura disappeared
+  - target: POLICE_PRECINCT_5
+    if_the_user: wants to go to the police precinct
+  - target: WORK_FRIEND_6
+    if_the_user: wants to go to talk to Maura's work friend
+  - target: EVIDENCE_LOCKER_MAP_VISIT_FRED_5_5
 EVIDENCE_LOCKER_MAP_VISIT_FRED_5_5:
   prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
     lockers containing evidence for different cases\nMike will give the user a list
@@ -2251,7 +2343,7 @@ SEARCH_FOR_MAURA_5:
   events:
   - target: MAP_SEARCH_FOR_MAURA_5
     if_the_user: wants to go to the map
-  - *id024
+  - *id006
   - *id001
 MAP_SEARCH_FOR_MAURA_5:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_5.png)\n
@@ -2261,14 +2353,22 @@ MAP_SEARCH_FOR_MAURA_5:
   - target: SEARCH_FOR_MAURA_5
     if_the_user: asks to go back
   - *id001
-  - *id025
-  - *id026
-  - *id027
-  - *id028
-  - *id029
-  - *id030
-  - *id031
-  - *id024
+  - target: CAR_WRECK_5
+    if_the_user: wants to go to the site of the wreck where Maura disappeared
+  - target: UMASS_OFFICE_5
+    if_the_user: wants to go to U Mass
+  - target: DATA_LAB_5
+    if_the_user: wants to go to the data lab
+  - target: VISIT_FRED_5
+    if_the_user: wants to go to Fred's house
+  - target: SEARCH_FOR_MAURA_5
+    if_the_user: wants to go to the search for Maura near the site of the car crash
+      where Maura disappeared
+  - target: POLICE_PRECINCT_5
+    if_the_user: wants to go to the police precinct
+  - target: WORK_FRIEND_6
+    if_the_user: wants to go to talk to Maura's work friend
+  - target: EVIDENCE_LOCKER_MAP_SEARCH_FOR_MAURA_5_5
 EVIDENCE_LOCKER_MAP_SEARCH_FOR_MAURA_5_5:
   prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
     lockers containing evidence for different cases\nMike will give the user a list
@@ -2314,7 +2414,7 @@ POLICE_PRECINCT_5:
   events:
   - target: MAP_POLICE_PRECINCT_5
     if_the_user: wants to go to the map
-  - *id024
+  - *id006
   - *id001
 MAP_POLICE_PRECINCT_5:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_5.png)\n
@@ -2324,14 +2424,22 @@ MAP_POLICE_PRECINCT_5:
   - target: POLICE_PRECINCT_5
     if_the_user: asks to go back
   - *id001
-  - *id025
-  - *id026
-  - *id027
-  - *id028
-  - *id029
-  - *id030
-  - *id031
-  - *id024
+  - target: CAR_WRECK_5
+    if_the_user: wants to go to the site of the wreck where Maura disappeared
+  - target: UMASS_OFFICE_5
+    if_the_user: wants to go to U Mass
+  - target: DATA_LAB_5
+    if_the_user: wants to go to the data lab
+  - target: VISIT_FRED_5
+    if_the_user: wants to go to Fred's house
+  - target: SEARCH_FOR_MAURA_5
+    if_the_user: wants to go to the search for Maura near the site of the car crash
+      where Maura disappeared
+  - target: POLICE_PRECINCT_5
+    if_the_user: wants to go to the police precinct
+  - target: WORK_FRIEND_6
+    if_the_user: wants to go to talk to Maura's work friend
+  - target: EVIDENCE_LOCKER_MAP_POLICE_PRECINCT_5_5
 EVIDENCE_LOCKER_MAP_POLICE_PRECINCT_5_5:
   prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
     lockers containing evidence for different cases\nMike will give the user a list
@@ -2422,9 +2530,9 @@ CAR_WRECK_6:
   events:
   - target: MAP_CAR_WRECK_6
     if_the_user: wants to go to the map
-  - &id032
-    target: MAURA_APARTMENT_7
-    if_the_user: wants to go to Maura's apartment
+  - &id007
+    target: JULIE_MURRAY_7
+    if_the_user: wants to go to Julie Murray's place
   - *id001
 MAP_CAR_WRECK_6:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_6.png)\n
@@ -2434,32 +2542,24 @@ MAP_CAR_WRECK_6:
   - target: CAR_WRECK_6
     if_the_user: asks to go back
   - *id001
-  - &id033
-    target: CAR_WRECK_6
+  - target: CAR_WRECK_6
     if_the_user: wants to go to the site of the wreck where Maura disappeared
-  - &id034
-    target: UMASS_OFFICE_6
+  - target: UMASS_OFFICE_6
     if_the_user: wants to go to U Mass
-  - &id035
-    target: DATA_LAB_6
+  - target: DATA_LAB_6
     if_the_user: wants to go to the data lab
-  - &id036
-    target: VISIT_FRED_6
+  - target: VISIT_FRED_6
     if_the_user: wants to go to Fred's house
-  - &id037
-    target: SEARCH_FOR_MAURA_6
+  - target: SEARCH_FOR_MAURA_6
     if_the_user: wants to go to the search for Maura near the site of the car crash
       where Maura disappeared
-  - &id038
-    target: POLICE_PRECINCT_6
+  - target: POLICE_PRECINCT_6
     if_the_user: wants to go to the police precinct
-  - &id039
-    target: WORK_FRIEND_6
+  - target: WORK_FRIEND_6
     if_the_user: wants to go to talk to Maura's work friend
-  - &id040
-    target: JULIE_MURRAY_6
+  - target: JULIE_MURRAY_7
     if_the_user: wants to go to Julie Murray's place
-  - *id032
+  - target: EVIDENCE_LOCKER_MAP_CAR_WRECK_6_6
 EVIDENCE_LOCKER_MAP_CAR_WRECK_6_6:
   prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
     lockers containing evidence for different cases\nMike will give the user a list
@@ -2499,7 +2599,7 @@ UMASS_OFFICE_6:
   events:
   - target: MAP_UMASS_OFFICE_6
     if_the_user: wants to go to the map
-  - *id032
+  - *id007
   - *id001
 MAP_UMASS_OFFICE_6:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_6.png)\n
@@ -2509,15 +2609,24 @@ MAP_UMASS_OFFICE_6:
   - target: UMASS_OFFICE_6
     if_the_user: asks to go back
   - *id001
-  - *id033
-  - *id034
-  - *id035
-  - *id036
-  - *id037
-  - *id038
-  - *id039
-  - *id040
-  - *id032
+  - target: CAR_WRECK_6
+    if_the_user: wants to go to the site of the wreck where Maura disappeared
+  - target: UMASS_OFFICE_6
+    if_the_user: wants to go to U Mass
+  - target: DATA_LAB_6
+    if_the_user: wants to go to the data lab
+  - target: VISIT_FRED_6
+    if_the_user: wants to go to Fred's house
+  - target: SEARCH_FOR_MAURA_6
+    if_the_user: wants to go to the search for Maura near the site of the car crash
+      where Maura disappeared
+  - target: POLICE_PRECINCT_6
+    if_the_user: wants to go to the police precinct
+  - target: WORK_FRIEND_6
+    if_the_user: wants to go to talk to Maura's work friend
+  - target: JULIE_MURRAY_7
+    if_the_user: wants to go to Julie Murray's place
+  - target: EVIDENCE_LOCKER_MAP_UMASS_OFFICE_6_6
 EVIDENCE_LOCKER_MAP_UMASS_OFFICE_6_6:
   prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
     lockers containing evidence for different cases\nMike will give the user a list
@@ -2577,7 +2686,7 @@ DATA_LAB_6:
   events:
   - target: MAP_DATA_LAB_6
     if_the_user: wants to go to the map
-  - *id032
+  - *id007
   - *id001
 MAP_DATA_LAB_6:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_6.png)\n
@@ -2587,15 +2696,24 @@ MAP_DATA_LAB_6:
   - target: DATA_LAB_6
     if_the_user: asks to go back
   - *id001
-  - *id033
-  - *id034
-  - *id035
-  - *id036
-  - *id037
-  - *id038
-  - *id039
-  - *id040
-  - *id032
+  - target: CAR_WRECK_6
+    if_the_user: wants to go to the site of the wreck where Maura disappeared
+  - target: UMASS_OFFICE_6
+    if_the_user: wants to go to U Mass
+  - target: DATA_LAB_6
+    if_the_user: wants to go to the data lab
+  - target: VISIT_FRED_6
+    if_the_user: wants to go to Fred's house
+  - target: SEARCH_FOR_MAURA_6
+    if_the_user: wants to go to the search for Maura near the site of the car crash
+      where Maura disappeared
+  - target: POLICE_PRECINCT_6
+    if_the_user: wants to go to the police precinct
+  - target: WORK_FRIEND_6
+    if_the_user: wants to go to talk to Maura's work friend
+  - target: JULIE_MURRAY_7
+    if_the_user: wants to go to Julie Murray's place
+  - target: EVIDENCE_LOCKER_MAP_DATA_LAB_6_6
 EVIDENCE_LOCKER_MAP_DATA_LAB_6_6:
   prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
     lockers containing evidence for different cases\nMike will give the user a list
@@ -2632,7 +2750,7 @@ EVIDENCE_LOCKER_6:
   events:
   - target: MAP_EVIDENCE_LOCKER_6
     if_the_user: wants to go to the map
-  - *id032
+  - *id007
   - *id001
 MAP_EVIDENCE_LOCKER_6:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_6.png)\n
@@ -2642,15 +2760,24 @@ MAP_EVIDENCE_LOCKER_6:
   - target: EVIDENCE_LOCKER_6
     if_the_user: asks to go back
   - *id001
-  - *id033
-  - *id034
-  - *id035
-  - *id036
-  - *id037
-  - *id038
-  - *id039
-  - *id040
-  - *id032
+  - target: CAR_WRECK_6
+    if_the_user: wants to go to the site of the wreck where Maura disappeared
+  - target: UMASS_OFFICE_6
+    if_the_user: wants to go to U Mass
+  - target: DATA_LAB_6
+    if_the_user: wants to go to the data lab
+  - target: VISIT_FRED_6
+    if_the_user: wants to go to Fred's house
+  - target: SEARCH_FOR_MAURA_6
+    if_the_user: wants to go to the search for Maura near the site of the car crash
+      where Maura disappeared
+  - target: POLICE_PRECINCT_6
+    if_the_user: wants to go to the police precinct
+  - target: WORK_FRIEND_6
+    if_the_user: wants to go to talk to Maura's work friend
+  - target: JULIE_MURRAY_7
+    if_the_user: wants to go to Julie Murray's place
+  - target: EVIDENCE_LOCKER_MAP_EVIDENCE_LOCKER_6_6
 EVIDENCE_LOCKER_MAP_EVIDENCE_LOCKER_6_6:
   prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
     lockers containing evidence for different cases\nMike will give the user a list
@@ -2708,7 +2835,7 @@ VISIT_FRED_6:
   events:
   - target: MAP_VISIT_FRED_6
     if_the_user: wants to go to the map
-  - *id032
+  - *id007
   - *id001
 MAP_VISIT_FRED_6:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_6.png)\n
@@ -2718,15 +2845,24 @@ MAP_VISIT_FRED_6:
   - target: VISIT_FRED_6
     if_the_user: asks to go back
   - *id001
-  - *id033
-  - *id034
-  - *id035
-  - *id036
-  - *id037
-  - *id038
-  - *id039
-  - *id040
-  - *id032
+  - target: CAR_WRECK_6
+    if_the_user: wants to go to the site of the wreck where Maura disappeared
+  - target: UMASS_OFFICE_6
+    if_the_user: wants to go to U Mass
+  - target: DATA_LAB_6
+    if_the_user: wants to go to the data lab
+  - target: VISIT_FRED_6
+    if_the_user: wants to go to Fred's house
+  - target: SEARCH_FOR_MAURA_6
+    if_the_user: wants to go to the search for Maura near the site of the car crash
+      where Maura disappeared
+  - target: POLICE_PRECINCT_6
+    if_the_user: wants to go to the police precinct
+  - target: WORK_FRIEND_6
+    if_the_user: wants to go to talk to Maura's work friend
+  - target: JULIE_MURRAY_7
+    if_the_user: wants to go to Julie Murray's place
+  - target: EVIDENCE_LOCKER_MAP_VISIT_FRED_6_6
 EVIDENCE_LOCKER_MAP_VISIT_FRED_6_6:
   prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
     lockers containing evidence for different cases\nMike will give the user a list
@@ -2863,7 +2999,7 @@ SEARCH_FOR_MAURA_6:
   events:
   - target: MAP_SEARCH_FOR_MAURA_6
     if_the_user: wants to go to the map
-  - *id032
+  - *id007
   - *id001
 MAP_SEARCH_FOR_MAURA_6:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_6.png)\n
@@ -2873,15 +3009,24 @@ MAP_SEARCH_FOR_MAURA_6:
   - target: SEARCH_FOR_MAURA_6
     if_the_user: asks to go back
   - *id001
-  - *id033
-  - *id034
-  - *id035
-  - *id036
-  - *id037
-  - *id038
-  - *id039
-  - *id040
-  - *id032
+  - target: CAR_WRECK_6
+    if_the_user: wants to go to the site of the wreck where Maura disappeared
+  - target: UMASS_OFFICE_6
+    if_the_user: wants to go to U Mass
+  - target: DATA_LAB_6
+    if_the_user: wants to go to the data lab
+  - target: VISIT_FRED_6
+    if_the_user: wants to go to Fred's house
+  - target: SEARCH_FOR_MAURA_6
+    if_the_user: wants to go to the search for Maura near the site of the car crash
+      where Maura disappeared
+  - target: POLICE_PRECINCT_6
+    if_the_user: wants to go to the police precinct
+  - target: WORK_FRIEND_6
+    if_the_user: wants to go to talk to Maura's work friend
+  - target: JULIE_MURRAY_7
+    if_the_user: wants to go to Julie Murray's place
+  - target: EVIDENCE_LOCKER_MAP_SEARCH_FOR_MAURA_6_6
 EVIDENCE_LOCKER_MAP_SEARCH_FOR_MAURA_6_6:
   prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
     lockers containing evidence for different cases\nMike will give the user a list
@@ -2927,7 +3072,7 @@ POLICE_PRECINCT_6:
   events:
   - target: MAP_POLICE_PRECINCT_6
     if_the_user: wants to go to the map
-  - *id032
+  - *id007
   - *id001
 MAP_POLICE_PRECINCT_6:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_6.png)\n
@@ -2937,15 +3082,24 @@ MAP_POLICE_PRECINCT_6:
   - target: POLICE_PRECINCT_6
     if_the_user: asks to go back
   - *id001
-  - *id033
-  - *id034
-  - *id035
-  - *id036
-  - *id037
-  - *id038
-  - *id039
-  - *id040
-  - *id032
+  - target: CAR_WRECK_6
+    if_the_user: wants to go to the site of the wreck where Maura disappeared
+  - target: UMASS_OFFICE_6
+    if_the_user: wants to go to U Mass
+  - target: DATA_LAB_6
+    if_the_user: wants to go to the data lab
+  - target: VISIT_FRED_6
+    if_the_user: wants to go to Fred's house
+  - target: SEARCH_FOR_MAURA_6
+    if_the_user: wants to go to the search for Maura near the site of the car crash
+      where Maura disappeared
+  - target: POLICE_PRECINCT_6
+    if_the_user: wants to go to the police precinct
+  - target: WORK_FRIEND_6
+    if_the_user: wants to go to talk to Maura's work friend
+  - target: JULIE_MURRAY_7
+    if_the_user: wants to go to Julie Murray's place
+  - target: EVIDENCE_LOCKER_MAP_POLICE_PRECINCT_6_6
 EVIDENCE_LOCKER_MAP_POLICE_PRECINCT_6_6:
   prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
     lockers containing evidence for different cases\nMike will give the user a list
@@ -3050,7 +3204,7 @@ WORK_FRIEND_6:
   events:
   - target: MAP_WORK_FRIEND_6
     if_the_user: wants to go to the map
-  - *id032
+  - *id007
   - *id001
 MAP_WORK_FRIEND_6:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_6.png)\n
@@ -3060,15 +3214,24 @@ MAP_WORK_FRIEND_6:
   - target: WORK_FRIEND_6
     if_the_user: asks to go back
   - *id001
-  - *id033
-  - *id034
-  - *id035
-  - *id036
-  - *id037
-  - *id038
-  - *id039
-  - *id040
-  - *id032
+  - target: CAR_WRECK_6
+    if_the_user: wants to go to the site of the wreck where Maura disappeared
+  - target: UMASS_OFFICE_6
+    if_the_user: wants to go to U Mass
+  - target: DATA_LAB_6
+    if_the_user: wants to go to the data lab
+  - target: VISIT_FRED_6
+    if_the_user: wants to go to Fred's house
+  - target: SEARCH_FOR_MAURA_6
+    if_the_user: wants to go to the search for Maura near the site of the car crash
+      where Maura disappeared
+  - target: POLICE_PRECINCT_6
+    if_the_user: wants to go to the police precinct
+  - target: WORK_FRIEND_6
+    if_the_user: wants to go to talk to Maura's work friend
+  - target: JULIE_MURRAY_7
+    if_the_user: wants to go to Julie Murray's place
+  - target: EVIDENCE_LOCKER_MAP_WORK_FRIEND_6_6
 EVIDENCE_LOCKER_MAP_WORK_FRIEND_6_6:
   prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
     lockers containing evidence for different cases\nMike will give the user a list
@@ -3159,10 +3322,9 @@ CAR_WRECK_7:
   events:
   - target: MAP_CAR_WRECK_7
     if_the_user: wants to go to the map
-  - &id041
-    target: RED_TRUCK_WITNESS_8
-    if_the_user: wants to go to the Swiftwater general store to talk to the witness
-      who saw the red truck
+  - &id008
+    target: MAURA_APARTMENT_8
+    if_the_user: wants to go to Maura's apartment
   - *id001
 MAP_CAR_WRECK_7:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_7.png)\n
@@ -3172,35 +3334,26 @@ MAP_CAR_WRECK_7:
   - target: CAR_WRECK_7
     if_the_user: asks to go back
   - *id001
-  - &id042
-    target: CAR_WRECK_7
+  - target: CAR_WRECK_7
     if_the_user: wants to go to the site of the wreck where Maura disappeared
-  - &id043
-    target: UMASS_OFFICE_7
+  - target: UMASS_OFFICE_7
     if_the_user: wants to go to U Mass
-  - &id044
-    target: DATA_LAB_7
+  - target: DATA_LAB_7
     if_the_user: wants to go to the data lab
-  - &id045
-    target: VISIT_FRED_7
+  - target: VISIT_FRED_7
     if_the_user: wants to go to Fred's house
-  - &id046
-    target: SEARCH_FOR_MAURA_7
+  - target: SEARCH_FOR_MAURA_7
     if_the_user: wants to go to the search for Maura near the site of the car crash
       where Maura disappeared
-  - &id047
-    target: POLICE_PRECINCT_7
+  - target: POLICE_PRECINCT_7
     if_the_user: wants to go to the police precinct
-  - &id048
-    target: WORK_FRIEND_7
+  - target: WORK_FRIEND_7
     if_the_user: wants to go to talk to Maura's work friend
-  - &id049
-    target: JULIE_MURRAY_7
+  - target: JULIE_MURRAY_7
     if_the_user: wants to go to Julie Murray's place
-  - &id050
-    target: MAURA_APARTMENT_7
+  - target: MAURA_APARTMENT_8
     if_the_user: wants to go to Maura's apartment
-  - *id041
+  - target: EVIDENCE_LOCKER_MAP_CAR_WRECK_7_7
 EVIDENCE_LOCKER_MAP_CAR_WRECK_7_7:
   prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
     lockers containing evidence for different cases\nMike will give the user a list
@@ -3240,7 +3393,7 @@ UMASS_OFFICE_7:
   events:
   - target: MAP_UMASS_OFFICE_7
     if_the_user: wants to go to the map
-  - *id041
+  - *id008
   - *id001
 MAP_UMASS_OFFICE_7:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_7.png)\n
@@ -3250,16 +3403,26 @@ MAP_UMASS_OFFICE_7:
   - target: UMASS_OFFICE_7
     if_the_user: asks to go back
   - *id001
-  - *id042
-  - *id043
-  - *id044
-  - *id045
-  - *id046
-  - *id047
-  - *id048
-  - *id049
-  - *id050
-  - *id041
+  - target: CAR_WRECK_7
+    if_the_user: wants to go to the site of the wreck where Maura disappeared
+  - target: UMASS_OFFICE_7
+    if_the_user: wants to go to U Mass
+  - target: DATA_LAB_7
+    if_the_user: wants to go to the data lab
+  - target: VISIT_FRED_7
+    if_the_user: wants to go to Fred's house
+  - target: SEARCH_FOR_MAURA_7
+    if_the_user: wants to go to the search for Maura near the site of the car crash
+      where Maura disappeared
+  - target: POLICE_PRECINCT_7
+    if_the_user: wants to go to the police precinct
+  - target: WORK_FRIEND_7
+    if_the_user: wants to go to talk to Maura's work friend
+  - target: JULIE_MURRAY_7
+    if_the_user: wants to go to Julie Murray's place
+  - target: MAURA_APARTMENT_8
+    if_the_user: wants to go to Maura's apartment
+  - target: EVIDENCE_LOCKER_MAP_UMASS_OFFICE_7_7
 EVIDENCE_LOCKER_MAP_UMASS_OFFICE_7_7:
   prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
     lockers containing evidence for different cases\nMike will give the user a list
@@ -3319,7 +3482,7 @@ DATA_LAB_7:
   events:
   - target: MAP_DATA_LAB_7
     if_the_user: wants to go to the map
-  - *id041
+  - *id008
   - *id001
 MAP_DATA_LAB_7:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_7.png)\n
@@ -3329,16 +3492,26 @@ MAP_DATA_LAB_7:
   - target: DATA_LAB_7
     if_the_user: asks to go back
   - *id001
-  - *id042
-  - *id043
-  - *id044
-  - *id045
-  - *id046
-  - *id047
-  - *id048
-  - *id049
-  - *id050
-  - *id041
+  - target: CAR_WRECK_7
+    if_the_user: wants to go to the site of the wreck where Maura disappeared
+  - target: UMASS_OFFICE_7
+    if_the_user: wants to go to U Mass
+  - target: DATA_LAB_7
+    if_the_user: wants to go to the data lab
+  - target: VISIT_FRED_7
+    if_the_user: wants to go to Fred's house
+  - target: SEARCH_FOR_MAURA_7
+    if_the_user: wants to go to the search for Maura near the site of the car crash
+      where Maura disappeared
+  - target: POLICE_PRECINCT_7
+    if_the_user: wants to go to the police precinct
+  - target: WORK_FRIEND_7
+    if_the_user: wants to go to talk to Maura's work friend
+  - target: JULIE_MURRAY_7
+    if_the_user: wants to go to Julie Murray's place
+  - target: MAURA_APARTMENT_8
+    if_the_user: wants to go to Maura's apartment
+  - target: EVIDENCE_LOCKER_MAP_DATA_LAB_7_7
 EVIDENCE_LOCKER_MAP_DATA_LAB_7_7:
   prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
     lockers containing evidence for different cases\nMike will give the user a list
@@ -3375,7 +3548,7 @@ EVIDENCE_LOCKER_7:
   events:
   - target: MAP_EVIDENCE_LOCKER_7
     if_the_user: wants to go to the map
-  - *id041
+  - *id008
   - *id001
 MAP_EVIDENCE_LOCKER_7:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_7.png)\n
@@ -3385,16 +3558,26 @@ MAP_EVIDENCE_LOCKER_7:
   - target: EVIDENCE_LOCKER_7
     if_the_user: asks to go back
   - *id001
-  - *id042
-  - *id043
-  - *id044
-  - *id045
-  - *id046
-  - *id047
-  - *id048
-  - *id049
-  - *id050
-  - *id041
+  - target: CAR_WRECK_7
+    if_the_user: wants to go to the site of the wreck where Maura disappeared
+  - target: UMASS_OFFICE_7
+    if_the_user: wants to go to U Mass
+  - target: DATA_LAB_7
+    if_the_user: wants to go to the data lab
+  - target: VISIT_FRED_7
+    if_the_user: wants to go to Fred's house
+  - target: SEARCH_FOR_MAURA_7
+    if_the_user: wants to go to the search for Maura near the site of the car crash
+      where Maura disappeared
+  - target: POLICE_PRECINCT_7
+    if_the_user: wants to go to the police precinct
+  - target: WORK_FRIEND_7
+    if_the_user: wants to go to talk to Maura's work friend
+  - target: JULIE_MURRAY_7
+    if_the_user: wants to go to Julie Murray's place
+  - target: MAURA_APARTMENT_8
+    if_the_user: wants to go to Maura's apartment
+  - target: EVIDENCE_LOCKER_MAP_EVIDENCE_LOCKER_7_7
 EVIDENCE_LOCKER_MAP_EVIDENCE_LOCKER_7_7:
   prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
     lockers containing evidence for different cases\nMike will give the user a list
@@ -3452,7 +3635,7 @@ VISIT_FRED_7:
   events:
   - target: MAP_VISIT_FRED_7
     if_the_user: wants to go to the map
-  - *id041
+  - *id008
   - *id001
 MAP_VISIT_FRED_7:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_7.png)\n
@@ -3462,16 +3645,26 @@ MAP_VISIT_FRED_7:
   - target: VISIT_FRED_7
     if_the_user: asks to go back
   - *id001
-  - *id042
-  - *id043
-  - *id044
-  - *id045
-  - *id046
-  - *id047
-  - *id048
-  - *id049
-  - *id050
-  - *id041
+  - target: CAR_WRECK_7
+    if_the_user: wants to go to the site of the wreck where Maura disappeared
+  - target: UMASS_OFFICE_7
+    if_the_user: wants to go to U Mass
+  - target: DATA_LAB_7
+    if_the_user: wants to go to the data lab
+  - target: VISIT_FRED_7
+    if_the_user: wants to go to Fred's house
+  - target: SEARCH_FOR_MAURA_7
+    if_the_user: wants to go to the search for Maura near the site of the car crash
+      where Maura disappeared
+  - target: POLICE_PRECINCT_7
+    if_the_user: wants to go to the police precinct
+  - target: WORK_FRIEND_7
+    if_the_user: wants to go to talk to Maura's work friend
+  - target: JULIE_MURRAY_7
+    if_the_user: wants to go to Julie Murray's place
+  - target: MAURA_APARTMENT_8
+    if_the_user: wants to go to Maura's apartment
+  - target: EVIDENCE_LOCKER_MAP_VISIT_FRED_7_7
 EVIDENCE_LOCKER_MAP_VISIT_FRED_7_7:
   prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
     lockers containing evidence for different cases\nMike will give the user a list
@@ -3608,7 +3801,7 @@ SEARCH_FOR_MAURA_7:
   events:
   - target: MAP_SEARCH_FOR_MAURA_7
     if_the_user: wants to go to the map
-  - *id041
+  - *id008
   - *id001
 MAP_SEARCH_FOR_MAURA_7:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_7.png)\n
@@ -3618,16 +3811,26 @@ MAP_SEARCH_FOR_MAURA_7:
   - target: SEARCH_FOR_MAURA_7
     if_the_user: asks to go back
   - *id001
-  - *id042
-  - *id043
-  - *id044
-  - *id045
-  - *id046
-  - *id047
-  - *id048
-  - *id049
-  - *id050
-  - *id041
+  - target: CAR_WRECK_7
+    if_the_user: wants to go to the site of the wreck where Maura disappeared
+  - target: UMASS_OFFICE_7
+    if_the_user: wants to go to U Mass
+  - target: DATA_LAB_7
+    if_the_user: wants to go to the data lab
+  - target: VISIT_FRED_7
+    if_the_user: wants to go to Fred's house
+  - target: SEARCH_FOR_MAURA_7
+    if_the_user: wants to go to the search for Maura near the site of the car crash
+      where Maura disappeared
+  - target: POLICE_PRECINCT_7
+    if_the_user: wants to go to the police precinct
+  - target: WORK_FRIEND_7
+    if_the_user: wants to go to talk to Maura's work friend
+  - target: JULIE_MURRAY_7
+    if_the_user: wants to go to Julie Murray's place
+  - target: MAURA_APARTMENT_8
+    if_the_user: wants to go to Maura's apartment
+  - target: EVIDENCE_LOCKER_MAP_SEARCH_FOR_MAURA_7_7
 EVIDENCE_LOCKER_MAP_SEARCH_FOR_MAURA_7_7:
   prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
     lockers containing evidence for different cases\nMike will give the user a list
@@ -3673,7 +3876,7 @@ POLICE_PRECINCT_7:
   events:
   - target: MAP_POLICE_PRECINCT_7
     if_the_user: wants to go to the map
-  - *id041
+  - *id008
   - *id001
 MAP_POLICE_PRECINCT_7:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_7.png)\n
@@ -3683,16 +3886,26 @@ MAP_POLICE_PRECINCT_7:
   - target: POLICE_PRECINCT_7
     if_the_user: asks to go back
   - *id001
-  - *id042
-  - *id043
-  - *id044
-  - *id045
-  - *id046
-  - *id047
-  - *id048
-  - *id049
-  - *id050
-  - *id041
+  - target: CAR_WRECK_7
+    if_the_user: wants to go to the site of the wreck where Maura disappeared
+  - target: UMASS_OFFICE_7
+    if_the_user: wants to go to U Mass
+  - target: DATA_LAB_7
+    if_the_user: wants to go to the data lab
+  - target: VISIT_FRED_7
+    if_the_user: wants to go to Fred's house
+  - target: SEARCH_FOR_MAURA_7
+    if_the_user: wants to go to the search for Maura near the site of the car crash
+      where Maura disappeared
+  - target: POLICE_PRECINCT_7
+    if_the_user: wants to go to the police precinct
+  - target: WORK_FRIEND_7
+    if_the_user: wants to go to talk to Maura's work friend
+  - target: JULIE_MURRAY_7
+    if_the_user: wants to go to Julie Murray's place
+  - target: MAURA_APARTMENT_8
+    if_the_user: wants to go to Maura's apartment
+  - target: EVIDENCE_LOCKER_MAP_POLICE_PRECINCT_7_7
 EVIDENCE_LOCKER_MAP_POLICE_PRECINCT_7_7:
   prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
     lockers containing evidence for different cases\nMike will give the user a list
@@ -3797,7 +4010,7 @@ WORK_FRIEND_7:
   events:
   - target: MAP_WORK_FRIEND_7
     if_the_user: wants to go to the map
-  - *id041
+  - *id008
   - *id001
 MAP_WORK_FRIEND_7:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_7.png)\n
@@ -3807,16 +4020,26 @@ MAP_WORK_FRIEND_7:
   - target: WORK_FRIEND_7
     if_the_user: asks to go back
   - *id001
-  - *id042
-  - *id043
-  - *id044
-  - *id045
-  - *id046
-  - *id047
-  - *id048
-  - *id049
-  - *id050
-  - *id041
+  - target: CAR_WRECK_7
+    if_the_user: wants to go to the site of the wreck where Maura disappeared
+  - target: UMASS_OFFICE_7
+    if_the_user: wants to go to U Mass
+  - target: DATA_LAB_7
+    if_the_user: wants to go to the data lab
+  - target: VISIT_FRED_7
+    if_the_user: wants to go to Fred's house
+  - target: SEARCH_FOR_MAURA_7
+    if_the_user: wants to go to the search for Maura near the site of the car crash
+      where Maura disappeared
+  - target: POLICE_PRECINCT_7
+    if_the_user: wants to go to the police precinct
+  - target: WORK_FRIEND_7
+    if_the_user: wants to go to talk to Maura's work friend
+  - target: JULIE_MURRAY_7
+    if_the_user: wants to go to Julie Murray's place
+  - target: MAURA_APARTMENT_8
+    if_the_user: wants to go to Maura's apartment
+  - target: EVIDENCE_LOCKER_MAP_WORK_FRIEND_7_7
 EVIDENCE_LOCKER_MAP_WORK_FRIEND_7_7:
   prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
     lockers containing evidence for different cases\nMike will give the user a list
@@ -3876,7 +4099,7 @@ JULIE_MURRAY_7:
   events:
   - target: MAP_JULIE_MURRAY_7
     if_the_user: wants to go to the map
-  - *id041
+  - *id008
   - *id001
 MAP_JULIE_MURRAY_7:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_7.png)\n
@@ -3886,16 +4109,26 @@ MAP_JULIE_MURRAY_7:
   - target: JULIE_MURRAY_7
     if_the_user: asks to go back
   - *id001
-  - *id042
-  - *id043
-  - *id044
-  - *id045
-  - *id046
-  - *id047
-  - *id048
-  - *id049
-  - *id050
-  - *id041
+  - target: CAR_WRECK_7
+    if_the_user: wants to go to the site of the wreck where Maura disappeared
+  - target: UMASS_OFFICE_7
+    if_the_user: wants to go to U Mass
+  - target: DATA_LAB_7
+    if_the_user: wants to go to the data lab
+  - target: VISIT_FRED_7
+    if_the_user: wants to go to Fred's house
+  - target: SEARCH_FOR_MAURA_7
+    if_the_user: wants to go to the search for Maura near the site of the car crash
+      where Maura disappeared
+  - target: POLICE_PRECINCT_7
+    if_the_user: wants to go to the police precinct
+  - target: WORK_FRIEND_7
+    if_the_user: wants to go to talk to Maura's work friend
+  - target: JULIE_MURRAY_7
+    if_the_user: wants to go to Julie Murray's place
+  - target: MAURA_APARTMENT_8
+    if_the_user: wants to go to Maura's apartment
+  - target: EVIDENCE_LOCKER_MAP_JULIE_MURRAY_7_7
 EVIDENCE_LOCKER_MAP_JULIE_MURRAY_7_7:
   prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
     lockers containing evidence for different cases\nMike will give the user a list
@@ -3986,9 +4219,10 @@ CAR_WRECK_8:
   events:
   - target: MAP_CAR_WRECK_8
     if_the_user: wants to go to the map
-  - &id051
-    target: FRED_MURRAY_WITH_KNIFE_9
-    if_the_user: wants to go to Fred's house to discuss the knife
+  - &id009
+    target: RED_TRUCK_WITNESS_9
+    if_the_user: wants to go to the Swiftwater general store to talk to the witness
+      who saw the red truck
   - *id001
 MAP_CAR_WRECK_8:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_8.png)\n
@@ -3998,39 +4232,29 @@ MAP_CAR_WRECK_8:
   - target: CAR_WRECK_8
     if_the_user: asks to go back
   - *id001
-  - &id052
-    target: CAR_WRECK_8
+  - target: CAR_WRECK_8
     if_the_user: wants to go to the site of the wreck where Maura disappeared
-  - &id053
-    target: UMASS_OFFICE_8
+  - target: UMASS_OFFICE_8
     if_the_user: wants to go to U Mass
-  - &id054
-    target: DATA_LAB_8
+  - target: DATA_LAB_8
     if_the_user: wants to go to the data lab
-  - &id055
-    target: VISIT_FRED_8
+  - target: VISIT_FRED_8
     if_the_user: wants to go to Fred's house
-  - &id056
-    target: SEARCH_FOR_MAURA_8
+  - target: SEARCH_FOR_MAURA_8
     if_the_user: wants to go to the search for Maura near the site of the car crash
       where Maura disappeared
-  - &id057
-    target: POLICE_PRECINCT_8
+  - target: POLICE_PRECINCT_8
     if_the_user: wants to go to the police precinct
-  - &id058
-    target: WORK_FRIEND_8
+  - target: WORK_FRIEND_8
     if_the_user: wants to go to talk to Maura's work friend
-  - &id059
-    target: JULIE_MURRAY_8
+  - target: JULIE_MURRAY_8
     if_the_user: wants to go to Julie Murray's place
-  - &id060
-    target: MAURA_APARTMENT_8
+  - target: MAURA_APARTMENT_8
     if_the_user: wants to go to Maura's apartment
-  - &id061
-    target: RED_TRUCK_WITNESS_8
+  - target: RED_TRUCK_WITNESS_9
     if_the_user: wants to go to the Swiftwater general store to talk to the witness
       who saw the red truck
-  - *id051
+  - target: EVIDENCE_LOCKER_MAP_CAR_WRECK_8_8
 EVIDENCE_LOCKER_MAP_CAR_WRECK_8_8:
   prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
     lockers containing evidence for different cases\nMike will give the user a list
@@ -4070,7 +4294,7 @@ UMASS_OFFICE_8:
   events:
   - target: MAP_UMASS_OFFICE_8
     if_the_user: wants to go to the map
-  - *id051
+  - *id009
   - *id001
 MAP_UMASS_OFFICE_8:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_8.png)\n
@@ -4080,17 +4304,29 @@ MAP_UMASS_OFFICE_8:
   - target: UMASS_OFFICE_8
     if_the_user: asks to go back
   - *id001
-  - *id052
-  - *id053
-  - *id054
-  - *id055
-  - *id056
-  - *id057
-  - *id058
-  - *id059
-  - *id060
-  - *id061
-  - *id051
+  - target: CAR_WRECK_8
+    if_the_user: wants to go to the site of the wreck where Maura disappeared
+  - target: UMASS_OFFICE_8
+    if_the_user: wants to go to U Mass
+  - target: DATA_LAB_8
+    if_the_user: wants to go to the data lab
+  - target: VISIT_FRED_8
+    if_the_user: wants to go to Fred's house
+  - target: SEARCH_FOR_MAURA_8
+    if_the_user: wants to go to the search for Maura near the site of the car crash
+      where Maura disappeared
+  - target: POLICE_PRECINCT_8
+    if_the_user: wants to go to the police precinct
+  - target: WORK_FRIEND_8
+    if_the_user: wants to go to talk to Maura's work friend
+  - target: JULIE_MURRAY_8
+    if_the_user: wants to go to Julie Murray's place
+  - target: MAURA_APARTMENT_8
+    if_the_user: wants to go to Maura's apartment
+  - target: RED_TRUCK_WITNESS_9
+    if_the_user: wants to go to the Swiftwater general store to talk to the witness
+      who saw the red truck
+  - target: EVIDENCE_LOCKER_MAP_UMASS_OFFICE_8_8
 EVIDENCE_LOCKER_MAP_UMASS_OFFICE_8_8:
   prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
     lockers containing evidence for different cases\nMike will give the user a list
@@ -4150,7 +4386,7 @@ DATA_LAB_8:
   events:
   - target: MAP_DATA_LAB_8
     if_the_user: wants to go to the map
-  - *id051
+  - *id009
   - *id001
 MAP_DATA_LAB_8:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_8.png)\n
@@ -4160,17 +4396,29 @@ MAP_DATA_LAB_8:
   - target: DATA_LAB_8
     if_the_user: asks to go back
   - *id001
-  - *id052
-  - *id053
-  - *id054
-  - *id055
-  - *id056
-  - *id057
-  - *id058
-  - *id059
-  - *id060
-  - *id061
-  - *id051
+  - target: CAR_WRECK_8
+    if_the_user: wants to go to the site of the wreck where Maura disappeared
+  - target: UMASS_OFFICE_8
+    if_the_user: wants to go to U Mass
+  - target: DATA_LAB_8
+    if_the_user: wants to go to the data lab
+  - target: VISIT_FRED_8
+    if_the_user: wants to go to Fred's house
+  - target: SEARCH_FOR_MAURA_8
+    if_the_user: wants to go to the search for Maura near the site of the car crash
+      where Maura disappeared
+  - target: POLICE_PRECINCT_8
+    if_the_user: wants to go to the police precinct
+  - target: WORK_FRIEND_8
+    if_the_user: wants to go to talk to Maura's work friend
+  - target: JULIE_MURRAY_8
+    if_the_user: wants to go to Julie Murray's place
+  - target: MAURA_APARTMENT_8
+    if_the_user: wants to go to Maura's apartment
+  - target: RED_TRUCK_WITNESS_9
+    if_the_user: wants to go to the Swiftwater general store to talk to the witness
+      who saw the red truck
+  - target: EVIDENCE_LOCKER_MAP_DATA_LAB_8_8
 EVIDENCE_LOCKER_MAP_DATA_LAB_8_8:
   prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
     lockers containing evidence for different cases\nMike will give the user a list
@@ -4207,7 +4455,7 @@ EVIDENCE_LOCKER_8:
   events:
   - target: MAP_EVIDENCE_LOCKER_8
     if_the_user: wants to go to the map
-  - *id051
+  - *id009
   - *id001
 MAP_EVIDENCE_LOCKER_8:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_8.png)\n
@@ -4217,17 +4465,29 @@ MAP_EVIDENCE_LOCKER_8:
   - target: EVIDENCE_LOCKER_8
     if_the_user: asks to go back
   - *id001
-  - *id052
-  - *id053
-  - *id054
-  - *id055
-  - *id056
-  - *id057
-  - *id058
-  - *id059
-  - *id060
-  - *id061
-  - *id051
+  - target: CAR_WRECK_8
+    if_the_user: wants to go to the site of the wreck where Maura disappeared
+  - target: UMASS_OFFICE_8
+    if_the_user: wants to go to U Mass
+  - target: DATA_LAB_8
+    if_the_user: wants to go to the data lab
+  - target: VISIT_FRED_8
+    if_the_user: wants to go to Fred's house
+  - target: SEARCH_FOR_MAURA_8
+    if_the_user: wants to go to the search for Maura near the site of the car crash
+      where Maura disappeared
+  - target: POLICE_PRECINCT_8
+    if_the_user: wants to go to the police precinct
+  - target: WORK_FRIEND_8
+    if_the_user: wants to go to talk to Maura's work friend
+  - target: JULIE_MURRAY_8
+    if_the_user: wants to go to Julie Murray's place
+  - target: MAURA_APARTMENT_8
+    if_the_user: wants to go to Maura's apartment
+  - target: RED_TRUCK_WITNESS_9
+    if_the_user: wants to go to the Swiftwater general store to talk to the witness
+      who saw the red truck
+  - target: EVIDENCE_LOCKER_MAP_EVIDENCE_LOCKER_8_8
 EVIDENCE_LOCKER_MAP_EVIDENCE_LOCKER_8_8:
   prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
     lockers containing evidence for different cases\nMike will give the user a list
@@ -4285,7 +4545,7 @@ VISIT_FRED_8:
   events:
   - target: MAP_VISIT_FRED_8
     if_the_user: wants to go to the map
-  - *id051
+  - *id009
   - *id001
 MAP_VISIT_FRED_8:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_8.png)\n
@@ -4295,17 +4555,29 @@ MAP_VISIT_FRED_8:
   - target: VISIT_FRED_8
     if_the_user: asks to go back
   - *id001
-  - *id052
-  - *id053
-  - *id054
-  - *id055
-  - *id056
-  - *id057
-  - *id058
-  - *id059
-  - *id060
-  - *id061
-  - *id051
+  - target: CAR_WRECK_8
+    if_the_user: wants to go to the site of the wreck where Maura disappeared
+  - target: UMASS_OFFICE_8
+    if_the_user: wants to go to U Mass
+  - target: DATA_LAB_8
+    if_the_user: wants to go to the data lab
+  - target: VISIT_FRED_8
+    if_the_user: wants to go to Fred's house
+  - target: SEARCH_FOR_MAURA_8
+    if_the_user: wants to go to the search for Maura near the site of the car crash
+      where Maura disappeared
+  - target: POLICE_PRECINCT_8
+    if_the_user: wants to go to the police precinct
+  - target: WORK_FRIEND_8
+    if_the_user: wants to go to talk to Maura's work friend
+  - target: JULIE_MURRAY_8
+    if_the_user: wants to go to Julie Murray's place
+  - target: MAURA_APARTMENT_8
+    if_the_user: wants to go to Maura's apartment
+  - target: RED_TRUCK_WITNESS_9
+    if_the_user: wants to go to the Swiftwater general store to talk to the witness
+      who saw the red truck
+  - target: EVIDENCE_LOCKER_MAP_VISIT_FRED_8_8
 EVIDENCE_LOCKER_MAP_VISIT_FRED_8_8:
   prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
     lockers containing evidence for different cases\nMike will give the user a list
@@ -4442,7 +4714,7 @@ SEARCH_FOR_MAURA_8:
   events:
   - target: MAP_SEARCH_FOR_MAURA_8
     if_the_user: wants to go to the map
-  - *id051
+  - *id009
   - *id001
 MAP_SEARCH_FOR_MAURA_8:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_8.png)\n
@@ -4452,17 +4724,29 @@ MAP_SEARCH_FOR_MAURA_8:
   - target: SEARCH_FOR_MAURA_8
     if_the_user: asks to go back
   - *id001
-  - *id052
-  - *id053
-  - *id054
-  - *id055
-  - *id056
-  - *id057
-  - *id058
-  - *id059
-  - *id060
-  - *id061
-  - *id051
+  - target: CAR_WRECK_8
+    if_the_user: wants to go to the site of the wreck where Maura disappeared
+  - target: UMASS_OFFICE_8
+    if_the_user: wants to go to U Mass
+  - target: DATA_LAB_8
+    if_the_user: wants to go to the data lab
+  - target: VISIT_FRED_8
+    if_the_user: wants to go to Fred's house
+  - target: SEARCH_FOR_MAURA_8
+    if_the_user: wants to go to the search for Maura near the site of the car crash
+      where Maura disappeared
+  - target: POLICE_PRECINCT_8
+    if_the_user: wants to go to the police precinct
+  - target: WORK_FRIEND_8
+    if_the_user: wants to go to talk to Maura's work friend
+  - target: JULIE_MURRAY_8
+    if_the_user: wants to go to Julie Murray's place
+  - target: MAURA_APARTMENT_8
+    if_the_user: wants to go to Maura's apartment
+  - target: RED_TRUCK_WITNESS_9
+    if_the_user: wants to go to the Swiftwater general store to talk to the witness
+      who saw the red truck
+  - target: EVIDENCE_LOCKER_MAP_SEARCH_FOR_MAURA_8_8
 EVIDENCE_LOCKER_MAP_SEARCH_FOR_MAURA_8_8:
   prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
     lockers containing evidence for different cases\nMike will give the user a list
@@ -4508,7 +4792,7 @@ POLICE_PRECINCT_8:
   events:
   - target: MAP_POLICE_PRECINCT_8
     if_the_user: wants to go to the map
-  - *id051
+  - *id009
   - *id001
 MAP_POLICE_PRECINCT_8:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_8.png)\n
@@ -4518,17 +4802,29 @@ MAP_POLICE_PRECINCT_8:
   - target: POLICE_PRECINCT_8
     if_the_user: asks to go back
   - *id001
-  - *id052
-  - *id053
-  - *id054
-  - *id055
-  - *id056
-  - *id057
-  - *id058
-  - *id059
-  - *id060
-  - *id061
-  - *id051
+  - target: CAR_WRECK_8
+    if_the_user: wants to go to the site of the wreck where Maura disappeared
+  - target: UMASS_OFFICE_8
+    if_the_user: wants to go to U Mass
+  - target: DATA_LAB_8
+    if_the_user: wants to go to the data lab
+  - target: VISIT_FRED_8
+    if_the_user: wants to go to Fred's house
+  - target: SEARCH_FOR_MAURA_8
+    if_the_user: wants to go to the search for Maura near the site of the car crash
+      where Maura disappeared
+  - target: POLICE_PRECINCT_8
+    if_the_user: wants to go to the police precinct
+  - target: WORK_FRIEND_8
+    if_the_user: wants to go to talk to Maura's work friend
+  - target: JULIE_MURRAY_8
+    if_the_user: wants to go to Julie Murray's place
+  - target: MAURA_APARTMENT_8
+    if_the_user: wants to go to Maura's apartment
+  - target: RED_TRUCK_WITNESS_9
+    if_the_user: wants to go to the Swiftwater general store to talk to the witness
+      who saw the red truck
+  - target: EVIDENCE_LOCKER_MAP_POLICE_PRECINCT_8_8
 EVIDENCE_LOCKER_MAP_POLICE_PRECINCT_8_8:
   prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
     lockers containing evidence for different cases\nMike will give the user a list
@@ -4633,7 +4929,7 @@ WORK_FRIEND_8:
   events:
   - target: MAP_WORK_FRIEND_8
     if_the_user: wants to go to the map
-  - *id051
+  - *id009
   - *id001
 MAP_WORK_FRIEND_8:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_8.png)\n
@@ -4643,17 +4939,29 @@ MAP_WORK_FRIEND_8:
   - target: WORK_FRIEND_8
     if_the_user: asks to go back
   - *id001
-  - *id052
-  - *id053
-  - *id054
-  - *id055
-  - *id056
-  - *id057
-  - *id058
-  - *id059
-  - *id060
-  - *id061
-  - *id051
+  - target: CAR_WRECK_8
+    if_the_user: wants to go to the site of the wreck where Maura disappeared
+  - target: UMASS_OFFICE_8
+    if_the_user: wants to go to U Mass
+  - target: DATA_LAB_8
+    if_the_user: wants to go to the data lab
+  - target: VISIT_FRED_8
+    if_the_user: wants to go to Fred's house
+  - target: SEARCH_FOR_MAURA_8
+    if_the_user: wants to go to the search for Maura near the site of the car crash
+      where Maura disappeared
+  - target: POLICE_PRECINCT_8
+    if_the_user: wants to go to the police precinct
+  - target: WORK_FRIEND_8
+    if_the_user: wants to go to talk to Maura's work friend
+  - target: JULIE_MURRAY_8
+    if_the_user: wants to go to Julie Murray's place
+  - target: MAURA_APARTMENT_8
+    if_the_user: wants to go to Maura's apartment
+  - target: RED_TRUCK_WITNESS_9
+    if_the_user: wants to go to the Swiftwater general store to talk to the witness
+      who saw the red truck
+  - target: EVIDENCE_LOCKER_MAP_WORK_FRIEND_8_8
 EVIDENCE_LOCKER_MAP_WORK_FRIEND_8_8:
   prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
     lockers containing evidence for different cases\nMike will give the user a list
@@ -4713,7 +5021,7 @@ JULIE_MURRAY_8:
   events:
   - target: MAP_JULIE_MURRAY_8
     if_the_user: wants to go to the map
-  - *id051
+  - *id009
   - *id001
 MAP_JULIE_MURRAY_8:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_8.png)\n
@@ -4723,17 +5031,29 @@ MAP_JULIE_MURRAY_8:
   - target: JULIE_MURRAY_8
     if_the_user: asks to go back
   - *id001
-  - *id052
-  - *id053
-  - *id054
-  - *id055
-  - *id056
-  - *id057
-  - *id058
-  - *id059
-  - *id060
-  - *id061
-  - *id051
+  - target: CAR_WRECK_8
+    if_the_user: wants to go to the site of the wreck where Maura disappeared
+  - target: UMASS_OFFICE_8
+    if_the_user: wants to go to U Mass
+  - target: DATA_LAB_8
+    if_the_user: wants to go to the data lab
+  - target: VISIT_FRED_8
+    if_the_user: wants to go to Fred's house
+  - target: SEARCH_FOR_MAURA_8
+    if_the_user: wants to go to the search for Maura near the site of the car crash
+      where Maura disappeared
+  - target: POLICE_PRECINCT_8
+    if_the_user: wants to go to the police precinct
+  - target: WORK_FRIEND_8
+    if_the_user: wants to go to talk to Maura's work friend
+  - target: JULIE_MURRAY_8
+    if_the_user: wants to go to Julie Murray's place
+  - target: MAURA_APARTMENT_8
+    if_the_user: wants to go to Maura's apartment
+  - target: RED_TRUCK_WITNESS_9
+    if_the_user: wants to go to the Swiftwater general store to talk to the witness
+      who saw the red truck
+  - target: EVIDENCE_LOCKER_MAP_JULIE_MURRAY_8_8
 EVIDENCE_LOCKER_MAP_JULIE_MURRAY_8_8:
   prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
     lockers containing evidence for different cases\nMike will give the user a list
@@ -4796,7 +5116,7 @@ MAURA_APARTMENT_8:
   events:
   - target: MAP_MAURA_APARTMENT_8
     if_the_user: wants to go to the map
-  - *id051
+  - *id009
   - *id001
 MAP_MAURA_APARTMENT_8:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_8.png)\n
@@ -4806,17 +5126,29 @@ MAP_MAURA_APARTMENT_8:
   - target: MAURA_APARTMENT_8
     if_the_user: asks to go back
   - *id001
-  - *id052
-  - *id053
-  - *id054
-  - *id055
-  - *id056
-  - *id057
-  - *id058
-  - *id059
-  - *id060
-  - *id061
-  - *id051
+  - target: CAR_WRECK_8
+    if_the_user: wants to go to the site of the wreck where Maura disappeared
+  - target: UMASS_OFFICE_8
+    if_the_user: wants to go to U Mass
+  - target: DATA_LAB_8
+    if_the_user: wants to go to the data lab
+  - target: VISIT_FRED_8
+    if_the_user: wants to go to Fred's house
+  - target: SEARCH_FOR_MAURA_8
+    if_the_user: wants to go to the search for Maura near the site of the car crash
+      where Maura disappeared
+  - target: POLICE_PRECINCT_8
+    if_the_user: wants to go to the police precinct
+  - target: WORK_FRIEND_8
+    if_the_user: wants to go to talk to Maura's work friend
+  - target: JULIE_MURRAY_8
+    if_the_user: wants to go to Julie Murray's place
+  - target: MAURA_APARTMENT_8
+    if_the_user: wants to go to Maura's apartment
+  - target: RED_TRUCK_WITNESS_9
+    if_the_user: wants to go to the Swiftwater general store to talk to the witness
+      who saw the red truck
+  - target: EVIDENCE_LOCKER_MAP_MAURA_APARTMENT_8_8
 EVIDENCE_LOCKER_MAP_MAURA_APARTMENT_8_8:
   prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
     lockers containing evidence for different cases\nMike will give the user a list
@@ -4907,9 +5239,9 @@ CAR_WRECK_9:
   events:
   - target: MAP_CAR_WRECK_9
     if_the_user: wants to go to the map
-  - &id062
-    target: A_FRAME_FINAL
-    if_the_user: asks to go to the A-Frame
+  - &id010
+    target: FRED_MURRAY_WITH_KNIFE_10
+    if_the_user: wants to go to Fred's house to discuss the knife
   - *id001
 MAP_CAR_WRECK_9:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_9.png)\n
@@ -4919,42 +5251,31 @@ MAP_CAR_WRECK_9:
   - target: CAR_WRECK_9
     if_the_user: asks to go back
   - *id001
-  - &id063
-    target: CAR_WRECK_9
+  - target: CAR_WRECK_9
     if_the_user: wants to go to the site of the wreck where Maura disappeared
-  - &id064
-    target: UMASS_OFFICE_9
+  - target: UMASS_OFFICE_9
     if_the_user: wants to go to U Mass
-  - &id065
-    target: DATA_LAB_9
+  - target: DATA_LAB_9
     if_the_user: wants to go to the data lab
-  - &id066
-    target: VISIT_FRED_9
+  - target: VISIT_FRED_9
     if_the_user: wants to go to Fred's house
-  - &id067
-    target: SEARCH_FOR_MAURA_9
+  - target: SEARCH_FOR_MAURA_9
     if_the_user: wants to go to the search for Maura near the site of the car crash
       where Maura disappeared
-  - &id068
-    target: POLICE_PRECINCT_9
+  - target: POLICE_PRECINCT_9
     if_the_user: wants to go to the police precinct
-  - &id069
-    target: WORK_FRIEND_9
+  - target: WORK_FRIEND_9
     if_the_user: wants to go to talk to Maura's work friend
-  - &id070
-    target: JULIE_MURRAY_9
+  - target: JULIE_MURRAY_9
     if_the_user: wants to go to Julie Murray's place
-  - &id071
-    target: MAURA_APARTMENT_9
+  - target: MAURA_APARTMENT_9
     if_the_user: wants to go to Maura's apartment
-  - &id072
-    target: RED_TRUCK_WITNESS_9
+  - target: RED_TRUCK_WITNESS_9
     if_the_user: wants to go to the Swiftwater general store to talk to the witness
       who saw the red truck
-  - &id073
-    target: FRED_MURRAY_WITH_KNIFE_9
+  - target: FRED_MURRAY_WITH_KNIFE_10
     if_the_user: wants to go to Fred's house to discuss the knife
-  - *id062
+  - target: EVIDENCE_LOCKER_MAP_CAR_WRECK_9_9
 EVIDENCE_LOCKER_MAP_CAR_WRECK_9_9:
   prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
     lockers containing evidence for different cases\nMike will give the user a list
@@ -4994,7 +5315,7 @@ UMASS_OFFICE_9:
   events:
   - target: MAP_UMASS_OFFICE_9
     if_the_user: wants to go to the map
-  - *id062
+  - *id010
   - *id001
 MAP_UMASS_OFFICE_9:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_9.png)\n
@@ -5004,18 +5325,31 @@ MAP_UMASS_OFFICE_9:
   - target: UMASS_OFFICE_9
     if_the_user: asks to go back
   - *id001
-  - *id063
-  - *id064
-  - *id065
-  - *id066
-  - *id067
-  - *id068
-  - *id069
-  - *id070
-  - *id071
-  - *id072
-  - *id073
-  - *id062
+  - target: CAR_WRECK_9
+    if_the_user: wants to go to the site of the wreck where Maura disappeared
+  - target: UMASS_OFFICE_9
+    if_the_user: wants to go to U Mass
+  - target: DATA_LAB_9
+    if_the_user: wants to go to the data lab
+  - target: VISIT_FRED_9
+    if_the_user: wants to go to Fred's house
+  - target: SEARCH_FOR_MAURA_9
+    if_the_user: wants to go to the search for Maura near the site of the car crash
+      where Maura disappeared
+  - target: POLICE_PRECINCT_9
+    if_the_user: wants to go to the police precinct
+  - target: WORK_FRIEND_9
+    if_the_user: wants to go to talk to Maura's work friend
+  - target: JULIE_MURRAY_9
+    if_the_user: wants to go to Julie Murray's place
+  - target: MAURA_APARTMENT_9
+    if_the_user: wants to go to Maura's apartment
+  - target: RED_TRUCK_WITNESS_9
+    if_the_user: wants to go to the Swiftwater general store to talk to the witness
+      who saw the red truck
+  - target: FRED_MURRAY_WITH_KNIFE_10
+    if_the_user: wants to go to Fred's house to discuss the knife
+  - target: EVIDENCE_LOCKER_MAP_UMASS_OFFICE_9_9
 EVIDENCE_LOCKER_MAP_UMASS_OFFICE_9_9:
   prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
     lockers containing evidence for different cases\nMike will give the user a list
@@ -5075,7 +5409,7 @@ DATA_LAB_9:
   events:
   - target: MAP_DATA_LAB_9
     if_the_user: wants to go to the map
-  - *id062
+  - *id010
   - *id001
 MAP_DATA_LAB_9:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_9.png)\n
@@ -5085,18 +5419,31 @@ MAP_DATA_LAB_9:
   - target: DATA_LAB_9
     if_the_user: asks to go back
   - *id001
-  - *id063
-  - *id064
-  - *id065
-  - *id066
-  - *id067
-  - *id068
-  - *id069
-  - *id070
-  - *id071
-  - *id072
-  - *id073
-  - *id062
+  - target: CAR_WRECK_9
+    if_the_user: wants to go to the site of the wreck where Maura disappeared
+  - target: UMASS_OFFICE_9
+    if_the_user: wants to go to U Mass
+  - target: DATA_LAB_9
+    if_the_user: wants to go to the data lab
+  - target: VISIT_FRED_9
+    if_the_user: wants to go to Fred's house
+  - target: SEARCH_FOR_MAURA_9
+    if_the_user: wants to go to the search for Maura near the site of the car crash
+      where Maura disappeared
+  - target: POLICE_PRECINCT_9
+    if_the_user: wants to go to the police precinct
+  - target: WORK_FRIEND_9
+    if_the_user: wants to go to talk to Maura's work friend
+  - target: JULIE_MURRAY_9
+    if_the_user: wants to go to Julie Murray's place
+  - target: MAURA_APARTMENT_9
+    if_the_user: wants to go to Maura's apartment
+  - target: RED_TRUCK_WITNESS_9
+    if_the_user: wants to go to the Swiftwater general store to talk to the witness
+      who saw the red truck
+  - target: FRED_MURRAY_WITH_KNIFE_10
+    if_the_user: wants to go to Fred's house to discuss the knife
+  - target: EVIDENCE_LOCKER_MAP_DATA_LAB_9_9
 EVIDENCE_LOCKER_MAP_DATA_LAB_9_9:
   prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
     lockers containing evidence for different cases\nMike will give the user a list
@@ -5133,7 +5480,7 @@ EVIDENCE_LOCKER_9:
   events:
   - target: MAP_EVIDENCE_LOCKER_9
     if_the_user: wants to go to the map
-  - *id062
+  - *id010
   - *id001
 MAP_EVIDENCE_LOCKER_9:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_9.png)\n
@@ -5143,18 +5490,31 @@ MAP_EVIDENCE_LOCKER_9:
   - target: EVIDENCE_LOCKER_9
     if_the_user: asks to go back
   - *id001
-  - *id063
-  - *id064
-  - *id065
-  - *id066
-  - *id067
-  - *id068
-  - *id069
-  - *id070
-  - *id071
-  - *id072
-  - *id073
-  - *id062
+  - target: CAR_WRECK_9
+    if_the_user: wants to go to the site of the wreck where Maura disappeared
+  - target: UMASS_OFFICE_9
+    if_the_user: wants to go to U Mass
+  - target: DATA_LAB_9
+    if_the_user: wants to go to the data lab
+  - target: VISIT_FRED_9
+    if_the_user: wants to go to Fred's house
+  - target: SEARCH_FOR_MAURA_9
+    if_the_user: wants to go to the search for Maura near the site of the car crash
+      where Maura disappeared
+  - target: POLICE_PRECINCT_9
+    if_the_user: wants to go to the police precinct
+  - target: WORK_FRIEND_9
+    if_the_user: wants to go to talk to Maura's work friend
+  - target: JULIE_MURRAY_9
+    if_the_user: wants to go to Julie Murray's place
+  - target: MAURA_APARTMENT_9
+    if_the_user: wants to go to Maura's apartment
+  - target: RED_TRUCK_WITNESS_9
+    if_the_user: wants to go to the Swiftwater general store to talk to the witness
+      who saw the red truck
+  - target: FRED_MURRAY_WITH_KNIFE_10
+    if_the_user: wants to go to Fred's house to discuss the knife
+  - target: EVIDENCE_LOCKER_MAP_EVIDENCE_LOCKER_9_9
 EVIDENCE_LOCKER_MAP_EVIDENCE_LOCKER_9_9:
   prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
     lockers containing evidence for different cases\nMike will give the user a list
@@ -5212,7 +5572,7 @@ VISIT_FRED_9:
   events:
   - target: MAP_VISIT_FRED_9
     if_the_user: wants to go to the map
-  - *id062
+  - *id010
   - *id001
 MAP_VISIT_FRED_9:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_9.png)\n
@@ -5222,18 +5582,31 @@ MAP_VISIT_FRED_9:
   - target: VISIT_FRED_9
     if_the_user: asks to go back
   - *id001
-  - *id063
-  - *id064
-  - *id065
-  - *id066
-  - *id067
-  - *id068
-  - *id069
-  - *id070
-  - *id071
-  - *id072
-  - *id073
-  - *id062
+  - target: CAR_WRECK_9
+    if_the_user: wants to go to the site of the wreck where Maura disappeared
+  - target: UMASS_OFFICE_9
+    if_the_user: wants to go to U Mass
+  - target: DATA_LAB_9
+    if_the_user: wants to go to the data lab
+  - target: VISIT_FRED_9
+    if_the_user: wants to go to Fred's house
+  - target: SEARCH_FOR_MAURA_9
+    if_the_user: wants to go to the search for Maura near the site of the car crash
+      where Maura disappeared
+  - target: POLICE_PRECINCT_9
+    if_the_user: wants to go to the police precinct
+  - target: WORK_FRIEND_9
+    if_the_user: wants to go to talk to Maura's work friend
+  - target: JULIE_MURRAY_9
+    if_the_user: wants to go to Julie Murray's place
+  - target: MAURA_APARTMENT_9
+    if_the_user: wants to go to Maura's apartment
+  - target: RED_TRUCK_WITNESS_9
+    if_the_user: wants to go to the Swiftwater general store to talk to the witness
+      who saw the red truck
+  - target: FRED_MURRAY_WITH_KNIFE_10
+    if_the_user: wants to go to Fred's house to discuss the knife
+  - target: EVIDENCE_LOCKER_MAP_VISIT_FRED_9_9
 EVIDENCE_LOCKER_MAP_VISIT_FRED_9_9:
   prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
     lockers containing evidence for different cases\nMike will give the user a list
@@ -5370,7 +5743,7 @@ SEARCH_FOR_MAURA_9:
   events:
   - target: MAP_SEARCH_FOR_MAURA_9
     if_the_user: wants to go to the map
-  - *id062
+  - *id010
   - *id001
 MAP_SEARCH_FOR_MAURA_9:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_9.png)\n
@@ -5380,18 +5753,31 @@ MAP_SEARCH_FOR_MAURA_9:
   - target: SEARCH_FOR_MAURA_9
     if_the_user: asks to go back
   - *id001
-  - *id063
-  - *id064
-  - *id065
-  - *id066
-  - *id067
-  - *id068
-  - *id069
-  - *id070
-  - *id071
-  - *id072
-  - *id073
-  - *id062
+  - target: CAR_WRECK_9
+    if_the_user: wants to go to the site of the wreck where Maura disappeared
+  - target: UMASS_OFFICE_9
+    if_the_user: wants to go to U Mass
+  - target: DATA_LAB_9
+    if_the_user: wants to go to the data lab
+  - target: VISIT_FRED_9
+    if_the_user: wants to go to Fred's house
+  - target: SEARCH_FOR_MAURA_9
+    if_the_user: wants to go to the search for Maura near the site of the car crash
+      where Maura disappeared
+  - target: POLICE_PRECINCT_9
+    if_the_user: wants to go to the police precinct
+  - target: WORK_FRIEND_9
+    if_the_user: wants to go to talk to Maura's work friend
+  - target: JULIE_MURRAY_9
+    if_the_user: wants to go to Julie Murray's place
+  - target: MAURA_APARTMENT_9
+    if_the_user: wants to go to Maura's apartment
+  - target: RED_TRUCK_WITNESS_9
+    if_the_user: wants to go to the Swiftwater general store to talk to the witness
+      who saw the red truck
+  - target: FRED_MURRAY_WITH_KNIFE_10
+    if_the_user: wants to go to Fred's house to discuss the knife
+  - target: EVIDENCE_LOCKER_MAP_SEARCH_FOR_MAURA_9_9
 EVIDENCE_LOCKER_MAP_SEARCH_FOR_MAURA_9_9:
   prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
     lockers containing evidence for different cases\nMike will give the user a list
@@ -5437,7 +5823,7 @@ POLICE_PRECINCT_9:
   events:
   - target: MAP_POLICE_PRECINCT_9
     if_the_user: wants to go to the map
-  - *id062
+  - *id010
   - *id001
 MAP_POLICE_PRECINCT_9:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_9.png)\n
@@ -5447,18 +5833,31 @@ MAP_POLICE_PRECINCT_9:
   - target: POLICE_PRECINCT_9
     if_the_user: asks to go back
   - *id001
-  - *id063
-  - *id064
-  - *id065
-  - *id066
-  - *id067
-  - *id068
-  - *id069
-  - *id070
-  - *id071
-  - *id072
-  - *id073
-  - *id062
+  - target: CAR_WRECK_9
+    if_the_user: wants to go to the site of the wreck where Maura disappeared
+  - target: UMASS_OFFICE_9
+    if_the_user: wants to go to U Mass
+  - target: DATA_LAB_9
+    if_the_user: wants to go to the data lab
+  - target: VISIT_FRED_9
+    if_the_user: wants to go to Fred's house
+  - target: SEARCH_FOR_MAURA_9
+    if_the_user: wants to go to the search for Maura near the site of the car crash
+      where Maura disappeared
+  - target: POLICE_PRECINCT_9
+    if_the_user: wants to go to the police precinct
+  - target: WORK_FRIEND_9
+    if_the_user: wants to go to talk to Maura's work friend
+  - target: JULIE_MURRAY_9
+    if_the_user: wants to go to Julie Murray's place
+  - target: MAURA_APARTMENT_9
+    if_the_user: wants to go to Maura's apartment
+  - target: RED_TRUCK_WITNESS_9
+    if_the_user: wants to go to the Swiftwater general store to talk to the witness
+      who saw the red truck
+  - target: FRED_MURRAY_WITH_KNIFE_10
+    if_the_user: wants to go to Fred's house to discuss the knife
+  - target: EVIDENCE_LOCKER_MAP_POLICE_PRECINCT_9_9
 EVIDENCE_LOCKER_MAP_POLICE_PRECINCT_9_9:
   prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
     lockers containing evidence for different cases\nMike will give the user a list
@@ -5563,7 +5962,7 @@ WORK_FRIEND_9:
   events:
   - target: MAP_WORK_FRIEND_9
     if_the_user: wants to go to the map
-  - *id062
+  - *id010
   - *id001
 MAP_WORK_FRIEND_9:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_9.png)\n
@@ -5573,18 +5972,31 @@ MAP_WORK_FRIEND_9:
   - target: WORK_FRIEND_9
     if_the_user: asks to go back
   - *id001
-  - *id063
-  - *id064
-  - *id065
-  - *id066
-  - *id067
-  - *id068
-  - *id069
-  - *id070
-  - *id071
-  - *id072
-  - *id073
-  - *id062
+  - target: CAR_WRECK_9
+    if_the_user: wants to go to the site of the wreck where Maura disappeared
+  - target: UMASS_OFFICE_9
+    if_the_user: wants to go to U Mass
+  - target: DATA_LAB_9
+    if_the_user: wants to go to the data lab
+  - target: VISIT_FRED_9
+    if_the_user: wants to go to Fred's house
+  - target: SEARCH_FOR_MAURA_9
+    if_the_user: wants to go to the search for Maura near the site of the car crash
+      where Maura disappeared
+  - target: POLICE_PRECINCT_9
+    if_the_user: wants to go to the police precinct
+  - target: WORK_FRIEND_9
+    if_the_user: wants to go to talk to Maura's work friend
+  - target: JULIE_MURRAY_9
+    if_the_user: wants to go to Julie Murray's place
+  - target: MAURA_APARTMENT_9
+    if_the_user: wants to go to Maura's apartment
+  - target: RED_TRUCK_WITNESS_9
+    if_the_user: wants to go to the Swiftwater general store to talk to the witness
+      who saw the red truck
+  - target: FRED_MURRAY_WITH_KNIFE_10
+    if_the_user: wants to go to Fred's house to discuss the knife
+  - target: EVIDENCE_LOCKER_MAP_WORK_FRIEND_9_9
 EVIDENCE_LOCKER_MAP_WORK_FRIEND_9_9:
   prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
     lockers containing evidence for different cases\nMike will give the user a list
@@ -5644,7 +6056,7 @@ JULIE_MURRAY_9:
   events:
   - target: MAP_JULIE_MURRAY_9
     if_the_user: wants to go to the map
-  - *id062
+  - *id010
   - *id001
 MAP_JULIE_MURRAY_9:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_9.png)\n
@@ -5654,18 +6066,31 @@ MAP_JULIE_MURRAY_9:
   - target: JULIE_MURRAY_9
     if_the_user: asks to go back
   - *id001
-  - *id063
-  - *id064
-  - *id065
-  - *id066
-  - *id067
-  - *id068
-  - *id069
-  - *id070
-  - *id071
-  - *id072
-  - *id073
-  - *id062
+  - target: CAR_WRECK_9
+    if_the_user: wants to go to the site of the wreck where Maura disappeared
+  - target: UMASS_OFFICE_9
+    if_the_user: wants to go to U Mass
+  - target: DATA_LAB_9
+    if_the_user: wants to go to the data lab
+  - target: VISIT_FRED_9
+    if_the_user: wants to go to Fred's house
+  - target: SEARCH_FOR_MAURA_9
+    if_the_user: wants to go to the search for Maura near the site of the car crash
+      where Maura disappeared
+  - target: POLICE_PRECINCT_9
+    if_the_user: wants to go to the police precinct
+  - target: WORK_FRIEND_9
+    if_the_user: wants to go to talk to Maura's work friend
+  - target: JULIE_MURRAY_9
+    if_the_user: wants to go to Julie Murray's place
+  - target: MAURA_APARTMENT_9
+    if_the_user: wants to go to Maura's apartment
+  - target: RED_TRUCK_WITNESS_9
+    if_the_user: wants to go to the Swiftwater general store to talk to the witness
+      who saw the red truck
+  - target: FRED_MURRAY_WITH_KNIFE_10
+    if_the_user: wants to go to Fred's house to discuss the knife
+  - target: EVIDENCE_LOCKER_MAP_JULIE_MURRAY_9_9
 EVIDENCE_LOCKER_MAP_JULIE_MURRAY_9_9:
   prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
     lockers containing evidence for different cases\nMike will give the user a list
@@ -5728,7 +6153,7 @@ MAURA_APARTMENT_9:
   events:
   - target: MAP_MAURA_APARTMENT_9
     if_the_user: wants to go to the map
-  - *id062
+  - *id010
   - *id001
 MAP_MAURA_APARTMENT_9:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_9.png)\n
@@ -5738,18 +6163,31 @@ MAP_MAURA_APARTMENT_9:
   - target: MAURA_APARTMENT_9
     if_the_user: asks to go back
   - *id001
-  - *id063
-  - *id064
-  - *id065
-  - *id066
-  - *id067
-  - *id068
-  - *id069
-  - *id070
-  - *id071
-  - *id072
-  - *id073
-  - *id062
+  - target: CAR_WRECK_9
+    if_the_user: wants to go to the site of the wreck where Maura disappeared
+  - target: UMASS_OFFICE_9
+    if_the_user: wants to go to U Mass
+  - target: DATA_LAB_9
+    if_the_user: wants to go to the data lab
+  - target: VISIT_FRED_9
+    if_the_user: wants to go to Fred's house
+  - target: SEARCH_FOR_MAURA_9
+    if_the_user: wants to go to the search for Maura near the site of the car crash
+      where Maura disappeared
+  - target: POLICE_PRECINCT_9
+    if_the_user: wants to go to the police precinct
+  - target: WORK_FRIEND_9
+    if_the_user: wants to go to talk to Maura's work friend
+  - target: JULIE_MURRAY_9
+    if_the_user: wants to go to Julie Murray's place
+  - target: MAURA_APARTMENT_9
+    if_the_user: wants to go to Maura's apartment
+  - target: RED_TRUCK_WITNESS_9
+    if_the_user: wants to go to the Swiftwater general store to talk to the witness
+      who saw the red truck
+  - target: FRED_MURRAY_WITH_KNIFE_10
+    if_the_user: wants to go to Fred's house to discuss the knife
+  - target: EVIDENCE_LOCKER_MAP_MAURA_APARTMENT_9_9
 EVIDENCE_LOCKER_MAP_MAURA_APARTMENT_9_9:
   prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
     lockers containing evidence for different cases\nMike will give the user a list
@@ -5795,7 +6233,7 @@ RED_TRUCK_WITNESS_9:
   events:
   - target: MAP_RED_TRUCK_WITNESS_9
     if_the_user: wants to go to the map
-  - *id062
+  - *id010
   - *id001
 MAP_RED_TRUCK_WITNESS_9:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_9.png)\n
@@ -5805,18 +6243,31 @@ MAP_RED_TRUCK_WITNESS_9:
   - target: RED_TRUCK_WITNESS_9
     if_the_user: asks to go back
   - *id001
-  - *id063
-  - *id064
-  - *id065
-  - *id066
-  - *id067
-  - *id068
-  - *id069
-  - *id070
-  - *id071
-  - *id072
-  - *id073
-  - *id062
+  - target: CAR_WRECK_9
+    if_the_user: wants to go to the site of the wreck where Maura disappeared
+  - target: UMASS_OFFICE_9
+    if_the_user: wants to go to U Mass
+  - target: DATA_LAB_9
+    if_the_user: wants to go to the data lab
+  - target: VISIT_FRED_9
+    if_the_user: wants to go to Fred's house
+  - target: SEARCH_FOR_MAURA_9
+    if_the_user: wants to go to the search for Maura near the site of the car crash
+      where Maura disappeared
+  - target: POLICE_PRECINCT_9
+    if_the_user: wants to go to the police precinct
+  - target: WORK_FRIEND_9
+    if_the_user: wants to go to talk to Maura's work friend
+  - target: JULIE_MURRAY_9
+    if_the_user: wants to go to Julie Murray's place
+  - target: MAURA_APARTMENT_9
+    if_the_user: wants to go to Maura's apartment
+  - target: RED_TRUCK_WITNESS_9
+    if_the_user: wants to go to the Swiftwater general store to talk to the witness
+      who saw the red truck
+  - target: FRED_MURRAY_WITH_KNIFE_10
+    if_the_user: wants to go to Fred's house to discuss the knife
+  - target: EVIDENCE_LOCKER_MAP_RED_TRUCK_WITNESS_9_9
 EVIDENCE_LOCKER_MAP_RED_TRUCK_WITNESS_9_9:
   prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
     lockers containing evidence for different cases\nMike will give the user a list
@@ -5907,7 +6358,9 @@ CAR_WRECK_10:
   events:
   - target: MAP_CAR_WRECK_10
     if_the_user: wants to go to the map
-  - *id062
+  - &id011
+    target: A_FRAME_FINAL
+    if_the_user: asks to go to the A-Frame
   - *id001
 MAP_CAR_WRECK_10:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_10.png)\n
@@ -5917,42 +6370,33 @@ MAP_CAR_WRECK_10:
   - target: CAR_WRECK_10
     if_the_user: asks to go back
   - *id001
-  - &id074
-    target: CAR_WRECK_10
+  - target: CAR_WRECK_10
     if_the_user: wants to go to the site of the wreck where Maura disappeared
-  - &id075
-    target: UMASS_OFFICE_10
+  - target: UMASS_OFFICE_10
     if_the_user: wants to go to U Mass
-  - &id076
-    target: DATA_LAB_10
+  - target: DATA_LAB_10
     if_the_user: wants to go to the data lab
-  - &id077
-    target: VISIT_FRED_10
+  - target: VISIT_FRED_10
     if_the_user: wants to go to Fred's house
-  - &id078
-    target: SEARCH_FOR_MAURA_10
+  - target: SEARCH_FOR_MAURA_10
     if_the_user: wants to go to the search for Maura near the site of the car crash
       where Maura disappeared
-  - &id079
-    target: POLICE_PRECINCT_10
+  - target: POLICE_PRECINCT_10
     if_the_user: wants to go to the police precinct
-  - &id080
-    target: WORK_FRIEND_10
+  - target: WORK_FRIEND_10
     if_the_user: wants to go to talk to Maura's work friend
-  - &id081
-    target: JULIE_MURRAY_10
+  - target: JULIE_MURRAY_10
     if_the_user: wants to go to Julie Murray's place
-  - &id082
-    target: MAURA_APARTMENT_10
+  - target: MAURA_APARTMENT_10
     if_the_user: wants to go to Maura's apartment
-  - &id083
-    target: RED_TRUCK_WITNESS_10
+  - target: RED_TRUCK_WITNESS_10
     if_the_user: wants to go to the Swiftwater general store to talk to the witness
       who saw the red truck
-  - &id084
-    target: FRED_MURRAY_WITH_KNIFE_10
+  - target: FRED_MURRAY_WITH_KNIFE_10
     if_the_user: wants to go to Fred's house to discuss the knife
-  - *id062
+  - target: A_FRAME_FINAL
+    if_the_user: asks to go to the A-Frame
+  - target: EVIDENCE_LOCKER_MAP_CAR_WRECK_10_10
 EVIDENCE_LOCKER_MAP_CAR_WRECK_10_10:
   prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
     lockers containing evidence for different cases\nMike will give the user a list
@@ -5992,7 +6436,7 @@ UMASS_OFFICE_10:
   events:
   - target: MAP_UMASS_OFFICE_10
     if_the_user: wants to go to the map
-  - *id062
+  - *id011
   - *id001
 MAP_UMASS_OFFICE_10:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_10.png)\n
@@ -6002,18 +6446,33 @@ MAP_UMASS_OFFICE_10:
   - target: UMASS_OFFICE_10
     if_the_user: asks to go back
   - *id001
-  - *id074
-  - *id075
-  - *id076
-  - *id077
-  - *id078
-  - *id079
-  - *id080
-  - *id081
-  - *id082
-  - *id083
-  - *id084
-  - *id062
+  - target: CAR_WRECK_10
+    if_the_user: wants to go to the site of the wreck where Maura disappeared
+  - target: UMASS_OFFICE_10
+    if_the_user: wants to go to U Mass
+  - target: DATA_LAB_10
+    if_the_user: wants to go to the data lab
+  - target: VISIT_FRED_10
+    if_the_user: wants to go to Fred's house
+  - target: SEARCH_FOR_MAURA_10
+    if_the_user: wants to go to the search for Maura near the site of the car crash
+      where Maura disappeared
+  - target: POLICE_PRECINCT_10
+    if_the_user: wants to go to the police precinct
+  - target: WORK_FRIEND_10
+    if_the_user: wants to go to talk to Maura's work friend
+  - target: JULIE_MURRAY_10
+    if_the_user: wants to go to Julie Murray's place
+  - target: MAURA_APARTMENT_10
+    if_the_user: wants to go to Maura's apartment
+  - target: RED_TRUCK_WITNESS_10
+    if_the_user: wants to go to the Swiftwater general store to talk to the witness
+      who saw the red truck
+  - target: FRED_MURRAY_WITH_KNIFE_10
+    if_the_user: wants to go to Fred's house to discuss the knife
+  - target: A_FRAME_FINAL
+    if_the_user: asks to go to the A-Frame
+  - target: EVIDENCE_LOCKER_MAP_UMASS_OFFICE_10_10
 EVIDENCE_LOCKER_MAP_UMASS_OFFICE_10_10:
   prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
     lockers containing evidence for different cases\nMike will give the user a list
@@ -6073,7 +6532,7 @@ DATA_LAB_10:
   events:
   - target: MAP_DATA_LAB_10
     if_the_user: wants to go to the map
-  - *id062
+  - *id011
   - *id001
 MAP_DATA_LAB_10:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_10.png)\n
@@ -6083,18 +6542,33 @@ MAP_DATA_LAB_10:
   - target: DATA_LAB_10
     if_the_user: asks to go back
   - *id001
-  - *id074
-  - *id075
-  - *id076
-  - *id077
-  - *id078
-  - *id079
-  - *id080
-  - *id081
-  - *id082
-  - *id083
-  - *id084
-  - *id062
+  - target: CAR_WRECK_10
+    if_the_user: wants to go to the site of the wreck where Maura disappeared
+  - target: UMASS_OFFICE_10
+    if_the_user: wants to go to U Mass
+  - target: DATA_LAB_10
+    if_the_user: wants to go to the data lab
+  - target: VISIT_FRED_10
+    if_the_user: wants to go to Fred's house
+  - target: SEARCH_FOR_MAURA_10
+    if_the_user: wants to go to the search for Maura near the site of the car crash
+      where Maura disappeared
+  - target: POLICE_PRECINCT_10
+    if_the_user: wants to go to the police precinct
+  - target: WORK_FRIEND_10
+    if_the_user: wants to go to talk to Maura's work friend
+  - target: JULIE_MURRAY_10
+    if_the_user: wants to go to Julie Murray's place
+  - target: MAURA_APARTMENT_10
+    if_the_user: wants to go to Maura's apartment
+  - target: RED_TRUCK_WITNESS_10
+    if_the_user: wants to go to the Swiftwater general store to talk to the witness
+      who saw the red truck
+  - target: FRED_MURRAY_WITH_KNIFE_10
+    if_the_user: wants to go to Fred's house to discuss the knife
+  - target: A_FRAME_FINAL
+    if_the_user: asks to go to the A-Frame
+  - target: EVIDENCE_LOCKER_MAP_DATA_LAB_10_10
 EVIDENCE_LOCKER_MAP_DATA_LAB_10_10:
   prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
     lockers containing evidence for different cases\nMike will give the user a list
@@ -6131,7 +6605,7 @@ EVIDENCE_LOCKER_10:
   events:
   - target: MAP_EVIDENCE_LOCKER_10
     if_the_user: wants to go to the map
-  - *id062
+  - *id011
   - *id001
 MAP_EVIDENCE_LOCKER_10:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_10.png)\n
@@ -6141,18 +6615,33 @@ MAP_EVIDENCE_LOCKER_10:
   - target: EVIDENCE_LOCKER_10
     if_the_user: asks to go back
   - *id001
-  - *id074
-  - *id075
-  - *id076
-  - *id077
-  - *id078
-  - *id079
-  - *id080
-  - *id081
-  - *id082
-  - *id083
-  - *id084
-  - *id062
+  - target: CAR_WRECK_10
+    if_the_user: wants to go to the site of the wreck where Maura disappeared
+  - target: UMASS_OFFICE_10
+    if_the_user: wants to go to U Mass
+  - target: DATA_LAB_10
+    if_the_user: wants to go to the data lab
+  - target: VISIT_FRED_10
+    if_the_user: wants to go to Fred's house
+  - target: SEARCH_FOR_MAURA_10
+    if_the_user: wants to go to the search for Maura near the site of the car crash
+      where Maura disappeared
+  - target: POLICE_PRECINCT_10
+    if_the_user: wants to go to the police precinct
+  - target: WORK_FRIEND_10
+    if_the_user: wants to go to talk to Maura's work friend
+  - target: JULIE_MURRAY_10
+    if_the_user: wants to go to Julie Murray's place
+  - target: MAURA_APARTMENT_10
+    if_the_user: wants to go to Maura's apartment
+  - target: RED_TRUCK_WITNESS_10
+    if_the_user: wants to go to the Swiftwater general store to talk to the witness
+      who saw the red truck
+  - target: FRED_MURRAY_WITH_KNIFE_10
+    if_the_user: wants to go to Fred's house to discuss the knife
+  - target: A_FRAME_FINAL
+    if_the_user: asks to go to the A-Frame
+  - target: EVIDENCE_LOCKER_MAP_EVIDENCE_LOCKER_10_10
 EVIDENCE_LOCKER_MAP_EVIDENCE_LOCKER_10_10:
   prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
     lockers containing evidence for different cases\nMike will give the user a list
@@ -6210,7 +6699,7 @@ VISIT_FRED_10:
   events:
   - target: MAP_VISIT_FRED_10
     if_the_user: wants to go to the map
-  - *id062
+  - *id011
   - *id001
 MAP_VISIT_FRED_10:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_10.png)\n
@@ -6220,18 +6709,33 @@ MAP_VISIT_FRED_10:
   - target: VISIT_FRED_10
     if_the_user: asks to go back
   - *id001
-  - *id074
-  - *id075
-  - *id076
-  - *id077
-  - *id078
-  - *id079
-  - *id080
-  - *id081
-  - *id082
-  - *id083
-  - *id084
-  - *id062
+  - target: CAR_WRECK_10
+    if_the_user: wants to go to the site of the wreck where Maura disappeared
+  - target: UMASS_OFFICE_10
+    if_the_user: wants to go to U Mass
+  - target: DATA_LAB_10
+    if_the_user: wants to go to the data lab
+  - target: VISIT_FRED_10
+    if_the_user: wants to go to Fred's house
+  - target: SEARCH_FOR_MAURA_10
+    if_the_user: wants to go to the search for Maura near the site of the car crash
+      where Maura disappeared
+  - target: POLICE_PRECINCT_10
+    if_the_user: wants to go to the police precinct
+  - target: WORK_FRIEND_10
+    if_the_user: wants to go to talk to Maura's work friend
+  - target: JULIE_MURRAY_10
+    if_the_user: wants to go to Julie Murray's place
+  - target: MAURA_APARTMENT_10
+    if_the_user: wants to go to Maura's apartment
+  - target: RED_TRUCK_WITNESS_10
+    if_the_user: wants to go to the Swiftwater general store to talk to the witness
+      who saw the red truck
+  - target: FRED_MURRAY_WITH_KNIFE_10
+    if_the_user: wants to go to Fred's house to discuss the knife
+  - target: A_FRAME_FINAL
+    if_the_user: asks to go to the A-Frame
+  - target: EVIDENCE_LOCKER_MAP_VISIT_FRED_10_10
 EVIDENCE_LOCKER_MAP_VISIT_FRED_10_10:
   prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
     lockers containing evidence for different cases\nMike will give the user a list
@@ -6368,7 +6872,7 @@ SEARCH_FOR_MAURA_10:
   events:
   - target: MAP_SEARCH_FOR_MAURA_10
     if_the_user: wants to go to the map
-  - *id062
+  - *id011
   - *id001
 MAP_SEARCH_FOR_MAURA_10:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_10.png)\n
@@ -6378,18 +6882,33 @@ MAP_SEARCH_FOR_MAURA_10:
   - target: SEARCH_FOR_MAURA_10
     if_the_user: asks to go back
   - *id001
-  - *id074
-  - *id075
-  - *id076
-  - *id077
-  - *id078
-  - *id079
-  - *id080
-  - *id081
-  - *id082
-  - *id083
-  - *id084
-  - *id062
+  - target: CAR_WRECK_10
+    if_the_user: wants to go to the site of the wreck where Maura disappeared
+  - target: UMASS_OFFICE_10
+    if_the_user: wants to go to U Mass
+  - target: DATA_LAB_10
+    if_the_user: wants to go to the data lab
+  - target: VISIT_FRED_10
+    if_the_user: wants to go to Fred's house
+  - target: SEARCH_FOR_MAURA_10
+    if_the_user: wants to go to the search for Maura near the site of the car crash
+      where Maura disappeared
+  - target: POLICE_PRECINCT_10
+    if_the_user: wants to go to the police precinct
+  - target: WORK_FRIEND_10
+    if_the_user: wants to go to talk to Maura's work friend
+  - target: JULIE_MURRAY_10
+    if_the_user: wants to go to Julie Murray's place
+  - target: MAURA_APARTMENT_10
+    if_the_user: wants to go to Maura's apartment
+  - target: RED_TRUCK_WITNESS_10
+    if_the_user: wants to go to the Swiftwater general store to talk to the witness
+      who saw the red truck
+  - target: FRED_MURRAY_WITH_KNIFE_10
+    if_the_user: wants to go to Fred's house to discuss the knife
+  - target: A_FRAME_FINAL
+    if_the_user: asks to go to the A-Frame
+  - target: EVIDENCE_LOCKER_MAP_SEARCH_FOR_MAURA_10_10
 EVIDENCE_LOCKER_MAP_SEARCH_FOR_MAURA_10_10:
   prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
     lockers containing evidence for different cases\nMike will give the user a list
@@ -6435,7 +6954,7 @@ POLICE_PRECINCT_10:
   events:
   - target: MAP_POLICE_PRECINCT_10
     if_the_user: wants to go to the map
-  - *id062
+  - *id011
   - *id001
 MAP_POLICE_PRECINCT_10:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_10.png)\n
@@ -6445,18 +6964,33 @@ MAP_POLICE_PRECINCT_10:
   - target: POLICE_PRECINCT_10
     if_the_user: asks to go back
   - *id001
-  - *id074
-  - *id075
-  - *id076
-  - *id077
-  - *id078
-  - *id079
-  - *id080
-  - *id081
-  - *id082
-  - *id083
-  - *id084
-  - *id062
+  - target: CAR_WRECK_10
+    if_the_user: wants to go to the site of the wreck where Maura disappeared
+  - target: UMASS_OFFICE_10
+    if_the_user: wants to go to U Mass
+  - target: DATA_LAB_10
+    if_the_user: wants to go to the data lab
+  - target: VISIT_FRED_10
+    if_the_user: wants to go to Fred's house
+  - target: SEARCH_FOR_MAURA_10
+    if_the_user: wants to go to the search for Maura near the site of the car crash
+      where Maura disappeared
+  - target: POLICE_PRECINCT_10
+    if_the_user: wants to go to the police precinct
+  - target: WORK_FRIEND_10
+    if_the_user: wants to go to talk to Maura's work friend
+  - target: JULIE_MURRAY_10
+    if_the_user: wants to go to Julie Murray's place
+  - target: MAURA_APARTMENT_10
+    if_the_user: wants to go to Maura's apartment
+  - target: RED_TRUCK_WITNESS_10
+    if_the_user: wants to go to the Swiftwater general store to talk to the witness
+      who saw the red truck
+  - target: FRED_MURRAY_WITH_KNIFE_10
+    if_the_user: wants to go to Fred's house to discuss the knife
+  - target: A_FRAME_FINAL
+    if_the_user: asks to go to the A-Frame
+  - target: EVIDENCE_LOCKER_MAP_POLICE_PRECINCT_10_10
 EVIDENCE_LOCKER_MAP_POLICE_PRECINCT_10_10:
   prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
     lockers containing evidence for different cases\nMike will give the user a list
@@ -6561,7 +7095,7 @@ WORK_FRIEND_10:
   events:
   - target: MAP_WORK_FRIEND_10
     if_the_user: wants to go to the map
-  - *id062
+  - *id011
   - *id001
 MAP_WORK_FRIEND_10:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_10.png)\n
@@ -6571,18 +7105,33 @@ MAP_WORK_FRIEND_10:
   - target: WORK_FRIEND_10
     if_the_user: asks to go back
   - *id001
-  - *id074
-  - *id075
-  - *id076
-  - *id077
-  - *id078
-  - *id079
-  - *id080
-  - *id081
-  - *id082
-  - *id083
-  - *id084
-  - *id062
+  - target: CAR_WRECK_10
+    if_the_user: wants to go to the site of the wreck where Maura disappeared
+  - target: UMASS_OFFICE_10
+    if_the_user: wants to go to U Mass
+  - target: DATA_LAB_10
+    if_the_user: wants to go to the data lab
+  - target: VISIT_FRED_10
+    if_the_user: wants to go to Fred's house
+  - target: SEARCH_FOR_MAURA_10
+    if_the_user: wants to go to the search for Maura near the site of the car crash
+      where Maura disappeared
+  - target: POLICE_PRECINCT_10
+    if_the_user: wants to go to the police precinct
+  - target: WORK_FRIEND_10
+    if_the_user: wants to go to talk to Maura's work friend
+  - target: JULIE_MURRAY_10
+    if_the_user: wants to go to Julie Murray's place
+  - target: MAURA_APARTMENT_10
+    if_the_user: wants to go to Maura's apartment
+  - target: RED_TRUCK_WITNESS_10
+    if_the_user: wants to go to the Swiftwater general store to talk to the witness
+      who saw the red truck
+  - target: FRED_MURRAY_WITH_KNIFE_10
+    if_the_user: wants to go to Fred's house to discuss the knife
+  - target: A_FRAME_FINAL
+    if_the_user: asks to go to the A-Frame
+  - target: EVIDENCE_LOCKER_MAP_WORK_FRIEND_10_10
 EVIDENCE_LOCKER_MAP_WORK_FRIEND_10_10:
   prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
     lockers containing evidence for different cases\nMike will give the user a list
@@ -6642,7 +7191,7 @@ JULIE_MURRAY_10:
   events:
   - target: MAP_JULIE_MURRAY_10
     if_the_user: wants to go to the map
-  - *id062
+  - *id011
   - *id001
 MAP_JULIE_MURRAY_10:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_10.png)\n
@@ -6652,18 +7201,33 @@ MAP_JULIE_MURRAY_10:
   - target: JULIE_MURRAY_10
     if_the_user: asks to go back
   - *id001
-  - *id074
-  - *id075
-  - *id076
-  - *id077
-  - *id078
-  - *id079
-  - *id080
-  - *id081
-  - *id082
-  - *id083
-  - *id084
-  - *id062
+  - target: CAR_WRECK_10
+    if_the_user: wants to go to the site of the wreck where Maura disappeared
+  - target: UMASS_OFFICE_10
+    if_the_user: wants to go to U Mass
+  - target: DATA_LAB_10
+    if_the_user: wants to go to the data lab
+  - target: VISIT_FRED_10
+    if_the_user: wants to go to Fred's house
+  - target: SEARCH_FOR_MAURA_10
+    if_the_user: wants to go to the search for Maura near the site of the car crash
+      where Maura disappeared
+  - target: POLICE_PRECINCT_10
+    if_the_user: wants to go to the police precinct
+  - target: WORK_FRIEND_10
+    if_the_user: wants to go to talk to Maura's work friend
+  - target: JULIE_MURRAY_10
+    if_the_user: wants to go to Julie Murray's place
+  - target: MAURA_APARTMENT_10
+    if_the_user: wants to go to Maura's apartment
+  - target: RED_TRUCK_WITNESS_10
+    if_the_user: wants to go to the Swiftwater general store to talk to the witness
+      who saw the red truck
+  - target: FRED_MURRAY_WITH_KNIFE_10
+    if_the_user: wants to go to Fred's house to discuss the knife
+  - target: A_FRAME_FINAL
+    if_the_user: asks to go to the A-Frame
+  - target: EVIDENCE_LOCKER_MAP_JULIE_MURRAY_10_10
 EVIDENCE_LOCKER_MAP_JULIE_MURRAY_10_10:
   prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
     lockers containing evidence for different cases\nMike will give the user a list
@@ -6726,7 +7290,7 @@ MAURA_APARTMENT_10:
   events:
   - target: MAP_MAURA_APARTMENT_10
     if_the_user: wants to go to the map
-  - *id062
+  - *id011
   - *id001
 MAP_MAURA_APARTMENT_10:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_10.png)\n
@@ -6736,18 +7300,33 @@ MAP_MAURA_APARTMENT_10:
   - target: MAURA_APARTMENT_10
     if_the_user: asks to go back
   - *id001
-  - *id074
-  - *id075
-  - *id076
-  - *id077
-  - *id078
-  - *id079
-  - *id080
-  - *id081
-  - *id082
-  - *id083
-  - *id084
-  - *id062
+  - target: CAR_WRECK_10
+    if_the_user: wants to go to the site of the wreck where Maura disappeared
+  - target: UMASS_OFFICE_10
+    if_the_user: wants to go to U Mass
+  - target: DATA_LAB_10
+    if_the_user: wants to go to the data lab
+  - target: VISIT_FRED_10
+    if_the_user: wants to go to Fred's house
+  - target: SEARCH_FOR_MAURA_10
+    if_the_user: wants to go to the search for Maura near the site of the car crash
+      where Maura disappeared
+  - target: POLICE_PRECINCT_10
+    if_the_user: wants to go to the police precinct
+  - target: WORK_FRIEND_10
+    if_the_user: wants to go to talk to Maura's work friend
+  - target: JULIE_MURRAY_10
+    if_the_user: wants to go to Julie Murray's place
+  - target: MAURA_APARTMENT_10
+    if_the_user: wants to go to Maura's apartment
+  - target: RED_TRUCK_WITNESS_10
+    if_the_user: wants to go to the Swiftwater general store to talk to the witness
+      who saw the red truck
+  - target: FRED_MURRAY_WITH_KNIFE_10
+    if_the_user: wants to go to Fred's house to discuss the knife
+  - target: A_FRAME_FINAL
+    if_the_user: asks to go to the A-Frame
+  - target: EVIDENCE_LOCKER_MAP_MAURA_APARTMENT_10_10
 EVIDENCE_LOCKER_MAP_MAURA_APARTMENT_10_10:
   prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
     lockers containing evidence for different cases\nMike will give the user a list
@@ -6793,7 +7372,7 @@ RED_TRUCK_WITNESS_10:
   events:
   - target: MAP_RED_TRUCK_WITNESS_10
     if_the_user: wants to go to the map
-  - *id062
+  - *id011
   - *id001
 MAP_RED_TRUCK_WITNESS_10:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_10.png)\n
@@ -6803,18 +7382,33 @@ MAP_RED_TRUCK_WITNESS_10:
   - target: RED_TRUCK_WITNESS_10
     if_the_user: asks to go back
   - *id001
-  - *id074
-  - *id075
-  - *id076
-  - *id077
-  - *id078
-  - *id079
-  - *id080
-  - *id081
-  - *id082
-  - *id083
-  - *id084
-  - *id062
+  - target: CAR_WRECK_10
+    if_the_user: wants to go to the site of the wreck where Maura disappeared
+  - target: UMASS_OFFICE_10
+    if_the_user: wants to go to U Mass
+  - target: DATA_LAB_10
+    if_the_user: wants to go to the data lab
+  - target: VISIT_FRED_10
+    if_the_user: wants to go to Fred's house
+  - target: SEARCH_FOR_MAURA_10
+    if_the_user: wants to go to the search for Maura near the site of the car crash
+      where Maura disappeared
+  - target: POLICE_PRECINCT_10
+    if_the_user: wants to go to the police precinct
+  - target: WORK_FRIEND_10
+    if_the_user: wants to go to talk to Maura's work friend
+  - target: JULIE_MURRAY_10
+    if_the_user: wants to go to Julie Murray's place
+  - target: MAURA_APARTMENT_10
+    if_the_user: wants to go to Maura's apartment
+  - target: RED_TRUCK_WITNESS_10
+    if_the_user: wants to go to the Swiftwater general store to talk to the witness
+      who saw the red truck
+  - target: FRED_MURRAY_WITH_KNIFE_10
+    if_the_user: wants to go to Fred's house to discuss the knife
+  - target: A_FRAME_FINAL
+    if_the_user: asks to go to the A-Frame
+  - target: EVIDENCE_LOCKER_MAP_RED_TRUCK_WITNESS_10_10
 EVIDENCE_LOCKER_MAP_RED_TRUCK_WITNESS_10_10:
   prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
     lockers containing evidence for different cases\nMike will give the user a list
@@ -6908,7 +7502,7 @@ FRED_MURRAY_WITH_KNIFE_10:
   events:
   - target: MAP_FRED_MURRAY_WITH_KNIFE_10
     if_the_user: wants to go to the map
-  - *id062
+  - *id011
   - *id001
 MAP_FRED_MURRAY_WITH_KNIFE_10:
   prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_10.png)\n
@@ -6918,18 +7512,33 @@ MAP_FRED_MURRAY_WITH_KNIFE_10:
   - target: FRED_MURRAY_WITH_KNIFE_10
     if_the_user: asks to go back
   - *id001
-  - *id074
-  - *id075
-  - *id076
-  - *id077
-  - *id078
-  - *id079
-  - *id080
-  - *id081
-  - *id082
-  - *id083
-  - *id084
-  - *id062
+  - target: CAR_WRECK_10
+    if_the_user: wants to go to the site of the wreck where Maura disappeared
+  - target: UMASS_OFFICE_10
+    if_the_user: wants to go to U Mass
+  - target: DATA_LAB_10
+    if_the_user: wants to go to the data lab
+  - target: VISIT_FRED_10
+    if_the_user: wants to go to Fred's house
+  - target: SEARCH_FOR_MAURA_10
+    if_the_user: wants to go to the search for Maura near the site of the car crash
+      where Maura disappeared
+  - target: POLICE_PRECINCT_10
+    if_the_user: wants to go to the police precinct
+  - target: WORK_FRIEND_10
+    if_the_user: wants to go to talk to Maura's work friend
+  - target: JULIE_MURRAY_10
+    if_the_user: wants to go to Julie Murray's place
+  - target: MAURA_APARTMENT_10
+    if_the_user: wants to go to Maura's apartment
+  - target: RED_TRUCK_WITNESS_10
+    if_the_user: wants to go to the Swiftwater general store to talk to the witness
+      who saw the red truck
+  - target: FRED_MURRAY_WITH_KNIFE_10
+    if_the_user: wants to go to Fred's house to discuss the knife
+  - target: A_FRAME_FINAL
+    if_the_user: asks to go to the A-Frame
+  - target: EVIDENCE_LOCKER_MAP_FRED_MURRAY_WITH_KNIFE_10_10
 EVIDENCE_LOCKER_MAP_FRED_MURRAY_WITH_KNIFE_10_10:
   prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
     lockers containing evidence for different cases\nMike will give the user a list
@@ -6970,10 +7579,10 @@ A_FRAME_FINAL:
     by each person and only if the user asks the right questions.\n\n\n          \
     \  "
   events:
-  - &id085
+  - &id012
     target: MAP_EVIDENCE_LOCKER
     if_the_user: asks to go to the map
-  - &id086
+  - &id013
     target: EVIDENCE_LOCKER_MAP
     if_the_user: asks to go to the evidence_locker
   - *id001
@@ -6982,7 +7591,7 @@ MAP_EVIDENCE_LOCKER:
     _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_final.png)_\n\
     \n\n      "
   events:
-  - *id062
+  - *id011
   - target: U_MASS_FINAL
     if_the_user: asks to go to the U Mass
   - target: CRIME_SCENE_FINAL
@@ -7035,8 +7644,8 @@ U_MASS_FINAL:
     away.\n  \n\n\n        \n\nRemember this information is only revealed by each
     person and only if the user asks the right questions.\n\n\n            "
   events:
-  - *id085
-  - *id086
+  - *id012
+  - *id013
   - *id001
 CRIME_SCENE_FINAL:
   prompt: "\nAll messages you send back to the user must be written in the style of
@@ -7101,8 +7710,8 @@ CRIME_SCENE_FINAL:
     \nRemember this information is only revealed by each person and only if the user
     asks the right questions.\n\n\n            "
   events:
-  - *id085
-  - *id086
+  - *id012
+  - *id013
   - *id001
 DATA_LAB_FINAL:
   prompt: "\nAll messages you send back to the user must be written in the style of
@@ -7148,8 +7757,8 @@ DATA_LAB_FINAL:
     to your message at the bottom:\n_🗺️ Map has a new item: \"Evidence Locker\". Ask
     for the map to go there or anywhere else_\n          \n\n            "
   events:
-  - *id085
-  - *id086
+  - *id012
+  - *id013
   - *id001
 MURRAY_RESIDENCE_FINAL:
   prompt: "\nAll messages you send back to the user must be written in the style of
@@ -7253,8 +7862,8 @@ MURRAY_RESIDENCE_FINAL:
     this information is only revealed by each person and only if the user asks the
     right questions.\n\n\n            "
   events:
-  - *id085
-  - *id086
+  - *id012
+  - *id013
   - *id001
 POLICE_PRECINCT_FINAL:
   prompt: "\nAll messages you send back to the user must be written in the style of
@@ -7325,8 +7934,8 @@ POLICE_PRECINCT_FINAL:
     of Maura's is seated with Fred\". Ask for the map to go there or anywhere else_\n\
     \          \n\n            "
   events:
-  - *id085
-  - *id086
+  - *id012
+  - *id013
   - *id001
 MAURA_APARTMENT_FINAL:
   prompt: "\nAll messages you send back to the user must be written in the style of
@@ -7375,8 +7984,8 @@ MAURA_APARTMENT_FINAL:
     _🗺️ Map has a new item: \"Swiftwater General Store\". Ask for the map to go there
     or anywhere else_\n          \n\n            "
   events:
-  - *id085
-  - *id086
+  - *id012
+  - *id013
   - *id001
 RED_TRUCK_WITNESS_FINAL:
   prompt: "\nAll messages you send back to the user must be written in the style of
@@ -7408,6 +8017,6 @@ RED_TRUCK_WITNESS_FINAL:
     a bloody knife.\". Ask for the map to go there or anywhere else_\n          \n\
     \n            "
   events:
-  - *id085
-  - *id086
+  - *id012
+  - *id013
   - *id001

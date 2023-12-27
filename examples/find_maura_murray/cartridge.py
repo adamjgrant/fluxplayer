@@ -27,17 +27,10 @@ class LevelMaker:
     target_parts.pop()
     return "_".join(target_parts)
 
-  def remove_leveling_event_by_target(self, target):
-    self.leveling_events = list(filter(lambda event: event["target"] != target, self.leveling_events))
-
   def key_dict(self):
     global FINAL_STATES
 
     backbone_names = map(self.get_backbone_name, self.leveling_events[0:self.level+2])
-
-    # After this level, we'll use the EvidenceLocker class.
-    if self.level > 2:
-      self.remove_leveling_event_by_target(f"EVIDENCE_LOCKER_{self.level}")
 
     # The map should have the events at its level of the backbone...
     LEVELING_EVENTS_FOR_MAP = self.leveling_events[0:self.level+2]
@@ -53,11 +46,20 @@ class LevelMaker:
     _dict = {}
 
     for backbone_name in backbone_names:
+      _LEVELING_EVENTS_FOR_MAP = copy.deepcopy(LEVELING_EVENTS_FOR_MAP)
+      if self.level > 2:
+        # ...replacing the first instance of evidence locker for the class version
+        _LEVELING_EVENTS_FOR_MAP = list(filter(lambda event: event["target"] != f"EVIDENCE_LOCKER_{self.level}", _LEVELING_EVENTS_FOR_MAP))
+        # And adding the class version of the evidence locker
+        _LEVELING_EVENTS_FOR_MAP = _LEVELING_EVENTS_FOR_MAP + [{
+          "target": f"EVIDENCE_LOCKER_MAP_{backbone_name}_{self.level}_{self.level}",
+        }]
+
       _dict.update({
         f"{backbone_name}_{self.level}": globals()[f"{backbone_name}_DEFINITION"].copy_with_changes(
           events = [{ "target": f"MAP_{backbone_name}_{self.level}", "if_the_user": "wants to go to the map" }] + EXTRA_LEVELING_EVENT,
         ).dict(),
-        **Map(f"{backbone_name}_{self.level}", f"map_level_{self.level}").add_events(LEVELING_EVENTS_FOR_MAP).key_dict(),
+        **Map(f"{backbone_name}_{self.level}", f"map_level_{self.level}").add_events(_LEVELING_EVENTS_FOR_MAP).key_dict(),
         **EvidenceLocker(next_backbone=f"{backbone_name}", level=f"{self.level}", previous_state=f"MAP_{backbone_name}_{self.level}").key_dict(),
       })
 
