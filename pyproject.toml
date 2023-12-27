@@ -5,6 +5,7 @@ description = "The missing OS for LLMs"
 authors = ["Adam Grant <hello@adamgrant.me>"]
 license = "MIT"
 readme = "README.md"
+packages = [{include = "fluxplayer"}]
 
 [tool.poetry.dependencies]
 python = "^3.11"

@@ -2,7 +2,7 @@
 
 
 a = Analysis(
-    ['flux.py'],
+    ['src/flux.py'],
     pathex=['./'],
     binaries=[],
     datas=[],

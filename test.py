@@ -1,7 +1,7 @@
 import unittest
 import tempfile
 from ruamel.yaml import YAML
-from flux import Flux
+from src.flux import Flux
 from lib.path_reader import find_cartridge, read_yaml_cartridge, read_python_cartridge, convert_and_save_python_to_yaml
 from lib.prompt import Prompt
 import os
