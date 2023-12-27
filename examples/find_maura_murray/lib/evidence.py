@@ -32,5 +32,27 @@ EVIDENCE = {
 }
 
 class EvidenceLocker(CherryPicker):
-    def __init__(self, previous_state, go_back_if_the_user="asks to go back", prompt="", events_to_pick=[]):
+    def __init__(self, previous_state, go_back_if_the_user="asks to go back", prompt="", events_to_pick=[], evidence_object=EVIDENCE, level="", next_backbone=""):
       super().__init__("EVIDENCE_LOCKER", previous_state, go_back_if_the_user, prompt, events_to_pick)
+      self.evidence_object = evidence_object
+      self.level = level
+      self.next_backbone = next_backbone
+      self.prompt = f"""
+Setting: A carefully guarded room in the FBI New Hampshire office with lockers containing evidence for different cases
+Mike will give the user a list of evidence currently on file and will explain how additional evidence will be gathered
+as they progress to visit more places and talk to more people. He will also explain that they can always ask to go back to
+the map to visit another location to review evidence or talk to someone. All they have to do is ask.
+{self.user_menu()}
+      """
+
+    def user_menu(self):
+        if self.next_backbone:
+          return f"""
+Lastly, add this to your message at the bottom:
+_🗺️ Map has a new item: "{self.next_backbone}". Ask for the map to go there or anywhere else_
+          """
+        else:
+          return ""
+
+    def state_name(self):
+      return super().state_name() + (f"_{self.level}" if self.level else "")

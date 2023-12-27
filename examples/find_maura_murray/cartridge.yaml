@@ -5965,8 +5965,14 @@ MAP_EVIDENCE_LOCKER:
       witnessed
   - target: EVIDENCE_LOCKER_MAP
     if_the_user: Wants to go to the evidence locker
-EVIDENCE_LOCKER_MAP:
-  prompt: ''
+EVIDENCE_LOCKER_MAP_FINAL:
+  prompt: "\nSetting: A carefully guarded room in the FBI New Hampshire office with
+    lockers containing evidence for different cases\nMike will give the user a list
+    of evidence currently on file and will explain how additional evidence will be
+    gathered\nas they progress to visit more places and talk to more people. He will
+    also explain that they can always ask to go back to\nthe map to visit another
+    location to review evidence or talk to someone. All they have to do is ask.\n\n\
+    \      "
   events:
   - target: MAP_EVIDENCE_LOCKER
     if_the_user: Wants to go to the map

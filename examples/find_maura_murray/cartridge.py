@@ -55,21 +55,6 @@ class LevelMaker:
 
     return _dict
 
-# TODO provide both an index and the full information from the evidence object using common methods.
-EVIDENCE_LOCKER_DEFINITION = TranscriptState(
-  setting="A carefully guarded room in the FBI New Hampshire office with lockers containing evidence for different cases",
-  prompt="""
-  Mike will give the user a list of evidence currently on file and will explain how additional evidence will be gathered
-  as they progress to visit more places and talk to more people. He will also explain that they can always ask to go back to
-  the map to visit another location to review evidence or talk to someone. All they have to do is ask.
-  """,
-  events=[
-    { "target": "MAP_EVIDENCE_LOCKER", "if_the_user": "asks to go to map" }
-  ],
-  people=[],
-  next_backbone="Murray Family Home"
-)
-
 beginning = {
   "START": {
       "role": "",
@@ -137,6 +122,21 @@ then ask them again if they're ready.
     ]
   }
 }
+
+# TODO provide both an index and the full information from the evidence object using common methods.
+EVIDENCE_LOCKER_DEFINITION = TranscriptState(
+  setting="A carefully guarded room in the FBI New Hampshire office with lockers containing evidence for different cases",
+  prompt="""
+  Mike will give the user a list of evidence currently on file and will explain how additional evidence will be gathered
+  as they progress to visit more places and talk to more people. He will also explain that they can always ask to go back to
+  the map to visit another location to review evidence or talk to someone. All they have to do is ask.
+  """,
+  events=[
+    { "target": "MAP_EVIDENCE_LOCKER", "if_the_user": "asks to go to map" }
+  ],
+  people=[],
+  next_backbone="Murray Family Home"
+)
 
 # A/B B/A Criss-cross
 UMASS_OFFICE_DEFINITION = TranscriptState(
@@ -487,7 +487,8 @@ cartridge = {
       ]).key_dict(),
 
   **EvidenceLocker(
-        previous_state="MAP"
+        previous_state="MAP",
+        level="FINAL",
       ).hard_set_events([
         {
           "target": "MAP_EVIDENCE_LOCKER",
