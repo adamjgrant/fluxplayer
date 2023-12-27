@@ -145,7 +145,7 @@ EVIDENCE_LOCKER_DEFINITION = TranscriptState(
 # A/B B/A Criss-cross
 UMASS_OFFICE_DEFINITION = TranscriptState(
   "The office of a professor at the University of Massachusettes who prefers to remain anonymous",
-  "", 
+  "Generate a dall-e image of a U mass professor being interviewed by two investigators", 
   [],
   [PEOPLE["ANONYMOUS_PROF"]]
 )
@@ -155,27 +155,26 @@ CAR_WRECK_DEFINITION = TranscriptState(
 Haverhill, New Hampshire. Morning at the scene of a black 1996 Saturn sedan up against the snowbank along Route 112, also known as Wild Ammonoosuc Road. 
 The car is pointed west on the eastbound side of the road. The windshield is cracked and the car appears to have been involved in a collision
   """,
-  prompt = """
-  """,
+  prompt = "Generate a dall-e image of a hairpin turn on a new hampshire road where a black Saturn sedan is abandoned on the side of a wooded road.",
   events=[],
   people=[PEOPLE["BUTCH_ATWOOD"], PEOPLE["FAITH_WESTMAN"], PEOPLE["CECIL_SMITH"], PEOPLE["JOHN_MONAGHAN"], PEOPLE["JEFF_WILLIAMS"]]
 )
 
 UMASS_A_DEFINITION = UMASS_OFFICE_DEFINITION.set_events(
   [{ "target": "CAR_WRECK_A", "if_the_user": "agrees to go to New Hampshire to see the crime scene" }]
-).copy_with_changes(prompt="Remind the user at the end of your message they can also go to the site of a car wreck as their next step.").dict()
+).copy_with_changes(prompt=UMASS_OFFICE_DEFINITION.prompt+"Remind the user at the end of your message they can also go to the site of a car wreck as their next step.").dict()
 
 CAR_WRECK_B_DEFINITION = CAR_WRECK_DEFINITION.set_events(
   [{ "target": "UMASS_B", "if_the_user": "agrees to go to U Mass to talk to about communications" }]
-).copy_with_changes(prompt="Remind the user at the end of your message they can also go to the University of Massachusettes as their next step.").dict()
+).copy_with_changes(prompt=CAR_WRECK_DEFINITION.prompt+"Remind the user at the end of your message they can also go to the University of Massachusettes as their next step.").dict()
 
 CAR_WRECK_A_DEFINITION = CAR_WRECK_DEFINITION.set_events(
   [{ "target": "INTRO_TO_MAP", "if_the_user": "agrees with Mike's suggestion to continue to the map" }]
-).copy_with_changes(prompt="Remind the user at the end of your message they can also view a map of other locations to visit as their next step.").dict()
+).copy_with_changes(prompt=CAR_WRECK_DEFINITION.prompt+"Remind the user at the end of your message they can also view a map of other locations to visit as their next step.").dict()
 
 UMASS_B_DEFINITION = UMASS_OFFICE_DEFINITION.set_events(
   [{ "target": "INTRO_TO_MAP", "if_the_user": "agrees with Mike's suggestion to continue to the map" }]
-).copy_with_changes(prompt="Remind the user at the end of your message they can also view a map of other locations to visit as their next step.").dict()
+).copy_with_changes(prompt=UMASS_OFFICE_DEFINITION.prompt+"Remind the user at the end of your message they can also view a map of other locations to visit as their next step.").dict()
 
 map_intro_image = Image(url="map_intro.png", description="Map of key locations").markdown()
 INTRO_TO_MAP_DEFINITION =TranscriptState(

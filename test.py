@@ -255,7 +255,7 @@ class TestAdvancedFunctions(unittest.TestCase):
 
     prompt_components = Prompt(cartridge=cartridge, state="DOTHING", data={"foo": "bar"}).script_components()
 
-    self.assertEqual(prompt_components[6], "The value of foo is fizz")
+    self.assertEqual(prompt_components[7], "The value of foo is fizz")
 
   def test_dot_self(self):
     flux = Flux()
@@ -303,4 +303,4 @@ class TestAdvancedFunctions(unittest.TestCase):
 
     prompt_components = Prompt(cartridge, "DOTHING").script_components()
 
-    self.assertEqual(prompt_components[8], "# Reminder of Rules")
+    self.assertEqual(prompt_components[9], "# Reminder of Rules")

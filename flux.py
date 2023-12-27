@@ -48,7 +48,7 @@ class Flux:
       return format_prompt(cartridge, target_state, data, first_run=first_run)
 
   def start_cartridge(self, cartridge):
-      return format_prompt(cartridge, "START", True)
+      return format_prompt(cartridge=cartridge, state="START", first_run=True)
 
   # Output the cartridge variable as JSON.
   def main(self, path=None, state=None, transition=None, data=None, export=False):
@@ -66,7 +66,6 @@ class Flux:
             return print(self.start_cartridge(cartridge))
 
           else:
-            # TODO I think we lost first run
             return print(self.call_method_on_state(cartridge, current_state, transition, data))
       
       except FileNotFoundError as e:
