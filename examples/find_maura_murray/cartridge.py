@@ -1,169 +1,59 @@
 import copy
 from examples.find_maura_murray.lib.people import PEOPLE
+from examples.find_maura_murray.lib.image import Image
+from examples.find_maura_murray.lib.special_states import TranscriptState, CherryPicker, Map, BackForwardState
+from examples.find_maura_murray.lib.evidence import EVIDENCE, EvidenceLocker
 
-def merge_states(states=[]):
-  merged_state_object = {}
-  for obj in states:
-      merged_state_object.update(obj)
-  return merged_state_object
+class LevelMaker:
+  def __init__(self, level=1):
+    self.level = level
 
-class Image():
-  def __init__(self, url, description):
-    self.url = f"https://cdn.everything.io/chatgpt/maura/{url}"
-    self.description = description
+  def get_backbone_name(self, event):
+    target_parts = event["target"].split("_")
+    target_parts.pop()
+    return "_".join(target_parts)
 
-  def markdown(self):
-    return f"![{self.description}]({self.url})\n_{self.description}, [Open image in new window]({self.url})_\n\n"
+  def key_dict(self):
+    global FINAL_STATES
+    LEVELING_EVENTS = [
+      { "target": f"CAR_WRECK_{self.level}", "if_the_user": "wants to go to the site of the wreck where Maura disappeared" },
+      { "target": f"UMASS_OFFICE_{self.level}", "if_the_user": "wants to go to U Mass" },
+      { "target": f"DATA_LAB_{self.level}", "if_the_user": "wants to go to the data lab" },
+      { "target": f"EVIDENCE_LOCKER_{self.level}", "if_the_user": "asks to go to the evidence locker" },
+      { "target": f"VISIT_FRED_{self.level}", "if_the_user": "wants to go to Fred's house" },
+      { "target": f"SEARCH_FOR_MAURA_{self.level}", "if_the_user": "wants to go to the search for Maura near the site of the car crash where Maura disappeared" },
+      { "target": f"POLICE_PRECINCT_{self.level}", "if_the_user": "wants to go to the police precinct" },
+      { "target": f"WORK_FRIEND_{self.level}", "if_the_user": "wants to go to talk to Maura's work friend" },
+      { "target": f"JULIE_MURRAY_{self.level}", "if_the_user": "wants to go to Julie Murray's place" },
+      { "target": f"MAURA_APARTMENT_{self.level}", "if_the_user": "wants to go to Maura's apartment" },
+      { "target": f"RED_TRUCK_WITNESS_{self.level}", "if_the_user": "wants to go to the Swiftwater general store to talk to the witness who saw the red truck" },
+      { "target": f"FRED_MURRAY_WITH_KNIFE_{self.level}", "if_the_user": "wants to go to Fred's house to discuss the knife" }
+    ]
 
-class BackForwardState():
-    def __init__(self, name="", previous_state="", go_back_if_the_user="asks to go back", prompt=""):
-      self.events = [ { "target": previous_state, "if_the_user": go_back_if_the_user } ]
-      self.prompt = prompt
-      self.name = name
-      self.previous_state = previous_state
+    backbone_names = map(self.get_backbone_name, LEVELING_EVENTS[0:self.level+2])
 
-    def add_events(self, events=[]):
-      self.events = self.events + events
-      return self
+    # The map should have the events at its level of the backbone...
+    LEVELING_EVENTS_FOR_MAP = LEVELING_EVENTS[0:self.level+2]
 
-    def state_name(self):
-      return f"{self.name}_{self.previous_state}"
+    # And the new event at the next level
+    EXTRA_LEVELING_EVENT = LEVELING_EVENTS[self.level+2:self.level+3]
+    if len(EXTRA_LEVELING_EVENT) > 0:
+      EXTRA_LEVELING_EVENT[0]["target"] = EXTRA_LEVELING_EVENT[0]["target"].replace(f"_{self.level}", f"_{self.level+1}")
+    else:
+      EXTRA_LEVELING_EVENT = FINAL_STATE_EVENTS[0:1]
+    LEVELING_EVENTS_FOR_MAP = LEVELING_EVENTS_FOR_MAP + EXTRA_LEVELING_EVENT
 
-    def key_dict(self):
-      obj = {}
-      state_name = self.state_name()
-      obj[state_name] = {
-          "prompt": self.prompt,
-          "events": self.events
-        }
-      return obj
+    _dict = {}
 
-    def hard_set_events(self, events):
-      self.events = events
-      return self
+    for backbone_name in backbone_names:
+      _dict.update({
+        f"{backbone_name}_{self.level}": globals()[f"{backbone_name}_DEFINITION"].copy_with_changes(
+          events = [{ "target": f"MAP_{backbone_name}_{self.level}", "if_the_user": "wants to go to the map" }] + EXTRA_LEVELING_EVENT,
+        ).dict(),
+        **Map(f"{backbone_name}_{self.level}", f"map_level_{self.level}").add_events(LEVELING_EVENTS_FOR_MAP).key_dict(),
+      })
 
-class CherryPicker(BackForwardState):
-    def __init__(self, name, previous_state="_", go_back_if_the_user="", prompt="", events_to_pick=[]):
-      super().__init__(name, previous_state, go_back_if_the_user, prompt)
-      self.events = self.events + events_to_pick
-
-class Map(CherryPicker):
-    def __init__(self, previous_state, map_key, go_back_if_the_user="", prompt="", events_to_pick=[]):
-      super().__init__("MAP", previous_state, "asks to go back", prompt, events_to_pick)
-      self.map_key = map_key
-      self.events_to_pick = events_to_pick
-      image = Image(url=f"{map_key}.png", description="Map of key locations").markdown()
-      self.prompt = f"""
-{prompt}
-
-Remember to show the user a map like this:
-{image}
-      """
-
-EVENT_SELF = {
-  "target": ".SELF",
-  "if_the_user": "is wanting to stay here and ask questions or asks for an option that is not one of the events available."
-}
-
-class TranscriptState:
-    def __init__(self, setting, prompt="", events=[], people=[], next_backbone=None):
-        self.prompt = prompt
-        self.events = events + [EVENT_SELF]
-        self.people = people
-        self.setting = setting
-        self.next_backbone = next_backbone
-
-    def set_events(self, events):
-        self.events = events + [EVENT_SELF]
-        return self
-
-    def copy_with_changes(self, setting=None, prompt=None, events=None, people=None, next_backbone=None):
-        # We do this because it always adds EVENT_SELF each time we make a new transcript state.
-        if events:
-          _events = events
-        else:
-          _events = self.events
-          _events.pop()
-
-        return TranscriptState(
-          setting=setting if setting else self.setting,
-          prompt=prompt if prompt else self.prompt,
-          events=_events,
-          people=people if people else self.people,
-          next_backbone=next_backbone if next_backbone else self.next_backbone
-        )
-
-    def user_menu(self):
-        if self.next_backbone:
-          return f"""
-Lastly, add this to your message at the bottom:
-_🗺️ Map has a new item: "{self.next_backbone}". Ask for the map to go there or anywhere else_
-          """
-        else:
-          return ""
-
-    def dict(self):
-        overviews = list(map(lambda person: person.overview(), self.people)) 
-        names = list(map(lambda person: person.name, self.people))
-        return {
-            "prompt": f"""
-All messages you send back to the user must be written in the style of a transcript where a person's name
-appears before everything spoken.
-
-e.g. '**Mike Crenshaw**: If there's anyone who knows about that it would be...'
-
-If this is the first time the user is speaking to these individuals, they should just greet the user and Mike like this:
-
-**<person's name>**: Hello, I'm <person's name>.
-
-After people have spoken, Mike will either ask a question himself or if several questions have already been asked, he will remind the user they can either 
-ask more questions or proceed to somewhere else.
-
-If you haven't already, briefly narrate the setting with some creative flair on how you describe it: {self.setting}
-
-{self.prompt}
-
-{ "Let the user know the following people are available for questioning:" if len(self.people) > 0 else ""}
-{", ".join(names)}
-
-{"".join(overviews)}
-
-Remember this information is only revealed by each person and only if the user asks the right questions.
-{self.user_menu()}
-
-            """,
-            "events": self.events
-        }
-
-class Evidence:
-  def __init__(self, presentation="", description=""):
-    self.presentation = f"{presentation}\n"
-  
-class ImageEvidence(Evidence):
-  def __init__(self, url, description):
-    self.presentation = Image(url=url, description=description).markdown()
-
-class EvidenceSet:
-  def __init__(self, evidences=[], description=""):
-    self.evidences = evidences
-    self.description = description
-    self.presentation = ""
-
-    for evidence in evidences:
-      self.presentation += evidence.presentation
-
-EVIDENCE = {
-  "BUTCH_INTERVIEWED": ImageEvidence("butch_atwood_interview.png", "Butch Atwood being interviewed by a local TV station"),
-  "BUTCH_ATWOOD_HOME": ImageEvidence("butch_atwood_home.png", "Butch Atwood being interviewed by a local TV station"),
-  "MAURA_MISSING_POSTER": ImageEvidence("missingposter.gif", "Missing Poster for Maura Murray"),
-  "MAURA_AT_ATM": EvidenceSet(evidences = [
-    ImageEvidence("maura_atm_01.png", "February 9, 2004: Maura Murray at ATM seemingly alone withdrawing $280 before visiting liquor store"),
-    ImageEvidence("maura_atm_02.png", "February 9, 2004: Maura Murray at ATM seemingly alone withdrawing $280 before visiting liquor store"),
-    ImageEvidence("maura_atm_03.png", "February 9, 2004: Maura Murray at ATM seemingly alone withdrawing $280 before visiting liquor store"),
-    ImageEvidence("maura_atm_04.png", "February 9, 2004: Maura Murray at ATM seemingly alone withdrawing $280 before visiting liquor store"),
-    ImageEvidence("maura_atm_05.png", "February 9, 2004: Maura Murray at ATM seemingly alone withdrawing $280 before visiting liquor store")
-  ], description="Security camera footage of Maura Murray at ATM")
-}
+    return _dict
 
 # TODO provide both an index and the full information from the evidence object using common methods.
 EVIDENCE_LOCKER_DEFINITION = TranscriptState(
@@ -179,10 +69,6 @@ EVIDENCE_LOCKER_DEFINITION = TranscriptState(
   people=[],
   next_backbone="Murray Family Home"
 )
-
-class EvidenceLocker(CherryPicker):
-    def __init__(self, previous_state, go_back_if_the_user="asks to go back", prompt="", events_to_pick=[]):
-      super().__init__("EVIDENCE_LOCKER", previous_state, go_back_if_the_user, prompt, events_to_pick)
 
 beginning = {
   "START": {
@@ -462,57 +348,6 @@ FINAL_MAP_EL_EVENTS = [{
   "target": "EVIDENCE_LOCKER_MAP",
   "if_the_user": "asks to go to the evidence_locker"
 }]
-
-class LevelMaker:
-  def __init__(self, level=1):
-    self.level = level
-
-  def get_backbone_name(self, event):
-    target_parts = event["target"].split("_")
-    target_parts.pop()
-    return "_".join(target_parts)
-
-  def key_dict(self):
-    global FINAL_STATES
-    LEVELING_EVENTS = [
-      { "target": f"CAR_WRECK_{self.level}", "if_the_user": "wants to go to the site of the wreck where Maura disappeared" },
-      { "target": f"UMASS_OFFICE_{self.level}", "if_the_user": "wants to go to U Mass" },
-      { "target": f"DATA_LAB_{self.level}", "if_the_user": "wants to go to the data lab" },
-      { "target": f"EVIDENCE_LOCKER_{self.level}", "if_the_user": "asks to go to the evidence locker" },
-      { "target": f"VISIT_FRED_{self.level}", "if_the_user": "wants to go to Fred's house" },
-      { "target": f"SEARCH_FOR_MAURA_{self.level}", "if_the_user": "wants to go to the search for Maura near the site of the car crash where Maura disappeared" },
-      { "target": f"POLICE_PRECINCT_{self.level}", "if_the_user": "wants to go to the police precinct" },
-      { "target": f"WORK_FRIEND_{self.level}", "if_the_user": "wants to go to talk to Maura's work friend" },
-      { "target": f"JULIE_MURRAY_{self.level}", "if_the_user": "wants to go to Julie Murray's place" },
-      { "target": f"MAURA_APARTMENT_{self.level}", "if_the_user": "wants to go to Maura's apartment" },
-      { "target": f"RED_TRUCK_WITNESS_{self.level}", "if_the_user": "wants to go to the Swiftwater general store to talk to the witness who saw the red truck" },
-      { "target": f"FRED_MURRAY_WITH_KNIFE_{self.level}", "if_the_user": "wants to go to Fred's house to discuss the knife" }
-    ]
-
-    backbone_names = map(self.get_backbone_name, LEVELING_EVENTS[0:self.level+2])
-
-    # The map should have the events at its level of the backbone...
-    LEVELING_EVENTS_FOR_MAP = LEVELING_EVENTS[0:self.level+2]
-
-    # And the new event at the next level
-    EXTRA_LEVELING_EVENT = LEVELING_EVENTS[self.level+2:self.level+3]
-    if len(EXTRA_LEVELING_EVENT) > 0:
-      EXTRA_LEVELING_EVENT[0]["target"] = EXTRA_LEVELING_EVENT[0]["target"].replace(f"_{self.level}", f"_{self.level+1}")
-    else:
-      EXTRA_LEVELING_EVENT = FINAL_STATE_EVENTS[0:1]
-    LEVELING_EVENTS_FOR_MAP = LEVELING_EVENTS_FOR_MAP + EXTRA_LEVELING_EVENT
-
-    _dict = {}
-
-    for backbone_name in backbone_names:
-      _dict.update({
-        f"{backbone_name}_{self.level}": globals()[f"{backbone_name}_DEFINITION"].copy_with_changes(
-          events = [{ "target": f"MAP_{backbone_name}_{self.level}", "if_the_user": "wants to go to the map" }] + EXTRA_LEVELING_EVENT,
-        ).dict(),
-        **Map(f"{backbone_name}_{self.level}", f"map_level_{self.level}").add_events(LEVELING_EVENTS_FOR_MAP).key_dict(),
-      })
-
-    return _dict
 
 cartridge = {
   # Introduction to story
