@@ -8,7 +8,9 @@ class Evidence:
   
 class ImageEvidence(Evidence):
   def __init__(self, url, description):
-    self.presentation = Image(url=url, description=description).markdown()
+    presentation = Image(url=url, description=description).markdown()
+    super().__init__(description=description, presentation=presentation)
+    self.description = description
 
 class EvidenceSet:
   def __init__(self, evidences=[], description=""):
@@ -43,17 +45,32 @@ Setting: A carefully guarded room in the FBI New Hampshire office with lockers c
 Mike will give the user a list of evidence currently on file and will explain how additional evidence will be gathered
 as they progress to visit more places and talk to more people. He will also explain that they can always ask to go back to
 the map to visit another location to review evidence or talk to someone. All they have to do is ask.
-{self.user_menu()}
+
+Mike can give the user a list of evidence available:
+{self.evidence_as_list()}
+
+If the user asks to see some evidence, here is what Mike can show for each item:
+{self.evidence_as_catalogue()}
       """
 
-    def user_menu(self):
-        if self.next_backbone:
-          return f"""
-Lastly, add this to your message at the bottom:
-_🗺️ Map has a new item: "{self.next_backbone}". Ask for the map to go there or anywhere else_
-          """
-        else:
-          return ""
+    def evidence_as_list(self):
+      x = 1
+      list_as_str = ""
+      for key in self.evidence_object:
+        description = self.evidence_object[key].description
+        list_as_str += f"{x} - {description}\n"
+        x = x + 1
+      return list_as_str
+
+    def evidence_as_catalogue(self):
+      x = 1
+      catalogue_as_str = ""
+      for key in self.evidence_object:
+        description = self.evidence_object[key].description
+        presentation = self.evidence_object[key].presentation
+        catalogue_as_str += f"{x} - {description}\n{presentation}\n\n"
+        x = x + 1
+      return catalogue_as_str
 
     def state_name(self):
       return super().state_name() + (f"_{self.level}" if self.level else "")

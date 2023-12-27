@@ -60,7 +60,7 @@ class LevelMaker:
           events = [{ "target": f"MAP_{backbone_name}_{self.level}", "if_the_user": "wants to go to the map" }] + EXTRA_LEVELING_EVENT,
         ).dict(),
         **Map(f"{backbone_name}_{self.level}", f"map_level_{self.level}").add_events(_LEVELING_EVENTS_FOR_MAP).key_dict(),
-        **EvidenceLocker(next_backbone=f"{backbone_name}", level=f"{self.level}", previous_state=f"MAP_{backbone_name}_{self.level}").key_dict(),
+        **EvidenceLocker(level=f"{self.level}", previous_state=f"MAP_{backbone_name}_{self.level}").key_dict(),
       })
 
     return _dict
@@ -133,19 +133,13 @@ then ask them again if they're ready.
   }
 }
 
-# TODO provide both an index and the full information from the evidence object using common methods.
 EVIDENCE_LOCKER_DEFINITION = TranscriptState(
   setting="A carefully guarded room in the FBI New Hampshire office with lockers containing evidence for different cases",
-  prompt="""
-  Mike will give the user a list of evidence currently on file and will explain how additional evidence will be gathered
-  as they progress to visit more places and talk to more people. He will also explain that they can always ask to go back to
-  the map to visit another location to review evidence or talk to someone. All they have to do is ask.
-  """,
+  prompt=EvidenceLocker("", next_backbone="Murray Family Home").prompt,
   events=[
     { "target": "MAP_EVIDENCE_LOCKER", "if_the_user": "asks to go to map" }
   ],
-  people=[],
-  next_backbone="Murray Family Home"
+  people=[]
 )
 
 # A/B B/A Criss-cross
@@ -544,7 +538,7 @@ cartridge = {
 }
 
 # Print out each key in the object
-debug_states_to_and_from = True
+debug_states_to_and_from = False
 
 if debug_states_to_and_from:
   for key in cartridge:
