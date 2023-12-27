@@ -86,7 +86,9 @@ python -m unittest test.py
 
 # Distribution
 
-For running on OpenAI's Custom GPTs:
+For running on OpenAI's Custom GPTs, get the `flux` binary from [the releases page](https://github.com/adamjgrant/fluxplayer/releases) and upload it with your cartridge to your custom GPT.
+
+## Building from source
 
 First, make sure you have docker installed. Then run:
 

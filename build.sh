@@ -1,11 +1,12 @@
 #!/bin/zsh
 
-RELEASE="2.0.3"
+RELEASE="2.0.4"
 
 rm -rf dist
 mkdir -p dist
 mkdir -p dist/openai
 mkdir -p dist/linux
+mkdir -p dist/pip
 
 echo "Generating cartridges..."
 python3 flux.py -c examples/find_maura_murray/cartridge.py -x
@@ -15,7 +16,7 @@ docker run -v "$(pwd):/src/" cdrx/pyinstaller-linux
 cp -r dist/linux/flux dist/openai/flux
 
 echo "Publishing GitHub release..."
-gh release create v$RELEASE ./dist/
+gh release create v$RELEASE ./dist/openai/flux --title "Flux Player v$RELEASE" --notes "To use this release in a custom GPT, download flux from the assets below" --prerelease
 
 echo "Build completed."
 
