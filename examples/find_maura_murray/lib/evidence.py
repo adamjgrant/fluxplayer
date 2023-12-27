@@ -10,9 +10,9 @@ class Evidence:
     self.time = time
   
 class ImageEvidence(Evidence):
-  def __init__(self, date, url, description, time=None):
-    presentation = Image(url=url, description=description, date=date, time=time).markdown()
-    super().__init__(description=description, presentation=presentation)
+  def __init__(self, url, description, date, time=None):
+    presentation = Image(url=url, description=description).markdown()
+    super().__init__(description=description, presentation=presentation, date=date, time=time)
 
 class EvidenceSet:
   def __init__(self, evidences=[], description=""):
