@@ -6,7 +6,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "flux_player_adamjgrant"
-version = "2.0.0"
+version = "2.0.2"
 authors = [ { name="Adam J. Grant", email="hello@adamgrant.me" } ]
 description = "The Missing OS for LLMs"
 readme = "README.md"
@@ -23,6 +23,9 @@ Issues = "https://github.com/adamjgrant/fluxplayer"
 
 [tool.hatch.build.targets.wheel]
 packages = ["flux"]
+
+[tool.hatch.build.target.sdist.force-include]
+"src/cli.py" = "flux.py"
 
 [project.scripts]
 flux = "flux.module:main"
