@@ -1,16 +1,8 @@
 import unittest
 import sys
-from examples.murdertown.cartridge import merge_states, BackForwardState, CherryPicker, Map, EvidenceLocker, cartridge, Image
+from examples.find_maura_murray.cartridge import BackForwardState, CherryPicker, Map, EvidenceLocker, cartridge, Image
 
 class TestMerge(unittest.TestCase):
-    def test_merges_states(self):
-        merged_state = merge_states([
-            {"a": 1},
-            {"b": 2},
-            {"c": 3}
-        ])
-        self.assertEqual(merged_state, {"a": 1, "b": 2, "c": 3})
-
     def test_cherrypick_events(self):
         cherrypicker = CherryPicker("mycherrypicker", "previous_state", "says lets go back", "cherrypicker", [
             {"target": "a", "if_the_user": "says a"},

@@ -7,15 +7,7 @@ from examples.find_maura_murray.lib.evidence import EVIDENCE, EvidenceLocker
 class LevelMaker:
   def __init__(self, level=1):
     self.level = level
-
-  def get_backbone_name(self, event):
-    target_parts = event["target"].split("_")
-    target_parts.pop()
-    return "_".join(target_parts)
-
-  def key_dict(self):
-    global FINAL_STATES
-    LEVELING_EVENTS = [
+    self.leveling_events = [
       { "target": f"CAR_WRECK_{self.level}", "if_the_user": "wants to go to the site of the wreck where Maura disappeared" },
       { "target": f"UMASS_OFFICE_{self.level}", "if_the_user": "wants to go to U Mass" },
       { "target": f"DATA_LAB_{self.level}", "if_the_user": "wants to go to the data lab" },
@@ -30,18 +22,29 @@ class LevelMaker:
       { "target": f"FRED_MURRAY_WITH_KNIFE_{self.level}", "if_the_user": "wants to go to Fred's house to discuss the knife" }
     ]
 
-    backbone_names = map(self.get_backbone_name, LEVELING_EVENTS[0:self.level+2])
+  def get_backbone_name(self, event):
+    target_parts = event["target"].split("_")
+    target_parts.pop()
+    return "_".join(target_parts)
+
+  def remove_leveling_event_by_target(self, target):
+    return None
+
+  def key_dict(self):
+    global FINAL_STATES
+
+    backbone_names = map(self.get_backbone_name, self.leveling_events[0:self.level+2])
 
     # The map should have the events at its level of the backbone...
-    LEVELING_EVENTS_FOR_MAP = LEVELING_EVENTS[0:self.level+2]
+    self.leveling_events_FOR_MAP = self.leveling_events[0:self.level+2]
 
     # And the new event at the next level
-    EXTRA_LEVELING_EVENT = LEVELING_EVENTS[self.level+2:self.level+3]
+    EXTRA_LEVELING_EVENT = self.leveling_events[self.level+2:self.level+3]
     if len(EXTRA_LEVELING_EVENT) > 0:
       EXTRA_LEVELING_EVENT[0]["target"] = EXTRA_LEVELING_EVENT[0]["target"].replace(f"_{self.level}", f"_{self.level+1}")
     else:
       EXTRA_LEVELING_EVENT = FINAL_STATE_EVENTS[0:1]
-    LEVELING_EVENTS_FOR_MAP = LEVELING_EVENTS_FOR_MAP + EXTRA_LEVELING_EVENT
+    self.leveling_events_FOR_MAP = self.leveling_events_FOR_MAP + EXTRA_LEVELING_EVENT
 
     _dict = {}
 
@@ -50,7 +53,7 @@ class LevelMaker:
         f"{backbone_name}_{self.level}": globals()[f"{backbone_name}_DEFINITION"].copy_with_changes(
           events = [{ "target": f"MAP_{backbone_name}_{self.level}", "if_the_user": "wants to go to the map" }] + EXTRA_LEVELING_EVENT,
         ).dict(),
-        **Map(f"{backbone_name}_{self.level}", f"map_level_{self.level}").add_events(LEVELING_EVENTS_FOR_MAP).key_dict(),
+        **Map(f"{backbone_name}_{self.level}", f"map_level_{self.level}").add_events(self.leveling_events_FOR_MAP).key_dict(),
       })
 
     return _dict
