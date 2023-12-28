@@ -60,7 +60,7 @@ class LevelMaker:
         f"{backbone_name}_{self.level}": globals()[f"{backbone_name}_DEFINITION"].copy_with_changes(
           events = [{ "target": f"MAP_{backbone_name}_{self.level}", "if_the_user": "wants to go to the map" }] + EXTRA_LEVELING_EVENT,
         ).dict(),
-        **Map(f"{backbone_name}_{self.level}", f"map_level_{self.level}").add_events(_LEVELING_EVENTS_FOR_MAP).key_dict(),
+        **Map(f"{backbone_name}_{self.level}", f"map_level_{self.level}_2.0.8").add_events(_LEVELING_EVENTS_FOR_MAP).key_dict(),
         **EvidenceLocker(level=f"{self.level}", previous_state=f"MAP_{backbone_name}_{self.level}").key_dict(),
       })
 
