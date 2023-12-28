@@ -10,6 +10,7 @@ mkdir -p dist
 mkdir -p dist/openai
 mkdir -p dist/linux
 
+# Create "Printed" cartridge.yaml
 echo "Generating cartridges..."
 poetry run flux -c examples/find_maura_murray/cartridge.py -x
 
