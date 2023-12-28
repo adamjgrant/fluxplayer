@@ -11,7 +11,7 @@ mkdir -p dist/openai
 mkdir -p dist/linux
 
 echo "Generating cartridges..."
-poetry run python3 src/flux.py -c examples/find_maura_murray/cartridge.py -x
+poetry run flux -c examples/find_maura_murray/cartridge.py -x
 
 echo "Building project for Linux/OpenAI..."
 docker run -v "$(pwd):/src/" cdrx/pyinstaller-linux

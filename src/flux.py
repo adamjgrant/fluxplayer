@@ -5,8 +5,11 @@
 import sys
 import os
 import argparse
-from lib.path_reader import find_cartridge, convert_and_save_python_to_yaml
-from lib.prompt import format_prompt
+from src.lib.path_reader import find_cartridge, convert_and_save_python_to_yaml
+from src.lib.prompt import format_prompt
+
+def cli():
+  return Flux().parse_for_path()
 
 class Flux:
   def parse_for_path(self):
