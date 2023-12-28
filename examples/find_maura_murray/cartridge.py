@@ -487,6 +487,7 @@ cartridge = {
   "A_FRAME_FINAL": TranscriptState(
     setting = "October 4, 2006. An A-Frame house approximately 1 mile from the crash site, nestled in the woods.",
     prompt = """
+    Generate a dall-e image of a spooky red A frame house quietly nestled in the woods.
     """,
     events = FINAL_MAP_EL_EVENTS,
     people = [PEOPLE["TRUTH_SEEKER"]]
