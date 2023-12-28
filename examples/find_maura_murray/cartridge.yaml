@@ -11630,9 +11630,10 @@ A_FRAME_FINAL:
     either \nask more questions or proceed to somewhere else.\n\nIf you haven't already,
     briefly narrate the setting with some creative flair on how you describe it: October
     4, 2006. An A-Frame house approximately 1 mile from the crash site, nestled in
-    the woods.\n\n\n    \n\nLet the user know the following people are available for
-    questioning:\n\n\n\nName: \nBackground: .\nThis is the information that  has and
-    will provide only if asked a question that would reveal it:\n\n    This individual
+    the woods.\n\n\n    Generate a dall-e image of a spooky red A frame house quietly
+    nestled in the woods.\n    \n\nLet the user know the following people are available
+    for questioning:\n\n\n\nName: \nBackground: .\nThis is the information that  has
+    and will provide only if asked a question that would reveal it:\n\n    This individual
     is aware of a previous search of the A-frame house with Fred and volunteers and
     the person who implicated his brother.\n    They came with cadaver dogs which
     became active around a closet upstairs indicating human remains might have been

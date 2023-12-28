@@ -26,3 +26,16 @@ echo "Publishing pip distribution..."
 python3 -m twine upload --repository testpypi dist/*.tar.gz
 
 # python3 -m pip3 install --index-url https://test.pypi.org/simple/ --no-deps flux-player-adamjgrant
+
+echo "Uploading images"
+mkdir -p dist/images
+
+# Add the version number to each file and cp to dist
+
+SOURCE_DIR=examples/find_maura_murray/lib/img/1200w
+DEST_DIR=dist/images
+
+for file in "$SOURCE_DIR"/*; do
+  filename=$(basename "$file")
+  cp "$file" "$DEST_DIR/${filename%.png}_$VERSION.png"
+done
