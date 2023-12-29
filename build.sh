@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-RELEASE="2.0.4"
+source .env
 
 rm -rf dist
 mkdir -p dist
@@ -15,7 +15,7 @@ docker run -v "$(pwd):/src/" cdrx/pyinstaller-linux
 cp -r dist/linux/flux dist/openai/flux
 
 echo "Publishing GitHub release..."
-gh release create v$RELEASE ./dist/openai/flux --title "Flux Player v$RELEASE" --notes "To use this release in a custom GPT, download flux from the assets below" --prerelease
+gh release create v$VERSION ./dist/openai/flux --title "Flux Player v$VERSION" --notes "To use this release in a custom GPT, download flux from the assets below" --prerelease
 
 echo "Build completed."
 
