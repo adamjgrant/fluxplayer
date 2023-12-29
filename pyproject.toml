@@ -1,14 +1,14 @@
 [tool.poetry]
 name = "flux player"
-version = "2.0.5"
+version = "2.0.9"
 description = "The missing OS for LLMs"
 authors = ["Adam Grant <hello@adamgrant.me>"]
 license = "MIT"
 readme = "README.md"
-packages = [{include = "src"}]
+packages = [{include = "./"}]
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "^3.8"
 ruamel-yaml = "^0.18.5"
 ruamel-yaml-clib = "^0.2.8"
 
