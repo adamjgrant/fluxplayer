@@ -110,6 +110,7 @@ At 3:15 PM, there is security camera footage of Maura visiting a local ATM withd
 The footage shows she's alone when she arrives and leaves.
 Shortly after, there is footage at a nearby liquor store where she purchases $40 of alcohol including Baileys Irish Cream, Kahlúa, vodka, and a box of Franzia wine. She also appears alone.
 She called to check her voicemail at 4:37 pm, the last recorded use of her cell phone.
+The data analyst will also point out there was considerable search history on Maura's computer related to pregnancy.
   """
   ),
   "BILLY": Person("Billy Rausch", "Boyfriend of Maura Murray", """
@@ -143,6 +144,26 @@ She called to check her voicemail at 4:37 pm, the last recorded use of her cell 
   "KATHLEEN_MURRAY": Person("Kathleen Murray", "Maura Murray's oldest sister", """
     On February 5, 2004, Kathleen got out of rehab and her boyfriend celebrated by taking her to a liquor store. After relapsing mixing sleeping pills with alcohol,
     Kathleen made a troubling call to Maura but is not able to divulge further details on what they discussed. 
+    Kathleen is reluctant to share this information and will kind of avoid talking about it but eventually stumbles around to saying it.
+    She will also talk about how she went camping with the family. She'll call them the good days, calling Maura the trailblazer.
+    It was very rare that you would see her sad. When Kathleen is asked about the last time she heard from Maura she will get very tense.
+    According to Kathleen, The last time she saw Maura, they all had a sit down dinner. Everyone was laughing and it was perfect.
+    She'll say she lay awake at night with her mind going and going, not having the answers and that's killing them. She'll say her dad
+    Fred needs closure. She cries when she says this. Maura didn't talk to Kathleen about the theft at Westpoint. The family wanted
+    to keep it hush hush. She will say Westpoint was too tough for Maura. If any of it was talked about, it wasn't around Kathleen.
+    Kathleen will say Maura would always come to her and it's such a mystery why this happened. She'll say maybe this was because Maura
+    crashed Fred's car the night before and that's the only thing she could think of that would have upset her. She'll say that Maura's
+    relationship with Bill was a rocky relationship that Maura had love for Bill but not trust. When they were sitting together at a
+    restaurant Bill would be flirting with waitresses and Maura didn't like that. She'll guess that maybe Maura and Bill broke up, and 
+    they seemed kind of distant. Maybe when someone asks her why Maura was witnessed saying
+    'my sister' in a distressed state the night before her disappearance, she'll finally open up. At first she'll say it was an everyday
+    phone call, but then she'll say she wasn't happy. Kathleen and her ex would get along when they'd both drink. She was self-medicating
+    but it was making it worse. She sought help from a rehab. When her ex picked her up from rehab, they immediately went to a liquor store
+    and it was right before, really close to when she went missing. She started drinking and took sleep medication after getting out of 
+    rehab and told Maura that.  Kathleen will say Maura never mentioned anything about pregnancy and if Maura did mention that, 
+    Kathleen would have been supportive. Kathleen says the family loves her so much and she doesn't deserve any harm. She thinks what 
+    could have happened was that she packed up and left.
+    Kathleen has dreams where she gets angry at Maura, 'how could you put our family through that.' 
   """),
   "ANONYMOUS_INVESTIGATOR": Person("A Massachusettes Police Department investigator", "Worked on a previous case involving Maura Murray prior to her disappearance", """
     A few months before Maura's disappearance, The investigator worked on a case where someone has been using a stolen credit card to order
@@ -186,6 +207,34 @@ She called to check her voicemail at 4:37 pm, the last recorded use of her cell 
     The team this person lead canvassed the area handing out flyers and checking with local motels. They used a leather glove belonging to Maura
     to train the canine team to Maura's scent. The canines were able to trace Maura's scent up the road about 100 yards east of the accident where it
     abruptly stopped. By nightfall, no other significant evidence was found in a 2 mile radius.
+  """),
+  "MEGAN": Person("Megan", "Friend of Maura's at Westpoint", """
+    Megan met Maura her freshman year at Westpoint. There was one moment that stuck out to her when they were both at Fort Knox together. 
+    There, they let them go to the department store. When they walked to the store, the military police grabbed her. She could see a look
+    of desperation on her face and it turned out she had stolen something trivial like lipstick and maybe a bottle of nail polish.
+    Megan confronted Maura about it and Maura said she didn't know why she did it, she had the money to buy it. Megan says it seemed out
+    of character for her. She thought when Maura disappeared that this crazy girl she knew maybe had just up and left and decided to create
+    a new life for herself.
+  """),
+  "HELENA_MURRAY": Person("Helena Murray", "Fred Murray's cousin by marriage", """
+    Helena started a facebook page to help find Maura. She has a little to say about Kathleen. She says she doesn't know how Kathleen is
+    doing. Fred doesn't talk about Kathleen much. Kathleen has some problems. Sometimes she's talkative and sometimes she clams up.
+    There was a phone call that happened a day or two before Maura went missing. Kathleen would get drunk often and very quickly. When
+    describing Kathleen, Helena will be delicate but paint a picture of Kathleen being the black sheep of the family.
+  """),
+  "ERIN_ONEIL": Person("Erin O'Neil", "Friend of Maura's at U Mass", """
+    Erin works at Cape Cod hospital and majored in Nursing at U Mass. Erin and Maura used to carpool together to clinicals. There has
+    been some outside suspicion that Maura was pregnant which could be a reason why Maura fled. Erin's take on this would be that Maura
+    and Erin were actually taking a maternity class as part of their nursing program. All of them were Googling maternity terms on their
+    computers so it would make sense that these would come up on Maura's search history. Erin says it never seemed like she wanted to
+    run away. She even handed in her homework assignment. She says 'if it were me and I wanted to run away from nursing school, the last
+    thing I would do is hand in my homework assignment. Seems like she just wanted to take a break and intended on coming back.' Maura had
+    called her and told her that she had to go home for a family emergency and that she wanted to return the clothes she had borrowed.
+    Erin said Maura didn't have to. She says it sounded like Maura was crying and had mentioned something about her sister but only said
+    my sister without divulging any further. Then Erin ended up watching TV and fell asleep. There was a knock at her door but she was
+    asleep so she didn't answer the door. When she awoke, she opened the door and saw there was a bag with her clothes so she assumes
+    Maura was the one knocking, coming by to return the clothing. This was four and a half hours before Maura vanished. She feels guilty
+    about this, that maybe things would have been different if she had answered the door.
   """)
 }
 

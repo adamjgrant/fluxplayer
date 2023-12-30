@@ -155,6 +155,14 @@ CAR_WRECK_DEFINITION = TranscriptState(
   setting = """
 Haverhill, New Hampshire. Morning at the scene of a black 1996 Saturn sedan up against the snowbank along Route 112, also known as Wild Ammonoosuc Road. 
 The car is pointed west on the eastbound side of the road. The windshield is cracked and the car appears to have been involved in a collision
+
+If asked, a more detailed inventory of the items in the car can be provided in a structured list: A green Tundra garment bag, Opened tic tac container,
+ESPN Zone card, MCI prepaid phone cards, TTI National Inc calling card, Samsung travel adapter, misc paperwork, black and white Puma sweatpants,
+medium Express brand long sleeve polo shirt, black sports bra, black Old Navy V-neck sweater. Travel toothbrushes, deodorant, make up,
+Pack of Triphasilbirth control in car with four pills missing, nursing books, spiral notebooks, Vermont attractions map, can of alumaseal, can of fix-a-flat,
+can of STP power steering fluid, can of carpet and stain remover, big Y plastic shopping bag, "Bon bons" fingernail polish, simply sleep sleeping pills,
+Bottle of aveo juice skin quencher, proactive solution cleanser, bottle victoria's secret silkening body lotion, tube of colgate tooth paste,
+bottle of cucumber melon fantasy body spray, gillette razor, empty box of simply sleep, tampon, multi-purpose funnel, U2 cassette tape, make-up mirror.
   """,
   prompt = "Generate a dall-e image of a hairpin turn on a new hampshire road where a black Saturn sedan is abandoned on the side of a wooded road.",
   events=[],
@@ -287,22 +295,23 @@ Generate a dall-e image of a police officer in his 40s being interviewed by two 
 )
 
 WORK_FRIEND_DEFINITION = TranscriptState(
-  setting = "Back at the Murray household where now Fred and an anonymous work friend of Maura's are seated in the living room.",
+  setting = "Back at the Murray household where now Fred, Megan, and an anonymous work friend of Maura's are seated in the living room.",
   prompt = """
 Generate a dall-e image of middle-aged Fred murray seated in the living room with a 20-something work friend of Maura's.
   """,
   events = [],
-  people = [PEOPLE["ANONYMOUS_WORK_FRIEND"], PEOPLE["FRED_MURRAY_2"], PEOPLE["BILLY"]],
-  next_backbone = "A café where Julie Murray is ready to speak to us"
+  people = [PEOPLE["ANONYMOUS_WORK_FRIEND"], PEOPLE["FRED_MURRAY_2"], PEOPLE["BILLY"], PEOPLE["MEGAN"]],
+  next_backbone = "A café where Julie and Helena Murray are ready to speak to us"
 )
 
 JULIE_MURRAY_DEFINITION = TranscriptState(
-  setting = "A local coffee shop in Hanson Massachusettes where Julie Murray is seated with a coffee.",
+  setting = "A local coffee shop in Hanson Massachusettes where Julie Murray and other women are seated with a coffee.",
   prompt = """
-Generate a dall-e image of Julie Murray seated at a table with a coffee. She is in her 20s and is wearing a winter coat.
+Generate a dall-e image of two 20 year old brunettes women and a grey haired 60 year old woman are both wearing winter coats and seated at a 
+table with coffee in a café talking to investigators.
   """,
   events = [],
-  people = [PEOPLE["JULIE_MURRAY"]],
+  people = [PEOPLE["JULIE_MURRAY"], PEOPLE["HELENA_MURRAY"], PEOPLE["ERIN_ONEIL"]],
   next_backbone = "Maura's apartment"
 )
 
