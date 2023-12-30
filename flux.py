@@ -3,8 +3,11 @@
 # Python script that takes a python file as input and imports the cartridge variable.
 
 import argparse
-from lib.path_reader import find_cartridge, convert_and_save_python_to_yaml
-from lib.prompt import format_prompt
+from src.lib.path_reader import find_cartridge, convert_and_save_python_to_yaml
+from src.lib.prompt import format_prompt
+
+def cli():
+  return Flux().parse_for_path()
 
 def cli():
   return Flux().parse_for_path()

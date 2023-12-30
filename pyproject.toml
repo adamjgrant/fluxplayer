@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "flux player"
-version = "2.0.10"
+version = "0.0.0"
 description = "The missing OS for LLMs"
 authors = ["Adam Grant <hello@adamgrant.me>"]
 license = "MIT"
@@ -13,8 +13,11 @@ ruamel-yaml = "^0.18.5"
 ruamel-yaml-clib = "^0.2.8"
 
 [tool.poetry.scripts]
-flux = 'flux:main'
+flux = "src.flux:cli"
+
+[tool.poetry-dynamic-versioning]
+enable = true
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["poetry-core>=1.0.0", "poetry-dynamic-versioning>=1.0.0,<2.0.0"]
+build-backend = "poetry_dynamic_versioning.backend"

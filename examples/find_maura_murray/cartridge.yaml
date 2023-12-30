@@ -388,8 +388,8 @@ CAR_WRECK_1:
     if_the_user: asks to go to the evidence locker
   - *id001
 MAP_CAR_WRECK_1:
-  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_1.png)\n
-    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_1.png)_\n\
+  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_1_2.0.8.png)\n
+    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_1_2.0.8.png)_\n\
     \n\n      "
   events:
   - target: CAR_WRECK_1
@@ -494,8 +494,8 @@ UMASS_OFFICE_1:
   - *id002
   - *id001
 MAP_UMASS_OFFICE_1:
-  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_1.png)\n
-    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_1.png)_\n\
+  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_1_2.0.8.png)\n
+    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_1_2.0.8.png)_\n\
     \n\n      "
   events:
   - target: UMASS_OFFICE_1
@@ -620,8 +620,8 @@ DATA_LAB_1:
   - *id002
   - *id001
 MAP_DATA_LAB_1:
-  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_1.png)\n
-    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_1.png)_\n\
+  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_1_2.0.8.png)\n
+    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_1_2.0.8.png)_\n\
     \n\n      "
   events:
   - target: DATA_LAB_1
@@ -779,8 +779,8 @@ CAR_WRECK_2:
     if_the_user: wants to go to Fred's house
   - *id001
 MAP_CAR_WRECK_2:
-  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_2.png)\n
-    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_2.png)_\n\
+  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_2_2.0.8.png)\n
+    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_2_2.0.8.png)_\n\
     \n\n      "
   events:
   - target: CAR_WRECK_2
@@ -887,8 +887,8 @@ UMASS_OFFICE_2:
   - *id003
   - *id001
 MAP_UMASS_OFFICE_2:
-  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_2.png)\n
-    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_2.png)_\n\
+  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_2_2.0.8.png)\n
+    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_2_2.0.8.png)_\n\
     \n\n      "
   events:
   - target: UMASS_OFFICE_2
@@ -1015,8 +1015,8 @@ DATA_LAB_2:
   - *id003
   - *id001
 MAP_DATA_LAB_2:
-  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_2.png)\n
-    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_2.png)_\n\
+  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_2_2.0.8.png)\n
+    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_2_2.0.8.png)_\n\
     \n\n      "
   events:
   - target: DATA_LAB_2
@@ -1165,8 +1165,8 @@ EVIDENCE_LOCKER_2:
   - *id003
   - *id001
 MAP_EVIDENCE_LOCKER_2:
-  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_2.png)\n
-    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_2.png)_\n\
+  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_2_2.0.8.png)\n
+    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_2_2.0.8.png)_\n\
     \n\n      "
   events:
   - target: EVIDENCE_LOCKER_2
@@ -1327,8 +1327,8 @@ CAR_WRECK_3:
       where Maura disappeared
   - *id001
 MAP_CAR_WRECK_3:
-  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_3.png)\n
-    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_3.png)_\n\
+  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_3_2.0.8.png)\n
+    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_3_2.0.8.png)_\n\
     \n\n      "
   events:
   - target: CAR_WRECK_3
@@ -1437,8 +1437,8 @@ UMASS_OFFICE_3:
   - *id004
   - *id001
 MAP_UMASS_OFFICE_3:
-  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_3.png)\n
-    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_3.png)_\n\
+  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_3_2.0.8.png)\n
+    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_3_2.0.8.png)_\n\
     \n\n      "
   events:
   - target: UMASS_OFFICE_3
@@ -1567,8 +1567,8 @@ DATA_LAB_3:
   - *id004
   - *id001
 MAP_DATA_LAB_3:
-  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_3.png)\n
-    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_3.png)_\n\
+  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_3_2.0.8.png)\n
+    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_3_2.0.8.png)_\n\
     \n\n      "
   events:
   - target: DATA_LAB_3
@@ -1719,8 +1719,8 @@ EVIDENCE_LOCKER_3:
   - *id004
   - *id001
 MAP_EVIDENCE_LOCKER_3:
-  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_3.png)\n
-    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_3.png)_\n\
+  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_3_2.0.8.png)\n
+    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_3_2.0.8.png)_\n\
     \n\n      "
   events:
   - target: EVIDENCE_LOCKER_3
@@ -1847,8 +1847,8 @@ VISIT_FRED_3:
   - *id004
   - *id001
 MAP_VISIT_FRED_3:
-  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_3.png)\n
-    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_3.png)_\n\
+  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_3_2.0.8.png)\n
+    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_3_2.0.8.png)_\n\
     \n\n      "
   events:
   - target: VISIT_FRED_3
@@ -2010,8 +2010,8 @@ CAR_WRECK_4:
     if_the_user: wants to go to the police precinct
   - *id001
 MAP_CAR_WRECK_4:
-  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_4.png)\n
-    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_4.png)_\n\
+  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_4_2.0.8.png)\n
+    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_4_2.0.8.png)_\n\
     \n\n      "
   events:
   - target: CAR_WRECK_4
@@ -2122,8 +2122,8 @@ UMASS_OFFICE_4:
   - *id005
   - *id001
 MAP_UMASS_OFFICE_4:
-  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_4.png)\n
-    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_4.png)_\n\
+  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_4_2.0.8.png)\n
+    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_4_2.0.8.png)_\n\
     \n\n      "
   events:
   - target: UMASS_OFFICE_4
@@ -2254,8 +2254,8 @@ DATA_LAB_4:
   - *id005
   - *id001
 MAP_DATA_LAB_4:
-  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_4.png)\n
-    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_4.png)_\n\
+  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_4_2.0.8.png)\n
+    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_4_2.0.8.png)_\n\
     \n\n      "
   events:
   - target: DATA_LAB_4
@@ -2408,8 +2408,8 @@ EVIDENCE_LOCKER_4:
   - *id005
   - *id001
 MAP_EVIDENCE_LOCKER_4:
-  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_4.png)\n
-    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_4.png)_\n\
+  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_4_2.0.8.png)\n
+    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_4_2.0.8.png)_\n\
     \n\n      "
   events:
   - target: EVIDENCE_LOCKER_4
@@ -2538,8 +2538,8 @@ VISIT_FRED_4:
   - *id005
   - *id001
 MAP_VISIT_FRED_4:
-  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_4.png)\n
-    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_4.png)_\n\
+  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_4_2.0.8.png)\n
+    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_4_2.0.8.png)_\n\
     \n\n      "
   events:
   - target: VISIT_FRED_4
@@ -2747,8 +2747,8 @@ SEARCH_FOR_MAURA_4:
   - *id005
   - *id001
 MAP_SEARCH_FOR_MAURA_4:
-  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_4.png)\n
-    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_4.png)_\n\
+  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_4_2.0.8.png)\n
+    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_4_2.0.8.png)_\n\
     \n\n      "
   events:
   - target: SEARCH_FOR_MAURA_4
@@ -2912,8 +2912,8 @@ CAR_WRECK_5:
     if_the_user: wants to go to talk to Maura's work friend
   - *id001
 MAP_CAR_WRECK_5:
-  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_5.png)\n
-    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_5.png)_\n\
+  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_5_2.0.8.png)\n
+    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_5_2.0.8.png)_\n\
     \n\n      "
   events:
   - target: CAR_WRECK_5
@@ -3026,8 +3026,8 @@ UMASS_OFFICE_5:
   - *id006
   - *id001
 MAP_UMASS_OFFICE_5:
-  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_5.png)\n
-    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_5.png)_\n\
+  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_5_2.0.8.png)\n
+    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_5_2.0.8.png)_\n\
     \n\n      "
   events:
   - target: UMASS_OFFICE_5
@@ -3160,8 +3160,8 @@ DATA_LAB_5:
   - *id006
   - *id001
 MAP_DATA_LAB_5:
-  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_5.png)\n
-    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_5.png)_\n\
+  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_5_2.0.8.png)\n
+    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_5_2.0.8.png)_\n\
     \n\n      "
   events:
   - target: DATA_LAB_5
@@ -3316,8 +3316,8 @@ EVIDENCE_LOCKER_5:
   - *id006
   - *id001
 MAP_EVIDENCE_LOCKER_5:
-  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_5.png)\n
-    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_5.png)_\n\
+  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_5_2.0.8.png)\n
+    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_5_2.0.8.png)_\n\
     \n\n      "
   events:
   - target: EVIDENCE_LOCKER_5
@@ -3448,8 +3448,8 @@ VISIT_FRED_5:
   - *id006
   - *id001
 MAP_VISIT_FRED_5:
-  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_5.png)\n
-    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_5.png)_\n\
+  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_5_2.0.8.png)\n
+    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_5_2.0.8.png)_\n\
     \n\n      "
   events:
   - target: VISIT_FRED_5
@@ -3659,8 +3659,8 @@ SEARCH_FOR_MAURA_5:
   - *id006
   - *id001
 MAP_SEARCH_FOR_MAURA_5:
-  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_5.png)\n
-    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_5.png)_\n\
+  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_5_2.0.8.png)\n
+    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_5_2.0.8.png)_\n\
     \n\n      "
   events:
   - target: SEARCH_FOR_MAURA_5
@@ -3778,8 +3778,8 @@ POLICE_PRECINCT_5:
   - *id006
   - *id001
 MAP_POLICE_PRECINCT_5:
-  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_5.png)\n
-    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_5.png)_\n\
+  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_5_2.0.8.png)\n
+    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_5_2.0.8.png)_\n\
     \n\n      "
   events:
   - target: POLICE_PRECINCT_5
@@ -3945,8 +3945,8 @@ CAR_WRECK_6:
     if_the_user: wants to go to Julie Murray's place
   - *id001
 MAP_CAR_WRECK_6:
-  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_6.png)\n
-    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_6.png)_\n\
+  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_6_2.0.8.png)\n
+    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_6_2.0.8.png)_\n\
     \n\n      "
   events:
   - target: CAR_WRECK_6
@@ -4061,8 +4061,8 @@ UMASS_OFFICE_6:
   - *id007
   - *id001
 MAP_UMASS_OFFICE_6:
-  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_6.png)\n
-    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_6.png)_\n\
+  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_6_2.0.8.png)\n
+    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_6_2.0.8.png)_\n\
     \n\n      "
   events:
   - target: UMASS_OFFICE_6
@@ -4197,8 +4197,8 @@ DATA_LAB_6:
   - *id007
   - *id001
 MAP_DATA_LAB_6:
-  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_6.png)\n
-    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_6.png)_\n\
+  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_6_2.0.8.png)\n
+    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_6_2.0.8.png)_\n\
     \n\n      "
   events:
   - target: DATA_LAB_6
@@ -4355,8 +4355,8 @@ EVIDENCE_LOCKER_6:
   - *id007
   - *id001
 MAP_EVIDENCE_LOCKER_6:
-  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_6.png)\n
-    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_6.png)_\n\
+  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_6_2.0.8.png)\n
+    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_6_2.0.8.png)_\n\
     \n\n      "
   events:
   - target: EVIDENCE_LOCKER_6
@@ -4489,8 +4489,8 @@ VISIT_FRED_6:
   - *id007
   - *id001
 MAP_VISIT_FRED_6:
-  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_6.png)\n
-    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_6.png)_\n\
+  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_6_2.0.8.png)\n
+    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_6_2.0.8.png)_\n\
     \n\n      "
   events:
   - target: VISIT_FRED_6
@@ -4702,8 +4702,8 @@ SEARCH_FOR_MAURA_6:
   - *id007
   - *id001
 MAP_SEARCH_FOR_MAURA_6:
-  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_6.png)\n
-    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_6.png)_\n\
+  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_6_2.0.8.png)\n
+    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_6_2.0.8.png)_\n\
     \n\n      "
   events:
   - target: SEARCH_FOR_MAURA_6
@@ -4823,8 +4823,8 @@ POLICE_PRECINCT_6:
   - *id007
   - *id001
 MAP_POLICE_PRECINCT_6:
-  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_6.png)\n
-    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_6.png)_\n\
+  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_6_2.0.8.png)\n
+    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_6_2.0.8.png)_\n\
     \n\n      "
   events:
   - target: POLICE_PRECINCT_6
@@ -5003,8 +5003,8 @@ WORK_FRIEND_6:
   - *id007
   - *id001
 MAP_WORK_FRIEND_6:
-  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_6.png)\n
-    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_6.png)_\n\
+  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_6_2.0.8.png)\n
+    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_6_2.0.8.png)_\n\
     \n\n      "
   events:
   - target: WORK_FRIEND_6
@@ -5172,8 +5172,8 @@ CAR_WRECK_7:
     if_the_user: wants to go to Maura's apartment
   - *id001
 MAP_CAR_WRECK_7:
-  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_7.png)\n
-    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_7.png)_\n\
+  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_7_2.0.8.png)\n
+    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_7_2.0.8.png)_\n\
     \n\n      "
   events:
   - target: CAR_WRECK_7
@@ -5290,8 +5290,8 @@ UMASS_OFFICE_7:
   - *id008
   - *id001
 MAP_UMASS_OFFICE_7:
-  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_7.png)\n
-    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_7.png)_\n\
+  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_7_2.0.8.png)\n
+    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_7_2.0.8.png)_\n\
     \n\n      "
   events:
   - target: UMASS_OFFICE_7
@@ -5428,8 +5428,8 @@ DATA_LAB_7:
   - *id008
   - *id001
 MAP_DATA_LAB_7:
-  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_7.png)\n
-    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_7.png)_\n\
+  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_7_2.0.8.png)\n
+    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_7_2.0.8.png)_\n\
     \n\n      "
   events:
   - target: DATA_LAB_7
@@ -5588,8 +5588,8 @@ EVIDENCE_LOCKER_7:
   - *id008
   - *id001
 MAP_EVIDENCE_LOCKER_7:
-  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_7.png)\n
-    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_7.png)_\n\
+  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_7_2.0.8.png)\n
+    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_7_2.0.8.png)_\n\
     \n\n      "
   events:
   - target: EVIDENCE_LOCKER_7
@@ -5724,8 +5724,8 @@ VISIT_FRED_7:
   - *id008
   - *id001
 MAP_VISIT_FRED_7:
-  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_7.png)\n
-    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_7.png)_\n\
+  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_7_2.0.8.png)\n
+    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_7_2.0.8.png)_\n\
     \n\n      "
   events:
   - target: VISIT_FRED_7
@@ -5939,8 +5939,8 @@ SEARCH_FOR_MAURA_7:
   - *id008
   - *id001
 MAP_SEARCH_FOR_MAURA_7:
-  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_7.png)\n
-    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_7.png)_\n\
+  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_7_2.0.8.png)\n
+    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_7_2.0.8.png)_\n\
     \n\n      "
   events:
   - target: SEARCH_FOR_MAURA_7
@@ -6062,8 +6062,8 @@ POLICE_PRECINCT_7:
   - *id008
   - *id001
 MAP_POLICE_PRECINCT_7:
-  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_7.png)\n
-    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_7.png)_\n\
+  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_7_2.0.8.png)\n
+    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_7_2.0.8.png)_\n\
     \n\n      "
   events:
   - target: POLICE_PRECINCT_7
@@ -6244,8 +6244,8 @@ WORK_FRIEND_7:
   - *id008
   - *id001
 MAP_WORK_FRIEND_7:
-  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_7.png)\n
-    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_7.png)_\n\
+  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_7_2.0.8.png)\n
+    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_7_2.0.8.png)_\n\
     \n\n      "
   events:
   - target: WORK_FRIEND_7
@@ -6381,8 +6381,8 @@ JULIE_MURRAY_7:
   - *id008
   - *id001
 MAP_JULIE_MURRAY_7:
-  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_7.png)\n
-    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_7.png)_\n\
+  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_7_2.0.8.png)\n
+    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_7_2.0.8.png)_\n\
     \n\n      "
   events:
   - target: JULIE_MURRAY_7
@@ -6553,8 +6553,8 @@ CAR_WRECK_8:
       who saw the red truck
   - *id001
 MAP_CAR_WRECK_8:
-  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_8.png)\n
-    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_8.png)_\n\
+  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_8_2.0.8.png)\n
+    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_8_2.0.8.png)_\n\
     \n\n      "
   events:
   - target: CAR_WRECK_8
@@ -6674,8 +6674,8 @@ UMASS_OFFICE_8:
   - *id009
   - *id001
 MAP_UMASS_OFFICE_8:
-  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_8.png)\n
-    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_8.png)_\n\
+  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_8_2.0.8.png)\n
+    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_8_2.0.8.png)_\n\
     \n\n      "
   events:
   - target: UMASS_OFFICE_8
@@ -6815,8 +6815,8 @@ DATA_LAB_8:
   - *id009
   - *id001
 MAP_DATA_LAB_8:
-  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_8.png)\n
-    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_8.png)_\n\
+  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_8_2.0.8.png)\n
+    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_8_2.0.8.png)_\n\
     \n\n      "
   events:
   - target: DATA_LAB_8
@@ -6978,8 +6978,8 @@ EVIDENCE_LOCKER_8:
   - *id009
   - *id001
 MAP_EVIDENCE_LOCKER_8:
-  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_8.png)\n
-    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_8.png)_\n\
+  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_8_2.0.8.png)\n
+    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_8_2.0.8.png)_\n\
     \n\n      "
   events:
   - target: EVIDENCE_LOCKER_8
@@ -7117,8 +7117,8 @@ VISIT_FRED_8:
   - *id009
   - *id001
 MAP_VISIT_FRED_8:
-  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_8.png)\n
-    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_8.png)_\n\
+  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_8_2.0.8.png)\n
+    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_8_2.0.8.png)_\n\
     \n\n      "
   events:
   - target: VISIT_FRED_8
@@ -7335,8 +7335,8 @@ SEARCH_FOR_MAURA_8:
   - *id009
   - *id001
 MAP_SEARCH_FOR_MAURA_8:
-  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_8.png)\n
-    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_8.png)_\n\
+  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_8_2.0.8.png)\n
+    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_8_2.0.8.png)_\n\
     \n\n      "
   events:
   - target: SEARCH_FOR_MAURA_8
@@ -7461,8 +7461,8 @@ POLICE_PRECINCT_8:
   - *id009
   - *id001
 MAP_POLICE_PRECINCT_8:
-  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_8.png)\n
-    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_8.png)_\n\
+  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_8_2.0.8.png)\n
+    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_8_2.0.8.png)_\n\
     \n\n      "
   events:
   - target: POLICE_PRECINCT_8
@@ -7646,8 +7646,8 @@ WORK_FRIEND_8:
   - *id009
   - *id001
 MAP_WORK_FRIEND_8:
-  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_8.png)\n
-    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_8.png)_\n\
+  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_8_2.0.8.png)\n
+    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_8_2.0.8.png)_\n\
     \n\n      "
   events:
   - target: WORK_FRIEND_8
@@ -7786,8 +7786,8 @@ JULIE_MURRAY_8:
   - *id009
   - *id001
 MAP_JULIE_MURRAY_8:
-  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_8.png)\n
-    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_8.png)_\n\
+  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_8_2.0.8.png)\n
+    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_8_2.0.8.png)_\n\
     \n\n      "
   events:
   - target: JULIE_MURRAY_8
@@ -7930,8 +7930,8 @@ MAURA_APARTMENT_8:
   - *id009
   - *id001
 MAP_MAURA_APARTMENT_8:
-  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_8.png)\n
-    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_8.png)_\n\
+  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_8_2.0.8.png)\n
+    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_8_2.0.8.png)_\n\
     \n\n      "
   events:
   - target: MAURA_APARTMENT_8
@@ -8104,8 +8104,8 @@ CAR_WRECK_9:
     if_the_user: wants to go to Fred's house to discuss the knife
   - *id001
 MAP_CAR_WRECK_9:
-  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_9.png)\n
-    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_9.png)_\n\
+  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_9_2.0.8.png)\n
+    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_9_2.0.8.png)_\n\
     \n\n      "
   events:
   - target: CAR_WRECK_9
@@ -8227,8 +8227,8 @@ UMASS_OFFICE_9:
   - *id010
   - *id001
 MAP_UMASS_OFFICE_9:
-  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_9.png)\n
-    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_9.png)_\n\
+  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_9_2.0.8.png)\n
+    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_9_2.0.8.png)_\n\
     \n\n      "
   events:
   - target: UMASS_OFFICE_9
@@ -8370,8 +8370,8 @@ DATA_LAB_9:
   - *id010
   - *id001
 MAP_DATA_LAB_9:
-  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_9.png)\n
-    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_9.png)_\n\
+  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_9_2.0.8.png)\n
+    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_9_2.0.8.png)_\n\
     \n\n      "
   events:
   - target: DATA_LAB_9
@@ -8535,8 +8535,8 @@ EVIDENCE_LOCKER_9:
   - *id010
   - *id001
 MAP_EVIDENCE_LOCKER_9:
-  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_9.png)\n
-    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_9.png)_\n\
+  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_9_2.0.8.png)\n
+    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_9_2.0.8.png)_\n\
     \n\n      "
   events:
   - target: EVIDENCE_LOCKER_9
@@ -8676,8 +8676,8 @@ VISIT_FRED_9:
   - *id010
   - *id001
 MAP_VISIT_FRED_9:
-  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_9.png)\n
-    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_9.png)_\n\
+  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_9_2.0.8.png)\n
+    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_9_2.0.8.png)_\n\
     \n\n      "
   events:
   - target: VISIT_FRED_9
@@ -8896,8 +8896,8 @@ SEARCH_FOR_MAURA_9:
   - *id010
   - *id001
 MAP_SEARCH_FOR_MAURA_9:
-  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_9.png)\n
-    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_9.png)_\n\
+  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_9_2.0.8.png)\n
+    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_9_2.0.8.png)_\n\
     \n\n      "
   events:
   - target: SEARCH_FOR_MAURA_9
@@ -9024,8 +9024,8 @@ POLICE_PRECINCT_9:
   - *id010
   - *id001
 MAP_POLICE_PRECINCT_9:
-  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_9.png)\n
-    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_9.png)_\n\
+  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_9_2.0.8.png)\n
+    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_9_2.0.8.png)_\n\
     \n\n      "
   events:
   - target: POLICE_PRECINCT_9
@@ -9211,8 +9211,8 @@ WORK_FRIEND_9:
   - *id010
   - *id001
 MAP_WORK_FRIEND_9:
-  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_9.png)\n
-    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_9.png)_\n\
+  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_9_2.0.8.png)\n
+    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_9_2.0.8.png)_\n\
     \n\n      "
   events:
   - target: WORK_FRIEND_9
@@ -9353,8 +9353,8 @@ JULIE_MURRAY_9:
   - *id010
   - *id001
 MAP_JULIE_MURRAY_9:
-  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_9.png)\n
-    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_9.png)_\n\
+  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_9_2.0.8.png)\n
+    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_9_2.0.8.png)_\n\
     \n\n      "
   events:
   - target: JULIE_MURRAY_9
@@ -9499,8 +9499,8 @@ MAURA_APARTMENT_9:
   - *id010
   - *id001
 MAP_MAURA_APARTMENT_9:
-  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_9.png)\n
-    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_9.png)_\n\
+  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_9_2.0.8.png)\n
+    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_9_2.0.8.png)_\n\
     \n\n      "
   events:
   - target: MAURA_APARTMENT_9
@@ -9627,8 +9627,8 @@ RED_TRUCK_WITNESS_9:
   - *id010
   - *id001
 MAP_RED_TRUCK_WITNESS_9:
-  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_9.png)\n
-    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_9.png)_\n\
+  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_9_2.0.8.png)\n
+    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_9_2.0.8.png)_\n\
     \n\n      "
   events:
   - target: RED_TRUCK_WITNESS_9
@@ -9803,8 +9803,8 @@ CAR_WRECK_10:
     if_the_user: asks to go to the A-Frame
   - *id001
 MAP_CAR_WRECK_10:
-  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_10.png)\n
-    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_10.png)_\n\
+  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_10_2.0.8.png)\n
+    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_10_2.0.8.png)_\n\
     \n\n      "
   events:
   - target: CAR_WRECK_10
@@ -9928,8 +9928,8 @@ UMASS_OFFICE_10:
   - *id011
   - *id001
 MAP_UMASS_OFFICE_10:
-  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_10.png)\n
-    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_10.png)_\n\
+  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_10_2.0.8.png)\n
+    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_10_2.0.8.png)_\n\
     \n\n      "
   events:
   - target: UMASS_OFFICE_10
@@ -10073,8 +10073,8 @@ DATA_LAB_10:
   - *id011
   - *id001
 MAP_DATA_LAB_10:
-  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_10.png)\n
-    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_10.png)_\n\
+  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_10_2.0.8.png)\n
+    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_10_2.0.8.png)_\n\
     \n\n      "
   events:
   - target: DATA_LAB_10
@@ -10240,8 +10240,8 @@ EVIDENCE_LOCKER_10:
   - *id011
   - *id001
 MAP_EVIDENCE_LOCKER_10:
-  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_10.png)\n
-    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_10.png)_\n\
+  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_10_2.0.8.png)\n
+    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_10_2.0.8.png)_\n\
     \n\n      "
   events:
   - target: EVIDENCE_LOCKER_10
@@ -10383,8 +10383,8 @@ VISIT_FRED_10:
   - *id011
   - *id001
 MAP_VISIT_FRED_10:
-  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_10.png)\n
-    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_10.png)_\n\
+  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_10_2.0.8.png)\n
+    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_10_2.0.8.png)_\n\
     \n\n      "
   events:
   - target: VISIT_FRED_10
@@ -10605,8 +10605,8 @@ SEARCH_FOR_MAURA_10:
   - *id011
   - *id001
 MAP_SEARCH_FOR_MAURA_10:
-  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_10.png)\n
-    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_10.png)_\n\
+  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_10_2.0.8.png)\n
+    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_10_2.0.8.png)_\n\
     \n\n      "
   events:
   - target: SEARCH_FOR_MAURA_10
@@ -10735,8 +10735,8 @@ POLICE_PRECINCT_10:
   - *id011
   - *id001
 MAP_POLICE_PRECINCT_10:
-  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_10.png)\n
-    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_10.png)_\n\
+  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_10_2.0.8.png)\n
+    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_10_2.0.8.png)_\n\
     \n\n      "
   events:
   - target: POLICE_PRECINCT_10
@@ -10924,8 +10924,8 @@ WORK_FRIEND_10:
   - *id011
   - *id001
 MAP_WORK_FRIEND_10:
-  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_10.png)\n
-    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_10.png)_\n\
+  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_10_2.0.8.png)\n
+    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_10_2.0.8.png)_\n\
     \n\n      "
   events:
   - target: WORK_FRIEND_10
@@ -11068,8 +11068,8 @@ JULIE_MURRAY_10:
   - *id011
   - *id001
 MAP_JULIE_MURRAY_10:
-  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_10.png)\n
-    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_10.png)_\n\
+  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_10_2.0.8.png)\n
+    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_10_2.0.8.png)_\n\
     \n\n      "
   events:
   - target: JULIE_MURRAY_10
@@ -11216,8 +11216,8 @@ MAURA_APARTMENT_10:
   - *id011
   - *id001
 MAP_MAURA_APARTMENT_10:
-  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_10.png)\n
-    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_10.png)_\n\
+  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_10_2.0.8.png)\n
+    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_10_2.0.8.png)_\n\
     \n\n      "
   events:
   - target: MAURA_APARTMENT_10
@@ -11346,8 +11346,8 @@ RED_TRUCK_WITNESS_10:
   - *id011
   - *id001
 MAP_RED_TRUCK_WITNESS_10:
-  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_10.png)\n
-    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_10.png)_\n\
+  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_10_2.0.8.png)\n
+    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_10_2.0.8.png)_\n\
     \n\n      "
   events:
   - target: RED_TRUCK_WITNESS_10
@@ -11525,8 +11525,8 @@ FRED_MURRAY_WITH_KNIFE_10:
   - *id011
   - *id001
 MAP_FRED_MURRAY_WITH_KNIFE_10:
-  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_10.png)\n
-    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_10.png)_\n\
+  prompt: "\n\n\nRemember to show the user a map like this:\n![Map of key locations](https://cdn.everything.io/chatgpt/maura/map_level_10_2.0.8.png)\n
+    _Map of key locations, [Open image in new window](https://cdn.everything.io/chatgpt/maura/map_level_10_2.0.8.png)_\n\
     \n\n      "
   events:
   - target: FRED_MURRAY_WITH_KNIFE_10
@@ -11630,9 +11630,10 @@ A_FRAME_FINAL:
     either \nask more questions or proceed to somewhere else.\n\nIf you haven't already,
     briefly narrate the setting with some creative flair on how you describe it: October
     4, 2006. An A-Frame house approximately 1 mile from the crash site, nestled in
-    the woods.\n\n\n    \n\nLet the user know the following people are available for
-    questioning:\n\n\n\nName: \nBackground: .\nThis is the information that  has and
-    will provide only if asked a question that would reveal it:\n\n    This individual
+    the woods.\n\n\n    Generate a dall-e image of a spooky red A frame house quietly
+    nestled in the woods.\n    \n\nLet the user know the following people are available
+    for questioning:\n\n\n\nName: \nBackground: .\nThis is the information that  has
+    and will provide only if asked a question that would reveal it:\n\n    This individual
     is aware of a previous search of the A-frame house with Fred and volunteers and
     the person who implicated his brother.\n    They came with cadaver dogs which
     became active around a closet upstairs indicating human remains might have been

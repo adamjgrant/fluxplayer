@@ -1,4 +1,5 @@
 import copy
+
 from examples.find_maura_murray.lib.people import PEOPLE
 from examples.find_maura_murray.lib.image import Image
 from examples.find_maura_murray.lib.special_states import TranscriptState, CherryPicker, Map, BackForwardState
@@ -59,7 +60,7 @@ class LevelMaker:
         f"{backbone_name}_{self.level}": globals()[f"{backbone_name}_DEFINITION"].copy_with_changes(
           events = [{ "target": f"MAP_{backbone_name}_{self.level}", "if_the_user": "wants to go to the map" }] + EXTRA_LEVELING_EVENT,
         ).dict(),
-        **Map(f"{backbone_name}_{self.level}", f"map_level_{self.level}").add_events(_LEVELING_EVENTS_FOR_MAP).key_dict(),
+        **Map(f"{backbone_name}_{self.level}", f"map_level_{self.level}_2.0.8").add_events(_LEVELING_EVENTS_FOR_MAP).key_dict(),
         **EvidenceLocker(level=f"{self.level}", previous_state=f"MAP_{backbone_name}_{self.level}").key_dict(),
       })
 
@@ -486,6 +487,7 @@ cartridge = {
   "A_FRAME_FINAL": TranscriptState(
     setting = "October 4, 2006. An A-Frame house approximately 1 mile from the crash site, nestled in the woods.",
     prompt = """
+    Generate a dall-e image of a spooky red A frame house quietly nestled in the woods.
     """,
     events = FINAL_MAP_EL_EVENTS,
     people = [PEOPLE["TRUTH_SEEKER"]]
