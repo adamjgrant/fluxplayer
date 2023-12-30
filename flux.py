@@ -9,9 +9,6 @@ from lib.prompt import format_prompt
 def cli():
   return Flux().parse_for_path()
 
-def cli():
-  return Flux().parse_for_path()
-
 class Flux:
   def parse_for_path(self):
       parser = argparse.ArgumentParser(description="Flux player")
