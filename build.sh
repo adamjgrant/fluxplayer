@@ -2,9 +2,6 @@
 
 source .env
 
-echo "Publishing GitHub release..."
-gh release create v$VERSION ./dist/openai/flux --title "Flux Player v$VERSION" --notes "To use this release in a custom GPT, download flux from the assets below" --prerelease
-
 rm -rf dist
 mkdir -p dist
 mkdir -p dist/openai
@@ -18,7 +15,8 @@ echo "Building project for Linux/OpenAI..."
 docker run -v "$(pwd):/src/" cdrx/pyinstaller-linux
 cp -r dist/linux/flux dist/openai/flux
 
-echo "Build completed."
+echo "Publishing GitHub release..."
+gh release create v$VERSION ./dist/openai/flux --title "Flux Player v$VERSION" --notes "To use this release in a custom GPT, download flux from the assets below" --prerelease
 
 echo "Building for pip distribution..."
 poetry build

@@ -25,16 +25,16 @@ class EvidenceSet:
 
 EVIDENCE = {
   "BUTCH_ATWOOD": EvidenceSet(evidences = [
-    ImageEvidence("butch_atwood_interview.png", "Butch Atwood being interviewed by a local TV station", date="February 10, 2024"),
-    ImageEvidence("butch_atwood_home.png", "Butch Atwood being interviewed by a local TV station", date="February 10, 2024")
+    ImageEvidence(url="butch_atwood_interview.png", description="Butch Atwood being interviewed by a local TV station", date="February 10, 2024"),
+    ImageEvidence(url="butch_atwood_home.png", description="Butch Atwood being interviewed by a local TV station", date="February 10, 2024")
   ], description="Images of Butch Atwood around his home near the time of Maura Murray's disappearance"),
-  "MAURA_MISSING_POSTER": ImageEvidence("missingposter.gif", "Missing Poster for Maura Murray", date="2024"),
+  "MAURA_MISSING_POSTER": ImageEvidence(url="missingposter.gif", description="Missing Poster for Maura Murray", date="2024"),
   "MAURA_AT_ATM": EvidenceSet(evidences = [
-    ImageEvidence("maura_atm_01.png", "February 9, 2004: Maura Murray at ATM seemingly alone withdrawing $280 before visiting liquor store", date="February 9, 2024"),
-    ImageEvidence("maura_atm_02.png", "February 9, 2004: Maura Murray at ATM seemingly alone withdrawing $280 before visiting liquor store", date="February 9, 2024"),
-    ImageEvidence("maura_atm_03.png", "February 9, 2004: Maura Murray at ATM seemingly alone withdrawing $280 before visiting liquor store", date="February 9, 2024"),
-    ImageEvidence("maura_atm_04.png", "February 9, 2004: Maura Murray at ATM seemingly alone withdrawing $280 before visiting liquor store", date="February 9, 2024"),
-    ImageEvidence("maura_atm_05.png", "February 9, 2004: Maura Murray at ATM seemingly alone withdrawing $280 before visiting liquor store", date="February 9, 2024")
+    ImageEvidence(url="maura_atm_01.png", description="Maura Murray at ATM seemingly alone withdrawing $280 before visiting liquor store", date="February 9, 2024"),
+    ImageEvidence(url="maura_atm_02.png", description="Maura Murray at ATM seemingly alone withdrawing $280 before visiting liquor store", date="February 9, 2024"),
+    ImageEvidence(url="maura_atm_03.png", description="Maura Murray at ATM seemingly alone withdrawing $280 before visiting liquor store", date="February 9, 2024"),
+    ImageEvidence(url="maura_atm_04.png", description="Maura Murray at ATM seemingly alone withdrawing $280 before visiting liquor store", date="February 9, 2024"),
+    ImageEvidence(url="maura_atm_05.png", description="Maura Murray at ATM seemingly alone withdrawing $280 before visiting liquor store", date="February 9, 2024")
   ], description="Security camera footage of Maura Murray at ATM"),
   "MAURAS_COMPUTER": Evidence(date="February 9, 2024", description="Computer records collected in the data lab from Maura Murray's computer", presentation="""
 Data gathered about Maura Murray's activities on February 9, the day she disappeared:
