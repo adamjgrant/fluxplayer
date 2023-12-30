@@ -14,7 +14,7 @@ if getattr(sys, 'frozen', False):
     exe_path = os.path.dirname(sys.executable)
     root_dir = Path(exe_path).resolve()
 else:
-    root_dir = Path(__file__).resolve().parent.parent.parent
+    root_dir = Path(__file__).resolve().parent.parent
     src_dir = Path(__file__).resolve().parent.parent.parent
     sys.path.insert(0, root_dir)
     sys.path.insert(0, src_dir)
