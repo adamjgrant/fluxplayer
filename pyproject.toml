@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "flux player"
-version = "0.0.0"
+version = "2.0.10"
 description = "The missing OS for LLMs"
 authors = ["Adam Grant <hello@adamgrant.me>"]
 license = "MIT"
