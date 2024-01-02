@@ -2,6 +2,10 @@ from examples.find_maura_murray.lib.special_states import CherryPicker
 from examples.find_maura_murray.lib.image import Image
 from examples.find_maura_murray.lib.event_self import EVENT_SELF
 
+# Evidence Sets just have multiple pieces of evidence. Just a way of organizing a bunch of related things.
+# However, we can also give the user options to go deep on one piece of evidence like reading a full transcript.
+# For this, (TODO)
+
 class Evidence:
   def __init__(self, date, time=None, presentation="", description=""):
     self.presentation = f"{presentation}\n"
