@@ -175,6 +175,12 @@ class TestEvidence(unittest.TestCase):
 
     key_dict = evidence_trail.key_dict()
     self.maxDiff = None
+    if_the_user_esa = (x for x in key_dict["EVIDENCE_TRAIL_1"]["events"] if x["target"] == "EVIDENCE_TRAIL_1_EVIDENCE_SET_A").__next__()["if_the_user"]
+    if_the_user_esb = (x for x in key_dict["EVIDENCE_TRAIL_1"]["events"] if x["target"] == "EVIDENCE_TRAIL_1_EVIDENCE_SET_B").__next__()["if_the_user"]
+
+    self.assertEqual(if_the_user_esa, f"wants to see evidence that includes: {evidence_set_a.description}")
+    self.assertEqual(if_the_user_esb, f"wants to see evidence that includes: {evidence_set_b.description}")
+
     self.assertDictEqual(key_dict["EVIDENCE_TRAIL_1"], {
       "prompt": f"""
 Let the user know they are now in an area of the evidence locker where they can see the evidence described in the events below.
@@ -183,8 +189,8 @@ The user will need to choose either to see an evidence set or to go back to a pr
       "events": [
         { "target": "EVIDENCE_LOCKER", "if_the_user": "wants to go back or back specifically to the evidence locker" },
         { "target": "NARRATIVE_BACKBONE_STATE", "if_the_user": "wants to go back to <example description of narrative backbone state>" },
-        { "target": "EVIDENCE_TRAIL_1_EVIDENCE_SET_A", "if_the_user": f"wants to see the evidence that includes: {evidence_set_a.description}" },
-        { "target": "EVIDENCE_TRAIL_1_EVIDENCE_SET_B", "if_the_user": f"wants to see the evidence that includes: {evidence_set_b.description}" },
+        { "target": "EVIDENCE_TRAIL_1_EVIDENCE_SET_A", "if_the_user": f"wants to see evidence that includes: {evidence_set_a.description}" },
+        { "target": "EVIDENCE_TRAIL_1_EVIDENCE_SET_B", "if_the_user": f"wants to see evidence that includes: {evidence_set_b.description}" },
       ]
     })
 

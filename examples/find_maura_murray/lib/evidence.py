@@ -53,15 +53,28 @@ class EvidenceTrail(Evidence):
   def key_dict(self):
     _key_dict = {}
     _key_dict[self.key] = {
-      "prompt": "",
+      "prompt": """
+Let the user know they are now in an area of the evidence locker where they can see the evidence described in the events below.
+The user will need to choose either to see an evidence set or to go back to a previous state. 
+      """,
       "events": [
         { "target": "EVIDENCE_LOCKER", "if_the_user": "wants to go back or back specifically to the evidence locker" },
         { "target": self.previous_backbone_state, "if_the_user": f"wants to go back to {self.previous_backbone_state_description}" }
       ]
     }
     for evidence_set_object in self.evidence_set_objects:
+      key = next(iter(evidence_set_object))
+      evidence_set = evidence_set_object[key]
+      _key_dict[self.key]["events"].append({ "target": f"{self.key}_{key}", "if_the_user": f"wants to see evidence that includes: {evidence_set.description}" }) 
+
+    for evidence_set_object in self.evidence_set_objects:
       _key_dict[f"{self.key}_{next(iter(evidence_set_object))}"] = {
-        "prompt": "",
+        "prompt": f"""
+Let the user know they are now looking at a small set of evidence in the evidence locker for "{evidence_set.description}" 
+and the evidence is as follows:
+
+{evidence_set.presentation}
+        """,
         "events": [
           { "target": "EVIDENCE_LOCKER", "if_the_user": "wants to go back or back specifically to the evidence locker" },
           { "target": self.key, "if_the_user": "wants to go back to the evidence set where they were before but not all the way back to the evidence locker" },
