@@ -166,6 +166,15 @@ class TestEvidence(unittest.TestCase):
 
     key_dict = evidence_trail.key_dict()
     self.assertDictEqual(key_dict, {
+      "EVIDENCE_TRAIL_1": {
+        # Shoudl allow for going back to the evidence locker or room or whatever we called it.
+      },
       "EVIDENCE_TRAIL_1_EVIDENCE_SET_A": {
+        # Should allow for going back to the evidence trail itself
+        # Shoudl allow for going back to the evidence locker or room or whatever we called it.
+      },# TODO
+      "EVIDENCE_TRAIL_1_EVIDENCE_SET_B": {
+        # Should allow for going back to the evidence trail itself
+        # Shoudl allow for going back to the evidence locker or room or whatever we called it.
       }# TODO
     })
