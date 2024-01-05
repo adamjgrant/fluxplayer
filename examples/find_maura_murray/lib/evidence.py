@@ -68,6 +68,7 @@ The user will need to choose either to see an evidence set or to go back to a pr
       _key_dict[self.key]["events"].append({ "target": f"{self.key}_{key}", "if_the_user": f"wants to see evidence that includes: {evidence_set.description}" }) 
 
     for evidence_set_object in self.evidence_set_objects:
+      evidence_set = evidence_set_object[next(iter(evidence_set_object))]
       _key_dict[f"{self.key}_{next(iter(evidence_set_object))}"] = {
         "prompt": f"""
 Let the user know they are now looking at a small set of evidence in the evidence locker for "{evidence_set.description}" 

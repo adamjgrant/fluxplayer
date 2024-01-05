@@ -200,7 +200,7 @@ Let the user know they are now looking at a small set of evidence in the evidenc
 and the evidence is as follows:
 
 {evidence_set_a.presentation}
-      """,
+        """,
       "events": [
         { "target": "EVIDENCE_LOCKER", "if_the_user": "wants to go back or back specifically to the evidence locker" },
         { "target": "EVIDENCE_TRAIL_1", "if_the_user": "wants to go back to the evidence set where they were before but not all the way back to the evidence locker" },
@@ -214,7 +214,7 @@ Let the user know they are now looking at a small set of evidence in the evidenc
 and the evidence is as follows:
 
 {evidence_set_b.presentation}
-      """,
+        """,
       "events": [
         { "target": "EVIDENCE_LOCKER", "if_the_user": "wants to go back or back specifically to the evidence locker" },
         { "target": "EVIDENCE_TRAIL_1", "if_the_user": "wants to go back to the evidence set where they were before but not all the way back to the evidence locker" },
