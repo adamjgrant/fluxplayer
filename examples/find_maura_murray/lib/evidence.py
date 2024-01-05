@@ -60,12 +60,12 @@ class EvidenceTrail(Evidence):
       ]
     }
     for evidence_set_object in self.evidence_set_objects:
-      _key_dict[next(iter(evidence_set_object))] = {
+      _key_dict[f"{self.key}_{next(iter(evidence_set_object))}"] = {
         "prompt": "",
         "events": [
           { "target": "EVIDENCE_LOCKER", "if_the_user": "wants to go back or back specifically to the evidence locker" },
           { "target": self.key, "if_the_user": "wants to go back to the evidence set where they were before but not all the way back to the evidence locker" },
-          { "target": "NOT IMPLEMENTED", "if_the_user": "wants to go back to the NOT IMPLEMENTED" }
+          { "target": self.previous_backbone_state, "if_the_user": f"wants to go back to {self.previous_backbone_state_description}" }
         ]
       }
     return _key_dict
