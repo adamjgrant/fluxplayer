@@ -1,6 +1,7 @@
 import unittest
 import sys
 from examples.find_maura_murray.cartridge import BackForwardState, CherryPicker, Map, EvidenceLocker, cartridge, Image
+from examples.find_maura_murray.lib.evidence import Evidence, EvidenceSet, EvidenceTrail, ImageEvidence
 
 class TestMerge(unittest.TestCase):
     def test_cherrypick_events(self):
@@ -21,7 +22,6 @@ class TestMerge(unittest.TestCase):
         self.assertEqual(rest_of_definition["events"][1]["if_the_user"], "says a")
         self.assertEqual(rest_of_definition["events"][2]["target"], "b")
         self.assertEqual(rest_of_definition["events"][2]["if_the_user"], "says b")
-
 
 class TestStates(unittest.TestCase):
   def test_first_level_in_story_column(self):
@@ -151,3 +151,21 @@ class TestImages(unittest.TestCase):
     image = Image(url="image.png", description="image")
     markdown = image.markdown()
     self.assertEqual(markdown, "![image](https://cdn.everything.io/chatgpt/maura/image.png)\n_image, [Open image in new window](https://cdn.everything.io/chatgpt/maura/image.png)_\n\n")
+
+class TestEvidence(unittest.TestCase):
+  def test_evidence_trail(self):
+    evidence_1 = Evidence(date="date1", time="time1", presentation="presentation1", description="description1")
+    evidence_2 = Evidence(date="date2", time="time2", presentation="presentation2", description="description2")
+    evidence_set_a = EvidenceSet(evidences=[evidence_1, evidence_2], description="description_a")
+
+    evidence_3 = Evidence(date="date3", time="time3", presentation="presentation3", description="description3")
+    evidence_4 = Evidence(date="date4", time="time4", presentation="presentation4", description="description4")
+    evidence_set_b = EvidenceSet(evidences=[evidence_3, evidence_4], description="description_b")
+
+    evidence_trail = EvidenceTrail(key="EVIDENCE_TRAIL_1", date="date", time="time", presentation="presentation", description="description", evidence_sets=[{ "EVIDENCE_SET_A": evidence_set_a }, { "EVIDENCE_SET_B": evidence_set_b }])
+
+    key_dict = evidence_trail.key_dict()
+    self.assertDictEqual(key_dict, {
+      "EVIDENCE_TRAIL_1_EVIDENCE_SET_A": {
+      }# TODO
+    })

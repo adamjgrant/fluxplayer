@@ -4,7 +4,9 @@ from examples.find_maura_murray.lib.event_self import EVENT_SELF
 
 # Evidence Sets just have multiple pieces of evidence. Just a way of organizing a bunch of related things.
 # However, we can also give the user options to go deep on one piece of evidence like reading a full transcript.
-# For this, (TODO)
+# For this, there are Evidence Trails. These appear as a piece of evidence but allow drilling down into a few
+# different paths by only one level.
+
 
 class Evidence:
   def __init__(self, date, time=None, presentation="", description=""):
@@ -26,6 +28,16 @@ class EvidenceSet:
 
     for evidence in evidences:
       self.presentation += evidence.presentation
+
+class EvidenceTrail(Evidence):
+  def __init__(self, date, time=None, presentation="", description="", evidence_sets=[], key=""):
+    super().__init__(date, time, presentation, description)
+    # For each option, give it the ability to move backwards
+    self.key = key
+    self.evidence_sets = evidence_sets
+
+  def key_dict(self):
+    return { "Error": "Not implemented" }
 
 EVIDENCE = {
   "BUTCH_ATWOOD": EvidenceSet(evidences = [
