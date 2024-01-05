@@ -176,15 +176,25 @@ class TestEvidence(unittest.TestCase):
     key_dict = evidence_trail.key_dict()
     self.maxDiff = None
     self.assertDictEqual(key_dict["EVIDENCE_TRAIL_1"], {
-      "prompt": "",
+      "prompt": f"""
+Let the user know they are now in an area of the evidence locker where they can see the evidence described in the events below.
+The user will need to choose either to see an evidence set or to go back to a previous state. 
+      """,
       "events": [
         { "target": "EVIDENCE_LOCKER", "if_the_user": "wants to go back or back specifically to the evidence locker" },
-        { "target": "NARRATIVE_BACKBONE_STATE", "if_the_user": "wants to go back to <example description of narrative backbone state>" }
+        { "target": "NARRATIVE_BACKBONE_STATE", "if_the_user": "wants to go back to <example description of narrative backbone state>" },
+        { "target": "EVIDENCE_TRAIL_1_EVIDENCE_SET_A", "if_the_user": f"wants to see the evidence that includes: {evidence_set_a.description}" },
+        { "target": "EVIDENCE_TRAIL_1_EVIDENCE_SET_B", "if_the_user": f"wants to see the evidence that includes: {evidence_set_b.description}" },
       ]
     })
 
     self.assertDictEqual(key_dict["EVIDENCE_TRAIL_1_EVIDENCE_SET_A"], {
-      "prompt": "",
+      "prompt": f"""
+Let the user know they are now looking at a small set of evidence in the evidence locker for "{evidence_set_a.description}" 
+and the evidence is as follows:
+
+{evidence_set_a.presentation}
+      """,
       "events": [
         { "target": "EVIDENCE_LOCKER", "if_the_user": "wants to go back or back specifically to the evidence locker" },
         { "target": "EVIDENCE_TRAIL_1", "if_the_user": "wants to go back to the evidence set where they were before but not all the way back to the evidence locker" },
@@ -193,7 +203,12 @@ class TestEvidence(unittest.TestCase):
     })
 
     self.assertDictEqual(key_dict["EVIDENCE_TRAIL_1_EVIDENCE_SET_B"], {
-      "prompt": "",
+      "prompt": f"""
+Let the user know they are now looking at a small set of evidence in the evidence locker for "{evidence_set_b.description}" 
+and the evidence is as follows:
+
+{evidence_set_b.presentation}
+      """,
       "events": [
         { "target": "EVIDENCE_LOCKER", "if_the_user": "wants to go back or back specifically to the evidence locker" },
         { "target": "EVIDENCE_TRAIL_1", "if_the_user": "wants to go back to the evidence set where they were before but not all the way back to the evidence locker" },
