@@ -187,9 +187,19 @@ FW: Yeah, bye-bye.
 }
 
 class EvidenceLocker(CherryPicker):
-    def __init__(self, previous_state, go_back_if_the_user="asks to go back", prompt="", events_to_pick=[], evidence_object=EVIDENCE, level="", next_backbone=""):
+    def __init__(
+      self, 
+      previous_state, 
+      go_back_if_the_user="asks to go back", 
+      prompt="", 
+      events_to_pick=[], 
+      evidence_object=EVIDENCE, 
+      evidence_trails=EVIDENCE_TRAILS,
+      level="", 
+      next_backbone=""):
       super().__init__("EVIDENCE_LOCKER", previous_state, go_back_if_the_user, prompt, events_to_pick + [EVENT_SELF])
       self.evidence_object = evidence_object
+      self.evidence_trails = evidence_trails
       self.level = level
       self.next_backbone = next_backbone
       self.prompt = f"""
@@ -204,6 +214,14 @@ Mike can give the user a list of evidence available:
 If the user asks to see some evidence, here is what Mike can show for each item:
 {self.evidence_as_catalogue()}
       """
+      
+    # This exists so we can add the EvidenceTrail items and modify them based on context
+    def generated_evidence_object(self):
+      evidence_object = {
+        **self.evidence_object,
+        **self.evidence_trails
+      }
+      return evidence_object
 
     def add_evidence(self, key, value):
       self.evidence_object[key] = value 
@@ -211,8 +229,9 @@ If the user asks to see some evidence, here is what Mike can show for each item:
     def evidence_as_list(self):
       x = 1
       list_as_str = ""
-      for key in self.evidence_object:
-        description = self.evidence_object[key].description
+      evidence_object = self.generated_evidence_object()
+      for key in evidence_object:
+        description = evidence_object[key].description
         list_as_str += f"{x} - {description}\n"
         x = x + 1
       return list_as_str
@@ -220,9 +239,10 @@ If the user asks to see some evidence, here is what Mike can show for each item:
     def evidence_as_catalogue(self):
       x = 1
       catalogue_as_str = ""
-      for key in self.evidence_object:
-        description = self.evidence_object[key].description
-        presentation = self.evidence_object[key].presentation
+      evidence_object = self.generated_evidence_object()
+      for key in evidence_object:
+        description = evidence_object[key].description
+        presentation = evidence_object[key].presentation
         catalogue_as_str += f"{x} - {description}\n{presentation}\n\n"
         x = x + 1
       return catalogue_as_str
