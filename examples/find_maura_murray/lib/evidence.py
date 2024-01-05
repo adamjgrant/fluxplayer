@@ -30,14 +30,43 @@ class EvidenceSet:
       self.presentation += evidence.presentation
 
 class EvidenceTrail(Evidence):
-  def __init__(self, date, time=None, presentation="", description="", evidence_sets=[], key=""):
+  def __init__(
+    self, 
+    date, 
+    time=None, 
+    presentation="", 
+    description="", 
+    evidence_set_objects=[], 
+    key="",
+    previous_backbone_state=None,
+    previous_backbone_state_description=None
+  ):
     super().__init__(date, time, presentation, description)
     # For each option, give it the ability to move backwards
     self.key = key
-    self.evidence_sets = evidence_sets
+    # Evidence set objects are EvidenceSet instances as values of the keys of the states they represent
+    # like { "EVIDENCE_SET_A": EvidenceSet(evidences=[evidence_1, evidence_2], description="description_a")}
+    self.evidence_set_objects = evidence_set_objects
 
   def key_dict(self):
-    return { "Error": "Not implemented" }
+    _key_dict = {}
+    _key_dict[self.key] = {
+      "prompt": "",
+      "events": [
+        { "target": "EVIDENCE_LOCKER", "if_the_user": "wants to go back or back specifically to the evidence locker" },
+        { "target": "NOT IMPLEMENTED", "if_the_user": "wants to go back to the NOT IMPLEMENTED" }
+      ]
+    }
+    for evidence_set_object in self.evidence_set_objects:
+      _key_dict[next(iter(evidence_set_object))] = {
+        "prompt": "",
+        "events": [
+          { "target": "EVIDENCE_LOCKER", "if_the_user": "wants to go back or back specifically to the evidence locker" },
+          { "target": self.key, "if_the_user": "wants to go back to the evidence set where they were before but not all the way back to the evidence locker" },
+          { "target": "NOT IMPLEMENTED", "if_the_user": "wants to go back to the NOT IMPLEMENTED" }
+        ]
+      }
+    return _key_dict
 
 EVIDENCE = {
   "BUTCH_ATWOOD": EvidenceSet(evidences = [

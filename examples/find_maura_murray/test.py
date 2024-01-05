@@ -162,7 +162,16 @@ class TestEvidence(unittest.TestCase):
     evidence_4 = Evidence(date="date4", time="time4", presentation="presentation4", description="description4")
     evidence_set_b = EvidenceSet(evidences=[evidence_3, evidence_4], description="description_b")
 
-    evidence_trail = EvidenceTrail(key="EVIDENCE_TRAIL_1", date="date", time="time", presentation="presentation", description="description", evidence_sets=[{ "EVIDENCE_SET_A": evidence_set_a }, { "EVIDENCE_SET_B": evidence_set_b }])
+    evidence_trail = EvidenceTrail(
+      key="EVIDENCE_TRAIL_1", 
+      date="date", 
+      time="time", 
+      presentation="presentation", 
+      description="description", 
+      evidence_set_objects=[{ "EVIDENCE_SET_A": evidence_set_a }, { "EVIDENCE_SET_B": evidence_set_b }],
+      previous_backbone_state="NARRATIVE_BACKBONE_STATE",
+      previous_backbone_state_description="<example description of narrative backbone state>"
+    )
 
     key_dict = evidence_trail.key_dict()
     self.maxDiff = None
