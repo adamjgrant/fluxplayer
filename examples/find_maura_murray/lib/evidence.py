@@ -38,11 +38,10 @@ class EvidenceTrail(Evidence):
     description="", 
     evidence_set_objects=[], 
     key="",
-    previous_backbone_state=None,
-    previous_backbone_state_description=None
+    previous_backbone_state="EVIDENCE_LOCKER",
+    previous_backbone_state_description="Evidence Locker"
   ):
     super().__init__(date, time, presentation, description)
-    # For each option, give it the ability to move backwards
     self.key = key
     # Evidence set objects are EvidenceSet instances as values of the keys of the states they represent
     # like { "EVIDENCE_SET_A": EvidenceSet(evidences=[evidence_1, evidence_2], description="description_a")}
@@ -108,7 +107,83 @@ Voicemail to Boyfriend: At 2:18 PM, Maura left a voicemail for her boyfriend, sa
 ATM Withdrawal: At 3:15 PM, security footage shows Maura withdrawing $280 from an ATM, nearly all the money in her account. She was alone.
 Liquor Store Visit: Shortly after, footage shows her purchasing $40 worth of alcohol, including Baileys, Kahlúa, vodka, and Franzia wine, at a liquor store. She was alone.
 Final Phone Usage: The last recorded use of her cell phone was at 4:37 PM, when she checked her voicemail.
-  """),
+  """)
+}
+
+# TODO: Evidence locker should pick these up, assign the right previous states before adding them
+# to the evidence locker.
+# TODO: It should also make individual events on the evidence locker state to get to evidence trails.
+EVIDENCE_TRAILS = {
+  "TRANSCRIPTS": EvidenceTrail(
+    key="TRANSCRIPTS",
+    date="Various",
+    description="Transcripts of interviews with people involved in the case",
+    evidence_set_objects=[
+      {
+        "Faith Westman 911 call": EvidenceSet(evidences=[
+          Evidence(
+            date="February 9, 2024",
+            description="911 call with Faith Westman",
+            presentation="""
+Recording from Grafton County Dispatch Case F-04-1514
+
+G1: Grafton County Dispatcher Marsh, can I help you?
+
+FW: Yes, um, we apparently have a car that has gone off the road here outside our home.
+
+G1: Ok, is anybody hurt?
+
+FW: Um, I have not gone out to investigate, um...
+
+G1: Ok.
+
+G1: Are you in Bath, correct?
+
+FW: Uh, well actually, um, no, Haverhill. I'm on the Weathered Barn, um.
+
+G1: Oh, you're at the Weathered Barn, ok.
+
+D1: Grafton, this is 911. I show it as [Inaudible].
+
+G1: Mhmm, right [Inaudible]. Yup, that is Haverhill. Ok, um, very good. Is this Faith I'm speaking with?
+
+FW: Yes.
+
+G1: And is your phone number [Redacted]?
+
+FW: Correct.
+
+G1: And your address is [Redacted]?
+
+FW: Right.
+
+G1: Ok, I'll be sending an Officer.
+
+FW: Ok, [inaudible] around the corner from the barn.
+
+G1: So after the barn?
+
+FW: Yeah.
+
+G1: Ok.
+
+G1: Ok, very good. I'm sending an Officer.
+
+FW: Yeah.
+
+G1: Ok?
+
+FW: Ok, thanks [inaudible].
+
+G1: Thanks, Faith [inaudible].
+
+FW: Yeah, bye-bye.
+            """
+          )
+        ])
+      }
+    ]
+  )
 }
 
 class EvidenceLocker(CherryPicker):
@@ -154,3 +229,4 @@ If the user asks to see some evidence, here is what Mike can show for each item:
 
     def state_name(self):
       return super().state_name() + (f"_{self.level}" if self.level else "")
+
