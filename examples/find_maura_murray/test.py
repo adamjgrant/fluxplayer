@@ -165,16 +165,29 @@ class TestEvidence(unittest.TestCase):
     evidence_trail = EvidenceTrail(key="EVIDENCE_TRAIL_1", date="date", time="time", presentation="presentation", description="description", evidence_sets=[{ "EVIDENCE_SET_A": evidence_set_a }, { "EVIDENCE_SET_B": evidence_set_b }])
 
     key_dict = evidence_trail.key_dict()
+    self.maxDiff = None
     self.assertDictEqual(key_dict, {
       "EVIDENCE_TRAIL_1": {
-        # Shoudl allow for going back to the evidence locker or room or whatever we called it.
+        "prompt": "",
+        "events": [
+          { "target": "EVIDENCE_LOCKER", "if_the_user": "wants to go back or back specifically to the evidence locker" },
+          { "target": "NARRATIVE_BACKBONE_STATE", "if_the_user": "wants to go back to the <example description of narrative backbone state>" }
+        ]
       },
       "EVIDENCE_TRAIL_1_EVIDENCE_SET_A": {
-        # Should allow for going back to the evidence trail itself
-        # Shoudl allow for going back to the evidence locker or room or whatever we called it.
-      },# TODO
+        "prompt": "",
+        "events": [
+          { "target": "EVIDENCE_LOCKER", "if_the_user": "wants to go back or back specifically to the evidence locker" },
+          { "target": "EVIDENCE_TRAIL_1", "if_the_user": "wants to go back to the evidence set where they were before but not all the way back to the evidence locker" },
+          { "target": "NARRATIVE_BACKBONE_STATE", "if_the_user": "wants to go back to the <example description of narrative backbone state>" }
+        ]
+      },
       "EVIDENCE_TRAIL_1_EVIDENCE_SET_B": {
-        # Should allow for going back to the evidence trail itself
-        # Shoudl allow for going back to the evidence locker or room or whatever we called it.
-      }# TODO
+        "prompt": "",
+        "events": [
+          { "target": "EVIDENCE_LOCKER", "if_the_user": "wants to go back or back specifically to the evidence locker" },
+          { "target": "EVIDENCE_TRAIL_1", "if_the_user": "wants to go back to the evidence set where they were before but not all the way back to the evidence locker" },
+          { "target": "NARRATIVE_BACKBONE_STATE", "if_the_user": "wants to go back to the <example description of narrative backbone state>" }
+        ]
+      }
     })
