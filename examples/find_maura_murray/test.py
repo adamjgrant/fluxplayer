@@ -175,28 +175,28 @@ class TestEvidence(unittest.TestCase):
 
     key_dict = evidence_trail.key_dict()
     self.maxDiff = None
-    self.assertDictEqual(key_dict, {
-      "EVIDENCE_TRAIL_1": {
-        "prompt": "",
-        "events": [
-          { "target": "EVIDENCE_LOCKER", "if_the_user": "wants to go back or back specifically to the evidence locker" },
-          { "target": "NARRATIVE_BACKBONE_STATE", "if_the_user": "wants to go back to the <example description of narrative backbone state>" }
-        ]
-      },
-      "EVIDENCE_TRAIL_1_EVIDENCE_SET_A": {
-        "prompt": "",
-        "events": [
-          { "target": "EVIDENCE_LOCKER", "if_the_user": "wants to go back or back specifically to the evidence locker" },
-          { "target": "EVIDENCE_TRAIL_1", "if_the_user": "wants to go back to the evidence set where they were before but not all the way back to the evidence locker" },
-          { "target": "NARRATIVE_BACKBONE_STATE", "if_the_user": "wants to go back to the <example description of narrative backbone state>" }
-        ]
-      },
-      "EVIDENCE_TRAIL_1_EVIDENCE_SET_B": {
-        "prompt": "",
-        "events": [
-          { "target": "EVIDENCE_LOCKER", "if_the_user": "wants to go back or back specifically to the evidence locker" },
-          { "target": "EVIDENCE_TRAIL_1", "if_the_user": "wants to go back to the evidence set where they were before but not all the way back to the evidence locker" },
-          { "target": "NARRATIVE_BACKBONE_STATE", "if_the_user": "wants to go back to the <example description of narrative backbone state>" }
-        ]
-      }
+    self.assertDictEqual(key_dict["EVIDENCE_TRAIL_1"], {
+      "prompt": "",
+      "events": [
+        { "target": "EVIDENCE_LOCKER", "if_the_user": "wants to go back or back specifically to the evidence locker" },
+        { "target": "NARRATIVE_BACKBONE_STATE", "if_the_user": "wants to go back to <example description of narrative backbone state>" }
+      ]
+    })
+
+    self.assertDictEqual(key_dict["EVIDENCE_TRAIL_1_EVIDENCE_SET_A"], {
+      "prompt": "",
+      "events": [
+        { "target": "EVIDENCE_LOCKER", "if_the_user": "wants to go back or back specifically to the evidence locker" },
+        { "target": "EVIDENCE_TRAIL_1", "if_the_user": "wants to go back to the evidence set where they were before but not all the way back to the evidence locker" },
+        { "target": "NARRATIVE_BACKBONE_STATE", "if_the_user": "wants to go back to the <example description of narrative backbone state>" }
+      ]
+    })
+    
+    self.assertDictEqual(key_dict["EVIDENCE_TRAIL_1_EVIDENCE_SET_B"], {
+      "prompt": "",
+      "events": [
+        { "target": "EVIDENCE_LOCKER", "if_the_user": "wants to go back or back specifically to the evidence locker" },
+        { "target": "EVIDENCE_TRAIL_1", "if_the_user": "wants to go back to the evidence set where they were before but not all the way back to the evidence locker" },
+        { "target": "NARRATIVE_BACKBONE_STATE", "if_the_user": "wants to go back to the <example description of narrative backbone state>" }
+      ]
     })

@@ -47,6 +47,8 @@ class EvidenceTrail(Evidence):
     # Evidence set objects are EvidenceSet instances as values of the keys of the states they represent
     # like { "EVIDENCE_SET_A": EvidenceSet(evidences=[evidence_1, evidence_2], description="description_a")}
     self.evidence_set_objects = evidence_set_objects
+    self.previous_backbone_state = previous_backbone_state
+    self.previous_backbone_state_description = previous_backbone_state_description
 
   def key_dict(self):
     _key_dict = {}
@@ -54,7 +56,7 @@ class EvidenceTrail(Evidence):
       "prompt": "",
       "events": [
         { "target": "EVIDENCE_LOCKER", "if_the_user": "wants to go back or back specifically to the evidence locker" },
-        { "target": "NOT IMPLEMENTED", "if_the_user": "wants to go back to the NOT IMPLEMENTED" }
+        { "target": self.previous_backbone_state, "if_the_user": f"wants to go back to {self.previous_backbone_state_description}" }
       ]
     }
     for evidence_set_object in self.evidence_set_objects:
