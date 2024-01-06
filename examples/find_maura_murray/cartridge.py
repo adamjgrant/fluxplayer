@@ -185,7 +185,7 @@ UMASS_B_DEFINITION = UMASS_OFFICE_DEFINITION.set_events(
   [{ "target": "INTRO_TO_MAP", "if_the_user": "agrees with Mike's suggestion to continue to the map" }]
 ).copy_with_changes(prompt=UMASS_OFFICE_DEFINITION.prompt+"Remind the user at the end of your message they can also view a map of other locations to visit as their next step.").dict()
 
-map_intro_image = Image(url="map_intro.png", description="Map of key locations").markdown()
+map_intro_image = Image(url="map_level_intro.png", description="Map of key locations").markdown()
 INTRO_TO_MAP_DEFINITION =TranscriptState(
   "At the same scene, with Mike's map folded out showing key locations",
   f"""
