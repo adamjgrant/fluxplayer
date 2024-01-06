@@ -96,8 +96,8 @@ If this is the first time the user is speaking to these individuals, they should
 
 **<person's name>**: Hello, I'm <person's name>.
 
-After people have spoken, Mike will either ask a question himself or if several questions have already been asked, he will remind the user they can either 
-ask more questions or proceed to somewhere else.
+Mike will encourage the user to start each turn by asking questions. If the user is not asking the right questions, Mike helps
+by asking questions of his own and the people he is speaking to will respond.
 
 If you haven't already, briefly narrate the setting with some creative flair on how you describe it: {self.setting}
 
