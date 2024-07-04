@@ -94,11 +94,11 @@ and run
 python flux.py
 ```
 
+in the same directory.
+
 ## In ChatGPT
 
-`prompt.md` is the prompt you'll want to use for the GPT. Note that cartridge.yaml or .python must be at the same directory as flux.py.
-
-To execute directly, you can run `python flux.py` without any arguments. This will assume you have a yaml or python cartridge called "cartridge" in the same directory.
+`prompt.md` is the prompt you'll want to use for the GPT. Note that cartridge.yaml or .python must be at the same directory as flux.
 
 You can also specify a custom cartridge path with `-c`
 
@@ -113,8 +113,6 @@ Use `-s=<STATE>` and `-t=<transition>` to define the current state and transitio
 ```bash
 python -m unittest test.py
 ```
-
-# Distribution
 
 For running on OpenAI's Custom GPTs, get the `flux` binary from [the releases page](https://github.com/adamjgrant/fluxplayer/releases) and upload it with your cartridge to your custom GPT.
 
