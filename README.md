@@ -79,7 +79,7 @@ Then in the same directory as the cartridge, run:
 Alternatively, use `flux.py` from the base level of this repo with the `lib` directory 
 
 ```bash
-ls
+$ ls
 cartridge.py   flux   flux.py   lib
 ```
 
