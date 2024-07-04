@@ -66,6 +66,8 @@ See the examples folder in this repo to get ideas.
 
 # Running
 
+Once you've created your cartridge.py or cartridge.yaml here's how you can run it.
+
 ## Locally
 
 Get the latest `flux` distributable from [the releases](https://github.com/adamjgrant/fluxplayer/tags)
@@ -81,6 +83,9 @@ Alternatively, use `flux.py` from the base level of this repo with the `lib` dir
 ```bash
 $ ls
 cartridge.py   flux   flux.py   lib
+# OR
+$ ls
+cartridge.yaml   flux   flux.py   lib
 ```
 
 and run
