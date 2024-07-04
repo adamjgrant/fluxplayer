@@ -98,7 +98,11 @@ in the same directory.
 
 ## In ChatGPT
 
+For running on OpenAI's Custom GPTs, get the `flux` binary from [the releases page](https://github.com/adamjgrant/fluxplayer/releases) and upload it with your cartridge to your custom GPT.
+
 `prompt.md` is the prompt you'll want to use for the GPT. Note that cartridge.yaml or .python must be at the same directory as flux.
+
+**Do not change from prompt.md** to customize for your GPT's needs! Remember that your cartridge is what makes your GPT unique. Every Flux-powered GPT should have exactly the same prompt. This prompt has been carefully tested over many iterations to "behave" across a variety of seeds, so you'll want to stick with this one.
 
 You can also specify a custom cartridge path with `-c`
 
@@ -114,7 +118,6 @@ Use `-s=<STATE>` and `-t=<transition>` to define the current state and transitio
 python -m unittest test.py
 ```
 
-For running on OpenAI's Custom GPTs, get the `flux` binary from [the releases page](https://github.com/adamjgrant/fluxplayer/releases) and upload it with your cartridge to your custom GPT.
 
 ## Building from source
 
