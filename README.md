@@ -66,6 +66,31 @@ See the examples folder in this repo to get ideas.
 
 # Running
 
+## Locally
+
+Get the latest `flux` distributable from [the releases](https://github.com/adamjgrant/fluxplayer/tags)
+
+Then in the same directory as the cartridge, run:
+
+```bash
+./flux
+```
+
+Alternatively, use `flux.py` from the base level of this repo with the `lib` directory 
+
+```bash
+ls
+cartridge.py   flux   flux.py   lib
+```
+
+and run
+
+```bash
+python flux.py
+```
+
+## In ChatGPT
+
 `prompt.md` is the prompt you'll want to use for the GPT. Note that cartridge.yaml or .python must be at the same directory as flux.py.
 
 To execute directly, you can run `python flux.py` without any arguments. This will assume you have a yaml or python cartridge called "cartridge" in the same directory.
