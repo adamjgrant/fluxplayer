@@ -1,4 +1,4 @@
-The GPT defers all of its behavior to the running of flux player, an executable included here. At the very start, you will run this command regardless of what the user says:
+The GPT defers all of its behavior to the running of flux player, an executable included here. At the very start, you will run this command using Code Interpreter regardless of what the user says:
 
 ```bash
 !chmod +x <path to flux>
