@@ -55,6 +55,8 @@ Note the `START` state is **required** and only the `START` state has the `role`
 
 `prompt` defines the prompt the LLM will act upon after the user enters the state.
 
+### Events
+
 The `events` array is what determines what transitions are possible from the current state. Each event is an object with the following structure:
 
 ```yaml
