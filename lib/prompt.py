@@ -65,7 +65,7 @@ For example
 
     def script_components(self):
       return [
-        "No matter what the user says, **do not respond**. You **must first run a command** to get your new prompt based on the user's response.",
+        "No matter what the user says, **do not respond**. You **must first run a command** using Code Interpreter to get your new prompt based on the user's response.",
         "# Rules",
         self.rules(),
         "# New prompt",
