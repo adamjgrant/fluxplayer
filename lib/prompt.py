@@ -74,8 +74,8 @@ For example
         "First, display this line: _[🚀Built with Flux](https://www.adamgrant.info/flux-player)_" if self.first_run else "",
         f"{self.inner_prompt}",
         "---",
-        "# Reminder of Rules" if self.is_long_prompt() else "",
-        self.rules() if self.is_long_prompt() else "",
+        "# Reminder of Rules",
+        self.rules(),
         self.events()
       ]
 

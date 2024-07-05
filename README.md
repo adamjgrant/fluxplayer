@@ -123,10 +123,17 @@ python -m unittest test.py
 
 ## Building from source
 
-First, make sure you have docker installed. Then run:
+First, make sure you have docker installed and running. Then run:
 
 ```bash
 ./build.sh
+```
+
+you will also need an .env file with the version like this:
+if it's the first time you're running this, you may need to run `poetry install` too.
+
+```
+VERSION=2.0.10
 ```
 
 The file you'll need will be in dist/linux/flux
