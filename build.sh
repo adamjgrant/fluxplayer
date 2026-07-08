@@ -1,6 +1,7 @@
 #!/bin/zsh
 
 source .env
+source ~/.zshrc
 
 rm -rf dist
 mkdir -p dist
@@ -21,7 +22,7 @@ gh release create v$VERSION ./dist/openai/flux --title "Flux Player v$VERSION" -
 echo "Building for pip distribution..."
 poetry build
 echo "Publishing pip distribution..."
-python3 -m twine upload --repository testpypi dist/*.tar.gz
+python -m twine upload --repository testpypi dist/*.tar.gz
 
 # python3 -m pip3 install --index-url https://test.pypi.org/simple/ --no-deps flux-player-adamjgrant
 
